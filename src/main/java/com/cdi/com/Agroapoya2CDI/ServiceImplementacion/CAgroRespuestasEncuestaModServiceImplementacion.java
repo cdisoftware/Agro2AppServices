@@ -24,13 +24,11 @@ public class CAgroRespuestasEncuestaModServiceImplementacion implements CAgroRes
             respu.registerStoredProcedureParameter("ID_PRGNTA_OFR", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("CD_TPO_PRGNTA", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("RESPUESTA_PRG", String.class, ParameterMode.IN);
-
             respu.setParameter("bandera", bandera);
             respu.setParameter("ID_CLNTE", entidad.getID_CLNTE());
             respu.setParameter("ID_PRGNTA_OFR", entidad.getID_PRGNTA_OFR());
             respu.setParameter("CD_TPO_PRGNTA", entidad.getCD_TPO_PRGNTA());
             respu.setParameter("RESPUESTA_PRG", entidad.getRESPUESTA_PRG());
-
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
