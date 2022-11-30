@@ -35,4 +35,7 @@ public class TSubMenuEntity {
 
     @JsonProperty("PathMenu")
     public String PathMenu;
+
+    @JsonProperty("idAccion")
+    public Integer idAccion;
 }

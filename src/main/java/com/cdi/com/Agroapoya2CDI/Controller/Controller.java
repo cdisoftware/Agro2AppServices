@@ -29,10 +29,11 @@ import com.cdi.com.Agroapoya2CDI.Entity.CCordenadasSectorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDatosTransportistaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoModEntity;
-import com.cdi.com.Agroapoya2CDI.Entity.CEnvioRealCorreo_ConsultaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMisToppingsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CModuloModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CNovedadModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CNuevasOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.COfertaEntity;
@@ -42,6 +43,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.COfertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonaMenuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonaTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CPubliModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteUsuariosEntity;
@@ -49,6 +51,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CReporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CSeguimientoGeneralEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CSubSeguimientoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoCamposMasivoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoConductorEntity;
@@ -83,6 +87,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CperfilClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaCampesinoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaClienteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaTransportistaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CseguimientoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtableroEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtableroModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoMomentoEnvioEntity;
@@ -113,6 +118,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.TransActivosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.cTipoPreguntaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.conductorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.consultaProductoEntity;
@@ -167,10 +173,12 @@ import com.cdi.com.Agroapoya2CDI.Services.CDatosTransportistaService;
 import com.cdi.com.Agroapoya2CDI.Services.CDocumentoCorreoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CDocumentoCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioCodigoCorreoService;
+import com.cdi.com.Agroapoya2CDI.Services.CEnvioCorreoIndEmailService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEstadoTransporteModService;
 import com.cdi.com.Agroapoya2CDI.Services.CListadoToppingService;
 import com.cdi.com.Agroapoya2CDI.Services.CMisToppingsService;
+import com.cdi.com.Agroapoya2CDI.Services.CModuloModService;
 import com.cdi.com.Agroapoya2CDI.Services.CNovedadModService;
 import com.cdi.com.Agroapoya2CDI.Services.CNuevasOfertasService;
 import com.cdi.com.Agroapoya2CDI.Services.COfertaImagenModService;
@@ -181,6 +189,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CPagosTransTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.CPersonaMenuService;
 import com.cdi.com.Agroapoya2CDI.Services.CPersonaTransService;
 import com.cdi.com.Agroapoya2CDI.Services.CPersonasService;
+import com.cdi.com.Agroapoya2CDI.Services.CPubliModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteUsuarioService;
@@ -188,6 +197,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CReporteVentasService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CSeguimientoGeneralService;
+import com.cdi.com.Agroapoya2CDI.Services.CSubSeguimientoService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoCamposMasivoService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoConductorService;
@@ -223,6 +234,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CperfilClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaCampesinoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaClienteModService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaTransportistaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CseguimientoService;
 import com.cdi.com.Agroapoya2CDI.Services.CtableroModService;
 import com.cdi.com.Agroapoya2CDI.Services.CtableroService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoMomentoEnvioService;
@@ -268,6 +280,7 @@ import com.cdi.com.Agroapoya2CDI.Services.TipoViasService;
 import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.conductorModService;
 import com.cdi.com.Agroapoya2CDI.Services.consultaProductoService;
@@ -736,6 +749,27 @@ public class Controller {
     @Autowired
     CPublicidadModService serviceCPublicidadModService;
 
+    @Autowired
+    CEnvioCorreoIndEmailService serviceCEnvioCorreoIndEmailService;
+
+    @Autowired
+    CModuloModService serviceCModuloModService;
+
+    @Autowired
+    CPubliModService serviceCPubliModService;
+
+    @Autowired
+    cTipoPreguntaService servicecTipoPreguntaService;
+
+    @Autowired
+    CSeguimientoGeneralService serviceCSeguimientoGeneralService;
+
+    @Autowired
+    CseguimientoService serviceCseguimientoService;
+
+    @Autowired
+    CSubSeguimientoService serviceCSubSeguimientoService;
+
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
             @PathVariable Integer ID,
@@ -967,6 +1001,30 @@ public class Controller {
         fileDownloadUri = fileDownloadUri.replace(":8089/ImagenesAgroapoya2", "");
         try {
             file.transferTo(new File("C:/inetpub/wwwroot/ImagenesAgroapoya2/ImagenesToppings/" + fileName));
+        } catch (IOException | IllegalStateException ex) {
+            System.out.println("Error " + ex);
+        }
+        UploadFileResponse uploadfile = new UploadFileResponse(fileName, fileDownloadUri,
+                file.getContentType(), file.getSize());
+        uploadfile.getFileDownloadUri();
+        return JSONObject.quote("Archivo Subido Correctamente");
+    }
+
+    @PostMapping("/uploadImgPublicidad")
+    public String uploadPublicidad(@RequestParam("file") MultipartFile file) {
+        String fileName = null;
+        try {
+            fileName = fileStorageService.storeFile(file);
+        } catch (FileStorageException ex) {
+            System.out.println("Error " + ex);
+        }
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/ImagenesAgroapoya2/")
+                .path(fileName)
+                .toUriString();
+        fileDownloadUri = fileDownloadUri.replace(":8089/ImagenesAgroapoya2", "");
+        try {
+            file.transferTo(new File("C:/inetpub/wwwroot/ImagenesAgroapoya2/ImagenesPublicidad/" + fileName));
         } catch (IOException | IllegalStateException ex) {
             System.out.println("Error " + ex);
         }
@@ -1931,12 +1989,13 @@ public class Controller {
         return serviceCperfilClienteService.CosnultaCPerfilClient(entidad, bandera);
     }
 
-    @GetMapping("/conscpublicidad/{Bandera}/{IdVista}/{Usucodig}")
+    @GetMapping("/conscpublicidad/{Bandera}/{Id}/{IdVista}/{Usucodig}")
     public List<CPublicidadEntity> ConsultaCAgroPreguntEnc(
             @PathVariable Integer Bandera,
+            @PathVariable Integer Id,
             @PathVariable Integer IdVista,
             @PathVariable Integer Usucodig) {
-        return serviceCPublicidadService.ConsultaCPublicidad(Bandera, IdVista, Usucodig);
+        return serviceCPublicidadService.ConsultaCPublicidad(Bandera, Id, IdVista, Usucodig);
     }
 
     @GetMapping("/constvistaspublic/{Bandera}")
@@ -1964,4 +2023,54 @@ public class Controller {
             @PathVariable Integer Bandera) {
         return serviceCPublicidadModService.ModCPublicidad(entidad, Bandera);
     }
+
+    @PostMapping("/envioCorreoIndEmail/{bandera}")
+    public String EnvioCorreoIndEmail(
+            @RequestBody CEnvioCorreoIndEmailEntity entidad,
+            @PathVariable Integer bandera) {
+        return serviceCEnvioCorreoIndEmailService.EnvioCorreoIndEmail(entidad, bandera);
+    }
+
+    @PostMapping("/modcmodulo/{Bandera}")
+    public String ModCModulo(
+            @RequestBody CModuloModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCModuloModService.ModCModulo(entidad, Bandera);
+    }
+
+    @PostMapping("/modcpubli/{Bandera}")
+    public String ModCpubli(
+            @RequestBody CPubliModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCPubliModService.ModCpubli(entidad, Bandera);
+    }
+
+    @GetMapping("/consctipopregunta/{Bandera}")
+    public List<cTipoPreguntaEntity> ConsultaTipoPregunt(
+            @PathVariable Integer Bandera) {
+        return servicecTipoPreguntaService.ConsultaTipoPregunt(Bandera);
+    }
+
+    @GetMapping("/consseguiminetogeneral/{Bandera}/{IdCliente}")
+    public List<CSeguimientoGeneralEntity> ConsultaCSeguimientoGen(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCliente) {
+        return serviceCSeguimientoGeneralService.ConsultaCSeguimientoGen(Bandera, IdCliente);
+    }
+
+    @GetMapping("/conscseguimiento/{Bandera}/{IdCliente}")
+    public List<CseguimientoEntity> ConsultaCSeguimiento(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCliente) {
+        return serviceCseguimientoService.ConsultaCSeguimiento(Bandera, IdCliente);
+    }
+
+    @GetMapping("/conscsubseguimiento/{Bandera}/{IdCliente}/{IdSeguimiento}")
+    public List<CSubSeguimientoEntity> ConsultaCSubSeguimiento(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCliente,
+            @PathVariable Integer IdSeguimiento) {
+        return serviceCSubSeguimientoService.ConsultaCSubSeguimiento(Bandera, IdCliente, IdSeguimiento);
+    }
+
 }
