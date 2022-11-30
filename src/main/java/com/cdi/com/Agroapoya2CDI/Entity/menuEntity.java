@@ -38,4 +38,7 @@ public class menuEntity {
 
     @JsonProperty("SubMenu")
     public Integer SubMenu;
+
+    @JsonProperty("IdAccion")
+    public Integer IdAccion;
 }

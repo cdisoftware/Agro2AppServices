@@ -119,4 +119,10 @@ public class CReporteVentasEntity {
 
     @JsonProperty("NOM_SECTOR")
     public String NOM_SECTOR;
+
+    @JsonProperty("Producto")
+    public String Producto;
+
+    @JsonProperty("topping")
+    public String topping;
 }

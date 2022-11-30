@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface CPublicidadService {
 
-    public List<CPublicidadEntity> ConsultaCPublicidad(Integer Bandera, Integer IdVista, Integer Usucodig);
+    public List<CPublicidadEntity> ConsultaCPublicidad(Integer Bandera, Integer Id, Integer IdVista, Integer Usucodig);
 
 }

@@ -135,4 +135,7 @@ public class CNuevasOfertasEntity {
     @JsonProperty("CRCTRZCION")
     public String CRCTRZCION;
 
+    @JsonProperty("ORDEN")
+    public Integer ORDEN;
+
 }

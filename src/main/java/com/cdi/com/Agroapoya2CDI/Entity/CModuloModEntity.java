@@ -13,35 +13,20 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paC_PublicidadMod",
-            procedureName = "paC_PublicidadMod",
+            name = "paC_ModuloMod",
+            procedureName = "paC_ModuloMod",
             parameters = {
                 @StoredProcedureParameter(name = "Respuesta",
                         mode = ParameterMode.OUT,
                         type = String.class)
             })
 })
-public class CPublicidadModEntity {
+public class CModuloModEntity {
 
     @Id
-    @JsonProperty("Id")
-    public Integer Id;
+    @JsonProperty("IdModulo")
+    public Integer IdModulo;
 
-    @JsonProperty("IdVista")
-    public Integer IdVista;
-
-    @JsonProperty("IdAccion")
-    public Integer IdAccion;
-
-    @JsonProperty("Patch")
-    public String Patch;
-
-    @JsonProperty("Imagen")
-    public String Imagen;
-
-    @JsonProperty("Usucodig")
-    public Integer Usucodig;
-
-    @JsonProperty("Observacion")
-    public String Observacion;
+    @JsonProperty("NomModulo")
+    public String NomModulo;
 }

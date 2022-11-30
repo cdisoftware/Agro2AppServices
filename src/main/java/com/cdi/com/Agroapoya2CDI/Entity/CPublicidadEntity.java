@@ -41,4 +41,10 @@ public class CPublicidadEntity {
 
     @JsonProperty("Orden")
     public Integer Orden;
+    
+    @JsonProperty("ancho")
+    public Integer ancho;
+    
+    @JsonProperty("alto")
+    public Integer alto;
 }

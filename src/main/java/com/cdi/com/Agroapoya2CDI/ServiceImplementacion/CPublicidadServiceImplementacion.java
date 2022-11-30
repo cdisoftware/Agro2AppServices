@@ -18,14 +18,16 @@ public class CPublicidadServiceImplementacion implements CPublicidadService {
     private EntityManager repositorio;
 
     @Override
-    public List<CPublicidadEntity> ConsultaCPublicidad(Integer Bandera, Integer IdVista, Integer Usucodig) {
+    public List<CPublicidadEntity> ConsultaCPublicidad(Integer Bandera, Integer Id, Integer IdVista, Integer Usucodig) {
         try {
             StoredProcedureQuery publicidad = repositorio.createNamedStoredProcedureQuery("paC_Publicidad");
             publicidad.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
+            publicidad.registerStoredProcedureParameter("Id", Integer.class, ParameterMode.IN);
             publicidad.registerStoredProcedureParameter("IdVista", Integer.class, ParameterMode.IN);
             publicidad.registerStoredProcedureParameter("Usucodig", Integer.class, ParameterMode.IN);
 
             publicidad.setParameter("Bandera", Bandera);
+            publicidad.setParameter("Id", Id);
             publicidad.setParameter("IdVista", IdVista);
             publicidad.setParameter("Usucodig", Usucodig);
 
