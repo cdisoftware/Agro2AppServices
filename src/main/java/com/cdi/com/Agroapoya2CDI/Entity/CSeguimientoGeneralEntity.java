@@ -50,4 +50,7 @@ public class CSeguimientoGeneralEntity {
 
     @JsonProperty("DondeEsta")
     public String DondeEsta;
+
+    @JsonProperty("TiempoEntrega")
+    public String TiempoEntrega;
 }
