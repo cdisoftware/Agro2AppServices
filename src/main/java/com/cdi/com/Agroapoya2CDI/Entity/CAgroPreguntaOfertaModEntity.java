@@ -42,4 +42,10 @@ public class CAgroPreguntaOfertaModEntity {
     @JsonProperty("OPCIONES_PRGNTA")
     public String OPCIONES_PRGNTA;
 
+    @JsonProperty("ORIGEN")
+    public Integer ORIGEN;
+
+    @JsonProperty("CD_TPO_SEGMENTO")
+    public Integer CD_TPO_SEGMENTO;
+
 }

@@ -18,16 +18,20 @@ public class CReporteVentasServiceImplementacion implements CReporteVentasServic
     private EntityManager repositorio;
 
     @Override
-    public List<CReporteVentasEntity> ConsultaCReporteVentas(Integer Bandera, Integer cd_cnscutivo, Integer IdSector) {
+    public List<CReporteVentasEntity> ConsultaCReporteVentas(Integer Bandera, Integer cd_cnscutivo, Integer IdSector, Integer Id_Estado_Compra, Integer Id_Estado_pago) {
         try {
             StoredProcedureQuery repotVentas = repositorio.createNamedStoredProcedureQuery("paC_ReporteVentas");
             repotVentas.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             repotVentas.registerStoredProcedureParameter("cd_cnscutivo", Integer.class, ParameterMode.IN);
             repotVentas.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
+            repotVentas.registerStoredProcedureParameter("Id_Estado_Compra", Integer.class, ParameterMode.IN);
+            repotVentas.registerStoredProcedureParameter("Id_Estado_pago", Integer.class, ParameterMode.IN);
 
             repotVentas.setParameter("Bandera", Bandera);
             repotVentas.setParameter("cd_cnscutivo", cd_cnscutivo);
             repotVentas.setParameter("IdSector", IdSector);
+            repotVentas.setParameter("Id_Estado_Compra", Id_Estado_Compra);
+            repotVentas.setParameter("Id_Estado_pago", Id_Estado_pago);
 
             return repotVentas.getResultList();
         } catch (Exception ex) {

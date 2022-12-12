@@ -125,4 +125,10 @@ public class CReporteVentasEntity {
 
     @JsonProperty("topping")
     public String topping;
+
+    @JsonProperty("estado_compras")
+    public String estado_compras;
+
+    @JsonProperty("estado_pago")
+    public String estado_pago;
 }

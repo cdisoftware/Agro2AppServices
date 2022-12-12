@@ -53,7 +53,7 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
     String imagenpiepagina;
 
     @Override
-    public String EnvioCorreoIndividual(EnvioCorreo_IndividualEntity entidad, Integer bandera) {
+    public String EnvioCorreoIndividual(EnvioCorreo_IndividualEntity entidad, Integer bandera, Integer Id_Clnte, Integer IdSctor) {
 
         Map<String, Object> mapMessage = new HashMap<>();
         try {
@@ -63,13 +63,15 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             rolconsola.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
             rolconsola.registerStoredProcedureParameter("usucodig", Integer.class, ParameterMode.IN);
             rolconsola.registerStoredProcedureParameter("Cd_cnctvo", Integer.class, ParameterMode.IN);
-            rolconsola.registerStoredProcedureParameter("id_conductor", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("Id_Clnte", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("IdSctor", Integer.class, ParameterMode.IN);
 
             rolconsola.setParameter("bandera", bandera);
             rolconsola.setParameter("IdPlantilla", entidad.getIdPlantilla());
             rolconsola.setParameter("usucodig", entidad.getUsucodig());
             rolconsola.setParameter("Cd_cnctvo", entidad.getCd_cnctvo());
-            rolconsola.setParameter("id_conductor", entidad.getId_conductor());
+            rolconsola.setParameter("Id_Clnte", Id_Clnte);
+            rolconsola.setParameter("IdSctor", IdSctor);
 
             rolconsola.getResultList();
             List<EnvioCorreo_IndividualEntity> cuerpocorreo = rolconsola.getResultList();
@@ -92,7 +94,7 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             String content = templateEngine.process("EnvioCorreos", context);
             mapMessage.put("subject", asunto);
             mapMessage.put("content", content);
-            sendMessage(mapMessage, entidad, bandera);
+            sendMessage(mapMessage, entidad, bandera, Id_Clnte, IdSctor);
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
 
         } catch (Exception e) {
@@ -101,7 +103,7 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
         return Respuesta;
     }
 
-    public void sendMessage(Map<String, Object> mapMessage, EnvioCorreo_IndividualEntity entidad, Integer bandera) throws Exception {
+    public void sendMessage(Map<String, Object> mapMessage, EnvioCorreo_IndividualEntity entidad, Integer bandera, Integer Id_Clnte, Integer IdSctor) throws Exception {
         try {
             String correoremitente = null;
             String servicePath = null;
@@ -127,7 +129,7 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             Transport ts = session.getTransport();
             ts.connect(servicePath, correoremitente, contrasena);
             // Crear correo electrónico
-            Message message = createMixedMail(session, mapMessage, correoremitente, entidad, bandera);
+            Message message = createMixedMail(session, mapMessage, correoremitente, entidad, bandera, Id_Clnte, IdSctor);
             //enviar correo electrónico 
             ts.sendMessage(message, message.getAllRecipients());
             ts.close();
@@ -138,7 +140,7 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
     }
 
     public MimeMessage createMixedMail(Session session, Map<String, Object> mapMessage,
-            String correoremitente, EnvioCorreo_IndividualEntity entidad, Integer bandera) throws Exception {
+            String correoremitente, EnvioCorreo_IndividualEntity entidad, Integer bandera, Integer Id_Clnte, Integer IdSctor) throws Exception {
 
         MimeMessage message = new MimeMessage(session);
 

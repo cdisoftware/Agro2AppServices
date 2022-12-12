@@ -26,6 +26,8 @@ public class CAgroPreguntaOfertaModServiceImplementacion implements CAgroPregunt
             insertbackup.registerStoredProcedureParameter("CD_TPO_PRGNTA", String.class, ParameterMode.IN);
             insertbackup.registerStoredProcedureParameter("TTLO_PRGNTA", String.class, ParameterMode.IN);
             insertbackup.registerStoredProcedureParameter("OPCIONES_PRGNTA", String.class, ParameterMode.IN);
+            insertbackup.registerStoredProcedureParameter("ORIGEN", Integer.class, ParameterMode.IN);
+            insertbackup.registerStoredProcedureParameter("CD_TPO_SEGMENTO", Integer.class, ParameterMode.IN);
 
             insertbackup.setParameter("bandera", bandera);
             insertbackup.setParameter("ID_PRGNTA_OFR", entidad.getID_PRGNTA_OFR());
@@ -34,6 +36,8 @@ public class CAgroPreguntaOfertaModServiceImplementacion implements CAgroPregunt
             insertbackup.setParameter("CD_TPO_PRGNTA", entidad.getCD_TPO_PRGNTA());
             insertbackup.setParameter("TTLO_PRGNTA", entidad.getTTLO_PRGNTA());
             insertbackup.setParameter("OPCIONES_PRGNTA", entidad.getOPCIONES_PRGNTA());
+            insertbackup.setParameter("ORIGEN", entidad.getORIGEN());
+            insertbackup.setParameter("CD_TPO_SEGMENTO", entidad.getCD_TPO_SEGMENTO());
 
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
