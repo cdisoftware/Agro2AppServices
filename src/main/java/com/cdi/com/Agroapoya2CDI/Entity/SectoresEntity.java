@@ -36,5 +36,6 @@ public class SectoresEntity {
     @JsonProperty("LONG_SUR")
     public String LONG_SUR;
 
-
+    @JsonProperty("coordenadas")
+    public String coordenadas;
 }

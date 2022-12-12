@@ -5,6 +5,6 @@ import com.cdi.com.Agroapoya2CDI.Entity.EnvioCorreo_IndividualEntity;
 
 public interface EnvioCorreo_IndividualService {
 
-    public String EnvioCorreoIndividual(EnvioCorreo_IndividualEntity entidad, Integer bandera);
+    public String EnvioCorreoIndividual(EnvioCorreo_IndividualEntity entidad, Integer bandera, Integer Id_Clnte, Integer IdSctor);
    
 }

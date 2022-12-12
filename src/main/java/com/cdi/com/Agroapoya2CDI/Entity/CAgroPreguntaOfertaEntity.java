@@ -38,4 +38,10 @@ public class CAgroPreguntaOfertaEntity {
 
     @JsonProperty("opciones_seleccion")
     public String opciones_seleccion;
+
+    @JsonProperty("origen")
+    public String origen;
+
+    @JsonProperty("tipo_segmento")
+    public String tipo_segmento;
 }
