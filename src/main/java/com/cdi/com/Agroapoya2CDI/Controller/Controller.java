@@ -1439,6 +1439,8 @@ public class Controller {
         return serviceloginClienteService.ConsultaLoginCliente(entidad, bandera);
     }
 
+    // servicio envia mensajes
+    
     @GetMapping("/ServMensajeria/{user}/{token}/{GSM}/{SMSText}/{metodo_envio}")
     public String ConsultaNitXFeria(@PathVariable String user, @PathVariable String token, @PathVariable String GSM, @PathVariable String SMSText, @PathVariable String metodo_envio) {
         JSONObject ObjectJson = new JSONObject();
@@ -1476,6 +1478,7 @@ public class Controller {
         return var;
     }
 
+    // servicio respuesta mensajes
     @GetMapping("/modrespuestasms")
     public String ModRespuestaSms(
             @RequestParam String mensaje,
