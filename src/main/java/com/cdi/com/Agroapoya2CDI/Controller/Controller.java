@@ -1798,13 +1798,14 @@ public class Controller {
         return serviceCalculadoraPagosClienteService.ConsultaCalculadoraPagosClient(entidad, Bandera, Operacion, Formato, Cd_Cnsctvo, Id_Sector, Unidades, Usucodig, CodGrupo);
     }
 
-    @GetMapping("/consunidadesdisponibleslista/{Bandera}/{Usucodig}/{Cd_csctvo}/{Id_Sector}")
+    @GetMapping("/consunidadesdisponibleslista/{Bandera}/{Usucodig}/{Cd_csctvo}/{Id_Sector}/{codMostrar}")
     public List<CUnidadesDisponiblesListaEntity> ConsultaUnidadesDisponiblesList(
             @PathVariable Integer Bandera,
             @PathVariable Integer Usucodig,
             @PathVariable Integer Cd_csctvo,
-            @PathVariable Integer Id_Sector) {
-        return serviceCUnidadesDisponiblesListaService.ConsultaUnidadesDisponiblesList(Bandera, Usucodig, Cd_csctvo, Id_Sector);
+            @PathVariable Integer Id_Sector,
+            @PathVariable String codMostrar) {
+        return serviceCUnidadesDisponiblesListaService.ConsultaUnidadesDisponiblesList(Bandera, Usucodig, Cd_csctvo, Id_Sector, codMostrar);
     }
 
     @GetMapping("/consctiponoentrega/{Bandera}")
