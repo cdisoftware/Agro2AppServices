@@ -18,19 +18,19 @@ public class CUnidadesDisponiblesListaServiceImplementacion implements CUnidades
     private EntityManager repositorio;
 
     @Override
-    public List<CUnidadesDisponiblesListaEntity> ConsultaUnidadesDisponiblesList(Integer Bandera, Integer Usucodig, Integer Cd_csctvo, Integer Id_Sector) {
+    public List<CUnidadesDisponiblesListaEntity> ConsultaUnidadesDisponiblesList(Integer Bandera, Integer Usucodig, Integer Cd_csctvo, Integer Id_Sector, String codMostrar) {
         try {
             StoredProcedureQuery list = repositorio.createNamedStoredProcedureQuery("paC_UnidadesDisponiblesLista");
             list.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             list.registerStoredProcedureParameter("Usucodig", Integer.class, ParameterMode.IN);
             list.registerStoredProcedureParameter("Cd_csctvo", Integer.class, ParameterMode.IN);
             list.registerStoredProcedureParameter("Id_Sector", Integer.class, ParameterMode.IN);
-
+            list.registerStoredProcedureParameter("codMostrar", String.class, ParameterMode.IN);
             list.setParameter("Bandera", Bandera);
             list.setParameter("Usucodig", Usucodig);
             list.setParameter("Cd_csctvo", Cd_csctvo);
             list.setParameter("Id_Sector", Id_Sector);
-
+            list.setParameter("codMostrar", codMostrar);
             return list.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
