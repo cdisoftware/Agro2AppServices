@@ -25,13 +25,18 @@ public class SectoresModServiceImplementacion implements SectoresModService {
             respu.registerStoredProcedureParameter("DSCRPCION_SCTOR", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("CD_RGION", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("CD_MNCPIO", String.class, ParameterMode.IN);
-
+            respu.registerStoredProcedureParameter("cd_cnsctvo", Integer.class, ParameterMode.IN);
+            respu.registerStoredProcedureParameter("TEMPORAL", Integer.class, ParameterMode.IN);
+            respu.registerStoredProcedureParameter("ID_ZONA", Integer.class, ParameterMode.IN);
             respu.setParameter("BANDERA", BANDERA);
             respu.setParameter("USUCODIG", entidad.getUSUCODIG());
             respu.setParameter("SCTOR_OFR", entidad.getSCTOR_OFR());
             respu.setParameter("DSCRPCION_SCTOR", entidad.getDSCRPCION_SCTOR());
             respu.setParameter("CD_RGION", entidad.getCD_RGION());
             respu.setParameter("CD_MNCPIO", entidad.getCD_MNCPIO());
+            respu.setParameter("cd_cnsctvo", entidad.getCd_cnsctvo());
+            respu.setParameter("TEMPORAL", entidad.getTEMPORAL());
+            respu.setParameter("ID_ZONA", entidad.getID_ZONA());
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {

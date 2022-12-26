@@ -144,4 +144,7 @@ public class CComprasEntity {
     @JsonProperty("rta_encuesta")
     public Integer rta_encuesta;
 
+    @JsonProperty("LblUno")
+    public String LblUno;
+
 }

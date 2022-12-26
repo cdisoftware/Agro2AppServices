@@ -39,4 +39,13 @@ public class SectoresModEntity {
     @JsonProperty("CD_MNCPIO")
     public String CD_MNCPIO;
 
+    @JsonProperty("cd_cnsctvo")
+    public Integer cd_cnsctvo;
+
+    @JsonProperty("TEMPORAL")
+    public Integer TEMPORAL;
+
+    @JsonProperty("ID_ZONA")
+    public Integer ID_ZONA;
+
 }

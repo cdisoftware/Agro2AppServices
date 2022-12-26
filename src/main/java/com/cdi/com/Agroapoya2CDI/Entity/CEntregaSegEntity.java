@@ -72,6 +72,12 @@ public class CEntregaSegEntity {
     @JsonProperty("ESTADO_COMPRA")
     public String ESTADO_COMPRA;
 
+    @JsonProperty("ID_TIPOPAGO")
+    public Integer ID_TIPOPAGO;
+
+    @JsonProperty("DES_TIPOPAGO")
+    public String DES_TIPOPAGO;
+
     @JsonProperty("ID_EVIDENCIA")
     public Integer ID_EVIDENCIA;
 
@@ -98,5 +104,11 @@ public class CEntregaSegEntity {
 
     @JsonProperty("COORDENADAS_MAPA")
     public String COORDENADAS_MAPA;
+
+    @JsonProperty("ID_CONDUCTOR")
+    public Integer ID_CONDUCTOR;
+
+    @JsonProperty("ID_TRANSPORTISTA")
+    public Integer ID_TRANSPORTISTA;
 
 }

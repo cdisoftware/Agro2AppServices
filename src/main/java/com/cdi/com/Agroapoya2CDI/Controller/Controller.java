@@ -70,6 +70,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CTipoToppinEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoTransporEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CToppingModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTransportesNuevosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CTrazabilidadEstadoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUnidadesDisponiblesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUnidadesDisponiblesListaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValidaCodigoEntity;
@@ -77,6 +78,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CValoracionOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValoracionOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CVigenciaOfertaEntoty;
 import com.cdi.com.Agroapoya2CDI.Entity.CVigenciaOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CZonasSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CalculadoraPagosClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CalificaProdModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CconductoresTransportesNuevosEntity;
@@ -118,6 +120,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.SELECT_MNCPIOEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.Select_TipoDocumentoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.TSectoresEtvEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSubMenuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TaccionPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TipoViasEntity;
@@ -210,6 +213,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CReporteVentasService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CSectorPoligonoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CSeguimientoGeneralService;
 import com.cdi.com.Agroapoya2CDI.Services.CSubSeguimientoService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoCamposMasivoService;
@@ -223,6 +227,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CTipoToppinService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoTransporService;
 import com.cdi.com.Agroapoya2CDI.Services.CToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.CTransportesNuevosService;
+import com.cdi.com.Agroapoya2CDI.Services.CTrazabilidadEstadoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CUnidadesDisponiblesListaService;
 import com.cdi.com.Agroapoya2CDI.Services.CUnidadesDisponiblesService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaCambioEtapaService;
@@ -231,6 +236,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CValoracionOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CValoracionOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CVigenciaOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CVigenciaOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CZonasSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.CalculadoraPagosClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.CalificaProdModService;
 import com.cdi.com.Agroapoya2CDI.Services.CconductoresTransportesNuevosService;
@@ -290,6 +296,7 @@ import com.cdi.com.Agroapoya2CDI.Services.SELECT_MNCPIOService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresService;
 import com.cdi.com.Agroapoya2CDI.Services.Select_TipoDocumentoService;
+import com.cdi.com.Agroapoya2CDI.Services.TSectoresEtvService;
 import com.cdi.com.Agroapoya2CDI.Services.TSubMenuService;
 import com.cdi.com.Agroapoya2CDI.Services.TaccionPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.TipoViasService;
@@ -812,6 +819,18 @@ public class Controller {
 
     @Autowired
     COfertasExternasService serviceCOfertasExternasService;
+
+    @Autowired
+    CSectorPoligonoModService serviceCSectorPoligonoModService;
+
+    @Autowired
+    CTrazabilidadEstadoOfertaService serviceCTrazabilidadEstadoOfertaService;
+
+    @Autowired
+    TSectoresEtvService serviceTSectoresEtvService;
+    
+    @Autowired
+    CZonasSectorService serviceCZonasSectorService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -1440,7 +1459,6 @@ public class Controller {
     }
 
     // servicio envia mensajes
-    
     @GetMapping("/ServMensajeria/{user}/{token}/{GSM}/{SMSText}/{metodo_envio}")
     public String ConsultaNitXFeria(@PathVariable String user, @PathVariable String token, @PathVariable String GSM, @PathVariable String SMSText, @PathVariable String metodo_envio) {
         JSONObject ObjectJson = new JSONObject();
@@ -2184,5 +2202,38 @@ public class Controller {
             @PathVariable Integer Cd_cnctvo,
             @PathVariable Integer Id_Sector) {
         return serviceCOfertasExternasService.ConsultaCOfertasExt(Bandera, Cd_cnctvo, Id_Sector);
+    }
+
+    @GetMapping("/modcsectorpoligono/{BANDERA}/{ID_SCTOR}")
+    public String ModCSectorPoligono(
+            @PathVariable Integer BANDERA,
+            @PathVariable Integer ID_SCTOR) {
+        return serviceCSectorPoligonoModService.ModCSectorPoligono(BANDERA, ID_SCTOR);
+    }
+
+    @GetMapping("/constrazestoferta/{bandera}/{CD_CNSCTVO}")
+    public List<CTrazabilidadEstadoOfertaEntity> ConsultaTranzEstOferta(
+            @PathVariable Integer bandera,
+            @PathVariable String CD_CNSCTVO) {
+        return serviceCTrazabilidadEstadoOfertaService.ConsultaTranzEstOferta(bandera, CD_CNSCTVO);
+    }
+
+    @GetMapping("/constsectoresEtv/{bandera}/{NOMBRE_SECTOR}/{ID_ZONA}/{CD_CNSCTIVO}")
+    public List<TSectoresEtvEntity> ConsultaSectoresEtv(
+            @PathVariable Integer bandera,
+            @PathVariable String NOMBRE_SECTOR,
+            @PathVariable Integer ID_ZONA,
+            @PathVariable Integer CD_CNSCTIVO) {
+        return serviceTSectoresEtvService.ConsultaSectoresEtv(bandera, NOMBRE_SECTOR, ID_ZONA, CD_CNSCTIVO);
+    }
+
+    @PostMapping("/consczonassector/{Bandera}/{id}/{cd_mncpio}/{cd_dpto}")
+    public List<CZonasSectorEntity> ConsultaCZonasSector(
+            @RequestBody CZonasSectorEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer id,
+            @PathVariable Integer cd_mncpio,
+            @PathVariable Integer cd_dpto) {
+        return serviceCZonasSectorService.ConsultaCZonasSector(entidad, Bandera, id, cd_mncpio, cd_dpto);
     }
 }
