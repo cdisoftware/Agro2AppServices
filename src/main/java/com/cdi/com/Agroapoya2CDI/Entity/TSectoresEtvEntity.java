@@ -30,4 +30,7 @@ public class TSectoresEtvEntity {
     @JsonProperty("Temporal")
     public Integer Temporal;
 
+    @JsonProperty("coordenadas")
+    public String coordenadas;
+
 }
