@@ -30,6 +30,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CConductorSectorOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CConsultaEstadoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCordenadasSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCordenadasSectorModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CDatBasicSubItemEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CDatosBasicosSubItemModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDatosTransportistaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoModEntity;
@@ -37,6 +39,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CEntregaSegEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CMascaraDatBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMisToppingsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CModuloModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CNovedadModEntity;
@@ -52,6 +55,9 @@ import com.cdi.com.Agroapoya2CDI.Entity.CPersonasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPubliModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemsModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDatosBasicosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorConductorEntity;
@@ -120,6 +126,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.SELECT_MNCPIOEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.Select_TipoDocumentoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.TDatosBasicosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.TModDatosBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSectoresEtvEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSubMenuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TaccionPubliEntity;
@@ -183,6 +191,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.CConsultaEstadoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CCordenadasSectorModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCordenadasSectorService;
+import com.cdi.com.Agroapoya2CDI.Services.CDatBasicSubItemService;
+import com.cdi.com.Agroapoya2CDI.Services.CDatosBasicosSubItemModService;
 import com.cdi.com.Agroapoya2CDI.Services.CDatosTransportistaService;
 import com.cdi.com.Agroapoya2CDI.Services.CDocumentoCorreoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CDocumentoCorreoService;
@@ -192,6 +202,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CEnvioCorreoIndEmailService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEstadoTransporteModService;
 import com.cdi.com.Agroapoya2CDI.Services.CListadoToppingService;
+import com.cdi.com.Agroapoya2CDI.Services.CMascaraDatBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.CMisToppingsService;
 import com.cdi.com.Agroapoya2CDI.Services.CModuloModService;
 import com.cdi.com.Agroapoya2CDI.Services.CNovedadModService;
@@ -208,6 +219,9 @@ import com.cdi.com.Agroapoya2CDI.Services.CPersonasService;
 import com.cdi.com.Agroapoya2CDI.Services.CPubliModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemsModService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionDatosBasicoService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteVentasService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
@@ -296,6 +310,8 @@ import com.cdi.com.Agroapoya2CDI.Services.SELECT_MNCPIOService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresService;
 import com.cdi.com.Agroapoya2CDI.Services.Select_TipoDocumentoService;
+import com.cdi.com.Agroapoya2CDI.Services.TDatosBasicosService;
+import com.cdi.com.Agroapoya2CDI.Services.TModDatosBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.TSectoresEtvService;
 import com.cdi.com.Agroapoya2CDI.Services.TSubMenuService;
 import com.cdi.com.Agroapoya2CDI.Services.TaccionPubliService;
@@ -828,9 +844,33 @@ public class Controller {
 
     @Autowired
     TSectoresEtvService serviceTSectoresEtvService;
-    
+
     @Autowired
     CZonasSectorService serviceCZonasSectorService;
+
+    @Autowired
+    TModDatosBasicService serviceTModDatosBasicService;
+
+    @Autowired
+    TDatosBasicosService serviceTDatosBasicosService;
+
+    @Autowired
+    CDatBasicSubItemService serviceCDatBasicSubItemService;
+
+    @Autowired
+    CMascaraDatBasicService serviceCMascaraDatBasicService;
+
+    @Autowired
+    CDatosBasicosSubItemModService serviceCDatosBasicosSubItemModService;
+
+    @Autowired
+    CRelacionDatosBasicoService serviceCRelacionDatosBasicoService;
+
+    @Autowired
+    CRelacionDBasicosSubItemService serviceCRelacionDBasicosSubItemService;
+
+    @Autowired
+    CRelacionDBasicosSubItemsModService serviceCRelacionDBasicosSubItemsModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2235,5 +2275,63 @@ public class Controller {
             @PathVariable Integer cd_mncpio,
             @PathVariable Integer cd_dpto) {
         return serviceCZonasSectorService.ConsultaCZonasSector(entidad, Bandera, id, cd_mncpio, cd_dpto);
+    }
+
+    @GetMapping("/constmoddatosbasicos/{Bandera}")
+    public List<TModDatosBasicEntity> ConsultaTModuloDatBasicos(
+            @PathVariable Integer Bandera) {
+        return serviceTModDatosBasicService.ConsultaTModuloDatBasicos(Bandera);
+    }
+
+    @GetMapping("/constdatosbasicos/{Bandera}/{IdModulo}")
+    public List<TDatosBasicosEntity> ConsultaTranzEstOferta(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdModulo) {
+        return serviceTDatosBasicosService.ConsultaTDatosBasic(Bandera, IdModulo);
+    }
+
+    @PostMapping("/conscdatosbasicositem/{Bandera}/{IdDatoBasico}")
+    public List<CDatBasicSubItemEntity> ConsultaCDatBasicSubItem(
+            @RequestBody CDatBasicSubItemEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdDatoBasico) {
+        return serviceCDatBasicSubItemService.ConsultaCDatBasicSubItem(entidad, Bandera, IdDatoBasico);
+    }
+
+    @GetMapping("/conscmascaradatbasic/{Bandera}/{IdDtoBasico}")
+    public List<CMascaraDatBasicEntity> consultaCMascaraDatBasic(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdDtoBasico) {
+        return serviceCMascaraDatBasicService.consultaCMascaraDatBasic(Bandera, IdDtoBasico);
+    }
+
+    @PostMapping("/modcdatosbasicossubitem/{Bandera}")
+    public String ModCDatosBasicosSubItem(
+            @RequestBody CDatosBasicosSubItemModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCDatosBasicosSubItemModService.ModCDatosBasicosSubItem(entidad, Bandera);
+    }
+
+    @GetMapping("/conscrelaciondatosbasicos/{Bandera}/{IdDtoBasico}")
+    public List<CRelacionDatosBasicosEntity> ConsultaCRelacionDatosBasicos(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdDtoBasico) {
+        return serviceCRelacionDatosBasicoService.ConsultaCRelacionDatosBasicos(Bandera, IdDtoBasico);
+    }
+
+    @GetMapping("/conscrelaciondbasicossubitem/{Bandera}/{IdDtoBasico}/{IdDtoRelacion}/{IdSubitem}")
+    public List<CRelacionDBasicosSubItemEntity> ConsultaCRelacionDBasicosSubItem(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdDtoBasico,
+            @PathVariable Integer IdDtoRelacion,
+            @PathVariable Integer IdSubitem) {
+        return serviceCRelacionDBasicosSubItemService.ConsultaCRelacionDBasicosSubItem(Bandera, IdDtoBasico, IdDtoRelacion, IdSubitem);
+    }
+
+    @PostMapping("/modrelaciondbasicossubitems/{Bandera}")
+    public String ModCRelacionDBasicosSubItems(
+            @RequestBody CRelacionDBasicosSubItemsModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCRelacionDBasicosSubItemsModService.ModCRelacionDBasicosSubItems(entidad, Bandera);
     }
 }
