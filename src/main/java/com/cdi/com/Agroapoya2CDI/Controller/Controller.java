@@ -20,6 +20,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinIndividualEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinMixtaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalificaAppEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCambiaEstadoOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CCarroComprasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CCarroComprasModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCiudadDistribucionOfertEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CComprasModEntity;
@@ -109,6 +111,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CtipoPlantillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtokenPersonaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CultimaUbicacionEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CundCarroModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EncriptacionEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EnvioCorreo_IndividualEntity;
@@ -181,6 +184,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinMixtaService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalificaAppService;
 import com.cdi.com.Agroapoya2CDI.Services.CCambiaEstadoOfertaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CCarroCompraService;
+import com.cdi.com.Agroapoya2CDI.Services.CCarroComprasModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCiudadDistribucionOfertService;
 import com.cdi.com.Agroapoya2CDI.Services.CComprasModService;
 import com.cdi.com.Agroapoya2CDI.Services.CComprasService;
@@ -275,6 +280,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CtipoPlantillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtokenPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CultimaUbicacionService;
+import com.cdi.com.Agroapoya2CDI.Services.CundCarroModService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaNumeroService;
 import com.cdi.com.Agroapoya2CDI.Services.EncriptacionService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreo_IndividualService;
@@ -871,6 +877,15 @@ public class Controller {
 
     @Autowired
     CRelacionDBasicosSubItemsModService serviceCRelacionDBasicosSubItemsModService;
+
+    @Autowired
+    CCarroCompraService serviceCCarroCompraService;
+
+    @Autowired
+    CCarroComprasModService serviceCCarroComprasModService;
+
+    @Autowired
+    CundCarroModService serviceCundCarroModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2333,5 +2348,27 @@ public class Controller {
             @RequestBody CRelacionDBasicosSubItemsModEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceCRelacionDBasicosSubItemsModService.ModCRelacionDBasicosSubItems(entidad, Bandera);
+    }
+
+    @GetMapping("/consccarrocompras/{Bandera}/{Usucodig}/{ID_CARRO}")
+    public List<CCarroComprasEntity> ConsultaCCarroCompra(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Usucodig,
+            @PathVariable Integer ID_CARRO) {
+        return serviceCCarroCompraService.ConsultaCCarroCompra(Bandera, Usucodig, ID_CARRO);
+    }
+
+    @PostMapping("/modccarrocompras/{Bandera}")
+    public String modCCarroCompras(
+            @RequestBody CCarroComprasModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCCarroComprasModService.modCCarroCompras(entidad, Bandera);
+    }
+
+    @PostMapping("/modcundcarro/{Bandera}")
+    public String ModCUndCarro(
+            @RequestBody CundCarroModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCundCarroModService.ModCUndCarro(entidad, Bandera);
     }
 }
