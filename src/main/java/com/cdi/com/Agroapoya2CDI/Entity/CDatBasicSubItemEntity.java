@@ -28,5 +28,5 @@ public class CDatBasicSubItemEntity {
     public Integer ESTADO;
 
     @JsonProperty("DSCRIPCIONDOS")
-    public Integer DSCRIPCIONDOS;
+    public String DSCRIPCIONDOS;
 }
