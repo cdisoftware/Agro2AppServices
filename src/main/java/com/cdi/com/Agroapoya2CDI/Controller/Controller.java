@@ -3,6 +3,7 @@ package com.cdi.com.Agroapoya2CDI.Controller;
 import com.cdi.com.Agroapoya2CDI.Entity.AGROPREGUNTAMODEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AestadoOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.AgroCompraUsuModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAPlantillaCorreoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CATipoCamposCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAgroEstComPagoEntity;
@@ -40,6 +41,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEntregaSegEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMascaraDatBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMisToppingsEntity;
@@ -166,6 +168,7 @@ import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageService;
 import com.cdi.com.Agroapoya2CDI.Services.AGROPREGUNTAMODService;
 import com.cdi.com.Agroapoya2CDI.Services.AOfertasService;
 import com.cdi.com.Agroapoya2CDI.Services.AestadoOfertaModService;
+import com.cdi.com.Agroapoya2CDI.Services.AgroCompraUsuModService;
 import com.cdi.com.Agroapoya2CDI.Services.CALCULADORA_VALORPAGOService;
 import com.cdi.com.Agroapoya2CDI.Services.CAPlantillaCorreoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CATipoCamposCorreoService;
@@ -206,6 +209,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CEnvioCodigoCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioCorreoIndEmailService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEstadoTransporteModService;
+import com.cdi.com.Agroapoya2CDI.Services.CHistorialCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.CListadoToppingService;
 import com.cdi.com.Agroapoya2CDI.Services.CMascaraDatBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.CMisToppingsService;
@@ -886,6 +890,12 @@ public class Controller {
 
     @Autowired
     CundCarroModService serviceCundCarroModService;
+
+    @Autowired
+    AgroCompraUsuModService serviceAgroCompraUsuModService;
+
+    @Autowired
+    CHistorialCompraService serviceCHistorialCompraService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2371,4 +2381,20 @@ public class Controller {
             @PathVariable Integer Bandera) {
         return serviceCundCarroModService.ModCUndCarro(entidad, Bandera);
     }
+
+    @PostMapping("/modagrocomprasusu/{Bandera}")
+    public String ModAgroComprasUsu(
+            @RequestBody AgroCompraUsuModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceAgroCompraUsuModService.ModAgroComprasUsu(entidad, Bandera);
+    }
+
+    @GetMapping("/conschistorialcompras/{Bandera}/{Usucodig}/{ID_CARRO}")
+    public List<CHistorialComprasEntity> ConsultaCHistorialCompra(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Usucodig,
+            @PathVariable Integer ID_CARRO) {
+        return serviceCHistorialCompraService.ConsultaCHistorialCompra(Bandera, Usucodig, ID_CARRO);
+    }
+    
 }

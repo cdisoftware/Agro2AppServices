@@ -11,13 +11,16 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paC_CarroCompras",
-            procedureName = "paC_CarroCompras",
-            resultClasses = CCarroComprasEntity.class)
+            name = "paC_HistorialCompras",
+            procedureName = "paC_HistorialCompras",
+            resultClasses = CHistorialComprasEntity.class)
 })
-public class CCarroComprasEntity {
+public class CHistorialComprasEntity {
 
     @Id
+    @JsonProperty("ID_CLNTE")
+    public Integer ID_CLNTE;
+
     @JsonProperty("ID_CARRO")
     public Integer ID_CARRO;
 
@@ -102,25 +105,34 @@ public class CCarroComprasEntity {
     @JsonProperty("ValorPagarForm")
     public String ValorPagarForm;
 
-    @JsonProperty("MinUni")
-    public Integer MinUni;
-
-    @JsonProperty("MaxUnd")
-    public Integer MaxUnd;
-
-    @JsonProperty("btnComprar")
-    public Integer btnComprar;
-
-    @JsonProperty("btnEliminar")
-    public Integer btnEliminar;
-
     @JsonProperty("DescToppings")
     public String DescToppings;
 
-    @JsonProperty("smsNoCompra")
-    public String smsNoCompra;
+    @JsonProperty("fechaCompraTotal")
+    public String fechaCompraTotal;
 
-    @JsonProperty("PosiblePago")
-    public String PosiblePago;
+    @JsonProperty("CalificacionProd")
+    public String CalificacionProd;
+
+    @JsonProperty("ComentarioProd")
+    public String ComentarioProd;
+
+    @JsonProperty("rta_encuesta")
+    public String rta_encuesta;
+
+    @JsonProperty("IdMedioPago")
+    public Integer IdMedioPago;
+
+    @JsonProperty("DesMedioPago")
+    public String DesMedioPago;
+
+    @JsonProperty("IdEstadoPago")
+    public Integer IdEstadoPago;
+
+    @JsonProperty("DesEstadoPago")
+    public String DesEstadoPago;
+
+    @JsonProperty("DesEstdoCarrito")
+    public String DesEstdoCarrito;
 
 }
