@@ -5,9 +5,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CEnvioRealCorreo_ConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.DocuEnvioCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.RemitenteCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
-import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreoMasivoService;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -21,7 +19,6 @@ import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -85,6 +82,29 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
             cuerpo.getResultList();
             List<CEnvioRealCorreo_ConsultaEntity> cuerpocorreo = cuerpo.getResultList();
 
+            String correoremitente = null;
+            String servicePath = null;
+            String contrasena = null;
+            //**************************CONEXION Y CORREO REMITENTE*********************************
+            StoredProcedureQuery remitente = repositorio.createNamedStoredProcedureQuery("paC_RemitenteCorreo");
+            remitente.getResultList();
+            List<RemitenteCorreoEntity> remite = remitente.getResultList();
+
+            correoremitente = remite.get(0).getCorreoRemitente();
+            servicePath = remite.get(0).getServicePath();
+            contrasena = clsEncriptacion.Desencriptar(remite.get(0).getClave());
+
+            Properties props = new Properties();
+            props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
+            props.setProperty("mail.host", servicePath); // servidor pop3
+            props.setProperty("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            // Crear objeto de instancia de sesión
+            Session session = Session.getInstance(props);
+            session.setDebug(true);
+            Transport ts = session.getTransport();
+            ts.connect(servicePath, correoremitente, contrasena);
+
             String[] rem = new String[cuerpocorreo.size()];
             for (int i = 0; i < cuerpocorreo.size(); i++) {
                 IdPlantilla = cuerpocorreo.get(i).getIdPlantilla();
@@ -102,49 +122,20 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
                 String content = templateEngine.process("EnvioCorreos", context);
                 mapMessage.put("subject", asunto);
                 mapMessage.put("content", content);
-                sendMessage(mapMessage, bandera, IdPlantilla);
+                //sendMessage(mapMessage, bandera, IdPlantilla);
+
+                // Crear correo electrónico
+                Message message = createMixedMail(session, mapMessage, correoremitente, bandera, IdPlantilla);
+                //enviar correo electrónico 
+                ts.sendMessage(message, message.getAllRecipients());
 
             }
+            ts.close();
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
         } catch (Exception e) {
             return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || paCEnvioRealCorreo_Consulta");
         }
         return Respuesta;
-    }
-
-    public void sendMessage(Map<String, Object> mapMessage, Integer Bandera, Integer IdPlantilla) throws Exception {
-
-        String correoremitente = null;
-        String servicePath = null;
-        String contrasena = null;
-
-        try {
-            StoredProcedureQuery remitente = repositorio.createNamedStoredProcedureQuery("paC_RemitenteCorreo");
-            remitente.getResultList();
-            List<RemitenteCorreoEntity> remite = remitente.getResultList();
-            String[] rem = new String[remite.size()];
-            for (int i = 0; i < remite.size(); i++) {
-                correoremitente = rem[i] = remite.get(i).getCorreoRemitente();
-                servicePath = rem[i] = remite.get(i).getServicePath();
-                contrasena = rem[i] = clsEncriptacion.Desencriptar(remite.get(i).getClave());
-            }
-            Properties props = new Properties();
-            props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
-            props.setProperty("mail.host", servicePath); // servidor pop3
-            props.setProperty("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
-            // Crear objeto de instancia de sesión
-            Session session = Session.getInstance(props);
-            session.setDebug(true);
-            Transport ts = session.getTransport();
-            ts.connect(servicePath, correoremitente, contrasena);
-            // Crear correo electrónico
-            Message message = createMixedMail(session, mapMessage, correoremitente, Bandera, IdPlantilla);
-            //enviar correo electrónico 
-            ts.sendMessage(message, message.getAllRecipients());
-            ts.close();
-        } catch (Exception e) {
-        }
     }
 
     public MimeMessage createMixedMail(Session session, Map<String, Object> mapMessage, String correoremitente,
@@ -202,7 +193,6 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
                     }
                 }
             }
-
             MimeBodyPart content = new MimeBodyPart();
             content.setContent(mp1);
             mp2.addBodyPart(content);
@@ -211,10 +201,7 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
             message.saveChanges();
 
         } catch (Exception e) {
-
         }
         return message;
-
     }
-
 }

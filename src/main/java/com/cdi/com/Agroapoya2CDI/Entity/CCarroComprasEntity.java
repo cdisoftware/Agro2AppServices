@@ -123,4 +123,19 @@ public class CCarroComprasEntity {
     @JsonProperty("PosiblePago")
     public String PosiblePago;
 
+    @JsonProperty("IdPosiblePago")
+    public Integer IdPosiblePago;
+
+    @JsonProperty("VlorDmcInd")
+    public String VlorDmcInd;
+
+    @JsonProperty("VlorDmcGrupal")
+    public String VlorDmcGrupal;
+
+    @JsonProperty("LinkParticipante")
+    public String LinkParticipante;
+
+    @JsonProperty("CodCompra")
+    public String CodCompra;
+
 }
