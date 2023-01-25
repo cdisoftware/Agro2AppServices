@@ -29,6 +29,8 @@ public class CCarroComprasModServiceImplementacion implements CCarroComprasModSe
             modCarro.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
             modCarro.registerStoredProcedureParameter("IdCarro", Integer.class, ParameterMode.IN);
             modCarro.registerStoredProcedureParameter("Toppings", String.class, ParameterMode.IN);
+            modCarro.registerStoredProcedureParameter("LinkPartici", String.class, ParameterMode.IN);
+
             modCarro.setParameter("Bandera", Bandera);
             modCarro.setParameter("Cd_cnsctivo", entidad.getCd_cnsctivo());
             modCarro.setParameter("Unidades", entidad.getUnidades());
@@ -39,6 +41,8 @@ public class CCarroComprasModServiceImplementacion implements CCarroComprasModSe
             modCarro.setParameter("IdSector", entidad.getIdSector());
             modCarro.setParameter("IdCarro", entidad.getIdCarro());
             modCarro.setParameter("Toppings", entidad.getToppings());
+            modCarro.setParameter("LinkPartici", entidad.getLinkPartici());
+
             modCarro.execute();
             return JSONObject.quote((String) modCarro.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {

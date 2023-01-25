@@ -1,10 +1,10 @@
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Comun.clsEncriptacion;
-import com.cdi.com.Agroapoya2CDI.Entity.CEnvioRealCorreo_ConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.DocuEnvioCorreoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.EnvioCorreo_IndividualEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.RemitenteCorreoEntity;
-import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
+import com.cdi.com.Agroapoya2CDI.Services.CorreoIndividualService;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
@@ -36,13 +36,13 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 @Service
-public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoService {
+public class CorreoIndividualServiceImplementacion implements CorreoIndividualService {
 
     @PersistenceContext
     private EntityManager repositorio;
 
     @Autowired
-    private TemplateEngine templateEngine;
+    public TemplateEngine templateEngine;
 
     Integer codigoproceso;
     String Respuesta;
@@ -53,47 +53,70 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
     String imagenpiepagina;
 
     @Override
-    public String ConsultaEnvioRealCorreo(Integer bandera, Integer IdPlantilla, Integer IdTipoUsuario, Integer cd_cnctvo, Integer IdSector) {
-
+    public String CorreoIndividualEnvio(Integer bandera, Integer IdPlantilla, Integer usucodig, Integer Cd_cnctvo, Integer Id_Clnte, Integer IdSctor) {
         Map<String, Object> mapMessage = new HashMap<>();
-
-        StoredProcedureQuery insertCD = repositorio.createNamedStoredProcedureQuery("paCEnvioRealCorreo");
-        insertCD.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
-        insertCD.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
-        insertCD.registerStoredProcedureParameter("IdTipoUsuario", Integer.class, ParameterMode.IN);
-        insertCD.registerStoredProcedureParameter("cd_cnctvo", Integer.class, ParameterMode.IN);
-        insertCD.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
-
-        insertCD.setParameter("bandera", bandera);
-        insertCD.setParameter("IdPlantilla", IdPlantilla);
-        insertCD.setParameter("IdTipoUsuario", IdTipoUsuario);
-        insertCD.setParameter("cd_cnctvo", cd_cnctvo);
-        insertCD.setParameter("IdSector", IdSector);
-
-        insertCD.execute();
-        Integer respu = (Integer) insertCD.getOutputParameterValue("Respuesta");
-        //System.out.println(respu + "Codigo generado");
         try {
             Context context = new Context();
-            StoredProcedureQuery cuerpo = repositorio.createNamedStoredProcedureQuery("paCEnvioRealCorreo_Consulta");
-            cuerpo.registerStoredProcedureParameter("CodigoProceso", Integer.class, ParameterMode.IN);
+            StoredProcedureQuery rolconsola = repositorio.createNamedStoredProcedureQuery("paC_EnvioCorreo_Individual");
+            rolconsola.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("usucodig", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("Cd_cnctvo", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("Id_Clnte", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("IdSctor", Integer.class, ParameterMode.IN);
 
-            cuerpo.setParameter("CodigoProceso", respu);
-            cuerpo.getResultList();
-            List<CEnvioRealCorreo_ConsultaEntity> cuerpocorreo = cuerpo.getResultList();
+            rolconsola.setParameter("bandera", bandera);
+            rolconsola.setParameter("IdPlantilla", IdPlantilla);
+            rolconsola.setParameter("usucodig", usucodig);
+            rolconsola.setParameter("Cd_cnctvo", Cd_cnctvo);
+            rolconsola.setParameter("Id_Clnte", Id_Clnte);
+            rolconsola.setParameter("IdSctor", IdSctor);
 
+            rolconsola.getResultList();
+            List<EnvioCorreo_IndividualEntity> cuerpocorreo = rolconsola.getResultList();
+
+            String[] rem = new String[cuerpocorreo.size()];
+            for (int i = 0; i < cuerpocorreo.size(); i++) {
+                imagenencabezado = rem[i] = cuerpocorreo.get(i).getImagenEnc();
+                asunto = rem[i] = cuerpocorreo.get(i).getAsunto();
+                destinatario = rem[i] = cuerpocorreo.get(i).getEmail();
+                contenido = rem[i] = cuerpocorreo.get(i).getHtml();
+                imagenpiepagina = rem[i] = cuerpocorreo.get(i).getImagenPie();
+
+                context.setVariable("imagenencabezado", imagenencabezado);
+                context.setVariable("destinatario", destinatario);
+                context.setVariable("asunto", asunto);
+                context.setVariable("contenido", contenido);
+                context.setVariable("imagenpiepagina", imagenpiepagina);
+
+            }
+            String content = templateEngine.process("EnvioCorreos", context);
+            mapMessage.put("subject", asunto);
+            mapMessage.put("content", content);
+            sendMessage(mapMessage, bandera, IdPlantilla, usucodig, Cd_cnctvo, Id_Clnte, IdSctor);
+            Respuesta = JSONObject.quote("Correo Enviado Correctamente");
+
+        } catch (Exception e) {
+            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
+        }
+        return Respuesta;
+    }
+
+    public void sendMessage(Map<String, Object> mapMessage, Integer bandera, Integer IdPlantilla, Integer usucodig, Integer Cd_cnctvo, Integer Id_Clnte, Integer IdSctor) throws Exception {
+        try {
             String correoremitente = null;
             String servicePath = null;
             String contrasena = null;
-            //**************************CORREO REMITENTE*********************************
+
             StoredProcedureQuery remitente = repositorio.createNamedStoredProcedureQuery("paC_RemitenteCorreo");
             remitente.getResultList();
             List<RemitenteCorreoEntity> remite = remitente.getResultList();
-
-            correoremitente = remite.get(0).getCorreoRemitente();
-            servicePath = remite.get(0).getServicePath();
-            contrasena = clsEncriptacion.Desencriptar(remite.get(0).getClave());
-
+            String[] rem = new String[remite.size()];
+            for (int i = 0; i < remite.size(); i++) {
+                correoremitente = rem[i] = remite.get(i).getCorreoRemitente();
+                servicePath = rem[i] = remite.get(i).getServicePath();
+                contrasena = rem[i] = clsEncriptacion.Desencriptar(remite.get(i).getClave());
+            }
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
             props.setProperty("mail.host", servicePath); // servidor pop3
@@ -104,60 +127,34 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
             session.setDebug(true);
             Transport ts = session.getTransport();
             ts.connect(servicePath, correoremitente, contrasena);
-
-            String[] rem = new String[cuerpocorreo.size()];
-            for (int i = 0; i < cuerpocorreo.size(); i++) {
-                IdPlantilla = cuerpocorreo.get(i).getIdPlantilla();
-                imagenencabezado = rem[i] = cuerpocorreo.get(i).getImagenEnc();
-                asunto = rem[i] = cuerpocorreo.get(i).getAsunto();
-                destinatario = rem[i] = cuerpocorreo.get(i).getEmail();
-                contenido = rem[i] = cuerpocorreo.get(i).getHtml();
-                imagenpiepagina = rem[i] = cuerpocorreo.get(i).getImagenPie();
-                context.setVariable("imagenencabezado", imagenencabezado);
-                context.setVariable("destinatario", destinatario);
-                context.setVariable("asunto", asunto);
-                context.setVariable("contenido", contenido);
-                context.setVariable("imagenpiepagina", imagenpiepagina);
-
-                String content = templateEngine.process("EnvioCorreos", context);
-                mapMessage.put("subject", asunto);
-                mapMessage.put("content", content);
-                //sendMessage(mapMessage, bandera, IdPlantilla);
-
-                // Crear correo electrónico
-                Message message = createMixedMail(session, mapMessage, correoremitente, bandera, IdPlantilla);
-                //enviar correo electrónico 
-                ts.sendMessage(message, message.getAllRecipients());
-
-            }
+            // Crear correo electrónico
+            Message message = createMixedMail(session, mapMessage, correoremitente, bandera, IdPlantilla, usucodig, Cd_cnctvo, Id_Clnte, IdSctor);
+            //enviar correo electrónico 
+            ts.sendMessage(message, message.getAllRecipients());
             ts.close();
-            Respuesta = JSONObject.quote("Correo Enviado Correctamente");
-        } catch (Exception e) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || paCEnvioRealCorreo_Consulta");
+
+        } catch (Exception ex) {
+
         }
-        return Respuesta;
     }
 
-    public MimeMessage createMixedMail(Session session, Map<String, Object> mapMessage, String correoremitente,
-            Integer Bandera, Integer IdPlantilla) throws Exception {
+    public MimeMessage createMixedMail(Session session, Map<String, Object> mapMessage,
+            String correoremitente, Integer bandera, Integer IdPlantilla, Integer usucodig, Integer Cd_cnctvo, Integer Id_Clnte, Integer IdSctor) throws Exception {
 
         MimeMessage message = new MimeMessage(session);
 
         try {
-
             // Establecer la información básica del correo
             message.setFrom(new InternetAddress(correoremitente));
             message.setRecipients(Message.RecipientType.TO, destinatario);
             message.setSubject(mapMessage.get("subject").toString());
+            //message.setText("blabla");
 
-            //message.setText("PRUEBA CORREOS MASIVOS");
             StoredProcedureQuery adjuntos = repositorio.createNamedStoredProcedureQuery("paC_DocuEnvioCorreo");
             adjuntos.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             adjuntos.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
-
-            adjuntos.setParameter("Bandera", Bandera);
+            adjuntos.setParameter("Bandera", bandera);
             adjuntos.setParameter("IdPlantilla", IdPlantilla);
-
             adjuntos.getResultList();
 
             List<DocuEnvioCorreoEntity> documentos = adjuntos.getResultList();
@@ -169,6 +166,7 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
             MimeMultipart mp2 = new MimeMultipart();
 
             String[] rem = new String[documentos.size()];
+
             for (int h = 0; h < documentos.size(); h++) {
                 String path = rem[h] = documentos.get(h).getRutaDocumento();
 
@@ -189,7 +187,6 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
                         attach.setFileName(dh.getName());
                         mp1.setSubType("related");
                         mp2.addBodyPart(attach);
-
                     }
                 }
             }
@@ -199,8 +196,8 @@ public class EnvioCorreoMasivoServiceImplementacion implements CEnvioRealCorreoS
             mp2.setSubType("mixed");
             message.setContent(mp2);
             message.saveChanges();
+        } catch (Exception ex) {
 
-        } catch (Exception e) {
         }
         return message;
     }

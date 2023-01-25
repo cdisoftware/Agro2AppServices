@@ -7,6 +7,7 @@ import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
 import lombok.Data;
 
+
 @Entity
 @Data
 @NamedStoredProcedureQueries({
