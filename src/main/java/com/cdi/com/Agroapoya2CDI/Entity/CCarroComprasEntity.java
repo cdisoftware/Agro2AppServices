@@ -138,4 +138,7 @@ public class CCarroComprasEntity {
     @JsonProperty("CodCompra")
     public String CodCompra;
 
+    @JsonProperty("DireccionEntrega")
+    public String DireccionEntrega;
+
 }

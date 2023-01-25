@@ -9,6 +9,7 @@ import javax.persistence.StoredProcedureQuery;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class CTipoCosteoModServiceImplementacion implements CTipoCosteoModService {
 

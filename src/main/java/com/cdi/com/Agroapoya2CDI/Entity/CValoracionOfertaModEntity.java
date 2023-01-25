@@ -91,4 +91,7 @@ public class CValoracionOfertaModEntity {
     @JsonProperty("ID_SCTOR_OFRTA")
     public Integer ID_SCTOR_OFRTA;
 
+    @JsonProperty("LINKLANDIGN")
+    public String LINKLANDIGN;
+
 }

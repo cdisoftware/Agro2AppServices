@@ -24,12 +24,14 @@ public class AgroCompraUsuModServiceImplementacion implements AgroCompraUsuModSe
             modAgro.registerStoredProcedureParameter("valorTotal", String.class, ParameterMode.IN);
             modAgro.registerStoredProcedureParameter("MedioPago", Integer.class, ParameterMode.IN);
             modAgro.registerStoredProcedureParameter("Usucodig", Integer.class, ParameterMode.IN);
+            modAgro.registerStoredProcedureParameter("Observacion", String.class, ParameterMode.IN);
 
             modAgro.setParameter("Bandera", Bandera);
             modAgro.setParameter("IdsCarro", entidad.getIdsCarro());
             modAgro.setParameter("valorTotal", entidad.getValorTotal());
             modAgro.setParameter("MedioPago", entidad.getMedioPago());
             modAgro.setParameter("Usucodig", entidad.getUsucodig());
+            modAgro.setParameter("Observacion", entidad.getObservacion());
 
             modAgro.execute();
             return JSONObject.quote((String) modAgro.getOutputParameterValue("Respuesta"));

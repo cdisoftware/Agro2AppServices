@@ -23,6 +23,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CCalificaAppEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCambiaEstadoOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCarroComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCarroComprasModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CCarroLinkModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCiudadDistribucionOfertEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CComprasModEntity;
@@ -100,6 +101,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.ConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorSectorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
+import com.cdi.com.Agroapoya2CDI.Entity.CorreosMasivosPandaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CparticipanteGrupoEntity;
@@ -192,6 +194,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CCalificaAppService;
 import com.cdi.com.Agroapoya2CDI.Services.CCambiaEstadoOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCarroCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.CCarroComprasModService;
+import com.cdi.com.Agroapoya2CDI.Services.CCarroLinkModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCiudadDistribucionOfertService;
 import com.cdi.com.Agroapoya2CDI.Services.CComprasModService;
 import com.cdi.com.Agroapoya2CDI.Services.CComprasService;
@@ -275,7 +278,9 @@ import com.cdi.com.Agroapoya2CDI.Services.ClientePagosTransService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorSectorModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorService;
+import com.cdi.com.Agroapoya2CDI.Services.CorreoIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreoMomentoEnvioService;
+import com.cdi.com.Agroapoya2CDI.Services.CorreosMasivosPandaService;
 import com.cdi.com.Agroapoya2CDI.Services.CosteoOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CosteoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CparticipanteGrupoService;
@@ -360,12 +365,14 @@ import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -923,6 +930,15 @@ public class Controller {
 
     @Autowired
     UrlShortnerService serviceUrlShortnerService;
+
+    @Autowired
+    CorreosMasivosPandaService serviceCorreosMasivosPandaService;
+
+    @Autowired
+    CorreoIndividualService serviceCorreoIndividualService;
+
+    @Autowired
+    CCarroLinkModService serviceCCarroLinkModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2460,9 +2476,40 @@ public class Controller {
         return serviceC_LinkService.LinkAcortado(Bandera);
     }
 
-    @PostMapping("/urlshortner")
+    @GetMapping("/urlshortner")
     public String ConsultaUrlShortner(
             @RequestBody UrlShortnerEntity entidad) {
         return serviceUrlShortnerService.ConsultaUrlShortner(entidad);
     }
+
+    @GetMapping("/correosmasivospanda/{bandera}/{IdPlantilla}/{IdTipoUsuario}/{cd_cnctvo}/{IdSector}")
+    public String ConsCorreosMasivosPanda(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdPlantilla,
+            @PathVariable Integer IdTipoUsuario,
+            @PathVariable Integer cd_cnctvo,
+            @PathVariable Integer IdSector) {
+        return serviceCorreosMasivosPandaService.ConsCorreosMasivosPanda(bandera, IdPlantilla, IdTipoUsuario, cd_cnctvo, IdSector);
+    }
+
+    @GetMapping("/correoindvalenvio/{bandera}/{IdPlantilla}/{usucodig}/{Cd_cnctvo}/{Id_Clnte}/{IdSctor}")
+    public String EnvioCorreoIndividual(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdPlantilla,
+            @PathVariable Integer usucodig,
+            @PathVariable Integer Cd_cnctvo,
+            @PathVariable Integer Id_Clnte,
+            @PathVariable Integer IdSctor) {
+        return serviceCorreoIndividualService.CorreoIndividualEnvio(bandera, IdPlantilla, usucodig, Cd_cnctvo, Id_Clnte, IdSctor);
+    }
+
+    @PostMapping("/actualizalinkcarro/{Bandera}/{IdGrupo}")
+    public String ActualizaLinkCarro(
+            @RequestBody CCarroLinkModEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceCCarroLinkModService.ActualizaLinkCarro(entidad, Bandera, IdGrupo);
+    }
+    
+
 }
