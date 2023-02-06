@@ -135,6 +135,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.SELECT_MNCPIOEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.Select_TipoDocumentoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.SmsItCloudEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TDatosBasicosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TModDatosBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSectoresEtvEntity;
@@ -333,6 +334,7 @@ import com.cdi.com.Agroapoya2CDI.Services.SELECT_MNCPIOService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresService;
 import com.cdi.com.Agroapoya2CDI.Services.Select_TipoDocumentoService;
+import com.cdi.com.Agroapoya2CDI.Services.SmsItCloudService;
 import com.cdi.com.Agroapoya2CDI.Services.TDatosBasicosService;
 import com.cdi.com.Agroapoya2CDI.Services.TModDatosBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.TSectoresEtvService;
@@ -939,6 +941,9 @@ public class Controller {
 
     @Autowired
     CCarroLinkModService serviceCCarroLinkModService;
+
+    @Autowired
+    SmsItCloudService serviceSmsItCloudService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -1564,44 +1569,6 @@ public class Controller {
             @RequestBody loginClienteEntity entidad,
             @PathVariable Integer bandera) {
         return serviceloginClienteService.ConsultaLoginCliente(entidad, bandera);
-    }
-
-    // servicio envia mensajes
-    @GetMapping("/ServMensajeria/{user}/{token}/{GSM}/{SMSText}/{metodo_envio}")
-    public String ConsultaNitXFeria(@PathVariable String user, @PathVariable String token, @PathVariable String GSM, @PathVariable String SMSText, @PathVariable String metodo_envio) {
-        JSONObject ObjectJson = new JSONObject();
-
-        String var = "";
-        try {
-            RestTemplate rt = new RestTemplate();
-            HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
-                }
-            });
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
-            parameters.add("user", user);
-            parameters.add("token", token);
-            parameters.add("GSM", GSM);
-            parameters.add("SMSText", SMSText);
-            parameters.add("metodo_envio", metodo_envio);
-            ResponseEntity<Object> response = rt.exchange("https://contacto-masivo.com/sms/back_sms/public/api/sendsms?user=" + user + "&token=" + token + "&GSM=" + GSM + "&SMSText=" + SMSText + "&metodo_envio=" + metodo_envio, HttpMethod.POST, null, Object.class);
-            Object NitObject = response.getBody();
-            com.fasterxml.jackson.databind.ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-            String json = ow.writeValueAsString(NitObject);
-            ObjectJson = new JSONObject(json);
-            JSONObject NitFeria = ObjectJson.getJSONObject("infosms");
-            JSONArray NitFeriaArray = NitFeria.getJSONArray("infsms");
-            var = NitFeriaArray.toString();
-        } catch (Exception ex) {
-            return "Error:" + ex.getMessage();
-        }
-
-        return var;
     }
 
     // servicio respuesta mensajes
@@ -2510,6 +2477,11 @@ public class Controller {
             @PathVariable Integer IdGrupo) {
         return serviceCCarroLinkModService.ActualizaLinkCarro(entidad, Bandera, IdGrupo);
     }
-    
+
+    @PostMapping("/enviosmsitcloud")
+    public String EnvioSmsItCloud(
+            @RequestBody SmsItCloudEntity entidad) {
+        return serviceSmsItCloudService.EnvioSmsItCloud(entidad);
+    }
 
 }

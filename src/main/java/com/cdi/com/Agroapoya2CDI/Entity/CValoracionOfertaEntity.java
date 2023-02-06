@@ -71,7 +71,7 @@ public class CValoracionOfertaEntity {
 
     @JsonProperty("cntdad_grpos")
     public String cntdad_grpos;
-    
+
     @JsonProperty("mnmo_prsnas_xgrupo")
     public String mnmo_prsnas_xgrupo;
 
@@ -90,4 +90,6 @@ public class CValoracionOfertaEntity {
     @JsonProperty("vlor_fnal_prtcpnte")
     public String vlor_fnal_prtcpnte;
 
+    @JsonProperty("tpo_descuento")
+    public Integer tpo_descuento;
 }

@@ -43,6 +43,7 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.registerStoredProcedureParameter("VLOR_FNAL_PRTCPNTE", String.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("ID_SCTOR_OFRTA", Integer.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("LINKLANDIGN", String.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("TPO_DESCUENTO", Integer.class, ParameterMode.IN);
 
             modval.setParameter("BANDERA", BANDERA);
             modval.setParameter("CD_CNSCTVO", entidad.getCD_CNSCTVO());
@@ -68,6 +69,7 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.setParameter("VLOR_FNAL_PRTCPNTE", entidad.getVLOR_FNAL_PRTCPNTE());
             modval.setParameter("ID_SCTOR_OFRTA", entidad.getID_SCTOR_OFRTA());
             modval.setParameter("LINKLANDIGN", entidad.getLINKLANDIGN());
+            modval.setParameter("TPO_DESCUENTO", entidad.getTPO_DESCUENTO());
 
             modval.execute();
             return JSONObject.quote((String) modval.getOutputParameterValue("Respuesta"));
