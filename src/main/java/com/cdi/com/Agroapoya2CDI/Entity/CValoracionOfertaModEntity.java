@@ -94,4 +94,6 @@ public class CValoracionOfertaModEntity {
     @JsonProperty("LINKLANDIGN")
     public String LINKLANDIGN;
 
+    @JsonProperty("TPO_DESCUENTO")
+    public Integer TPO_DESCUENTO;
 }
