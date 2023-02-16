@@ -1,7 +1,7 @@
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 /**
- * @author Ing Juan José Gutiérrez // ENVIO DE CORREOS MASIVOS 
+ * @author Ing Juan José Gutiérrez // ENVIO DE CORREOS MASIVOS
  */
 import com.cdi.com.Agroapoya2CDI.Entity.CEnvioRealCorreo_ConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Services.CorreosMasivosPandaService;
@@ -72,6 +72,7 @@ public class CorreosMasivosPandaServiceImplementacion implements CorreosMasivosP
             List<CEnvioRealCorreo_ConsultaEntity> cuerpocorreo = cuerpo.getResultList();
             String[] rem = new String[cuerpocorreo.size()];
             for (int i = 0; i < cuerpocorreo.size(); i++) {
+
                 IdPlantilla = cuerpocorreo.get(i).getIdPlantilla();
                 imagenencabezado = rem[i] = cuerpocorreo.get(i).getImagenEnc();
                 asunto = rem[i] = cuerpocorreo.get(i).getAsunto();
@@ -114,7 +115,13 @@ public class CorreosMasivosPandaServiceImplementacion implements CorreosMasivosP
                 bodyFinal.put("subject", asunto);
                 bodyFinal.put("body", content);
                 HttpEntity<Object> request = new HttpEntity<>(bodyFinal.toString(), headers);
-                ResponseEntity<Object> response = rt.exchange("http://api.ckpnd.com:5000/v1/email", HttpMethod.POST, request, Object.class);
+                
+                // API DE PRUEBAS 
+                //ResponseEntity<Object> response = rt.exchange("http://api.ckpnd.com:5000/v1/email", HttpMethod.POST, request, Object.class);
+                
+                //API DE PRODUCCION CON PUERTO 1016 - HTTPS
+                ResponseEntity<Object> response = rt.exchange("https://api.ckpnd.com:5001/v1/email", HttpMethod.POST, request, Object.class);
+
                 //Object sucesosObject = response.getBody();
                 //ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
                 //String json = ow.writeValueAsString(sucesosObject);
