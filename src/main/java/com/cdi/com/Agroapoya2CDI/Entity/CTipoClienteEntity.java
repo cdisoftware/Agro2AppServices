@@ -38,4 +38,19 @@ public class CTipoClienteEntity {
 
     @JsonProperty("DescTipoCliente")
     public String DescTipoCliente;
+
+    @JsonProperty("CodigoGrupo")
+    public String CodigoGrupo;
+
+    @JsonProperty("NombreLider")
+    public String NombreLider;
+
+    @JsonProperty("FechaLiderCompra")
+    public String FechaLiderCompra;
+
+    @JsonProperty("DescripcionProducto")
+    public String DescripcionProducto;
+
+    @JsonProperty("NumRegistros")
+    public Integer NumRegistros;
 }

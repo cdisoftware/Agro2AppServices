@@ -21,8 +21,26 @@ public class CCarroComprasEntity {
     @JsonProperty("ID_CARRO")
     public Integer ID_CARRO;
 
+    @JsonProperty("IDGRUPO_PARTI")
+    public String IDGRUPO_PARTI;
+
+    @JsonProperty("EsParti")
+    public String EsParti;
+
     @JsonProperty("Usucodig")
     public Integer Usucodig;
+
+    @JsonProperty("tipodescuento")
+    public String tipodescuento;
+    
+    @JsonProperty("NumReg")
+    public String NumReg;
+    
+    @JsonProperty("valorDesc")
+    public String valorDesc;
+    
+    @JsonProperty("valorDesForm")
+    public String valorDesForm;
 
     @JsonProperty("Imagen")
     public String Imagen;

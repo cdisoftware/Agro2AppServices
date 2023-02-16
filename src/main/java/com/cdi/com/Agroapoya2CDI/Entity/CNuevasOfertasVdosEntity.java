@@ -13,13 +13,16 @@ import lombok.Data;
     @NamedStoredProcedureQuery(
             name = "paC_NuevasOfertas_Vdos",
             procedureName = "paC_NuevasOfertas_Vdos",
-            resultClasses = CNuevasOfertasEntity.class)
+            resultClasses = CNuevasOfertasVdosEntity.class)
 })
 public class CNuevasOfertasVdosEntity {
 
     @Id
     @JsonProperty("id")
     public Integer id;
+
+    @JsonProperty("PerSetor")
+    public String PerSetor;
 
     @JsonProperty("cd_cnsctvo")
     public Integer cd_cnsctvo;
@@ -50,6 +53,9 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("Ciudad_Orig")
     public String Ciudad_Orig;
+
+    @JsonProperty("CRCTRZCION")
+    public String CRCTRZCION;
 
     @JsonProperty("IdSector")
     public Integer IdSector;
@@ -132,9 +138,7 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("ParticipanteText")
     public String ParticipanteText;
 
-    @JsonProperty("CRCTRZCION")
-    public String CRCTRZCION;
-
     @JsonProperty("ORDEN")
     public Integer ORDEN;
+
 }

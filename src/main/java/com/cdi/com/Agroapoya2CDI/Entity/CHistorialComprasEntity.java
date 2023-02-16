@@ -27,6 +27,9 @@ public class CHistorialComprasEntity {
     @JsonProperty("Usucodig")
     public Integer Usucodig;
 
+     @JsonProperty("DireccionEntrega")
+    public String DireccionEntrega;
+    
     @JsonProperty("Imagen")
     public String Imagen;
 
