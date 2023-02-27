@@ -2016,11 +2016,13 @@ public class Controller {
         return serviceCListadoToppingService.ConsultaCListadoTopping(Bandera, Id_Sector, cd_cnctivo);
     }
 
-    @PostMapping("/conscreporteusuarios/{Bandera}")
+    @PostMapping("/conscreporteusuarios/{Bandera}/{FechaDesde}/{FechaHasta}")
     public List<CReporteUsuariosEntity> ConsultaCReporteUsuario(
             @RequestBody CReporteUsuariosEntity entidad,
-            @PathVariable Integer Bandera) {
-        return serviceCReporteUsuarioService.ConsultaCReporteUsuario(entidad, Bandera);
+            @PathVariable Integer Bandera,
+            @PathVariable String FechaDesde,
+            @PathVariable String FechaHasta) {
+        return serviceCReporteUsuarioService.ConsultaCReporteUsuario(entidad, Bandera, FechaDesde, FechaHasta);
     }
 
     @GetMapping("/consctipousuario/{Bandera}")
@@ -2050,14 +2052,15 @@ public class Controller {
         return serviceCTipoConductorService.ConsultaCTipoConductor(Bandera, UsucodigTrans);
     }
 
-    @GetMapping("/conscreporteventas/{Bandera}/{cd_cnscutivo}/{IdSector}/{Id_Estado_Compra}/{Id_Estado_pago}")
+    @PostMapping("/conscreporteventas/{Bandera}/{cd_cnscutivo}/{IdSector}/{Id_Estado_Compra}/{Id_Estado_pago}")
     public List<CReporteVentasEntity> ConsultaCReporteVentas(
+            @RequestBody CReporteVentasEntity entidad,
             @PathVariable Integer Bandera,
             @PathVariable Integer cd_cnscutivo,
             @PathVariable Integer IdSector,
             @PathVariable Integer Id_Estado_Compra,
             @PathVariable Integer Id_Estado_pago) {
-        return serviceCReporteVentasService.ConsultaCReporteVentas(Bandera, cd_cnscutivo, IdSector, Id_Estado_Compra, Id_Estado_pago);
+        return serviceCReporteVentasService.ConsultaCReporteVentas(entidad, Bandera, cd_cnscutivo, IdSector, Id_Estado_Compra, Id_Estado_pago);
     }
 
     @GetMapping("/conscmistoppings/{Bandera}/{IdCliente}")
