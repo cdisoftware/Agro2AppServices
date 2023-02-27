@@ -129,7 +129,8 @@ public class CorreosMasivosPandaServiceImplementacion implements CorreosMasivosP
             }
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            
+            return JSONObject.quote("No fue posible ejecutar los datos: Error" + ex);
         }
         return Respuesta;
     }

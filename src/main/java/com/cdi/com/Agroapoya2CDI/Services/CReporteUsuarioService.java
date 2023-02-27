@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CReporteUsuarioService {
 
-    public List<CReporteUsuariosEntity> ConsultaCReporteUsuario(CReporteUsuariosEntity entidad, Integer Bandera);
+    public List<CReporteUsuariosEntity> ConsultaCReporteUsuario(CReporteUsuariosEntity entidad, Integer Bandera, String FechaDesde, String FechaHasta);
 }

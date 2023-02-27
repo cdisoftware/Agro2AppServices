@@ -18,7 +18,7 @@ public class CReporteUsuarioServiceImplementacion implements CReporteUsuarioServ
     private EntityManager repositorio;
 
     @Override
-    public List<CReporteUsuariosEntity> ConsultaCReporteUsuario(CReporteUsuariosEntity entidad, Integer Bandera) {
+    public List<CReporteUsuariosEntity> ConsultaCReporteUsuario(CReporteUsuariosEntity entidad, Integer Bandera, String FechaDesde, String FechaHasta) {
         try {
             StoredProcedureQuery RepotUser = repositorio.createNamedStoredProcedureQuery("paC_ReporteUsuarios");
             RepotUser.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
@@ -32,8 +32,8 @@ public class CReporteUsuarioServiceImplementacion implements CReporteUsuarioServ
             RepotUser.setParameter("Bandera", Bandera);
             RepotUser.setParameter("IdTipoUsuario", entidad.getIdTipoPersona());
             RepotUser.setParameter("Usucodig", entidad.getUsucodig());
-            RepotUser.setParameter("FechaDesde", entidad.getFechaCreacion());
-            RepotUser.setParameter("FechaHasta", entidad.getFechaCreacion());
+            RepotUser.setParameter("FechaDesde", FechaDesde);
+            RepotUser.setParameter("FechaHasta", FechaHasta);
             RepotUser.setParameter("Correo", entidad.getCorreoPersona());
             RepotUser.setParameter("NombrePers", entidad.getNombrePersona());
 

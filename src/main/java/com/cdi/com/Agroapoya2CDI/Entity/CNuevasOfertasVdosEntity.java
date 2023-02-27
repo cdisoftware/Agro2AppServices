@@ -138,6 +138,21 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("ParticipanteText")
     public String ParticipanteText;
 
+    @JsonProperty("DesUnoCampe")
+    public String DesUnoCampe;
+
+    @JsonProperty("DesDosCampe")
+    public String DesDosCampe;
+
+    @JsonProperty("DesTresCampe")
+    public String DesTresCampe;
+
+    @JsonProperty("ImgCampe")
+    public String ImgCampe;
+
+    @JsonProperty("ObsCampe")
+    public String ObsCampe;
+
     @JsonProperty("ORDEN")
     public Integer ORDEN;
 

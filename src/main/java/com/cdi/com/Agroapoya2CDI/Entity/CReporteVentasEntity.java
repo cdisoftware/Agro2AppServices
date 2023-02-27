@@ -18,17 +18,29 @@ import lombok.Data;
 public class CReporteVentasEntity {
 
     @Id
-    @JsonProperty("ID")
-    public Integer ID;
+    @JsonProperty("ID_CARRO")
+    public Integer ID_CARRO;
 
-    @JsonProperty("CD_CNSCTVO")
-    public Integer CD_CNSCTVO;
+    @JsonProperty("OFERTA")
+    public Integer OFERTA;
 
-    @JsonProperty("IdSector")
-    public Integer IdSector;
+    @JsonProperty("SECTOR")
+    public String SECTOR;
 
-    @JsonProperty("usucodigCliente")
-    public Integer usucodigCliente;
+    @JsonProperty("FECHA_COMPRA")
+    public String FECHA_COMPRA;
+
+    @JsonProperty("ESTADO_CARRO")
+    public String ESTADO_CARRO;
+
+    @JsonProperty("TIPO_USUARIO_COMPRA")
+    public String TIPO_USUARIO_COMPRA;
+
+    @JsonProperty("CODIGO_COMPARTIR")
+    public String CODIGO_COMPARTIR;
+
+    @JsonProperty("CODIGO_LIDER")
+    public String CODIGO_LIDER;
 
     @JsonProperty("NOMBRES_PERSONA")
     public String NOMBRES_PERSONA;
@@ -36,99 +48,39 @@ public class CReporteVentasEntity {
     @JsonProperty("APELLIDOS_PERSONA")
     public String APELLIDOS_PERSONA;
 
-    @JsonProperty("DOCUMENTO_USUARIO")
-    public String DOCUMENTO_USUARIO;
+    @JsonProperty("PRODUCTO")
+    public String PRODUCTO;
+
+    @JsonProperty("Unidades")
+    public Integer Unidades;
+
+    @JsonProperty("ADICIONALES")
+    public String ADICIONALES;
+
+    @JsonProperty("VALOR_PAGO")
+    public String VALOR_PAGO;
+
+    @JsonProperty("MEDIO_PAGO")
+    public String MEDIO_PAGO;
+
+    @JsonProperty("ESTADO_PAGO")
+    public String ESTADO_PAGO;
+
+    @JsonProperty("FECHA_ENTREGA")
+    public String FECHA_ENTREGA;
+
+    @JsonProperty("DIRECCION_ENTREGA")
+    public String DIRECCION_ENTREGA;
 
     @JsonProperty("CELULAR_PERSONA")
     public String CELULAR_PERSONA;
 
-    @JsonProperty("DRCCION")
-    public String DRCCION;
+    @JsonProperty("CORREO_PERSONA")
+    public String CORREO_PERSONA;
 
-    @JsonProperty("CMPLMNTO_DRRCCION")
-    public String CMPLMNTO_DRRCCION;
+    @JsonProperty("FechaCompra")
+    public String FechaCompra;
 
-    @JsonProperty("COORDENADAS_ENTR")
-    public String COORDENADAS_ENTR;
-
-    @JsonProperty("unidadesEntregar")
-    public Integer unidadesEntregar;
-
-    @JsonProperty("observacionesCliente")
-    public String observacionesCliente;
-
-    @JsonProperty("VLOR_PGAR")
-    public String VLOR_PGAR;
-
-    @JsonProperty("tipoPago")
-    public Integer tipoPago;
-
-    @JsonProperty("descTipoPago")
-    public String descTipoPago;
-
-    @JsonProperty("IDGRUPO")
-    public Integer IDGRUPO;
-
-    @JsonProperty("tipo_compra")
-    public Integer tipo_compra;
-
-    @JsonProperty("descTipoCompra")
-    public String descTipoCompra;
-
-    @JsonProperty("tipo_usuarioCompra")
-    public Integer tipo_usuarioCompra;
-
-    @JsonProperty("descUsuarioCompra")
-    public String descUsuarioCompra;
-
-    @JsonProperty("ESTDO")
-    public Integer ESTDO;
-
-    @JsonProperty("descEstado")
-    public String descEstado;
-
-    @JsonProperty("NMBRE_CNDCTOR")
-    public String NMBRE_CNDCTOR;
-
-    @JsonProperty("TEL_CNDCTOR")
-    public String TEL_CNDCTOR;
-
-    @JsonProperty("PLCA")
-    public String PLCA;
-
-    @JsonProperty("COD_PEDIDO")
-    public String COD_PEDIDO;
-
-    @JsonProperty("ID_CLNTE")
-    public Integer ID_CLNTE;
-
-    @JsonProperty("Vlor_PagarForm")
-    public String Vlor_PagarForm;
-
-    @JsonProperty("EstadoPago")
-    public Integer EstadoPago;
-
-    @JsonProperty("DESCRIPCION_ESTADO")
-    public String DESCRIPCION_ESTADO;
-
-    @JsonProperty("DESC_TOPPINGS")
-    public String DESC_TOPPINGS;
-
-    @JsonProperty("TOTAL_TOPPINGS")
-    public String TOTAL_TOPPINGS;
-
-    @JsonProperty("NOM_SECTOR")
-    public String NOM_SECTOR;
-
-    @JsonProperty("Producto")
-    public String Producto;
-
-    @JsonProperty("topping")
-    public String topping;
-
-    @JsonProperty("estado_compras")
-    public String estado_compras;
-
-    @JsonProperty("estado_pago")
-    public String estado_pago;
+    @JsonProperty("observaciones_cliente")
+    public String observaciones_cliente;
 }
