@@ -26,7 +26,7 @@ public class ConductorOfertaModServiceImplementacion implements ConductorOfertaM
             mod.registerStoredProcedureParameter("USUCODIG_TRANS", Integer.class, ParameterMode.IN);
             mod.registerStoredProcedureParameter("VLOR_FLTE_PCTDO", String.class, ParameterMode.IN);
             mod.registerStoredProcedureParameter("ESTADO", Integer.class, ParameterMode.IN);
-
+            
             mod.setParameter("BANDERA", BANDERA);
             mod.setParameter("CD_CNSCTVO", entidad.getCD_CNSCTVO());
             mod.setParameter("ID_SCTOR_OFRTA", entidad.getID_SCTOR_OFRTA());
@@ -34,7 +34,7 @@ public class ConductorOfertaModServiceImplementacion implements ConductorOfertaM
             mod.setParameter("USUCODIG_TRANS", entidad.getUSUCODIG_TRANS());
             mod.setParameter("VLOR_FLTE_PCTDO", entidad.getVLOR_FLTE_PCTDO());
             mod.setParameter("ESTADO", entidad.getESTADO());
-   
+             
             mod.execute();
             return JSONObject.quote((String) mod.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {

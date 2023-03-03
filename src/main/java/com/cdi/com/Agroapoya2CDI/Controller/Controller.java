@@ -166,6 +166,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.mv_CiudadesActivasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_EnvioCorreoTransprtistaViejeEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_infoBasicaUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_listaSectoresConOfertasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaConsultaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.productosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
@@ -361,6 +363,8 @@ import com.cdi.com.Agroapoya2CDI.Services.loginClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.loginTransService;
 import com.cdi.com.Agroapoya2CDI.Services.menuService;
 import com.cdi.com.Agroapoya2CDI.Services.mv_EnvioCorreoTransprtistaViejeService;
+import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaConsultaService;
+import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.productosService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
@@ -944,6 +948,12 @@ public class Controller {
 
     @Autowired
     SmsItCloudService serviceSmsItCloudService;
+    
+    @Autowired
+    pa_CTextosOfertaService servicepa_CTextosOfertaService;
+    
+    @Autowired
+    pa_CTextosOfertaConsultaService servicepa_CTextosOfertaConsultaService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2487,4 +2497,18 @@ public class Controller {
         return serviceSmsItCloudService.EnvioSmsItCloud(entidad);
     }
 
+    @PostMapping("/TextosOferta/{Bandera}")
+    public String TectosOferta(
+            @RequestBody pa_CTextosOfertaEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicepa_CTextosOfertaService.TextOfer(entidad, Bandera);
+    }
+    
+    @GetMapping("/constextosoferta/{Bandera}/{idSector}/{cd_cnctivo}")
+    public List<pa_CTextosOfertaConsultaEntity> constextofer(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer idSector,
+            @PathVariable Integer cd_cnctivo) {
+        return servicepa_CTextosOfertaConsultaService.ConsTextyOfer(Bandera, idSector, cd_cnctivo);
+    }
 }

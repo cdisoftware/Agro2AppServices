@@ -9,38 +9,32 @@ import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
 import lombok.Data;
 
-
-
 @Entity
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paConductorOfertaMod",
-            procedureName = "paConductorOfertaMod",
+            name = "pa_CTextosOferta",
+            procedureName = "pa_CTextosOferta",
             parameters = {
-                @StoredProcedureParameter(name = "respuesta",
+                @StoredProcedureParameter(name = "Respuesta",
                         mode = ParameterMode.OUT,
                         type = String.class)
             })
 })
-public class ConductorOfertaModEntity {
-
+public class pa_CTextosOfertaEntity {
     @Id
-    @JsonProperty("CD_CNSCTVO")
-    public Integer CD_CNSCTVO;
+    @JsonProperty("idSector")
+    public Integer idSector;
 
-    @JsonProperty("ID_SCTOR_OFRTA")
-    public Integer ID_SCTOR_OFRTA;
-
-    @JsonProperty("ID_CNDCTOR")
-    public Integer ID_CNDCTOR;
-
-    @JsonProperty("USUCODIG_TRANS")
-    public Integer USUCODIG_TRANS;
-
-    @JsonProperty("VLOR_FLTE_PCTDO")
-    public String VLOR_FLTE_PCTDO;
-
-    @JsonProperty("ESTADO")
-    public Integer ESTADO;
+    @JsonProperty("cd_cnctivo")
+    public Integer cd_cnctivo;
+    
+    @JsonProperty("TextoCorreo")
+    public String TextoCorreo;
+    
+    @JsonProperty("TextoWhat")
+    public String TextoWhat;
+    
+    @JsonProperty("ImgCorreo")
+    public String ImgCorreo;
 }
