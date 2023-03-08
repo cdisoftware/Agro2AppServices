@@ -51,4 +51,10 @@ public class CSectorOfertaEntity {
     @JsonProperty("COD_OFERTA_SECTOR")
     public String COD_OFERTA_SECTOR;
 
+@JsonProperty("EnvioCorreo")
+    public String EnvioCorreo;
+
+@JsonProperty("EnvioSms")
+    public String EnvioSms;
+
 }

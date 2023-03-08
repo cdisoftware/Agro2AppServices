@@ -35,4 +35,7 @@ public class pa_CTextosOfertaConsultaEntity {
     
     @JsonProperty("idSector")
     public String idSector;
+
+@JsonProperty("Plantilla")
+    public String Plantilla;
 }
