@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedStoredProcedureQueries;
 import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import lombok.Data;
 
 @Entity
@@ -13,47 +15,21 @@ import lombok.Data;
     @NamedStoredProcedureQuery(
             name = "pac_GeneracionQuery",
             procedureName = "pac_GeneracionQuery",
-            resultClasses = CGeneracionQueryEntity.class)
+            parameters = {
+                @StoredProcedureParameter(name = "Respuesta",
+                        mode = ParameterMode.OUT,
+                        type = String.class)
+            })
 })
 public class CGeneracionQueryEntity {
-
+    
     @Id
-    @JsonProperty("IdPlantilla")
-    public Integer IdPlantilla;
+    @JsonProperty("Idplantilla")
+    public Integer Idplantilla;
     
-    @JsonProperty("IdMomentoEnvio")
-    public Integer IdMomentoEnvio;
+    @JsonProperty("IdSector")
+    public Integer IdSector;
     
-    @JsonProperty("IdTipoPlantilla")
-    public Integer IdTipoPlantilla;
-    
-    @JsonProperty("Estado")
-    public Integer Estado;
-    
-    @JsonProperty("EstadoElimina")
-    public Integer EstadoElimina;
-    
-    @JsonProperty("FechaCreacion")
-    public String FechaCreacion;
-    
-    @JsonProperty("NombrePlantilla")
-    public String NombrePlantilla;
-    
-    @JsonProperty("Descripcion")
-    public String Descripcion;
-    
-    @JsonProperty("Asunto")
-    public String Asunto;
-    
-    @JsonProperty("html")
-    public String html;
-    
-    @JsonProperty("ImgEncabezado")
-    public String ImgEncabezado;
-    
-    @JsonProperty("ImgPie")
-    public String ImgPie;
-    
-    @JsonProperty("QueryAdicional")
-    public String QueryAdicional;
+    @JsonProperty("cd_cnctivo")
+    public Integer cd_cnctivo;
 }

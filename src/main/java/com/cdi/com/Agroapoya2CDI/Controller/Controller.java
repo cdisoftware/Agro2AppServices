@@ -2560,13 +2560,10 @@ public class Controller {
         return serviceCusuariosCorreoService.ConsCooreos(Bandera, TipoPersona, Correopersona, NombrePersona);
     }
     
-    @GetMapping("/ConsGenQuery/{Bandera}/{Idplantilla}/{IdSector}/{cd_cnctivo}/{Respuesta}")
-    public List<CGeneracionQueryEntity> ConsGenQuery(
-            @PathVariable Integer Bandera,
-            @PathVariable Integer Idplantilla,
-            @PathVariable Integer IdSector,
-            @PathVariable Integer cd_cnctivo,
-            @PathVariable String Respuesta) {
-        return serviceCGeneracionQueryService.ConsQuery(Bandera, Idplantilla, IdSector, cd_cnctivo, Respuesta);
+    @PostMapping("/ConsGenQuery/{Bandera}")
+    public String ConsGenQuery(
+            @RequestBody CGeneracionQueryEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCGeneracionQueryService.ConsQuery(entidad, Bandera);
     }
 }
