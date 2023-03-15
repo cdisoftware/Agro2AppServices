@@ -31,6 +31,8 @@ public class CAPlantillaCorreoModServiceImplementacion implements CAPlantillaCor
             modplnll.registerStoredProcedureParameter("html", String.class, ParameterMode.IN);
             modplnll.registerStoredProcedureParameter("imgEncabezado", String.class, ParameterMode.IN);
             modplnll.registerStoredProcedureParameter("imgPiePagina", String.class, ParameterMode.IN);
+            modplnll.registerStoredProcedureParameter("Query", String.class, ParameterMode.IN);
+            
 
             modplnll.setParameter("Bandera", Bandera);
             modplnll.setParameter("UsucodigAdmin", entidad.getUsucodigAdmin());
@@ -44,6 +46,7 @@ public class CAPlantillaCorreoModServiceImplementacion implements CAPlantillaCor
             modplnll.setParameter("html", entidad.getHtml());
             modplnll.setParameter("imgEncabezado", entidad.getImgEncabezado());
             modplnll.setParameter("imgPiePagina", entidad.getImgPiePagina());
+            modplnll.setParameter("Query", entidad.getQuery());
 
             modplnll.execute();
             return JSONObject.quote((String) modplnll.getOutputParameterValue("Respuesta"));

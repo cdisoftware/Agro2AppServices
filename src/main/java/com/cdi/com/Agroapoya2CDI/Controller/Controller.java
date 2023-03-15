@@ -42,6 +42,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEntregaSegEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CGeneracionQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMascaraDatBasicEntity;
@@ -95,6 +96,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.C_LinkEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CalculadoraPagosClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CalificaProdModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CconductoresTransportesNuevosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CcorreoManualEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CcorreoManualModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CiudadOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ClientePagosTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorEntity;
@@ -118,6 +121,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CtipoUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtokenPersonaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CultimaUbicacionEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CundCarroModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CusuariosCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EncriptacionEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EnvioCorreo_IndividualEntity;
@@ -166,6 +170,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.mv_CiudadesActivasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_EnvioCorreoTransprtistaViejeEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_infoBasicaUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_listaSectoresConOfertasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaConsultaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.productosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
@@ -216,6 +222,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CEnvioCodigoCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioCorreoIndEmailService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEstadoTransporteModService;
+import com.cdi.com.Agroapoya2CDI.Services.CGeneracionQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.CHistorialCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.CListadoToppingService;
 import com.cdi.com.Agroapoya2CDI.Services.CMascaraDatBasicService;
@@ -274,6 +281,8 @@ import com.cdi.com.Agroapoya2CDI.Services.C_LinkService;
 import com.cdi.com.Agroapoya2CDI.Services.CalculadoraPagosClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.CalificaProdModService;
 import com.cdi.com.Agroapoya2CDI.Services.CconductoresTransportesNuevosService;
+import com.cdi.com.Agroapoya2CDI.Services.CcorreoManualModService;
+import com.cdi.com.Agroapoya2CDI.Services.CcorreoManualService;
 import com.cdi.com.Agroapoya2CDI.Services.CiudadOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ClientePagosTransService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorOfertaModService;
@@ -298,6 +307,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CtipoUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtokenPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CultimaUbicacionService;
 import com.cdi.com.Agroapoya2CDI.Services.CundCarroModService;
+import com.cdi.com.Agroapoya2CDI.Services.CusuariosCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaNumeroService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaUsuSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.EncriptacionService;
@@ -361,6 +371,8 @@ import com.cdi.com.Agroapoya2CDI.Services.loginClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.loginTransService;
 import com.cdi.com.Agroapoya2CDI.Services.menuService;
 import com.cdi.com.Agroapoya2CDI.Services.mv_EnvioCorreoTransprtistaViejeService;
+import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaConsultaService;
+import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.productosService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
@@ -944,6 +956,24 @@ public class Controller {
 
     @Autowired
     SmsItCloudService serviceSmsItCloudService;
+    
+    @Autowired
+    pa_CTextosOfertaService servicepa_CTextosOfertaService;
+    
+    @Autowired
+    pa_CTextosOfertaConsultaService servicepa_CTextosOfertaConsultaService;
+    
+    @Autowired
+    CcorreoManualModService serviceCcorreoManualModService;
+    
+    @Autowired
+    CcorreoManualService serviceCcorreoManualService;
+    
+    @Autowired
+    CusuariosCorreoService serviceCusuariosCorreoService;
+    
+    @Autowired
+    CGeneracionQueryService serviceCGeneracionQueryService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2487,4 +2517,53 @@ public class Controller {
         return serviceSmsItCloudService.EnvioSmsItCloud(entidad);
     }
 
+    @PostMapping("/TextosOferta/{Bandera}")
+    public String TectosOferta(
+            @RequestBody pa_CTextosOfertaEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicepa_CTextosOfertaService.TextOfer(entidad, Bandera);
+    }
+    
+    @GetMapping("/constextosoferta/{Bandera}/{idSector}/{cd_cnctivo}")
+    public List<pa_CTextosOfertaConsultaEntity> constextofer(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer idSector,
+            @PathVariable Integer cd_cnctivo) {
+        return servicepa_CTextosOfertaConsultaService.ConsTextyOfer(Bandera, idSector, cd_cnctivo);
+    }
+    
+    @PostMapping("/correoManualMod/{Bandera}")
+    public String CorreoManual(
+            @RequestBody CcorreoManualModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCcorreoManualModService.ModCCorreoManual(entidad, Bandera);
+    }
+    
+    @GetMapping("/CcorreoManual/{Bandera}/{IdEnvio}/{IdSector}/{Cd_cnctivo}/{IdPlantilla}/{IdEstado}/{fecha}")
+    public List<CcorreoManualEntity> ConsCorreoMnual(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdEnvio,
+            @PathVariable Integer IdSector,
+            @PathVariable Integer Cd_cnctivo,
+            @PathVariable Integer IdPlantilla,
+            @PathVariable Integer IdEstado,
+            @PathVariable String fecha) {
+        return serviceCcorreoManualService.ConsultaCorreos(Bandera, IdEnvio, IdSector, Cd_cnctivo, IdPlantilla, IdEstado, fecha);
+    }
+    
+    @GetMapping("/consusucorreo/{Bandera}/{TipoPersona}/{Correopersona}/{NombrePersona}")
+    public List<CusuariosCorreoEntity> ConsUserCorr(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer TipoPersona,
+            @PathVariable String Correopersona,
+            @PathVariable String NombrePersona) {
+        return serviceCusuariosCorreoService.ConsCooreos(Bandera, TipoPersona, Correopersona, NombrePersona);
+    }
+    
+    @PostMapping("/ConsGenQuery/{Bandera}")
+    public String ConsGenQuery(
+            @RequestBody CGeneracionQueryEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCGeneracionQueryService.ConsQuery(entidad, Bandera);
+    }
 }

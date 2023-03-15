@@ -53,5 +53,7 @@ public class CAplantillaCorreoEntity {
 
     @JsonProperty("descMomentoEnvio")
     public String descMomentoEnvio;
-
+    
+    @JsonProperty("Query")
+    public String Query;
 }

@@ -56,4 +56,7 @@ public class CAPlantillaCorreoModEntity {
      
       @JsonProperty("imgPiePagina")
     public String imgPiePagina;
+      
+      @JsonProperty("Query")
+    public String Query;
 }
