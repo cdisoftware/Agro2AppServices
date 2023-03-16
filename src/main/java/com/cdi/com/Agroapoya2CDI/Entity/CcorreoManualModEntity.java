@@ -22,6 +22,7 @@ import lombok.Data;
             })
 })
 public class CcorreoManualModEntity {
+
     @Id
     @JsonProperty("IdEnvio")
     public Integer IdEnvio;
@@ -40,7 +41,13 @@ public class CcorreoManualModEntity {
 
     @JsonProperty("IdEstado")
     public Integer IdEstado;
-    
+
     @JsonProperty("IdProgramado")
     public Integer IdProgramado;
+
+    @JsonProperty("FechaEnvio")
+    public String FechaEnvio;
+
+    @JsonProperty("HorarioEnvio")
+    public Integer HorarioEnvio;
 }

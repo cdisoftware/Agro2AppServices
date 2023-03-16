@@ -10,7 +10,8 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CGeneracionQueryServiceImplementacion implements CGeneracionQueryService{
+public class CGeneracionQueryServiceImplementacion implements CGeneracionQueryService {
+
     @PersistenceContext
     private EntityManager repositorio;
 
@@ -22,11 +23,13 @@ public class CGeneracionQueryServiceImplementacion implements CGeneracionQuerySe
             ActLink.registerStoredProcedureParameter("Idplantilla", Integer.class, ParameterMode.IN);
             ActLink.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
             ActLink.registerStoredProcedureParameter("cd_cnctivo", Integer.class, ParameterMode.IN);
+            ActLink.registerStoredProcedureParameter("tipoUsuario", Integer.class, ParameterMode.IN);
 
             ActLink.setParameter("Bandera", Bandera);
             ActLink.setParameter("Idplantilla", entidad.getIdplantilla());
             ActLink.setParameter("IdSector", entidad.getIdSector());
             ActLink.setParameter("cd_cnctivo", entidad.getCd_cnctivo());
+            ActLink.setParameter("tipoUsuario", entidad.getTipoUsuario());
 
             ActLink.execute();
             return JSONObject.quote((String) ActLink.getOutputParameterValue("Respuesta"));
@@ -34,6 +37,5 @@ public class CGeneracionQueryServiceImplementacion implements CGeneracionQuerySe
             return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
         }
     }
-    
-    
+
 }

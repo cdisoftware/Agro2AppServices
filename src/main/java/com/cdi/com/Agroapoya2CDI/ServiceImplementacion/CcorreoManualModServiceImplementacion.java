@@ -29,6 +29,8 @@ public class CcorreoManualModServiceImplementacion implements CcorreoManualModSe
             respu.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("IdEstado", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("IdProgramado", Integer.class, ParameterMode.IN);
+            respu.registerStoredProcedureParameter("FechaEnvio", String.class, ParameterMode.IN);
+            respu.registerStoredProcedureParameter("HorarioEnvio", Integer.class, ParameterMode.IN);
 
             respu.setParameter("Bandera", Bandera);
             respu.setParameter("IdEnvio", entidad.getIdEnvio());
@@ -38,6 +40,8 @@ public class CcorreoManualModServiceImplementacion implements CcorreoManualModSe
             respu.setParameter("IdPlantilla", entidad.getIdPlantilla());
             respu.setParameter("IdEstado", entidad.getIdEstado());
             respu.setParameter("IdProgramado", entidad.getIdProgramado());
+            respu.setParameter("FechaEnvio", entidad.getFechaEnvio());
+            respu.setParameter("HorarioEnvio", entidad.getHorarioEnvio());
 
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));

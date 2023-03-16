@@ -44,6 +44,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CGeneracionQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CLinkConsultaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CLinksModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMascaraDatBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMisToppingsEntity;
@@ -141,6 +143,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.SectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.Select_TipoDocumentoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SmsItCloudEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TDatosBasicosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.THoraioTareaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TModDatosBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSectoresEtvEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSubMenuEntity;
@@ -224,6 +227,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEstadoTransporteModService;
 import com.cdi.com.Agroapoya2CDI.Services.CGeneracionQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.CHistorialCompraService;
+import com.cdi.com.Agroapoya2CDI.Services.CLinkConsultaService;
+import com.cdi.com.Agroapoya2CDI.Services.CLinksModService;
 import com.cdi.com.Agroapoya2CDI.Services.CListadoToppingService;
 import com.cdi.com.Agroapoya2CDI.Services.CMascaraDatBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.CMisToppingsService;
@@ -346,6 +351,7 @@ import com.cdi.com.Agroapoya2CDI.Services.SectoresService;
 import com.cdi.com.Agroapoya2CDI.Services.Select_TipoDocumentoService;
 import com.cdi.com.Agroapoya2CDI.Services.SmsItCloudService;
 import com.cdi.com.Agroapoya2CDI.Services.TDatosBasicosService;
+import com.cdi.com.Agroapoya2CDI.Services.THoraioTareaService;
 import com.cdi.com.Agroapoya2CDI.Services.TModDatosBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.TSectoresEtvService;
 import com.cdi.com.Agroapoya2CDI.Services.TSubMenuService;
@@ -956,24 +962,33 @@ public class Controller {
 
     @Autowired
     SmsItCloudService serviceSmsItCloudService;
-    
+
     @Autowired
     pa_CTextosOfertaService servicepa_CTextosOfertaService;
-    
+
     @Autowired
     pa_CTextosOfertaConsultaService servicepa_CTextosOfertaConsultaService;
-    
+
     @Autowired
     CcorreoManualModService serviceCcorreoManualModService;
-    
+
     @Autowired
     CcorreoManualService serviceCcorreoManualService;
-    
+
     @Autowired
     CusuariosCorreoService serviceCusuariosCorreoService;
-    
+
     @Autowired
     CGeneracionQueryService serviceCGeneracionQueryService;
+
+    @Autowired
+    CLinksModService serviceCLinksModService;
+
+    @Autowired
+    CLinkConsultaService serviceCLinkConsultaService;
+
+    @Autowired
+    THoraioTareaService serviceTHoraioTareaService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2523,7 +2538,7 @@ public class Controller {
             @PathVariable Integer Bandera) {
         return servicepa_CTextosOfertaService.TextOfer(entidad, Bandera);
     }
-    
+
     @GetMapping("/constextosoferta/{Bandera}/{idSector}/{cd_cnctivo}")
     public List<pa_CTextosOfertaConsultaEntity> constextofer(
             @PathVariable Integer Bandera,
@@ -2531,14 +2546,14 @@ public class Controller {
             @PathVariable Integer cd_cnctivo) {
         return servicepa_CTextosOfertaConsultaService.ConsTextyOfer(Bandera, idSector, cd_cnctivo);
     }
-    
+
     @PostMapping("/correoManualMod/{Bandera}")
     public String CorreoManual(
             @RequestBody CcorreoManualModEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceCcorreoManualModService.ModCCorreoManual(entidad, Bandera);
     }
-    
+
     @GetMapping("/CcorreoManual/{Bandera}/{IdEnvio}/{IdSector}/{Cd_cnctivo}/{IdPlantilla}/{IdEstado}/{fecha}")
     public List<CcorreoManualEntity> ConsCorreoMnual(
             @PathVariable Integer Bandera,
@@ -2550,7 +2565,7 @@ public class Controller {
             @PathVariable String fecha) {
         return serviceCcorreoManualService.ConsultaCorreos(Bandera, IdEnvio, IdSector, Cd_cnctivo, IdPlantilla, IdEstado, fecha);
     }
-    
+
     @GetMapping("/consusucorreo/{Bandera}/{TipoPersona}/{Correopersona}/{NombrePersona}")
     public List<CusuariosCorreoEntity> ConsUserCorr(
             @PathVariable Integer Bandera,
@@ -2559,11 +2574,31 @@ public class Controller {
             @PathVariable String NombrePersona) {
         return serviceCusuariosCorreoService.ConsCooreos(Bandera, TipoPersona, Correopersona, NombrePersona);
     }
-    
+
     @PostMapping("/ConsGenQuery/{Bandera}")
     public String ConsGenQuery(
             @RequestBody CGeneracionQueryEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceCGeneracionQueryService.ConsQuery(entidad, Bandera);
+    }
+
+    @PostMapping("/modclinks/{BANDERA}")
+    public String ModCLinks(
+            @RequestBody CLinksModEntity entidad,
+            @PathVariable Integer BANDERA) {
+        return serviceCLinksModService.ModCLinks(entidad, BANDERA);
+    }
+
+    @GetMapping("/consclinkconsulta/{bandera}/{CD_HEXA}")
+    public List<CLinkConsultaEntity> ConsCLinkConsulta(
+            @PathVariable Integer bandera,
+            @PathVariable String CD_HEXA) {
+        return serviceCLinkConsultaService.ConsCLinkConsulta(bandera, CD_HEXA);
+    }
+
+    @GetMapping("/consthorariotarea/{Bandera}")
+    public List<THoraioTareaEntity> ConsultaTHorarioTarea(
+            @PathVariable Integer Bandera) {
+        return serviceTHoraioTareaService.ConsultaTHorarioTarea(Bandera);
     }
 }
