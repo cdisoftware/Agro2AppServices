@@ -148,6 +148,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.TModDatosBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSectoresEtvEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TSubMenuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TaccionPubliEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.TipObliCorreoManualEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.TipObliCrroManModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TipoViasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TransActivosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
@@ -356,6 +358,8 @@ import com.cdi.com.Agroapoya2CDI.Services.TModDatosBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.TSectoresEtvService;
 import com.cdi.com.Agroapoya2CDI.Services.TSubMenuService;
 import com.cdi.com.Agroapoya2CDI.Services.TaccionPubliService;
+import com.cdi.com.Agroapoya2CDI.Services.TipObliCorreoManualService;
+import com.cdi.com.Agroapoya2CDI.Services.TipObliCrroManModService;
 import com.cdi.com.Agroapoya2CDI.Services.TipoViasService;
 import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
@@ -989,6 +993,12 @@ public class Controller {
 
     @Autowired
     THoraioTareaService serviceTHoraioTareaService;
+
+    @Autowired
+    TipObliCorreoManualService serviceTipObliCorreoManualService;
+
+    @Autowired
+    TipObliCrroManModService serviceTipObliCrroManModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2600,5 +2610,19 @@ public class Controller {
     public List<THoraioTareaEntity> ConsultaTHorarioTarea(
             @PathVariable Integer Bandera) {
         return serviceTHoraioTareaService.ConsultaTHorarioTarea(Bandera);
+    }
+
+    @GetMapping("/constipoblicorreosmanual/{Bandera}/{IdPlantilla}")
+    public List<TipObliCorreoManualEntity> ConsultaObliCorreoMan(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdPlantilla) {
+        return serviceTipObliCorreoManualService.ConsultaObliCorreoMan(Bandera, IdPlantilla);
+    }
+
+    @PostMapping("/modtipoblicorreomanual/{Bandera}")
+    public String ModCorreoManual(
+            @RequestBody TipObliCrroManModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceTipObliCrroManModService.ModCorreoManual(entidad, Bandera);
     }
 }
