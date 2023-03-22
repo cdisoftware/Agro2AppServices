@@ -13,41 +13,21 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paC_correoManualMod",
-            procedureName = "paC_correoManualMod",
+            name = "Agro_TipObliCorreoManualMod",
+            procedureName = "Agro_TipObliCorreoManualMod",
             parameters = {
                 @StoredProcedureParameter(name = "Respuesta",
                         mode = ParameterMode.OUT,
                         type = String.class)
             })
 })
-public class CcorreoManualModEntity {
+public class TipObliCrroManModEntity {
 
     @Id
-    @JsonProperty("IdEnvio")
-    public Integer IdEnvio;
-
-    @JsonProperty("Query")
-    public String Query;
-
-    @JsonProperty("IdSector")
-    public Integer IdSector;
-
-    @JsonProperty("Cd_cnctivo")
-    public Integer Cd_cnctivo;
+    @JsonProperty("Id")
+    public Integer Id;
 
     @JsonProperty("IdPlantilla")
     public Integer IdPlantilla;
 
-    @JsonProperty("IdEstado")
-    public Integer IdEstado;
-
-    @JsonProperty("IdProgramado")
-    public Integer IdProgramado;
-
-    @JsonProperty("FechaEnvio")
-    public String FechaEnvio;
-
-    @JsonProperty("HorarioEnvio")
-    public Integer HorarioEnvio;
 }

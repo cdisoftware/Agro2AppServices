@@ -23,7 +23,7 @@ public class CcorreoManualModServiceImplementacion implements CcorreoManualModSe
             StoredProcedureQuery respu = repositorio.createNamedStoredProcedureQuery("paC_correoManualMod");
             respu.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("IdEnvio", Integer.class, ParameterMode.IN);
-            respu.registerStoredProcedureParameter("Query", Integer.class, ParameterMode.IN);
+            respu.registerStoredProcedureParameter("Query", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("Cd_cnctivo", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
