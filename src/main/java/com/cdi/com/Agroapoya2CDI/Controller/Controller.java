@@ -45,6 +45,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CGeneracionQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkConsultaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorService;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinksModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMascaraDatBasicEntity;
@@ -67,6 +69,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemsModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDatosBasicosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionLiderPartiEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionLiderPartiModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorConductorEntity;
@@ -109,6 +113,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
 import com.cdi.com.Agroapoya2CDI.Entity.CorreosMasivosPandaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CpagosLiderEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CparticipanteGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CperfilClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaCampesinoModEntity;
@@ -254,6 +259,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CPublicidadService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemsModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDatosBasicoService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionLiderPartiModService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionLiderPartiService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteVentasService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
@@ -300,6 +307,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CorreoMomentoEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreosMasivosPandaService;
 import com.cdi.com.Agroapoya2CDI.Services.CosteoOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CosteoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CpagosLiderService;
 import com.cdi.com.Agroapoya2CDI.Services.CparticipanteGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.CperfilClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaCampesinoModService;
@@ -999,6 +1007,18 @@ public class Controller {
 
     @Autowired
     TipObliCrroManModService serviceTipObliCrroManModService;
+
+    @Autowired
+    CLinkSectorService serviceCLinkSectorService;
+
+    @Autowired
+    CRelacionLiderPartiModService serviceCRelacionLiderPartiModService;
+
+    @Autowired
+    CRelacionLiderPartiService serviceCRelacionLiderPartiService;
+
+    @Autowired
+    CpagosLiderService serviceCpagosLiderService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2624,5 +2644,34 @@ public class Controller {
             @RequestBody TipObliCrroManModEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceTipObliCrroManModService.ModCorreoManual(entidad, Bandera);
+    }
+
+    @GetMapping("/consclinksector/{bandera}/{CD_CNSCTVO}/{IDSECTOR}")
+    public List<CLinkSectorEntity> ConsCLinkSector(
+            @PathVariable Integer bandera,
+            @PathVariable Integer CD_CNSCTVO,
+            @PathVariable Integer IDSECTOR) {
+        return serviceCLinkSectorService.ConsCLinkSector(bandera, CD_CNSCTVO, IDSECTOR);
+    }
+
+    @PostMapping("/modcrelacionliderpart/{Bandera}")
+    public String ModRelacionLiderPart(
+            @RequestBody CRelacionLiderPartiModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCRelacionLiderPartiModService.ModRelacionLiderPart(entidad, Bandera);
+    }
+
+    @GetMapping("/consrelacionliderpart/{Bandera}/{IdCarroLider}")
+    public List<CRelacionLiderPartiEntity> ConsRelacionLiderPart(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCarroLider) {
+        return serviceCRelacionLiderPartiService.ConsRelacionLiderPart(Bandera, IdCarroLider);
+    }
+
+    @GetMapping("/conscpagoslider/{Bandera}/{IdCarro}")
+    public List<CpagosLiderEntity> ConsPagosLider(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCarro) {
+        return serviceCpagosLiderService.ConsPagosLider(Bandera, IdCarro);
     }
 }
