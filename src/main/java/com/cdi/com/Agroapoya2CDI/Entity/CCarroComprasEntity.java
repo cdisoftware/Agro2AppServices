@@ -32,13 +32,13 @@ public class CCarroComprasEntity {
 
     @JsonProperty("tipodescuento")
     public String tipodescuento;
-    
+
     @JsonProperty("NumReg")
     public String NumReg;
-    
+
     @JsonProperty("valorDesc")
     public String valorDesc;
-    
+
     @JsonProperty("valorDesForm")
     public String valorDesForm;
 
@@ -158,5 +158,17 @@ public class CCarroComprasEntity {
 
     @JsonProperty("DireccionEntrega")
     public String DireccionEntrega;
+
+    @JsonProperty("PagoXParti")
+    public String PagoXParti;
+
+    @JsonProperty("PagoXPartiForm")
+    public String PagoXPartiForm;
+
+    @JsonProperty("ValorPagarPrin")
+    public String ValorPagarPrin;
+
+    @JsonProperty("ValorPagarPrinForm")
+    public String ValorPagarPrinForm;
 
 }

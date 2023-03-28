@@ -42,4 +42,22 @@ public class CparticipanteGrupoEntity {
     @JsonProperty("UndsCmpradas")
     public Integer UndsCmpradas;
 
+    @JsonProperty("ValorTotal")
+    public String ValorTotal;
+
+    @JsonProperty("ValorTotalForm")
+    public String ValorTotalForm;
+
+    @JsonProperty("DesProducto")
+    public String DesProducto;
+
+    @JsonProperty("DescToppings")
+    public String DescToppings;
+
+    @JsonProperty("ID_CARRO")
+    public Integer ID_CARRO;
+
+    @JsonProperty("Vinculado")
+    public Integer Vinculado;
+
 }
