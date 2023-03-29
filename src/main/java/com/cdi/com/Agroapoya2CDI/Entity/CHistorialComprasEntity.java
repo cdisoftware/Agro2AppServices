@@ -102,6 +102,18 @@ public class CHistorialComprasEntity {
     @JsonProperty("Observaciones")
     public String Observaciones;
 
+    @JsonProperty("PagoXParti")
+    public String PagoXParti;
+
+    @JsonProperty("PagoXPartiForm")
+    public String PagoXPartiForm;
+
+    @JsonProperty("ValorPagarPrin")
+    public String ValorPagarPrin;
+
+    @JsonProperty("ValorPagarPrinForm")
+    public String ValorPagarPrinForm;
+
     @JsonProperty("ValorPagar")
     public String ValorPagar;
 
@@ -146,5 +158,11 @@ public class CHistorialComprasEntity {
 
     @JsonProperty("DesPagoLider")
     public String DesPagoLider;
+
+    @JsonProperty("IdPagoParti")
+    public Integer IdPagoParti;
+
+    @JsonProperty("DesPagoParti")
+    public String DesPagoParti;
 
 }
