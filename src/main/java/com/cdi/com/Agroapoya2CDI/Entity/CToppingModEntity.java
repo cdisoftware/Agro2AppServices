@@ -51,4 +51,7 @@ public class CToppingModEntity {
     @JsonProperty("imagen")
     public String imagen;
 
+    @JsonProperty("PesoKiloUnd")
+    public String PesoKiloUnd;
+
 }

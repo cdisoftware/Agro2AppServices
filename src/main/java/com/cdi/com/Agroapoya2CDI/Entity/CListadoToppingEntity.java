@@ -51,4 +51,7 @@ public class CListadoToppingEntity {
     @JsonProperty("imagen")
     public String imagen;
 
+    @JsonProperty("PesoKilos")
+    public String PesoKilos;
+
 }
