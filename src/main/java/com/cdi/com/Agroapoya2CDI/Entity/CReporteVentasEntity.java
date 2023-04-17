@@ -83,4 +83,16 @@ public class CReporteVentasEntity {
 
     @JsonProperty("observaciones_cliente")
     public String observaciones_cliente;
+
+    @JsonProperty("idGrupoLider")
+    public String idGrupoLider;
+
+    @JsonProperty("IdGrupoParti")
+    public String IdGrupoParti;
+
+    @JsonProperty("SumToppings")
+    public String SumToppings;
+
+    @JsonProperty("ValorProdcuto")
+    public String ValorProdcuto;
 }

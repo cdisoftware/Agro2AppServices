@@ -105,4 +105,19 @@ public class entregasConductorEntity {
     @JsonProperty("distanciaEvi")
     public String distanciaEvi;
 
+    @JsonProperty("distancia")
+    public String distancia;
+
+    @JsonProperty("Producto_ppal")
+    public String Producto_ppal;
+
+    @JsonProperty("peso_prod_ppal")
+    public String peso_prod_ppal;
+
+    @JsonProperty("producto_add")
+    public String producto_add;
+    
+     @JsonProperty("peso_add")
+    public String peso_add;
+
 }

@@ -171,4 +171,10 @@ public class CCarroComprasEntity {
     @JsonProperty("ValorPagarPrinForm")
     public String ValorPagarPrinForm;
 
+    @JsonProperty("ValorTodosToppingForm")
+    public String ValorTodosToppingForm;
+
+    @JsonProperty("ValorTodosTopping")
+    public String ValorTodosTopping;
+
 }
