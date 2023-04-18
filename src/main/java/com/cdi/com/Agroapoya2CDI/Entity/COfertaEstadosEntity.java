@@ -18,6 +18,9 @@ import lombok.Data;
 public class COfertaEstadosEntity {
 
     @Id
+    @JsonProperty("Id")
+    public Integer Id;
+
     @JsonProperty("CD_CNSCTVO")
     public Integer CD_CNSCTVO;
 
