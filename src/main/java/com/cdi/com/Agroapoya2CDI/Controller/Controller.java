@@ -15,6 +15,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CAgroRespuestasEncuestaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAgroRmenOfertaMenuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAgroTipoNovedadEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAgroValidaEncuestaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CAgro_GruposUltimaMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAplantillaCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAsignaBodegaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinGrupalEntity;
@@ -46,6 +47,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CEntregaSegEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEstadoTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CGeneracionQueryEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CGrupoMillaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CInfoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkConsultaEntity;
@@ -69,6 +71,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.COfertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonaMenuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonaTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CPinMillaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CPinUltimaMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPubliModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadModEntity;
@@ -96,9 +100,12 @@ import com.cdi.com.Agroapoya2CDI.Entity.CTipoTransporEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CToppingModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTransportesNuevosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTrazabilidadEstadoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CUltimaMillaInicialEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUnidadesDisponiblesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUnidadesDisponiblesListaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValidaCodigoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CValorUbersGeneralEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CValorUbersOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValoracionOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValoracionOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CVigenciaOfertaEntoty;
@@ -134,6 +141,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CtipoMomentoEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoPlantillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtokenPersonaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CultimMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CultimaUbicacionEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CundCarroModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CusuariosCorreoEntity;
@@ -204,6 +212,7 @@ import com.cdi.com.Agroapoya2CDI.Services.AgroCompraUsuModService;
 import com.cdi.com.Agroapoya2CDI.Services.CALCULADORA_VALORPAGOService;
 import com.cdi.com.Agroapoya2CDI.Services.CAPlantillaCorreoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CATipoCamposCorreoService;
+import com.cdi.com.Agroapoya2CDI.Services.CAgGruposUltimaMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CAgroEstComPagoService;
 import com.cdi.com.Agroapoya2CDI.Services.CAgroPreguntaOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CAgroPreguntaOfertaService;
@@ -246,6 +255,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CEnvioCorreoIndEmailService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioRealCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CEstadoTransporteModService;
 import com.cdi.com.Agroapoya2CDI.Services.CGeneracionQueryService;
+import com.cdi.com.Agroapoya2CDI.Services.CGrupoMillaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CHistorialCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.CInfoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinkConsultaService;
@@ -269,6 +279,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CPagosTransTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.CPersonaMenuService;
 import com.cdi.com.Agroapoya2CDI.Services.CPersonaTransService;
 import com.cdi.com.Agroapoya2CDI.Services.CPersonasService;
+import com.cdi.com.Agroapoya2CDI.Services.CPinMillaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CPinUltimaMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CPubliModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadService;
@@ -297,11 +309,14 @@ import com.cdi.com.Agroapoya2CDI.Services.CTipoTransporService;
 import com.cdi.com.Agroapoya2CDI.Services.CToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.CTransportesNuevosService;
 import com.cdi.com.Agroapoya2CDI.Services.CTrazabilidadEstadoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CUltimaMillaInicialService;
 import com.cdi.com.Agroapoya2CDI.Services.CUnidadesDisponiblesListaService;
 import com.cdi.com.Agroapoya2CDI.Services.CUnidadesDisponiblesService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaCambioEtapaService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaCodigoService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaSectorUsuarioService;
+import com.cdi.com.Agroapoya2CDI.Services.CValorUbersGeneralService;
+import com.cdi.com.Agroapoya2CDI.Services.CValorUbersOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CValoracionOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CValoracionOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CVigenciaOfertaModService;
@@ -338,6 +353,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CtipoMomentoEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoPlantillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtokenPersonaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CultimMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CultimaUbicacionService;
 import com.cdi.com.Agroapoya2CDI.Services.CundCarroModService;
 import com.cdi.com.Agroapoya2CDI.Services.CusuariosCorreoService;
@@ -1066,9 +1082,33 @@ public class Controller {
 
     @Autowired
     CInfoOfertaService serviceCInfoOfertaService;
-    
+
     @Autowired
     COfertaEstadosService serviceCOfertaEstadosService;
+
+    @Autowired
+    CUltimaMillaInicialService serviceCUltimaMillaInicialService;
+
+    @Autowired
+    CPinUltimaMillaService serviceCPinUltimaMillaService;
+
+    @Autowired
+    CGrupoMillaModService serviceCGrupoMillaModService;
+
+    @Autowired
+    CPinMillaModService serviceCPinMillaModService;
+
+    @Autowired
+    CultimMillaService serviceCultimMillaService;
+
+    @Autowired
+    CAgGruposUltimaMillaService serviceCAgGruposUltimaMillaService;
+
+    @Autowired
+    CValorUbersOfertaModService serviceCValorUbersOfertaModService;
+
+    @Autowired
+    CValorUbersGeneralService serviceCValorUbersGeneralService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2787,10 +2827,69 @@ public class Controller {
             @PathVariable Integer Id_sector) {
         return serviceCInfoOfertaService.ConsultaInfoOferta(bandera, CD_CNSCTVO, Id_sector);
     }
-    
-       @GetMapping("/conscofertaestados/{bandera}")
+
+    @GetMapping("/conscofertaestados/{bandera}")
     public List<COfertaEstadosEntity> consultaCOgertaEstados(
             @PathVariable Integer bandera) {
         return serviceCOfertaEstadosService.consultaCOgertaEstados(bandera);
+    }
+
+    @PostMapping("/modcultimmillainicial/{Bandera}")
+    public String ModCUltimMillaIni(
+            @RequestBody CUltimaMillaInicialEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCUltimaMillaInicialService.ModCUltimMillaIni(entidad, Bandera);
+    }
+
+    @GetMapping("/conscpinultimailla/{Bandera}/{cd_cnctvo}/{idSector}")
+    public List<CPinUltimaMillaEntity> consultaCPinUltiMilla(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnctvo,
+            @PathVariable Integer idSector) {
+        return serviceCPinUltimaMillaService.consultaCPinUltiMilla(Bandera, cd_cnctvo, idSector);
+    }
+
+    @PostMapping("/modcgrupomilla/{Bandera}")
+    public String ModCGrupoMilla(
+            @RequestBody CGrupoMillaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCGrupoMillaModService.ModCGrupoMilla(entidad, Bandera);
+    }
+
+    @PostMapping("/modcpinmilla/{Bandera}")
+    public String ModCPinMilla(
+            @RequestBody CPinMillaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCPinMillaModService.ModCPinMilla(entidad, Bandera);
+    }
+
+    @GetMapping("/conscultimamilla/{Bandera}/{cd_cnsctvo}/{id_sector}")
+    public List<CultimMillaEntity> ConsultaCuLtMilla(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctvo,
+            @PathVariable Integer id_sector) {
+        return serviceCultimMillaService.ConsultaCuLtMilla(Bandera, cd_cnsctvo, id_sector);
+    }
+
+    @GetMapping("/conscagrogruposultimamilla/{Bandera}/{idGrupo}")
+    public List<CAgro_GruposUltimaMillaEntity> ConsultaGrupoUltMilla(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer idGrupo) {
+        return serviceCAgGruposUltimaMillaService.ConsultaGrupoUltMilla(Bandera, idGrupo);
+    }
+
+    @PostMapping("/modcvaloruberoferta/{Bandera}")
+    public String ModCValorUberOfert(
+            @RequestBody CValorUbersOfertaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCValorUbersOfertaModService.ModCValorUberOfert(entidad, Bandera);
+    }
+
+    @GetMapping("/conscvalorubersgen/{Bandera}/{IdeDepto}/{IdCiudad}")
+    public List<CValorUbersGeneralEntity> consultaCValorUbersGen(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdeDepto,
+            @PathVariable Integer IdCiudad) {
+        return serviceCValorUbersGeneralService.consultaCValorUbersGen(Bandera, IdeDepto, IdCiudad);
     }
 }
