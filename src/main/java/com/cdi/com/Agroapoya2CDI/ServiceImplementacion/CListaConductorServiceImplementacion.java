@@ -1,7 +1,7 @@
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
-import com.cdi.com.Agroapoya2CDI.Entity.CAgro_GruposUltimaMillaEntity;
-import com.cdi.com.Agroapoya2CDI.Services.CAgGruposUltimaMillaService;
+import com.cdi.com.Agroapoya2CDI.Entity.CListaConductorEntity;
+import com.cdi.com.Agroapoya2CDI.Services.CListaConductorService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,25 +12,22 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CAgGruposUltimaMillaServiceImplementacion implements CAgGruposUltimaMillaService {
+public class CListaConductorServiceImplementacion implements CListaConductorService {
 
     @PersistenceContext
     private EntityManager repositorio;
 
     @Override
-    public List<CAgro_GruposUltimaMillaEntity> ConsultaGrupoUltMilla(Integer Bandera,
-            Integer idGrupo, Integer cd_cnsctivo, Integer IdSector) {
+    public List<CListaConductorEntity> ConsultaCListaConductor(Integer Bandera, Integer cd_cnsctivo, Integer idSector) {
         try {
-            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paC_Agro_GruposUltimaMilla");
+            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paC_ListaConductor");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("idGrupo", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("cd_cnsctivo", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("idSector", Integer.class, ParameterMode.IN);
 
             tpoDoc.setParameter("Bandera", Bandera);
-            tpoDoc.setParameter("idGrupo", idGrupo);
             tpoDoc.setParameter("cd_cnsctivo", cd_cnsctivo);
-            tpoDoc.setParameter("IdSector", IdSector);
+            tpoDoc.setParameter("idSector", idSector);
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {

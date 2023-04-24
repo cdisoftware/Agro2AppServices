@@ -25,7 +25,7 @@ public class CultimMillaEntity {
     public Integer IdGrupo;
 
     @JsonProperty("NombreGrupo")
-    public Integer NombreGrupo;
+    public String NombreGrupo;
 
     @JsonProperty("cd_cnctvo")
     public Integer cd_cnctvo;
@@ -35,4 +35,29 @@ public class CultimMillaEntity {
 
     @JsonProperty("ValorTransporte")
     public String ValorTransporte;
+
+    @JsonProperty("estado")
+    public Integer estado;
+
+    @JsonProperty("ID_CNDCTOR")
+    public Integer ID_CNDCTOR;
+
+    @JsonProperty("NMBRE_CNDCTOR")
+    public String NMBRE_CNDCTOR;
+
+    @JsonProperty("PLCA")
+    public String PLCA;
+
+    @JsonProperty("IdCiudad")
+    public Integer IdCiudad;
+
+    @JsonProperty("IdDepa")
+    public Integer IdDepa;
+
+    @JsonProperty("Regitro")
+    public String Regitro;
+
+    @JsonProperty("IdRegistro")
+    public Integer IdRegistro;
+
 }

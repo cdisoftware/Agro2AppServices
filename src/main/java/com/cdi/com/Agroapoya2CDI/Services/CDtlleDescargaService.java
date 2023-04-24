@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CDtlleDescargaService {
 
-    public List<CDtlleDescargasEntity> ConsultaCDtlleDescarga(Integer bandera, Integer IdSecto, Integer Cd_cnsctivo);
+    public List<CDtlleDescargasEntity> ConsultaCDtlleDescarga(Integer bandera, Integer IdSecto, Integer Cd_cnsctivo, Integer IdBodega);
 }

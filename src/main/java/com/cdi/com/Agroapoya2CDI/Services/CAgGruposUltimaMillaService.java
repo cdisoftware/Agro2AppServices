@@ -5,5 +5,6 @@ import java.util.List;
 
 public interface CAgGruposUltimaMillaService {
 
-    public List<CAgro_GruposUltimaMillaEntity> ConsultaGrupoUltMilla(Integer Bandera, Integer idGrupo);
+    public List<CAgro_GruposUltimaMillaEntity> ConsultaGrupoUltMilla(Integer Bandera, 
+            Integer idGrupo, Integer cd_cnsctivo, Integer IdSector);
 }
