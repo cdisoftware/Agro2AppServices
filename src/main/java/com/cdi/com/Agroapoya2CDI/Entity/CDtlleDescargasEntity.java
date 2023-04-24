@@ -36,4 +36,16 @@ public class CDtlleDescargasEntity {
     @JsonProperty("DistanciaMax")
     public Integer DistanciaMax;
 
+    @JsonProperty("IdBodega")
+    public Integer IdBodega;
+
+    @JsonProperty("NombreBodega")
+    public String NombreBodega;
+
+    @JsonProperty("Coordenadas")
+    public String Coordenadas;
+
+    @JsonProperty("Direccion")
+    public String Direccion;
+
 }

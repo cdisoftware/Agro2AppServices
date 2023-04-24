@@ -22,7 +22,7 @@ public class COfertaEstadosEntity {
     public Integer Id;
 
     @JsonProperty("CD_CNSCTVO")
-    public Integer CD_CNSCTVO;
+    public String CD_CNSCTVO;
 
     @JsonProperty("Nombre_Producto")
     public String Nombre_Producto;

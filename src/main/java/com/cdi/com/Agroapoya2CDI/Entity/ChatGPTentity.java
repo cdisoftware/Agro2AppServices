@@ -12,6 +12,6 @@ public class ChatGPTentity implements Serializable{
 
     @Id
     @JsonProperty("Texto")
-    private String Texto;
+    public String Texto;
 
 }

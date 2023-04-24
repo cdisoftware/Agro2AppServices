@@ -55,6 +55,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorService;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinksCPyGModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinksModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CListaConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CListadoToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMascaraDatBasicEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CMisToppingsEntity;
@@ -81,6 +82,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemsModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDatosBasicosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionLiderPartiEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionLiderPartiModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CReporteOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorConductorEntity;
@@ -141,6 +143,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CtipoMomentoEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoPlantillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtokenPersonaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CtorUltMillaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CultimMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CultimaUbicacionEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CundCarroModEntity;
@@ -261,6 +264,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CInfoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinkConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinksCPyGModService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinksModService;
+import com.cdi.com.Agroapoya2CDI.Services.CListaConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.CListadoToppingService;
 import com.cdi.com.Agroapoya2CDI.Services.CMascaraDatBasicService;
 import com.cdi.com.Agroapoya2CDI.Services.CMisToppingsService;
@@ -289,6 +293,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemsModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDatosBasicoService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionLiderPartiModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionLiderPartiService;
+import com.cdi.com.Agroapoya2CDI.Services.CReporteOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteVentasService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
@@ -353,6 +358,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CtipoMomentoEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoPlantillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtokenPersonaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CtorUltMillaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CultimMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CultimaUbicacionService;
 import com.cdi.com.Agroapoya2CDI.Services.CundCarroModService;
@@ -1109,6 +1115,15 @@ public class Controller {
 
     @Autowired
     CValorUbersGeneralService serviceCValorUbersGeneralService;
+
+    @Autowired
+    CListaConductorService serviceCListaConductorService;
+
+    @Autowired
+    CtorUltMillaModService serviceCtorUltMillaModService;
+
+    @Autowired
+    CReporteOfertaService serviceCReporteOfertaService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2805,12 +2820,13 @@ public class Controller {
         return serviceCAsignaBodegaModService.ModCAsignaBodega(entidad, Bandera);
     }
 
-    @GetMapping("/conscdtlledescargas/{bandera}/{IdSecto}/{Cd_cnsctivo}")
+    @GetMapping("/conscdtlledescargas/{bandera}/{IdSecto}/{Cd_cnsctivo}/{IdBodega}")
     public List<CDtlleDescargasEntity> ConsultaCDtlleDescarga(
             @PathVariable Integer bandera,
             @PathVariable Integer IdSecto,
-            @PathVariable Integer Cd_cnsctivo) {
-        return serviceCDtlleDescargaService.ConsultaCDtlleDescarga(bandera, IdSecto, Cd_cnsctivo);
+            @PathVariable Integer Cd_cnsctivo,
+            @PathVariable Integer IdBodega) {
+        return serviceCDtlleDescargaService.ConsultaCDtlleDescarga(bandera, IdSecto, Cd_cnsctivo, IdBodega);
     }
 
     @PostMapping("/modcdtlledescargas/{bandera}")
@@ -2871,11 +2887,13 @@ public class Controller {
         return serviceCultimMillaService.ConsultaCuLtMilla(Bandera, cd_cnsctvo, id_sector);
     }
 
-    @GetMapping("/conscagrogruposultimamilla/{Bandera}/{idGrupo}")
+    @GetMapping("/conscagrogruposultimamilla/{Bandera}/{idGrupo}/{cd_cnsctivo}/{IdSector}")
     public List<CAgro_GruposUltimaMillaEntity> ConsultaGrupoUltMilla(
             @PathVariable Integer Bandera,
-            @PathVariable Integer idGrupo) {
-        return serviceCAgGruposUltimaMillaService.ConsultaGrupoUltMilla(Bandera, idGrupo);
+            @PathVariable Integer idGrupo,
+            @PathVariable Integer cd_cnsctivo,
+            @PathVariable Integer IdSector) {
+        return serviceCAgGruposUltimaMillaService.ConsultaGrupoUltMilla(Bandera, idGrupo, cd_cnsctivo, IdSector);
     }
 
     @PostMapping("/modcvaloruberoferta/{Bandera}")
@@ -2891,5 +2909,30 @@ public class Controller {
             @PathVariable Integer IdeDepto,
             @PathVariable Integer IdCiudad) {
         return serviceCValorUbersGeneralService.consultaCValorUbersGen(Bandera, IdeDepto, IdCiudad);
+    }
+
+    @GetMapping("/consclistaconductor/{Bandera}/{cd_cnsctivo}/{idSector}")
+    public List<CListaConductorEntity> ConsultaCListaConductor(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctivo,
+            @PathVariable Integer idSector) {
+        return serviceCListaConductorService.ConsultaCListaConductor(Bandera, cd_cnsctivo, idSector);
+    }
+
+    @PostMapping("/modctorultmilla/{Bandera}")
+    public String ModCtorUltMilla(
+            @RequestBody CtorUltMillaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCtorUltMillaModService.ModCtorUltMilla(entidad, Bandera);
+    }
+
+    @PostMapping("/conscreporteofertas/{Bandera}/{cd_cnscutivo}/{Id_Estado_oferta}/{cd_producto}")
+    public List<CReporteOfertasEntity> CosnultaCReportOferta(
+            @RequestBody CReporteOfertasEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnscutivo,
+            @PathVariable Integer Id_Estado_oferta,
+            @PathVariable Integer cd_producto) {
+        return serviceCReporteOfertaService.CosnultaCReportOferta(entidad, Bandera, cd_cnscutivo, Id_Estado_oferta, cd_producto);
     }
 }
