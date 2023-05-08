@@ -126,4 +126,10 @@ public class COfertaEntity {
     @JsonProperty("COD_OFR_PUBLICO")
     public String COD_OFR_PUBLICO;
 
+    @JsonProperty("deptoEntrega")
+    public String deptoEntrega;
+
+    @JsonProperty("MunicipioEntrega")
+    public String MunicipioEntrega;
+
 }

@@ -156,4 +156,7 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("ORDEN")
     public Integer ORDEN;
 
+    @JsonProperty("ImgCorreo")
+    public String ImgCorreo;
+
 }
