@@ -41,4 +41,7 @@ public class ConductorSectorModEntity {
 
     @JsonProperty("IdEstado")
     public Integer IdEstado;
+
+    @JsonProperty("IdGrupoMilla")
+    public Integer IdGrupoMilla;
 }

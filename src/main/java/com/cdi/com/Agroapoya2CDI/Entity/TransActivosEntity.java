@@ -75,12 +75,6 @@ public class TransActivosEntity {
     @JsonProperty("FechaRecogida")
     public String FechaRecogida;
 
-    @JsonProperty("IdEstado_Oferta")
-    public Integer IdEstado_Oferta;
-
-    @JsonProperty("desOferta")
-    public String desOferta;
-
     @JsonProperty("ubicacionParcela")
     public String ubicacionParcela;
 
@@ -101,12 +95,6 @@ public class TransActivosEntity {
 
     @JsonProperty("desc_SectorEntrega")
     public String desc_SectorEntrega;
-
-    @JsonProperty("desEstadoCarga")
-    public String desEstadoCarga;
-
-    @JsonProperty("idEstadoCarga")
-    public Integer idEstadoCarga;
 
     @JsonProperty("fechaEntrega")
     public String fechaEntrega;
@@ -129,15 +117,30 @@ public class TransActivosEntity {
     @JsonProperty("IdSector")
     public Integer IdSector;
 
+    @JsonProperty("PesoTotalCarga")
+    public String PesoTotalCarga;
+
+    @JsonProperty("numClientes")
+    public Integer numClientes;
+
+    @JsonProperty("IdEstado_Oferta")
+    public Integer IdEstado_Oferta;
+
+    @JsonProperty("desOferta")
+    public String desOferta;
+
     @JsonProperty("IdEstadoTranspo")
     public Integer IdEstadoTranspo;
 
     @JsonProperty("DesEstadoTranspo")
     public String DesEstadoTranspo;
 
-    @JsonProperty("PesoTotalCarga")
-    public String PesoTotalCarga;
+    @JsonProperty("idEstadoCarga")
+    public Integer idEstadoCarga;
 
-    @JsonProperty("numClientes")
-    public Integer numClientes;
+    @JsonProperty("desEstadoCarga")
+    public String desEstadoCarga;
+
+    @JsonProperty("NumeroParadas")
+    public Integer NumeroParadas;
 }

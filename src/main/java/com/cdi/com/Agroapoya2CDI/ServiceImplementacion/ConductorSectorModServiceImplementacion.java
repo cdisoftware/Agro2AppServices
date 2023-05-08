@@ -26,6 +26,8 @@ public class ConductorSectorModServiceImplementacion implements ConductorSectorM
             modconduct.registerStoredProcedureParameter("UsucodigTrans", Integer.class, ParameterMode.IN);
             modconduct.registerStoredProcedureParameter("vlor_flete", String.class, ParameterMode.IN);
             modconduct.registerStoredProcedureParameter("IdEstado", Integer.class, ParameterMode.IN);
+            modconduct.registerStoredProcedureParameter("IdGrupoMilla", Integer.class, ParameterMode.IN);
+
             modconduct.setParameter("Bandera", Bandera);
             modconduct.setParameter("Cd_cnsctivo", entidad.getCd_cnsctivo());
             modconduct.setParameter("Id_Sector", entidad.getId_Sector());
@@ -33,7 +35,7 @@ public class ConductorSectorModServiceImplementacion implements ConductorSectorM
             modconduct.setParameter("UsucodigTrans", entidad.getUsucodigTrans());
             modconduct.setParameter("vlor_flete", entidad.getVlor_flete());
             modconduct.setParameter("IdEstado", entidad.getIdEstado());
-
+            modconduct.setParameter("IdGrupoMilla", entidad.getIdGrupoMilla());
             modconduct.execute();
             return JSONObject.quote((String) modconduct.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {

@@ -176,5 +176,8 @@ public class CCarroComprasEntity {
 
     @JsonProperty("ValorTodosTopping")
     public String ValorTodosTopping;
+    
+    @JsonProperty("IdHexaGrupo")
+    public String IdHexaGrupo;
 
 }

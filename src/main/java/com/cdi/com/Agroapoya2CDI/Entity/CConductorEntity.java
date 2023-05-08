@@ -71,4 +71,7 @@ public class CConductorEntity {
 
     @JsonProperty("desPeso")
     public String desPeso;
+
+    @JsonProperty("CORREO_PERSONA")
+    public String CORREO_PERSONA;
 }
