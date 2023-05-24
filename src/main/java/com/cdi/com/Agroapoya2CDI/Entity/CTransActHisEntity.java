@@ -11,11 +11,11 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paC_TransActivos",
-            procedureName = "paC_TransActivos",
-            resultClasses = TransActivosEntity.class)
+            name = "paC_TransActivosHistorial",
+            procedureName = "paC_TransActivosHistorial",
+            resultClasses = CTransActHisEntity.class)
 })
-public class TransActivosEntity {
+public class CTransActHisEntity {
 
     @Id
     @JsonProperty("id")
@@ -141,34 +141,13 @@ public class TransActivosEntity {
     @JsonProperty("desEstadoCarga")
     public String desEstadoCarga;
 
-    @JsonProperty("NumeroParadas")
-    public Integer NumeroParadas;
-
     @JsonProperty("TipoTrans")
     public Integer TipoTrans;
-
-    @JsonProperty("nombreGrupo")
-    public String nombreGrupo;
-
-    @JsonProperty("IdGrupoMilla")
-    public Integer IdGrupoMilla;
 
     @JsonProperty("NombreBodega")
     public String NombreBodega;
 
     @JsonProperty("DireccionBodega")
     public String DireccionBodega;
-
-    @JsonProperty("CiudadBodega")
-    public String CiudadBodega;
-
-    @JsonProperty("DeptoBodega")
-    public String DeptoBodega;
-
-    @JsonProperty("UbicacionEntrega")
-    public String UbicacionEntrega;
-
-    @JsonProperty("UbicacionRecoge")
-    public String UbicacionRecoge;
 
 }

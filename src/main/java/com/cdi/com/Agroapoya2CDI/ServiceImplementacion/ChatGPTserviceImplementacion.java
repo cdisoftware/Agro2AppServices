@@ -24,7 +24,7 @@ public class ChatGPTserviceImplementacion implements ChatGPTservice {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.set("Content-Type", "application/json");
-            headers.set("Authorization", "Bearer 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");
+            headers.set("Authorization", "Bearer");
 
             JSONObject data = new JSONObject();
             data.put("model", "text-davinci-003");
