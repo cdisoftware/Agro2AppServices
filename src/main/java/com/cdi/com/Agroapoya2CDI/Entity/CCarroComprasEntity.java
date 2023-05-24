@@ -180,4 +180,6 @@ public class CCarroComprasEntity {
     @JsonProperty("IdHexaGrupo")
     public String IdHexaGrupo;
 
+    @JsonProperty("CheckBox")
+    public String CheckBox;
 }
