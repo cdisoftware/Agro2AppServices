@@ -20,22 +20,25 @@ public class pa_CTextosOfertaConsultaEntity {
     @Id
     @JsonProperty("idCorreo")
     public String idCorreo;
-    
+
     @JsonProperty("ImgCorreo")
     public String ImgCorreo;
-    
+
     @JsonProperty("TextoCorreo")
     public String TextoCorreo;
-    
+
     @JsonProperty("TextoWhat")
     public String TextoWhat;
-    
+
     @JsonProperty("cd_cnctivo")
     public String cd_cnctivo;
-    
+
     @JsonProperty("idSector")
     public String idSector;
 
-@JsonProperty("Plantilla")
+    @JsonProperty("Plantilla")
     public String Plantilla;
+
+    @JsonProperty("TextoSms")
+    public String TextoSms;
 }

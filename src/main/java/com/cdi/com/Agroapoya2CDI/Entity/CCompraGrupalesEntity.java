@@ -87,4 +87,13 @@ public class CCompraGrupalesEntity {
     @JsonProperty("VLOR_PGARFORM")
     public String VLOR_PGARFORM;
 
+    @JsonProperty("IdTopping")
+    public String IdTopping;
+
+    @JsonProperty("valorTopping")
+    public String valorTopping;
+
+    @JsonProperty("valorProducto")
+    public String valorProducto;
+
 }

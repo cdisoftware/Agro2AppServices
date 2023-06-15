@@ -159,4 +159,10 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("ImgCorreo")
     public String ImgCorreo;
 
+    @JsonProperty("valorReferenciaProd")
+    public Integer valorReferenciaProd;
+
+    @JsonProperty("mxmo_unddes_indvdual")
+    public Integer mxmo_unddes_indvdual;
+
 }

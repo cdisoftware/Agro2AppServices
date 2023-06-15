@@ -135,4 +135,7 @@ public class CNuevosTransAppEntity {
     @JsonProperty("CondPendienEstado")
     public String CondPendienEstado;
 
+    @JsonProperty("DireccionBodega")
+    public String DireccionBodega;
+
 }
