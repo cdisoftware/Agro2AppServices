@@ -92,4 +92,7 @@ public class CValoracionOfertaEntity {
 
     @JsonProperty("tpo_descuento")
     public Integer tpo_descuento;
+    
+     @JsonProperty("valorReferenciaProd")
+    public String valorReferenciaProd;
 }

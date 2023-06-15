@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class pa_CTextosOfertaServiceImplementacion implements pa_CTextosOfertaService{
+public class pa_CTextosOfertaServiceImplementacion implements pa_CTextosOfertaService {
 
     @PersistenceContext
     private EntityManager repositorio;
@@ -25,13 +25,15 @@ public class pa_CTextosOfertaServiceImplementacion implements pa_CTextosOfertaSe
             respu.registerStoredProcedureParameter("TextoCorreo", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("TextoWhat", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("ImgCorreo", String.class, ParameterMode.IN);
-            
+            respu.registerStoredProcedureParameter("TextoSms", String.class, ParameterMode.IN);
             respu.setParameter("Bandera", Bandera);
             respu.setParameter("idSector", entidad.getIdSector());
             respu.setParameter("cd_cnctivo", entidad.getCd_cnctivo());
             respu.setParameter("TextoCorreo", entidad.getTextoCorreo());
             respu.setParameter("TextoWhat", entidad.getTextoWhat());
             respu.setParameter("ImgCorreo", entidad.getImgCorreo());
+            respu.setParameter("TextoSms", entidad.getTextoSms());
+
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {

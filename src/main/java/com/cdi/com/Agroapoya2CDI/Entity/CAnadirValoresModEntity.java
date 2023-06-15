@@ -13,32 +13,27 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "pa_CTextosOferta",
-            procedureName = "pa_CTextosOferta",
+            name = "paC_AnadirValoresMod",
+            procedureName = "paC_AnadirValoresMod",
             parameters = {
-                @StoredProcedureParameter(name = "Respuesta",
+                @StoredProcedureParameter(name = "Repuesta",
                         mode = ParameterMode.OUT,
                         type = String.class)
             })
 })
-public class pa_CTextosOfertaEntity {
+public class CAnadirValoresModEntity {
 
     @Id
-    @JsonProperty("idSector")
-    public Integer idSector;
+    @JsonProperty("Cd_cnsctvo")
+    public Integer Cd_cnsctvo;
 
-    @JsonProperty("cd_cnctivo")
-    public Integer cd_cnctivo;
+    @JsonProperty("IdSector")
+    public Integer IdSector;
 
-    @JsonProperty("TextoCorreo")
-    public String TextoCorreo;
+    @JsonProperty("IdValor")
+    public Integer IdValor;
 
-    @JsonProperty("TextoWhat")
-    public String TextoWhat;
+    @JsonProperty("ValorUnd")
+    public Integer ValorUnd;
 
-    @JsonProperty("ImgCorreo")
-    public String ImgCorreo;
-
-    @JsonProperty("TextoSms")
-    public String TextoSms;
 }
