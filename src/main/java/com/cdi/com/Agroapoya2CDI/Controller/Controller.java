@@ -172,6 +172,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.ImagesApiEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.JornadasOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ListasDatosBancoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.MV_INSERT_AGRO_PERSONASVDOSEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ManyChatFlowsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.OfertasCarritoComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.OfertasHistorialEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ProductoEntity;
@@ -418,6 +419,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.cdi.com.Agroapoya2CDI.Services.MV_INSERT_AGRO_PERSONASVDOSService;
+import com.cdi.com.Agroapoya2CDI.Services.ManyChatFlowsService;
 import com.cdi.com.Agroapoya2CDI.Services.OfertasCarritoComprasService;
 import com.cdi.com.Agroapoya2CDI.Services.OfertasHistorialService;
 import com.cdi.com.Agroapoya2CDI.Services.OlvidoClaveService;
@@ -1194,6 +1196,9 @@ public class Controller {
     
     @Autowired
     CToppingCarroModService serviceCToppingCarroModService;
+    
+    @Autowired
+    ManyChatFlowsService serviceManyChatFlowsService;
     
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3119,5 +3124,11 @@ public class Controller {
     public String ModCToppingCarro(
             @RequestBody CToppingCarroModEntity entidad) {
         return serviceCToppingCarroModService.ModCToppingCarro(entidad);
+    }
+    
+    @PostMapping("/CManyChatFlows")
+    public String CManyChatFlows(
+            @RequestBody ManyChatFlowsEntity entidad) {
+        return serviceManyChatFlowsService.CManyChatFlows(entidad);
     }
 }

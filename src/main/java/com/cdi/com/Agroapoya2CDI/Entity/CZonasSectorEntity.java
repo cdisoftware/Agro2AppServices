@@ -23,4 +23,13 @@ public class CZonasSectorEntity {
 
     @JsonProperty("Descripcion")
     public String Descripcion;
+    
+     @JsonProperty("cd_mncpio")
+    public Integer cd_mncpio;
+     
+      @JsonProperty("cd_dpto")
+    public Integer cd_dpto;
+      
+       @JsonProperty("Ciudad")
+    public String Ciudad;
 }
