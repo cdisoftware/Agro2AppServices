@@ -116,8 +116,20 @@ public class entregasConductorEntity {
 
     @JsonProperty("producto_add")
     public String producto_add;
-    
-     @JsonProperty("peso_add")
+
+    @JsonProperty("peso_add")
     public String peso_add;
+
+    @JsonProperty("id_manychat")
+    public String id_manychat;
+
+    @JsonProperty("IdSector")
+    public Integer IdSector;
+
+    @JsonProperty("ID_CARRO")
+    public Integer ID_CARRO;
+
+    @JsonProperty("id_evidencia")
+    public Integer id_evidencia;
 
 }

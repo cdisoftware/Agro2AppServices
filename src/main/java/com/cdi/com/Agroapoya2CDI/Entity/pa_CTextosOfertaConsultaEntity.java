@@ -41,4 +41,11 @@ public class pa_CTextosOfertaConsultaEntity {
 
     @JsonProperty("TextoSms")
     public String TextoSms;
+
+    @JsonProperty("EnvioCorreo")
+    public String EnvioCorreo;
+
+    @JsonProperty("EnvioSms")
+    public String EnvioSms;
+
 }
