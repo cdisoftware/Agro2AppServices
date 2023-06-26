@@ -33,4 +33,7 @@ public class TSectoresEtvEntity {
     @JsonProperty("coordenadas")
     public String coordenadas;
 
+    @JsonProperty("Ciudad")
+    public String Ciudad;
+
 }
