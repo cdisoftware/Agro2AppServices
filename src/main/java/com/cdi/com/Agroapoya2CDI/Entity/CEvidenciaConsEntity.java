@@ -102,4 +102,10 @@ public class CEvidenciaConsEntity {
     @JsonProperty("valorTopping")
     public String valorTopping;
 
+    @JsonProperty("EntregaTopping")
+    public String EntregaTopping;
+
+    @JsonProperty("EntregaProducto")
+    public String EntregaProducto;
+
 }
