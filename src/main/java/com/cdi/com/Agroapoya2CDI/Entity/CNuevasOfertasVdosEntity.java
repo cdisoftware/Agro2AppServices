@@ -165,4 +165,6 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("mxmo_unddes_indvdual")
     public Integer mxmo_unddes_indvdual;
 
+    @JsonProperty("UrlImagen")
+    public String UrlImagen;
 }
