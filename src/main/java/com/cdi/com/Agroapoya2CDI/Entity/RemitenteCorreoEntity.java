@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +16,8 @@ import lombok.Data;
             resultClasses = RemitenteCorreoEntity.class)
 })
 public class RemitenteCorreoEntity {
-      @Id
+
+    @Id
     @JsonProperty("Id")
     public Integer Id;
 
