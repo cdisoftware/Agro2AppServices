@@ -95,4 +95,7 @@ public class CReporteVentasEntity {
 
     @JsonProperty("ValorProdcuto")
     public String ValorProdcuto;
+
+    @JsonProperty("ValorDomicilio")
+    public String ValorDomicilio;
 }

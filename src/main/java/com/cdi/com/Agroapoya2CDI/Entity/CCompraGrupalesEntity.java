@@ -96,4 +96,6 @@ public class CCompraGrupalesEntity {
     @JsonProperty("valorProducto")
     public String valorProducto;
 
+    @JsonProperty("ValorDomicilio")
+    public String ValorDomicilio;
 }

@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -56,7 +57,7 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
     public String CorreoIndividualEnvio(Integer bandera, Integer IdPlantilla, Integer usucodig, Integer Cd_cnctvo, Integer Id_Clnte, Integer IdSctor) {
         Map<String, Object> mapMessage = new HashMap<>();
         try {
-            Context context = new Context();
+
             StoredProcedureQuery rolconsola = repositorio.createNamedStoredProcedureQuery("paC_EnvioCorreo_Individual");
             rolconsola.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
             rolconsola.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
@@ -71,10 +72,10 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
             rolconsola.setParameter("Cd_cnctvo", Cd_cnctvo);
             rolconsola.setParameter("Id_Clnte", Id_Clnte);
             rolconsola.setParameter("IdSctor", IdSctor);
-
             rolconsola.getResultList();
             List<EnvioCorreo_IndividualEntity> cuerpocorreo = rolconsola.getResultList();
 
+            Context context = new Context();
             String[] rem = new String[cuerpocorreo.size()];
             for (int i = 0; i < cuerpocorreo.size(); i++) {
                 imagenencabezado = rem[i] = cuerpocorreo.get(i).getImagenEnc();
@@ -146,7 +147,43 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
         try {
             // Establecer la información básica del correo
             message.setFrom(new InternetAddress(correoremitente));
-            message.setRecipients(Message.RecipientType.TO, destinatario);
+
+            StoredProcedureQuery rolconsola = repositorio.createNamedStoredProcedureQuery("paC_EnvioCorreo_Individual");
+            rolconsola.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("usucodig", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("Cd_cnctvo", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("Id_Clnte", Integer.class, ParameterMode.IN);
+            rolconsola.registerStoredProcedureParameter("IdSctor", Integer.class, ParameterMode.IN);
+
+            rolconsola.setParameter("bandera", bandera);
+            rolconsola.setParameter("IdPlantilla", IdPlantilla);
+            rolconsola.setParameter("usucodig", usucodig);
+            rolconsola.setParameter("Cd_cnctvo", Cd_cnctvo);
+            rolconsola.setParameter("Id_Clnte", Id_Clnte);
+            rolconsola.setParameter("IdSctor", IdSctor);
+            rolconsola.getResultList();
+            List<EnvioCorreo_IndividualEntity> cuerpocorreo = rolconsola.getResultList();
+
+            String[] r = new String[cuerpocorreo.size()];
+            String[] ArregloDestinatarios = new String[cuerpocorreo.size()];
+
+            for (int i = 0; i < cuerpocorreo.size(); i++) {
+                destinatario = r[i] = cuerpocorreo.get(i).getEmail();
+                ArregloDestinatarios[i] = destinatario;
+            }
+            Integer idplantilla = cuerpocorreo.get(0).getIdPlantilla();
+            Address[] tos = new InternetAddress[ArregloDestinatarios.length];
+            if (ArregloDestinatarios != null && ArregloDestinatarios.length > 0) {
+                for (int j = 0; j < ArregloDestinatarios.length; j++) {
+                    tos[j] = new InternetAddress(ArregloDestinatarios[j]);
+                }
+                message.setRecipients(Message.RecipientType.TO, tos);
+            } else {
+                tos[0] = new InternetAddress(destinatario);
+            }
+
+            //message.setRecipients(Message.RecipientType.TO, destinatario);
             message.setSubject(mapMessage.get("subject").toString());
             //message.setText("blabla");
 
@@ -154,7 +191,7 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
             adjuntos.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             adjuntos.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
             adjuntos.setParameter("Bandera", bandera);
-            adjuntos.setParameter("IdPlantilla", IdPlantilla);
+            adjuntos.setParameter("IdPlantilla", idplantilla);
             adjuntos.getResultList();
 
             List<DocuEnvioCorreoEntity> documentos = adjuntos.getResultList();

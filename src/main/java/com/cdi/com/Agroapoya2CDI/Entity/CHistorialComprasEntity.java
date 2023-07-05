@@ -165,4 +165,6 @@ public class CHistorialComprasEntity {
     @JsonProperty("DesPagoParti")
     public String DesPagoParti;
 
+    @JsonProperty("ValorDomicilio")
+    public String ValorDomicilio;
 }

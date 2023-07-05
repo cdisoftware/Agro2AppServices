@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class InfoUserTelServiceImplentacion implements InfoUserTelService {
 
     @Override
-    public String InfoUserTelManychat(String phone) {
+    public String InfoUserTelManychat(InfoUserTelEntity entidad) {
         String Respuesta = "";
         try {
             RestTemplate rt = new RestTemplate();
@@ -26,10 +26,10 @@ public class InfoUserTelServiceImplentacion implements InfoUserTelService {
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.set("Authorization", "Bearer 478118:7ec9b22d0d4b87182fcafa3a9ea04c55");
             headers.set("Content-Type", "application/json");
-            MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
-            parameters.add("phone", phone);
+         
+
             HttpEntity<String> request = new HttpEntity<>(headers);
-            ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/findBySystemField?phone=" + phone, HttpMethod.GET, request, String.class);
+            ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/findBySystemField?phone=%2B57" + entidad.getPhone() + "&email=" + entidad.getEmail(), HttpMethod.GET, request, String.class);
             Object chatObjetc = response.getBody();
 
             Respuesta = chatObjetc.toString();
