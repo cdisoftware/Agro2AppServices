@@ -13,4 +13,7 @@ public class InfoUserTelEntity implements Serializable {
     @Id
     @JsonProperty("phone")
     public String phone;
+
+    @JsonProperty("email")
+    public String email;
 }
