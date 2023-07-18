@@ -8,10 +8,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class InfoUserTelEntity implements Serializable {
+public class CrearCampoManyChatEntity implements Serializable {
 
     @Id
-    @JsonProperty("phone")
-    public String phone;
+    @JsonProperty("caption")
+    public String caption;
 
+    @JsonProperty("type")
+    public String type;
+
+    @JsonProperty("description")
+    public String description;
 }

@@ -19,7 +19,7 @@ public class pa_CTextosOfertaConsultaEntity {
 
     @Id
     @JsonProperty("idCorreo")
-    public String idCorreo;
+    public Integer idCorreo;
 
     @JsonProperty("ImgCorreo")
     public String ImgCorreo;
@@ -31,10 +31,10 @@ public class pa_CTextosOfertaConsultaEntity {
     public String TextoWhat;
 
     @JsonProperty("cd_cnctivo")
-    public String cd_cnctivo;
+    public Integer cd_cnctivo;
 
     @JsonProperty("idSector")
-    public String idSector;
+    public Integer idSector;
 
     @JsonProperty("Plantilla")
     public String Plantilla;
@@ -43,9 +43,9 @@ public class pa_CTextosOfertaConsultaEntity {
     public String TextoSms;
 
     @JsonProperty("EnvioCorreo")
-    public String EnvioCorreo;
+    public Integer EnvioCorreo;
 
     @JsonProperty("EnvioSms")
-    public String EnvioSms;
+    public Integer EnvioSms;
 
 }

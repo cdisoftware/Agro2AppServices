@@ -132,4 +132,6 @@ public class COfertaEntity {
     @JsonProperty("MunicipioEntrega")
     public String MunicipioEntrega;
 
+    @JsonProperty("valor_unidad_formato_PROD")
+    public String valor_unidad_formato_PROD;
 }

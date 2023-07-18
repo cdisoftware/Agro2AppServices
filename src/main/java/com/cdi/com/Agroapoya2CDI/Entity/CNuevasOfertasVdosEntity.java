@@ -167,4 +167,7 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("UrlImagen")
     public String UrlImagen;
+
+    @JsonProperty("carroPer")
+    public String carroPer;
 }

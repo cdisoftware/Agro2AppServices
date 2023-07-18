@@ -60,4 +60,6 @@ public class CSectorOfertaEntity {
     @JsonProperty("IdBodega")
     public Integer IdBodega;
 
+    @JsonProperty("imagen_sctor")
+    public String imagen_sctor;
 }
