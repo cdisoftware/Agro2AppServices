@@ -29,7 +29,7 @@ public class InfoUserTelServiceImplentacion implements InfoUserTelService {
          
 
             HttpEntity<String> request = new HttpEntity<>(headers);
-            ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/findBySystemField?phone=%2B57" + entidad.getPhone() + "&email=" + entidad.getEmail(), HttpMethod.GET, request, String.class);
+            ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/findBySystemField?phone=" + entidad.getPhone(), HttpMethod.GET, request, String.class);
             Object chatObjetc = response.getBody();
 
             Respuesta = chatObjetc.toString();

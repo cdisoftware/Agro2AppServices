@@ -12,18 +12,19 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class pa_CTextosOfertaConsultaServiceImplementacion implements pa_CTextosOfertaConsultaService{
+public class pa_CTextosOfertaConsultaServiceImplementacion implements pa_CTextosOfertaConsultaService {
+
     @PersistenceContext
     private EntityManager repositorio;
 
     @Override
     public List<pa_CTextosOfertaConsultaEntity> ConsTextyOfer(Integer Bandera, Integer idSector, Integer cd_cnctivo) {
-       try {
+        try {
             StoredProcedureQuery respu = repositorio.createNamedStoredProcedureQuery("pa_CTextosOfertaConsulta");
             respu.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("idSector", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("cd_cnctivo", Integer.class, ParameterMode.IN);
-            
+
             respu.setParameter("Bandera", Bandera);
             respu.setParameter("idSector", idSector);
             respu.setParameter("cd_cnctivo", cd_cnctivo);

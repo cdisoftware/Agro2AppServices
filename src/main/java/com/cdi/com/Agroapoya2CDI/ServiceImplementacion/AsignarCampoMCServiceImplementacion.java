@@ -1,8 +1,8 @@
+
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
-import com.cdi.com.Agroapoya2CDI.Entity.ManyChatCreateUserEntity;
-import com.cdi.com.Agroapoya2CDI.Services.ManyChatCreateUserService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.cdi.com.Agroapoya2CDI.Entity.AsignarCampoMCEntity;
+import com.cdi.com.Agroapoya2CDI.Services.AsignarCampoMCService;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUserService {
+public class AsignarCampoMCServiceImplementacion implements AsignarCampoMCService{
 
     @Override
-    public String ModManyChatCraeteUser(ManyChatCreateUserEntity entidad) {       
-        String Respuesta = "";
+    public String AsignarCampoUser(AsignarCampoMCEntity entidad) {
+       String Respuesta = "";
         try {
 
             RestTemplate restTemplate = new RestTemplate();
@@ -28,17 +28,12 @@ public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUs
             headers.set("Content-Type", "application/json");
 
             JSONObject data = new JSONObject();
-            data.put("first_name", entidad.getFirst_name());
-            data.put("last_name", entidad.getLast_name());
-            data.put("phone", entidad.getPhone());            
-            data.put("email", entidad.getEmail());
-            data.put("gender", entidad.getGender());
-            data.put("has_opt_in_sms", entidad.getHas_opt_in_sms());
-            data.put("has_opt_in_email", entidad.getHas_opt_in_email());
-            data.put("consent_phrase", entidad.getConsent_phrase());
+            data.put("subscriber_id", entidad.getSubscriber_id());
+            data.put("field_id", entidad.getField_id());
+            data.put("field_value", entidad.getField_value());
 
             HttpEntity<String> request = new HttpEntity<>(data.toString(), headers);
-            ResponseEntity<String> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/createSubscriber", HttpMethod.POST, request, String.class);
+            ResponseEntity<String> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/setCustomField", HttpMethod.POST, request, String.class);
             Object chatObjetc = response.getBody();
             Respuesta = chatObjetc.toString();
         } catch (Exception ex) {

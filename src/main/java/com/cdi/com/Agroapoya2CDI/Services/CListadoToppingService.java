@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CListadoToppingService {
 
-    public List<CListadoToppingEntity> ConsultaCListadoTopping(Integer Bandera, Integer Id_Sector, Integer cd_cnctivo);
+    public List<CListadoToppingEntity> ConsultaCListadoTopping(Integer Bandera, Integer Id_Sector, Integer cd_cnctivo, Integer Usucodig);
 }

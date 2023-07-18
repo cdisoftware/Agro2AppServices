@@ -18,16 +18,18 @@ public class CListadoToppingServiceImplementacion implements CListadoToppingServ
     private EntityManager repositorio;
 
     @Override
-    public List<CListadoToppingEntity> ConsultaCListadoTopping(Integer Bandera, Integer Id_Sector, Integer cd_cnctivo) {
+    public List<CListadoToppingEntity> ConsultaCListadoTopping(Integer Bandera, Integer Id_Sector, Integer cd_cnctivo, Integer Usucodig) {
         try {
             StoredProcedureQuery lisTopping = repositorio.createNamedStoredProcedureQuery("paC_ListadoTopping");
             lisTopping.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             lisTopping.registerStoredProcedureParameter("Id_Sector", Integer.class, ParameterMode.IN);
             lisTopping.registerStoredProcedureParameter("cd_cnctivo", Integer.class, ParameterMode.IN);
+            lisTopping.registerStoredProcedureParameter("Usucodig", Integer.class, ParameterMode.IN);
 
             lisTopping.setParameter("Bandera", Bandera);
             lisTopping.setParameter("Id_Sector", Id_Sector);
             lisTopping.setParameter("cd_cnctivo", cd_cnctivo);
+            lisTopping.setParameter("Usucodig", Usucodig);
 
             return lisTopping.getResultList();
         } catch (Exception ex) {

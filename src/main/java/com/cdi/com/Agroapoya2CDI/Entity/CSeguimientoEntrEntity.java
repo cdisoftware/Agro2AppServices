@@ -11,11 +11,11 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paC_entragasConductor",
-            procedureName = "paC_entragasConductor",
-            resultClasses = entregasConductorEntity.class)
+            name = "paC_SeguimientoEntregas",
+            procedureName = "paC_SeguimientoEntregas",
+            resultClasses = CSeguimientoEntrEntity.class)
 })
-public class entregasConductorEntity {
+public class CSeguimientoEntrEntity {
 
     @Id
     @JsonProperty("ID")
@@ -64,10 +64,10 @@ public class entregasConductorEntity {
     public String descTipoPago;
 
     @JsonProperty("IDGRUPO")
-    public Integer IDGRUPO;
+    public String IDGRUPO;
 
     @JsonProperty("tipo_compra")
-    public String tipo_compra;
+    public Integer tipo_compra;
 
     @JsonProperty("descTipoCompra")
     public String descTipoCompra;
@@ -94,7 +94,7 @@ public class entregasConductorEntity {
     public String PLCA;
 
     @JsonProperty("COD_PEDIDO")
-    public String COD_PEDIDO;
+    public Integer COD_PEDIDO;
 
     @JsonProperty("ID_CLNTE")
     public Integer ID_CLNTE;
@@ -121,7 +121,7 @@ public class entregasConductorEntity {
     public String peso_add;
 
     @JsonProperty("id_manychat")
-    public String id_manychat;
+    public Integer id_manychat;
 
     @JsonProperty("IdSector")
     public Integer IdSector;
@@ -134,11 +134,7 @@ public class entregasConductorEntity {
 
     @JsonProperty("orden")
     public Integer orden;
-
+    
     @JsonProperty("USUCODIG")
-    public Integer USUCODIG;
-
-    @JsonProperty("IdGrupoMilla")
-    public Integer IdGrupoMilla;
-
+    public String USUCODIG;
 }

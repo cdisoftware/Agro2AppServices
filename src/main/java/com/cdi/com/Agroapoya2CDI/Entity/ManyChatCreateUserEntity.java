@@ -18,10 +18,7 @@ public class ManyChatCreateUserEntity implements Serializable {
     public String last_name;
 
     @JsonProperty("phone")
-    public String phone;
-
-    @JsonProperty("whatsapp_phone")
-    public String whatsapp_phone;
+    public String phone; 
 
     @JsonProperty("email")
     public String email;

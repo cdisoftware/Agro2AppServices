@@ -36,4 +36,7 @@ public class TSectoresEtvEntity {
     @JsonProperty("Ciudad")
     public String Ciudad;
 
+    @JsonProperty("imagen_sctor")
+    public String imagen_sctor;
+
 }

@@ -75,4 +75,7 @@ public class CReporteUsuariosEntity {
     @JsonProperty("Observacion")
     public String Observacion;
 
+    @JsonProperty("Id_ManyChat")
+    public String Id_ManyChat;
+
 }

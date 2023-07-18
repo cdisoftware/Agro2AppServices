@@ -135,4 +135,7 @@ public class COfertasExternasEntity {
     @JsonProperty("CRCTRZCION")
     public String CRCTRZCION;
 
+    @JsonProperty("ImagenMapaSector")
+    public String ImagenMapaSector;
+
 }
