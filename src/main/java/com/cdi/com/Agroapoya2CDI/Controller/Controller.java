@@ -428,6 +428,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CusuariosCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaNumeroService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaUsuSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.EncriptacionService;
+import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreoTransportistaService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreo_IndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioSMSNuevaEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.EnviosmsIndividualService;
@@ -1289,6 +1290,9 @@ public class Controller {
 
     @Autowired
     CSegEntDllService serviceCSegEntDllService;
+
+    @Autowired
+    EnvioCorreoTransportistaService serviceEnvioCorreoTransportistaService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3411,4 +3415,8 @@ public class Controller {
         return serviceCSegEntDllService.ConsSeguimientoEntregasDetalle(bandera, ID_CRRO);
     }
 
+    @PostMapping("/EnvioPdfEmail")
+    public String EnvioPdf(@RequestParam("file") MultipartFile file) {
+        return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(file);
+    }
 }

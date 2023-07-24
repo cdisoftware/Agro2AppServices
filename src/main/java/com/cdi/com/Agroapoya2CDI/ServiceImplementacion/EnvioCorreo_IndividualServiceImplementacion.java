@@ -119,11 +119,16 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
                 servicePath = rem[i] = remite.get(i).getServicePath();
                 contrasena = rem[i] = clsEncriptacion.Desencriptar(remite.get(i).getClave());
             }
+            
+            
+            
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
             props.setProperty("mail.host", servicePath); // servidor pop3
             props.setProperty("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls.enable", "true");
+            
+            
             // Crear objeto de instancia de sesión
             Session session = Session.getInstance(props);
             session.setDebug(true);
