@@ -102,6 +102,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CReporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CSegEntDllEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSeguimientoEntrEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSeguimientoGeneralEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSubSeguimientoEntity;
@@ -346,6 +347,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorPoligonoModService;
+import com.cdi.com.Agroapoya2CDI.Services.CSegEntDllService;
 import com.cdi.com.Agroapoya2CDI.Services.CSeguimientoEntrService;
 import com.cdi.com.Agroapoya2CDI.Services.CSeguimientoGeneralService;
 import com.cdi.com.Agroapoya2CDI.Services.CSubSeguimientoService;
@@ -1284,6 +1286,9 @@ public class Controller {
 
     @Autowired
     ConsultaGrupoMillaService serviceConsultaGrupoMillaService;
+
+    @Autowired
+    CSegEntDllService serviceCSegEntDllService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3397,6 +3402,13 @@ public class Controller {
             @PathVariable Integer IdSector,
             @PathVariable Integer Cd_cnsctvo) {
         return serviceConsultaGrupoMillaService.ConsGrupoMILLA(bandera, IdSector, Cd_cnsctvo);
+    }
+
+    @GetMapping("/consSeguimientoEntregaDell/{bandera}/{ID_CRRO}")
+    public List<CSegEntDllEntity> ConsGrupoMILLA(
+            @PathVariable Integer bandera,
+            @PathVariable Integer ID_CRRO) {
+        return serviceCSegEntDllService.ConsSeguimientoEntregasDetalle(bandera, ID_CRRO);
     }
 
 }

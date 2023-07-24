@@ -141,4 +141,7 @@ public class entregasConductorEntity {
     @JsonProperty("IdGrupoMilla")
     public Integer IdGrupoMilla;
 
+    @JsonProperty("producto_add2")
+    public String producto_add2;
+
 }

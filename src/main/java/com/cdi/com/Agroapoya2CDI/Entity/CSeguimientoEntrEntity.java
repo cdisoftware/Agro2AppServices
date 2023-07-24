@@ -134,7 +134,19 @@ public class CSeguimientoEntrEntity {
 
     @JsonProperty("orden")
     public Integer orden;
-    
+
     @JsonProperty("USUCODIG")
     public String USUCODIG;
+
+    @JsonProperty("IdGrupoMilla")
+    public Integer IdGrupoMilla;
+
+    @JsonProperty("fecha_entrega")
+    public String fecha_entrega;
+
+    @JsonProperty("hora_entrega")
+    public String hora_entrega;
+
+    @JsonProperty("imagen_evidencia")
+    public String imagen_evidencia;
 }
