@@ -3415,8 +3415,15 @@ public class Controller {
         return serviceCSegEntDllService.ConsSeguimientoEntregasDetalle(bandera, ID_CRRO);
     }
 
-    @PostMapping("/EnvioPdfEmail")
-    public String EnvioPdf(@RequestParam("file") MultipartFile file) {
-        return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(file);
+    @PostMapping("/EnvioPdfEmail/{bandera}/{Id_Clnte}/{IdSctor}/{IdPlantilla}/{usucodig}/{Cd_cnctvo}")
+    public String EnvioPdf(@RequestParam("file") MultipartFile file,
+            @PathVariable Integer bandera,
+            @PathVariable Integer Id_Clnte,
+            @PathVariable Integer IdSctor,
+            
+            @PathVariable Integer IdPlantilla,
+            @PathVariable Integer usucodig,
+            @PathVariable Integer Cd_cnctvo) {
+        return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(bandera, Id_Clnte, IdSctor, IdPlantilla,usucodig,Cd_cnctvo, file);
     }
 }
