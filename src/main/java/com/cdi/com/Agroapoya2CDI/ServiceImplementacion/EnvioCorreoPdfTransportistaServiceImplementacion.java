@@ -57,7 +57,7 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
     String contenido;
     String imagenencabezado;
     String imagenpiepagina;
-    
+
     //Archivo pdf
     File ArchivoPDF;
 
@@ -66,9 +66,9 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
         Map<String, Object> mapMessage = new HashMap<>();
         try {
             ArchivoPDF = convertMultipartFileToPDF(file);
-            
+
             Context context = new Context();
-            
+
             StoredProcedureQuery rolconsola = repositorio.createNamedStoredProcedureQuery("paC_EnvioCorreo_Individual");
             rolconsola.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
             rolconsola.registerStoredProcedureParameter("IdPlantilla", Integer.class, ParameterMode.IN);
@@ -86,23 +86,27 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
             rolconsola.getResultList();
             List<EnvioCorreo_IndividualEntity> cuerpocorreo = rolconsola.getResultList();
 
-            imagenencabezado = "https://api.apptotrip.com/ImagenesAgroapoya2/ImagenesPublicidad/correocabeza.jpeg";
-            asunto = " Bienvenido a AgroApoya2, tenemos el gusto de que hagas parte de nuestra familia";
-            destinatario = "williambernalcorredoresonline@gmail.com";//rem[i] = cuerpocorreo.get(i).getEmail();
-            contenido = "<br /> <br /> Gracias  por hacer parte de la comunidad digital que apoya el comercio justo.    &#129303; <br> Estamos  preparando nuestra plataforma para que puedas ofrecer tus productos a los mejores precios.<br><br>Nuestros clientes ya están  listos para hacer sus pedidos, tan pronto tengas lista la información de tu cosecha,<br>publícala en nuestra plataforma,  nosotros nos encargamos de transportarla y venderla.<br><br> <strong>Te recordamos algunos de nuestros beneficios:</strong> <br><br>• Puedes  ofertar varios productos &#x1F34C; &#x1f954; &#x1f955;<br>• Vendes directamente al cliente, SIN INTERMEDIARIOS &#x1f91d;  <br>• Contarás con un transportista cercano que entregué tus productos &#x1f69a;<br>• Recibes el precio justo de la  compra &#x1f64c; <br><br><strong>¿ Cómo públicas una oferta en la plataforma ?</strong><br><br> 1. Ingresas a la plataforma con tu cuenta ya  registrada <a href=\"https://apoya2.co/#/\" style=\"color: #0DA7B0;\"> AQUÍ </a><br>2. Creas la oferta y esperas su  activación <br> 3. Esperas la solicitud del producto por parte del cliente <br> 4. Aprobamos el transportista que cargará  el pedido.<br><br> Ingresa ¡YA! y publica. Recibirás el pago de tus productos en la forma que tu escojas(Efectivo,  transferencia, Nequi, Efecty, entro otros).<br><br>No olvides seguirnos en nuestras redes sociales, en donde también  podrás encontrar información de tu interés. <br><br><strong>Si tienes alguna inquietud, no olvides en contactarnos vía WhatsApp  al 3005617884.</strong> <br><br>";
-            imagenpiepagina = "https://api.apptotrip.com/ImagenesAgroapoya2/ImagenesPublicidad/pie.png";
+            for (int i = 0; i < cuerpocorreo.size(); i++) {
+                if (cuerpocorreo.get(i) != null) {
+                    imagenencabezado = cuerpocorreo.get(i).getImagenEnc();
+                    asunto = cuerpocorreo.get(i).getAsunto();
+                    destinatario = cuerpocorreo.get(i).getEmail();
+                    contenido = cuerpocorreo.get(i).getHtml();
+                    imagenpiepagina = cuerpocorreo.get(i).getImagenPie();
 
-            context.setVariable("imagenencabezado", imagenencabezado);
-            context.setVariable("destinatario", destinatario);
-            context.setVariable("asunto", asunto);
-            context.setVariable("contenido", contenido);
-            context.setVariable("imagenpiepagina", imagenpiepagina);
+                    context.setVariable("imagenencabezado", imagenencabezado);
+                    context.setVariable("destinatario", destinatario);
+                    context.setVariable("asunto", asunto);
+                    context.setVariable("contenido", contenido);
+                    context.setVariable("imagenpiepagina", imagenpiepagina);
 
-            String content = templateEngine.process("EnvioCorreos", context);
-            mapMessage.put("subject", asunto);
-            mapMessage.put("content", content);
-            sendMessage(mapMessage, bandera, Id_Clnte, IdSctor, IdPlantilla, usucodig, Cd_cnctvo);
-            Respuesta = JSONObject.quote("Correo Enviado Correctamente");
+                    String content = templateEngine.process("EnvioCorreos", context);
+                    mapMessage.put("subject", asunto);
+                    mapMessage.put("content", content);
+                    sendMessage(mapMessage, bandera, Id_Clnte, IdSctor, IdPlantilla, usucodig, Cd_cnctvo);
+                    Respuesta = Respuesta + JSONObject.quote("Correo Enviado Correctamente") + " a " + destinatario + " |";
+                }
+            }
 
         } catch (Exception e) {
             return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
@@ -167,9 +171,7 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
             MimeMultipart mp1 = new MimeMultipart();
             mp1.addBodyPart(text);
             MimeMultipart mp2 = new MimeMultipart();
-            
-            
-            
+
             // Crear la parte del cuerpo del mensaje para el archivo adjunto
             MimeBodyPart messageBodyPart = new MimeBodyPart();
 
@@ -178,7 +180,6 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName("RutaTransportista.pdf");
             mp2.addBodyPart(messageBodyPart);
-            
 
             MimeBodyPart content = new MimeBodyPart();
             content.setContent(mp1);
