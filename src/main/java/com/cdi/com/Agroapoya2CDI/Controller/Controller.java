@@ -434,6 +434,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CusuariosCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaNumeroService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaUsuSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.EncriptacionService;
+import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreoTransportistaService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreo_IndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioSMSNuevaEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.EnviosmsIndividualService;
@@ -1278,6 +1279,9 @@ public class Controller {
     CSegEntDllService serviceCSegEntDllService;
 
     @Autowired
+
+    EnvioCorreoTransportistaService serviceEnvioCorreoTransportistaService;
+
     ConsultaUsucodigManychat serviceConsultaUsucodigManychat;
 
     @Autowired
@@ -1288,6 +1292,7 @@ public class Controller {
 
     @Autowired
     CCondAsociadosOfertaService serviceCCondAsociadosOfertaService;
+
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3389,6 +3394,19 @@ public class Controller {
         return serviceCSegEntDllService.ConsSeguimientoEntregasDetalle(bandera, ID_CRRO);
     }
 
+
+    @PostMapping("/EnvioPdfEmail/{bandera}/{Id_Clnte}/{IdSctor}/{IdPlantilla}/{usucodig}/{Cd_cnctvo}")
+    public String EnvioPdf(@RequestParam("file") MultipartFile file,
+            @PathVariable Integer bandera,
+            @PathVariable Integer Id_Clnte,
+            @PathVariable Integer IdSctor,
+            
+            @PathVariable Integer IdPlantilla,
+            @PathVariable Integer usucodig,
+            @PathVariable Integer Cd_cnctvo) {
+        return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(bandera, Id_Clnte, IdSctor, IdPlantilla,usucodig,Cd_cnctvo, file);
+    }
+
     @GetMapping("/consRepEstEntrega/{bandera}/{CD_CNSCTVO}/{ID_SECTOR}/{CD_CNDCTOR}")
     public List<CRepEstEntregaEntity> ConsRepEntrega(
             @PathVariable Integer bandera,
@@ -3406,5 +3424,6 @@ public class Controller {
             @PathVariable Integer idTipoTrans) {
         return serviceCCondAsociadosOfertaService.ConsultaCondAsociadosOferta(Bandera, cd_cnsctivo, idSector, idTipoTrans);
     }
+
 
 }
