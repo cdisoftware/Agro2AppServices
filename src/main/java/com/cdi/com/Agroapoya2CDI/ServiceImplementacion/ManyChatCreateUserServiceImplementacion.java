@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUserService {
 
     @Override
-    public String ModManyChatCraeteUser(ManyChatCreateUserEntity entidad) {       
+    public String ModManyChatCraeteUser(ManyChatCreateUserEntity entidad) {
         String Respuesta = "";
         try {
 
@@ -30,9 +30,7 @@ public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUs
             JSONObject data = new JSONObject();
             data.put("first_name", entidad.getFirst_name());
             data.put("last_name", entidad.getLast_name());
-            data.put("phone", entidad.getPhone());            
-            data.put("email", entidad.getEmail());
-            data.put("gender", entidad.getGender());
+            data.put("whatsapp_phone", entidad.getWhatsapp_phone());
             data.put("has_opt_in_sms", entidad.getHas_opt_in_sms());
             data.put("has_opt_in_email", entidad.getHas_opt_in_email());
             data.put("consent_phrase", entidad.getConsent_phrase());

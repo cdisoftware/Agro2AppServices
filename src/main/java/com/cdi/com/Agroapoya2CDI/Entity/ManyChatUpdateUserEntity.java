@@ -13,21 +13,15 @@ public class ManyChatUpdateUserEntity implements Serializable {
     @Id
     @JsonProperty("subscriber_id")
     public Integer subscriber_id;
-    
+
     @JsonProperty("first_name")
     public String first_name;
 
     @JsonProperty("last_name")
     public String last_name;
 
-    @JsonProperty("phone")
-    public String phone;
-
-    @JsonProperty("email")
-    public String email;
-
-    @JsonProperty("gender")
-    public String gender;
+    @JsonProperty("whatsapp_phone")
+    public String whatsapp_phone;
 
     @JsonProperty("has_opt_in_sms")
     public Boolean has_opt_in_sms;
