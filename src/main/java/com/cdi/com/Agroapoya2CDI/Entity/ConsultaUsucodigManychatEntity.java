@@ -8,10 +8,12 @@ import lombok.Data;
 
 @Entity
 @Data
-public class InfoUserTelEntity implements Serializable {
+public class ConsultaUsucodigManychatEntity implements Serializable {
 
     @Id
-    @JsonProperty("phone")
-    public String phone;
+    @JsonProperty("field_id")
+    public Integer field_id;
 
+    @JsonProperty("field_value")
+    public String field_value;
 }

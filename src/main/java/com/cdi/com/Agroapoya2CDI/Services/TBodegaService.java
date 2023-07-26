@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface TBodegaService {
 
-    public List<TBodegasEntity> ConsultaTBodega(Integer Bandera, Integer IdDepa, Integer IdCiudad);
+    public List<TBodegasEntity> ConsultaTBodega(Integer Bandera, Integer IdDepa, Integer IdCiudad, Integer IdSector);
 }
