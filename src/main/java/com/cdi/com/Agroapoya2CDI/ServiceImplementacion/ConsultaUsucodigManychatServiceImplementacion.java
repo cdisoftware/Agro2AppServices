@@ -1,24 +1,22 @@
+
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
-import com.cdi.com.Agroapoya2CDI.Entity.InfoUserTelEntity;
-import com.cdi.com.Agroapoya2CDI.Services.InfoUserTelService;
-import org.json.JSONObject;
+import com.cdi.com.Agroapoya2CDI.Entity.ConsultaUsucodigManychatEntity;
+import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychat;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class InfoUserTelServiceImplentacion implements InfoUserTelService {
+public class ConsultaUsucodigManychatServiceImplementacion implements ConsultaUsucodigManychat{
 
     @Override
-    public String InfoUserTelManychat(InfoUserTelEntity entidad) {
-        String Respuesta = "";
+    public String ConsUsucodigMC(ConsultaUsucodigManychatEntity entidad) {
+      String Respuesta = "";
         try {
             RestTemplate rt = new RestTemplate();
 
@@ -29,9 +27,8 @@ public class InfoUserTelServiceImplentacion implements InfoUserTelService {
          
 
             HttpEntity<String> request = new HttpEntity<>(headers);
-            ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/findBySystemField?phone=" + entidad.getPhone(), HttpMethod.GET, request, String.class);
+            ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/findByCustomField?field_id=" + entidad.getField_id() + "&field_value=" + entidad.getField_value(), HttpMethod.GET, request, String.class);
             Object chatObjetc = response.getBody();
-
             Respuesta = chatObjetc.toString();
         } catch (Exception ex) {
             return "Error:" + ex.getMessage();
