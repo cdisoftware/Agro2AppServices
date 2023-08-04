@@ -45,6 +45,9 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.registerStoredProcedureParameter("LINKLANDIGN", String.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("TPO_DESCUENTO", Integer.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("VALOR_REFERENCIA", Integer.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("TIPO_CUPON", Integer.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("DES_CUPONREGALO", String.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("IMG_CUPONREGALO", String.class, ParameterMode.IN);
 
             modval.setParameter("BANDERA", BANDERA);
             modval.setParameter("CD_CNSCTVO", entidad.getCD_CNSCTVO());
@@ -72,6 +75,9 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.setParameter("LINKLANDIGN", entidad.getLINKLANDIGN());
             modval.setParameter("TPO_DESCUENTO", entidad.getTPO_DESCUENTO());
             modval.setParameter("VALOR_REFERENCIA", entidad.getVALOR_REFERENCIA());
+            modval.setParameter("TIPO_CUPON", entidad.getTIPO_CUPON());
+            modval.setParameter("DES_CUPONREGALO", entidad.getDES_CUPONREGALO());
+            modval.setParameter("IMG_CUPONREGALO", entidad.getIMG_CUPONREGALO());
 
             modval.execute();
             return JSONObject.quote((String) modval.getOutputParameterValue("Respuesta"));

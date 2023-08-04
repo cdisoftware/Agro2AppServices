@@ -99,4 +99,13 @@ public class CValoracionOfertaModEntity {
 
     @JsonProperty("VALOR_REFERENCIA")
     public Integer VALOR_REFERENCIA;
+
+    @JsonProperty("TIPO_CUPON")
+    public Integer TIPO_CUPON;
+
+    @JsonProperty("DES_CUPONREGALO")
+    public String DES_CUPONREGALO;
+
+    @JsonProperty("IMG_CUPONREGALO")
+    public String IMG_CUPONREGALO;
 }

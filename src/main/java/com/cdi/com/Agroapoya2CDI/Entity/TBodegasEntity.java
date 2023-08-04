@@ -32,4 +32,22 @@ public class TBodegasEntity {
 
     @JsonProperty("Coordenadas")
     public String Coordenadas;
+
+    @JsonProperty("SCTOR_OFRTA")
+    public Integer SCTOR_OFRTA;
+
+    @JsonProperty("DSCRPCION_SCTOR")
+    public String DSCRPCION_SCTOR;
+
+    @JsonProperty("IdDepa")
+    public Integer IdDepa;
+
+    @JsonProperty("IdCiudad")
+    public Integer IdCiudad;
+
+    @JsonProperty("Depto")
+    public String Depto;
+
+    @JsonProperty("Ciudad")
+    public String Ciudad;
 }

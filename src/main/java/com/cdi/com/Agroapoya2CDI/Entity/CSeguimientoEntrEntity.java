@@ -149,4 +149,7 @@ public class CSeguimientoEntrEntity {
 
     @JsonProperty("imagen_evidencia")
     public String imagen_evidencia;
+    
+     @JsonProperty("forma_pago")
+    public String forma_pago;
 }
