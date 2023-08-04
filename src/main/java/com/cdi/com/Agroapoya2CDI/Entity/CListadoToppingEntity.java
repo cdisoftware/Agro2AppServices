@@ -54,4 +54,7 @@ public class CListadoToppingEntity {
     @JsonProperty("PesoKilos")
     public String PesoKilos;
 
+    @JsonProperty("Tipo_ToppingVenta")
+    public String Tipo_ToppingVenta;
+
 }

@@ -59,11 +59,17 @@ public class CparticipanteGrupoEntity {
 
     @JsonProperty("Vinculado")
     public Integer Vinculado;
-    
-     @JsonProperty("SumToppings")
+
+    @JsonProperty("SumToppings")
     public String SumToppings;
-     
-      @JsonProperty("ValorProdcuto")
+
+    @JsonProperty("ValorProdcuto")
     public String ValorProdcuto;
+
+    @JsonProperty("MedioPago")
+    public Integer MedioPago;
+
+    @JsonProperty("DesMedioPago")
+    public String DesMedioPago;
 
 }

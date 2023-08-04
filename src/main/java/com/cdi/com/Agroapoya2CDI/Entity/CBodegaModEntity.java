@@ -13,8 +13,8 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paInsertaTipoServidor",
-            procedureName = "paInsertaTipoServidor",
+            name = "paC_BodegaMod",
+            procedureName = "paC_BodegaMod",
             parameters = {
                 @StoredProcedureParameter(name = "Respuesta",
                         mode = ParameterMode.OUT,

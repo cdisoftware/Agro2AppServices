@@ -24,6 +24,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CAgro_GruposUltimaMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAnadirValoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAplantillaCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAsignaBodegaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CBodegaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinGrupalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinIndividualEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinMixtaEntity;
@@ -102,6 +103,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CRepEstEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteVentasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CSectorBodegaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CSectorOfertaModEntity;
@@ -148,6 +150,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CdescargasTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CdetalleAppEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ChatGPTentity;
 import com.cdi.com.Agroapoya2CDI.Entity.CinciaTransMillaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CinfoOfertaGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CiudadOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ClientePagosTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ClistaPersonaEntity;
@@ -157,8 +160,9 @@ import com.cdi.com.Agroapoya2CDI.Entity.ConductorOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorSectorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaGrupoMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaUsucodigManychatEntity;
+
 import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
-import com.cdi.com.Agroapoya2CDI.Entity.CorreosMasivosPandaEntity;
+
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpagosLiderEntity;
@@ -239,6 +243,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.mv_listaSectoresConOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.productosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageException;
@@ -268,6 +273,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CAgroValidaEncuestaService;
 import com.cdi.com.Agroapoya2CDI.Services.CAnadirValoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.CAplantillaCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CAsignaBodegaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CBodegaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinGrupalService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinMixtaService;
@@ -348,6 +354,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CRepEstEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteVentasService;
+import com.cdi.com.Agroapoya2CDI.Services.CSectorBodegaService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CSectorOfertaService;
@@ -397,6 +404,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CdescargasTranService;
 import com.cdi.com.Agroapoya2CDI.Services.CdetalleAppService;
 import com.cdi.com.Agroapoya2CDI.Services.ChatGPTservice;
 import com.cdi.com.Agroapoya2CDI.Services.CinciaTransMillaService;
+import com.cdi.com.Agroapoya2CDI.Services.CinfoOfertaGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.CiudadOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ClientePagosTransService;
 import com.cdi.com.Agroapoya2CDI.Services.ClistaPersonaService;
@@ -405,7 +413,8 @@ import com.cdi.com.Agroapoya2CDI.Services.ConductorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorSectorModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaGrupoMillaService;
-import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychat;
+import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychatService;
+
 import com.cdi.com.Agroapoya2CDI.Services.CorreoIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreoMomentoEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreosMasivosPandaService;
@@ -506,6 +515,7 @@ import com.cdi.com.Agroapoya2CDI.Services.mv_EnvioCorreoTransprtistaViejeService
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.productosService;
+import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
 import java.io.File;
@@ -1279,10 +1289,10 @@ public class Controller {
     CSegEntDllService serviceCSegEntDllService;
 
     @Autowired
-
     EnvioCorreoTransportistaService serviceEnvioCorreoTransportistaService;
 
-    ConsultaUsucodigManychat serviceConsultaUsucodigManychat;
+    @Autowired
+    ConsultaUsucodigManychatService serviceConsultaUsucodigManychatService;
 
     @Autowired
     AsignaCampoUsucodigMCService serviceAsignaCampoUsucodigMCService;
@@ -1293,6 +1303,17 @@ public class Controller {
     @Autowired
     CCondAsociadosOfertaService serviceCCondAsociadosOfertaService;
 
+    @Autowired
+    CBodegaModService serviceCBodegaModService;
+
+    @Autowired
+    CSectorBodegaService serviceCSectorBodegaService;
+
+    @Autowired
+    tipoCunponService servicetipoCunponService;
+
+    @Autowired
+    CinfoOfertaGrupoService serviceCinfoOfertaGrupoService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3317,15 +3338,16 @@ public class Controller {
     @PostMapping("/ConsultaUsucodigManychat")
     public String ConsUsucodigMC(
             @RequestBody ConsultaUsucodigManychatEntity entidad) {
-        return serviceConsultaUsucodigManychat.ConsUsucodigMC(entidad);
+        return serviceConsultaUsucodigManychatService.ConsUsucodigMC(entidad);
     }
 
-    @PostMapping("/consccarrocomprastem/{Bandera}/{Usucodig}")
+    @PostMapping("/consccarrocomprastem/{Bandera}/{Usucodig}/{CodigoDescuento}")
     public List<CCarroComprasTemEntity> consultaCarroComprasTem(
             @RequestBody CCarroComprasTemEntity entidad,
             @PathVariable Integer Bandera,
-            @PathVariable Integer Usucodig) {
-        return serviceCCarroComprasTemService.consultaCarroComprasTem(entidad, Bandera, Usucodig);
+            @PathVariable Integer Usucodig,
+            @PathVariable String CodigoDescuento) {
+        return serviceCCarroComprasTemService.consultaCarroComprasTem(entidad, Bandera, Usucodig, CodigoDescuento);
     }
 
     @GetMapping("/conscperfilcampesino/{Usucodig}")
@@ -3394,17 +3416,15 @@ public class Controller {
         return serviceCSegEntDllService.ConsSeguimientoEntregasDetalle(bandera, ID_CRRO);
     }
 
-
     @PostMapping("/EnvioPdfEmail/{bandera}/{Id_Clnte}/{IdSctor}/{IdPlantilla}/{usucodig}/{Cd_cnctvo}")
     public String EnvioPdf(@RequestParam("file") MultipartFile file,
             @PathVariable Integer bandera,
             @PathVariable Integer Id_Clnte,
             @PathVariable Integer IdSctor,
-            
             @PathVariable Integer IdPlantilla,
             @PathVariable Integer usucodig,
             @PathVariable Integer Cd_cnctvo) {
-        return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(bandera, Id_Clnte, IdSctor, IdPlantilla,usucodig,Cd_cnctvo, file);
+        return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(bandera, Id_Clnte, IdSctor, IdPlantilla, usucodig, Cd_cnctvo, file);
     }
 
     @GetMapping("/consRepEstEntrega/{bandera}/{CD_CNSCTVO}/{ID_SECTOR}/{CD_CNDCTOR}")
@@ -3425,5 +3445,30 @@ public class Controller {
         return serviceCCondAsociadosOfertaService.ConsultaCondAsociadosOferta(Bandera, cd_cnsctivo, idSector, idTipoTrans);
     }
 
+    @PostMapping("/ModCBodega/{Bandera}")
+    public String ModBodega(
+            @RequestBody CBodegaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCBodegaModService.ModBodega(entidad, Bandera);
+    }
 
+    @GetMapping("/conSectorBodega/{Bandera}/{IdBodega}")
+    public List<CSectorBodegaEntity> ConsultaCSectorBodega(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdBodega) {
+        return serviceCSectorBodegaService.ConsultaCSectorBodega(Bandera, IdBodega);
+    }
+
+    @GetMapping("/consTipoCupon/{Bandera}")
+    public List<tipoCunponEntity> ConsultaTipoCupon(
+            @PathVariable Integer Bandera) {
+        return servicetipoCunponService.ConsultaTipoCupon(Bandera);
+    }
+
+    @GetMapping("/consCInfOfertaGrupo/{Bandera}/{codigo_Mostrar}")
+    public List<CinfoOfertaGrupoEntity> consultaInfOfertaGp(
+            @PathVariable Integer Bandera,
+            @PathVariable String codigo_Mostrar) {
+        return serviceCinfoOfertaGrupoService.consultaInfOfertaGp(Bandera, codigo_Mostrar);
+    }
 }

@@ -170,4 +170,22 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("carroPer")
     public String carroPer;
+
+    @JsonProperty("tipo_cupon")
+    public String tipo_cupon;
+
+    @JsonProperty("desc_cupon")
+    public String desc_cupon;
+
+    @JsonProperty("img_cupon")
+    public String img_cupon;
+
+    @JsonProperty("IdTipoCompra")
+    public Integer IdTipoCompra;
+
+    @JsonProperty("DescTipoCompra")
+    public String DescTipoCompra;
+
+    @JsonProperty("mnmo_unddes_indvdual")
+    public Integer mnmo_unddes_indvdual;
 }
