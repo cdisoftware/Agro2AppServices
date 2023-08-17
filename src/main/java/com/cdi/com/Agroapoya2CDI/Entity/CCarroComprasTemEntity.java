@@ -192,4 +192,25 @@ public class CCarroComprasTemEntity {
     @JsonProperty("Info_Toppings")
     public String Info_Toppings;
 
+    @JsonProperty("desc_cupon")
+    public String desc_cupon;
+
+    @JsonProperty("TPO_OFRTA")
+    public String TPO_OFRTA;
+
+    @JsonProperty("valorSinDesAncla")
+    public String valorSinDesAncla;
+    
+    @JsonProperty("IdCodGrupoParti")
+    public Integer IdCodGrupoParti;
+    
+    @JsonProperty("MostrarCodGrupoParti")
+    public String MostrarCodGrupoParti;
+    
+    @JsonProperty("DireccionLider")
+    public String DireccionLider;
+    
+    @JsonProperty("NombreLider")
+    public String NombreLider;
+     
 }

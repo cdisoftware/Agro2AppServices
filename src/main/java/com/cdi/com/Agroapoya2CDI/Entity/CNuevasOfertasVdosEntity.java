@@ -188,4 +188,5 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("mnmo_unddes_indvdual")
     public Integer mnmo_unddes_indvdual;
+      
 }

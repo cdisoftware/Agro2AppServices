@@ -11,24 +11,36 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "paC_HistorialCompras",
-            procedureName = "paC_HistorialCompras",
-            resultClasses = CHistorialComprasEntity.class)
+            name = "paC_PagoTarjeta",
+            procedureName = "paC_PagoTarjeta",
+            resultClasses = CPagoTarjetaEntity.class)
 })
-public class CHistorialComprasEntity {
+public class CPagoTarjetaEntity {
 
     @Id
-    @JsonProperty("ID_CLNTE")
-    public Integer ID_CLNTE;
-
     @JsonProperty("ID_CARRO")
     public Integer ID_CARRO;
+
+    @JsonProperty("IDGRUPO_PARTI")
+    public Integer IDGRUPO_PARTI;
+
+    @JsonProperty("EsParti")
+    public Integer EsParti;
 
     @JsonProperty("Usucodig")
     public Integer Usucodig;
 
-    @JsonProperty("DireccionEntrega")
-    public String DireccionEntrega;
+    @JsonProperty("tipodescuento")
+    public Integer tipodescuento;
+
+    @JsonProperty("NumReg")
+    public String NumReg;
+
+    @JsonProperty("valorDesc")
+    public String valorDesc;
+
+    @JsonProperty("valorDesForm")
+    public String valorDesForm;
 
     @JsonProperty("Imagen")
     public String Imagen;
@@ -72,6 +84,9 @@ public class CHistorialComprasEntity {
     @JsonProperty("IdEstdoCarrito")
     public Integer IdEstdoCarrito;
 
+    @JsonProperty("DesEstdoCarrito")
+    public String DesEstdoCarrito;
+
     @JsonProperty("fechaCompra")
     public String fechaCompra;
 
@@ -102,6 +117,45 @@ public class CHistorialComprasEntity {
     @JsonProperty("Observaciones")
     public String Observaciones;
 
+    @JsonProperty("MinUni")
+    public Integer MinUni;
+
+    @JsonProperty("MaxUnd")
+    public Integer MaxUnd;
+
+    @JsonProperty("btnComprar")
+    public Integer btnComprar;
+
+    @JsonProperty("btnEliminar")
+    public Integer btnEliminar;
+
+    @JsonProperty("DescToppings")
+    public String DescToppings;
+
+    @JsonProperty("smsNoCompra")
+    public String smsNoCompra;
+
+    @JsonProperty("PosiblePago")
+    public String PosiblePago;
+
+    @JsonProperty("IdPosiblePago")
+    public Integer IdPosiblePago;
+
+    @JsonProperty("VlorDmcInd")
+    public String VlorDmcInd;
+
+    @JsonProperty("VlorDmcGrupal")
+    public String VlorDmcGrupal;
+
+    @JsonProperty("LinkParticipante")
+    public String LinkParticipante;
+
+    @JsonProperty("CodCompra")
+    public String CodCompra;
+
+    @JsonProperty("DireccionEntrega")
+    public String DireccionEntrega;
+
     @JsonProperty("PagoXParti")
     public String PagoXParti;
 
@@ -120,73 +174,42 @@ public class CHistorialComprasEntity {
     @JsonProperty("ValorPagarForm")
     public String ValorPagarForm;
 
-    @JsonProperty("DescToppings")
-    public String DescToppings;
+    @JsonProperty("ValorTodosTopping")
+    public String ValorTodosTopping;
 
-    @JsonProperty("fechaCompraTotal")
-    public String fechaCompraTotal;
+    @JsonProperty("ValorTodosToppingForm")
+    public String ValorTodosToppingForm;
 
-    @JsonProperty("CalificacionProd")
-    public String CalificacionProd;
+    @JsonProperty("IdHexaGrupo")
+    public String IdHexaGrupo;
 
-    @JsonProperty("ComentarioProd")
-    public String ComentarioProd;
+    @JsonProperty("CheckBox")
+    public String CheckBox;
 
-    @JsonProperty("rta_encuesta")
-    public String rta_encuesta;
+    @JsonProperty("Info_oferta")
+    public String Info_oferta;
 
-    @JsonProperty("IdMedioPago")
-    public Integer IdMedioPago;
+    @JsonProperty("Info_Toppings")
+    public String Info_Toppings;
 
-    @JsonProperty("DesMedioPago")
-    public String DesMedioPago;
+    @JsonProperty("desc_cupon")
+    public String desc_cupon;
 
-    @JsonProperty("IdEstadoPago")
-    public Integer IdEstadoPago;
+    @JsonProperty("TPO_OFRTA")
+    public String TPO_OFRTA;
 
-    @JsonProperty("DesEstadoPago")
-    public String DesEstadoPago;
+    @JsonProperty("valorSinDesAncla")
+    public String valorSinDesAncla;
 
-    @JsonProperty("DesEstdoCarrito")
-    public String DesEstdoCarrito;
+    @JsonProperty("NombreLider")
+    public String NombreLider;
 
-    @JsonProperty("CodCompra")
-    public String CodCompra;
+    @JsonProperty("DireccionLider")
+    public String DireccionLider;
 
-    @JsonProperty("idPagoLider")
-    public String idPagoLider;
+    @JsonProperty("MostrarCodGrupoParti")
+    public String MostrarCodGrupoParti;
 
-    @JsonProperty("DesPagoLider")
-    public String DesPagoLider;
-
-    @JsonProperty("IdPagoParti")
-    public Integer IdPagoParti;
-
-    @JsonProperty("DesPagoParti")
-    public String DesPagoParti;
-
-    @JsonProperty("ValorDomicilio")
-    public String ValorDomicilio;
-
-    @JsonProperty("RegaloLider")
-    public String RegaloLider;
-
-    @JsonProperty("CantidadRegaloLider")
-    public String CantidadRegaloLider;
-
-    @JsonProperty("codigo_MostrarParti")
-    public String codigo_MostrarParti;
-
-    @JsonProperty("IDGRUPO_PARTI")
-    public String IDGRUPO_PARTI;
-
-    @JsonProperty("PerteneceSector")
-    public Integer PerteneceSector;
-
-    @JsonProperty("LinkParticipante")
-    public String LinkParticipante;
-
-    @JsonProperty("NombrePersona")
-    public String NombrePersona;
-
+    @JsonProperty("IdCodGrupoParti")
+    public Integer IdCodGrupoParti;
 }

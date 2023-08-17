@@ -64,6 +64,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CGeneracionQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CGrupoMillaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CInfoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CLincortoSpEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorService;
@@ -84,6 +85,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.COfertaImagenModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.COfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.COfertasExternasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.COfertasNuevasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CPagoTarjetaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPerfilCampesinoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPerfilCampesinoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPersonaMenuEntity;
@@ -154,6 +156,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CinfoOfertaGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CiudadOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ClientePagosTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ClistaPersonaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ComprasOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CondrsTransNMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorOfertaModEntity;
@@ -315,6 +318,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CGeneracionQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.CGrupoMillaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CHistorialCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.CInfoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CLincortoSpService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinkConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinksCPyGModService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinksModService;
@@ -334,6 +338,7 @@ import com.cdi.com.Agroapoya2CDI.Services.COfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.COfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.COfertasExternasService;
 import com.cdi.com.Agroapoya2CDI.Services.COfertasNuevasService;
+import com.cdi.com.Agroapoya2CDI.Services.CPagoTarjetaService;
 import com.cdi.com.Agroapoya2CDI.Services.CPagosTransTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.CPerfilCampesinoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPerfilCampesinoService;
@@ -408,6 +413,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CinfoOfertaGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.CiudadOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ClientePagosTransService;
 import com.cdi.com.Agroapoya2CDI.Services.ClistaPersonaService;
+import com.cdi.com.Agroapoya2CDI.Services.ComprasOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CondrsTransNMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorSectorModService;
@@ -1314,6 +1320,15 @@ public class Controller {
 
     @Autowired
     CinfoOfertaGrupoService serviceCinfoOfertaGrupoService;
+
+    @Autowired
+    CPagoTarjetaService serviceCPagoTarjetaService;
+
+    @Autowired
+    CLincortoSpService serviceCLincortoSpService;
+
+    @Autowired
+    ComprasOfertaService serviceComprasOfertaService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3470,5 +3485,27 @@ public class Controller {
             @PathVariable Integer Bandera,
             @PathVariable String codigo_Mostrar) {
         return serviceCinfoOfertaGrupoService.consultaInfOfertaGp(Bandera, codigo_Mostrar);
+    }
+
+    @GetMapping("/consCPagoTarjeta/{Bandera}/{Usucodig}/{IdCarro}")
+    public List<CPagoTarjetaEntity> ConsulPagoTarjeta(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Usucodig,
+            @PathVariable Integer IdCarro) {
+        return serviceCPagoTarjetaService.ConsulPagoTarjeta(Bandera, Usucodig, IdCarro);
+    }
+
+    @PostMapping("/consLinkCortoSp/{BANDERA}")
+    public String LinkCortoSp(
+            @RequestBody CLincortoSpEntity entidad,
+            @PathVariable Integer BANDERA) {
+        return serviceCLincortoSpService.LinkCortoSp(entidad, BANDERA);
+    }
+
+    @GetMapping("/consCompOferta/{bandera}/{CD_CNSCTVO}")
+    public List<ComprasOfertaEntity> ConsultaComprasOferta(
+            @PathVariable Integer bandera,
+            @PathVariable Integer CD_CNSCTVO) {
+        return serviceComprasOfertaService.ConsultaComprasOferta(bandera, CD_CNSCTVO);
     }
 }
