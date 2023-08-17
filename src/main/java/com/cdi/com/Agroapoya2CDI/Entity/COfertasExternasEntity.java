@@ -138,4 +138,6 @@ public class COfertasExternasEntity {
     @JsonProperty("ImagenMapaSector")
     public String ImagenMapaSector;
 
+    @JsonProperty("valorReferenciaProd")
+    public String valorReferenciaProd;
 }
