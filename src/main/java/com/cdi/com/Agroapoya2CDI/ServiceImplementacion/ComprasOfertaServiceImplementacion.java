@@ -18,14 +18,19 @@ public class ComprasOfertaServiceImplementacion implements ComprasOfertaService 
     private EntityManager repositorio;
 
     @Override
-    public List<ComprasOfertaEntity> ConsultaComprasOferta(Integer bandera, Integer CD_CNSCTVO) {
+    public List<ComprasOfertaEntity> ConsultaComprasOferta(Integer bandera, Integer Cd_csctivoNuvaOferta,
+            Integer IdSectorNuevaOferta, Integer IdOfertaRegalo) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paCComprasOferta");
             tpoDoc.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("CD_CNSCTVO", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("Cd_csctivoNuvaOferta", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("IdSectorNuevaOferta", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("IdOfertaRegalo", Integer.class, ParameterMode.IN);
 
             tpoDoc.setParameter("bandera", bandera);
-            tpoDoc.setParameter("CD_CNSCTVO", CD_CNSCTVO);
+            tpoDoc.setParameter("Cd_csctivoNuvaOferta", Cd_csctivoNuvaOferta);
+            tpoDoc.setParameter("IdSectorNuevaOferta", IdSectorNuevaOferta);
+            tpoDoc.setParameter("IdOfertaRegalo", IdOfertaRegalo);
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {

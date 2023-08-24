@@ -35,6 +35,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.CCarroComprasModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCarroComprasTemEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCarroLinkModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCiudadDistribucionOfertEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CCodigoCuponModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CCodigosDescuentoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCompraGrupalesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CComprasModEntity;
@@ -54,6 +56,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDocumentoCorreoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDtlleDescargasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CDtlleDescargasModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CEjecutaSenteciaSQLEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEntCargaBodgaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEntregaSegEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CEnvioCorreoIndEmailEntity;
@@ -96,6 +99,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CPinUltimaMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPubliModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CPublicidadModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionCuponOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemsModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDatosBasicosEntity;
@@ -174,11 +178,14 @@ import com.cdi.com.Agroapoya2CDI.Entity.CperfilClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaCampesinoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaClienteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpersonaTransportistaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CrealacionCuponOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CrearCampoManyChatEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CreateTagEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CseguimientoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtableroEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtableroModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CtipoCuponCodigoAplicableGnlEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CtipoCuponDescGeneralEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoMomentoEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoPlantillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoUsuarioEntity;
@@ -287,6 +294,8 @@ import com.cdi.com.Agroapoya2CDI.Services.CCarroComprasModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCarroComprasTemService;
 import com.cdi.com.Agroapoya2CDI.Services.CCarroLinkModService;
 import com.cdi.com.Agroapoya2CDI.Services.CCiudadDistribucionOfertService;
+import com.cdi.com.Agroapoya2CDI.Services.CCodigoCuponModService;
+import com.cdi.com.Agroapoya2CDI.Services.CCodigosDescuentoService;
 import com.cdi.com.Agroapoya2CDI.Services.CCompraGrupalesService;
 import com.cdi.com.Agroapoya2CDI.Services.CComprasModService;
 import com.cdi.com.Agroapoya2CDI.Services.CComprasService;
@@ -306,6 +315,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CDocumentoCorreoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CDocumentoCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CDtlleDescargaService;
 import com.cdi.com.Agroapoya2CDI.Services.CDtlleDescargasModService;
+import com.cdi.com.Agroapoya2CDI.Services.CEjecutaSenteciaSQLService;
 import com.cdi.com.Agroapoya2CDI.Services.CEntCargaBodgaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CEntregaSegService;
 import com.cdi.com.Agroapoya2CDI.Services.CEnvioCodigoCorreoService;
@@ -350,6 +360,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CPinUltimaMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CPubliModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadModService;
 import com.cdi.com.Agroapoya2CDI.Services.CPublicidadService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionCuponOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemsModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDatosBasicoService;
@@ -432,11 +443,14 @@ import com.cdi.com.Agroapoya2CDI.Services.CperfilClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaCampesinoModService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaClienteModService;
 import com.cdi.com.Agroapoya2CDI.Services.CpersonaTransportistaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CrealacionCuponOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CrearCampoManyChatService;
 import com.cdi.com.Agroapoya2CDI.Services.CreateEtiquetaManyChatService;
 import com.cdi.com.Agroapoya2CDI.Services.CseguimientoService;
 import com.cdi.com.Agroapoya2CDI.Services.CtableroModService;
 import com.cdi.com.Agroapoya2CDI.Services.CtableroService;
+import com.cdi.com.Agroapoya2CDI.Services.CtipoCuponCodigoAplicableGnlService;
+import com.cdi.com.Agroapoya2CDI.Services.CtipoCuponDescGeneralService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoMomentoEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoPlantillaService;
 import com.cdi.com.Agroapoya2CDI.Services.CtipoUsuarioService;
@@ -1329,6 +1343,27 @@ public class Controller {
 
     @Autowired
     ComprasOfertaService serviceComprasOfertaService;
+
+    @Autowired
+    CtipoCuponCodigoAplicableGnlService serviceCtipoCuponCodigoAplicableGnlService;
+
+    @Autowired
+    CtipoCuponDescGeneralService serviceCtipoCuponDescGeneralService;
+
+    @Autowired
+    CCodigosDescuentoService serviceCCodigosDescuentoService;
+
+    @Autowired
+    CrealacionCuponOfertaService serviceCrealacionCuponOfertaService;
+
+    @Autowired
+    CCodigoCuponModService serviceCCodigoCuponModService;
+
+    @Autowired
+    CEjecutaSenteciaSQLService serviceCEjecutaSenteciaSQLService;
+
+    @Autowired
+    CRelacionCuponOfertaModService serviceCRelacionCuponOfertaModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3502,10 +3537,64 @@ public class Controller {
         return serviceCLincortoSpService.LinkCortoSp(entidad, BANDERA);
     }
 
-    @GetMapping("/consCompOferta/{bandera}/{CD_CNSCTVO}")
+    @GetMapping("/consCompOferta/{bandera}/{Cd_csctivoNuvaOferta}/{IdSectorNuevaOferta}/{IdOfertaRegalo}")
     public List<ComprasOfertaEntity> ConsultaComprasOferta(
             @PathVariable Integer bandera,
-            @PathVariable Integer CD_CNSCTVO) {
-        return serviceComprasOfertaService.ConsultaComprasOferta(bandera, CD_CNSCTVO);
+            @PathVariable Integer Cd_csctivoNuvaOferta,
+            @PathVariable Integer IdSectorNuevaOferta,
+            @PathVariable Integer IdOfertaRegalo) {
+        return serviceComprasOfertaService.ConsultaComprasOferta(bandera, Cd_csctivoNuvaOferta, IdSectorNuevaOferta, IdOfertaRegalo);
+    }
+
+    @GetMapping("/consCTipoCuponCodigoAplicableGen/{Bandera}")
+    public List<CtipoCuponCodigoAplicableGnlEntity> ConsultatipoCuponCodigoAplicable(
+            @PathVariable Integer Bandera) {
+        return serviceCtipoCuponCodigoAplicableGnlService.ConsultatipoCuponCodigoAplicable(Bandera);
+    }
+
+    @GetMapping("/consTipoCuponDescGeneral/{Bandera}")
+    public List<CtipoCuponDescGeneralEntity> ConsultaCuponDescGeneral(
+            @PathVariable Integer Bandera) {
+        return serviceCtipoCuponDescGeneralService.ConsultaCuponDescGeneral(Bandera);
+    }
+
+    @GetMapping("/consCodigosDescuentos/{Bandera}/{agro_tipoCuponDescuentoGeneral}/{IdTipoCuponCodigoAplicableGeneral}/{Cd_cnsctvo}/{Estado}")
+    public List<CCodigosDescuentoEntity> ConsultaCodigosDescuentos(
+            @RequestBody CCodigosDescuentoEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer agro_tipoCuponDescuentoGeneral,
+            @PathVariable Integer IdTipoCuponCodigoAplicableGeneral,
+            @PathVariable Integer Cd_cnsctvo,
+            @PathVariable Integer Estado) {
+        return serviceCCodigosDescuentoService.ConsultaCodigosDescuentos(entidad, Bandera, agro_tipoCuponDescuentoGeneral, IdTipoCuponCodigoAplicableGeneral, Cd_cnsctvo, Estado);
+    }
+
+    @GetMapping("/consRelacionCuponOferta/{Bandera}/{cd_cnsctvo}/{codigo_grupo}")
+    public List<CrealacionCuponOfertaEntity> ConsultaCodigosDescuentos(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctvo,
+            @PathVariable Integer codigo_grupo) {
+        return serviceCrealacionCuponOfertaService.ConsultaRealacionCuponOferta(Bandera, cd_cnsctvo, codigo_grupo);
+    }
+
+    @PostMapping("/ModCodigoCupon/{Bandera}")
+    public String ModCodigoCupon(
+            @RequestBody CCodigoCuponModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCCodigoCuponModService.ModCodigoCupon(entidad, Bandera);
+    }
+
+    @PostMapping("/ConsEjecutaSentenciaSQL/{bandera}")
+    public List<CEjecutaSenteciaSQLEntity> ConsultaSentenciaSQL(
+            @RequestBody CEjecutaSenteciaSQLEntity entidad,
+            @PathVariable Integer bandera) {
+        return serviceCEjecutaSenteciaSQLService.ConsultaSentenciaSQL(entidad, bandera);
+    }
+
+    @PostMapping("/ModRelaCuponOferta/{Bandera}")
+    public String ModRelaCuponOferta(
+            @RequestBody CRelacionCuponOfertaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceCRelacionCuponOfertaModService.ModRelaCuponOferta(entidad, Bandera);
     }
 }
