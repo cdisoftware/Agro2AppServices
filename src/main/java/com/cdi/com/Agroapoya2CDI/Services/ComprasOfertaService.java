@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface ComprasOfertaService {
 
-    public List<ComprasOfertaEntity> ConsultaComprasOferta(Integer bandera, Integer CD_CNSCTVO);
+    public List<ComprasOfertaEntity> ConsultaComprasOferta(Integer bandera, Integer Cd_csctivoNuvaOferta, Integer IdSectorNuevaOferta, Integer IdOfertaRegalo);
 }

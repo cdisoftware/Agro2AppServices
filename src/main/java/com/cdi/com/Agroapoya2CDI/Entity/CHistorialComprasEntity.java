@@ -189,4 +189,10 @@ public class CHistorialComprasEntity {
     @JsonProperty("NombrePersona")
     public String NombrePersona;
 
+    @JsonProperty("EstadoOferta")
+    public Integer EstadoOferta;
+
+    @JsonProperty("OfertaVinculada")
+    public String OfertaVinculada;
+
 }

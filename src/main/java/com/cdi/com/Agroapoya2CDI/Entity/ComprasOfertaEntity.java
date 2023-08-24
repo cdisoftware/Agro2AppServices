@@ -18,8 +18,14 @@ import lombok.Data;
 public class ComprasOfertaEntity {
 
     @Id
-    @JsonProperty("id")
-    public Integer id;
+    @JsonProperty("usuario")
+    public Integer usuario;
+
+    @JsonProperty("OFERTA")
+    public Integer OFERTA;
+
+    @JsonProperty("SECTOR")
+    public String SECTOR;
 
     @JsonProperty("FECHA_COMPRA")
     public String FECHA_COMPRA;
@@ -36,8 +42,20 @@ public class ComprasOfertaEntity {
     @JsonProperty("NOMBRES_PERSONA")
     public String NOMBRES_PERSONA;
 
+    @JsonProperty("PRODUCTO")
+    public String PRODUCTO;
+
+    @JsonProperty("Unidades")
+    public Integer Unidades;
+
+    @JsonProperty("ADICIONALES")
+    public String ADICIONALES;
+
     @JsonProperty("VALOR_PAGO")
     public String VALOR_PAGO;
+
+    @JsonProperty("DIRECCION_ENTREGA")
+    public String DIRECCION_ENTREGA;
 
     @JsonProperty("CELULAR_PERSONA")
     public String CELULAR_PERSONA;
@@ -45,21 +63,28 @@ public class ComprasOfertaEntity {
     @JsonProperty("CORREO_PERSONA")
     public String CORREO_PERSONA;
 
-    @JsonProperty("RegistrosAsociados")
-    public Integer RegistrosAsociados;
+    @JsonProperty("registros")
+    public Integer registros;
 
-    @JsonProperty("NumeroCompras")
-    public Integer NumeroCompras;
+    @JsonProperty("compras")
+    public Integer compras;
 
-    @JsonProperty("LinkCompra")
-    public String LinkCompra;
+    @JsonProperty("comprasRegistros")
+    public Integer comprasRegistros;
 
-    @JsonProperty("Id_Flujo")
-    public String Id_Flujo;
+    @JsonProperty("Linckcarrocompras")
+    public String Linckcarrocompras;
+
+    @JsonProperty("LickOferta")
+    public String LickOferta;
+
+    @JsonProperty("pertenecesector")
+    public String pertenecesector;
+
+    @JsonProperty("textosWhats")
+    public String textosWhats;
 
     @JsonProperty("id_manychat")
     public String id_manychat;
-
-    @JsonProperty("descripcion_regalo")
-    public String descripcion_regalo;
+    
 }
