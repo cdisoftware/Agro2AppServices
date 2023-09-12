@@ -78,4 +78,13 @@ public class CReporteUsuariosEntity {
     @JsonProperty("Id_ManyChat")
     public String Id_ManyChat;
 
+    @JsonProperty("razon_social")
+    public String razon_social;
+
+    @JsonProperty("NombreLider")
+    public String NombreLider;
+
+    @JsonProperty("CorreoLider")
+    public String CorreoLider;
+
 }

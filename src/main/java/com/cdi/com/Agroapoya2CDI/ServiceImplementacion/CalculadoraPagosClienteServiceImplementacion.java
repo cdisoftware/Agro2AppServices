@@ -19,7 +19,7 @@ public class CalculadoraPagosClienteServiceImplementacion implements Calculadora
 
     @Override
     public List<CalculadoraPagosClienteEntity> ConsultaCalculadoraPagosClient(CalculadoraPagosClienteEntity entidad, Integer Bandera, Integer Operacion,
-            Integer Formato, Integer Cd_Cnsctvo, Integer Id_Sector, Integer Unidades, Integer Usucodig, String CodGrupo) {
+            Integer Formato, Integer Cd_Cnsctvo, Integer Id_Sector, Integer Unidades, Integer Usucodig, String CodGrupo, String CodigoDescuento) {
         try {
             StoredProcedureQuery calcul = repositorio.createNamedStoredProcedureQuery("paC_CalculadoraPagosCliente");
             calcul.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
@@ -31,6 +31,8 @@ public class CalculadoraPagosClienteServiceImplementacion implements Calculadora
             calcul.registerStoredProcedureParameter("Usucodig", Integer.class, ParameterMode.IN);
             calcul.registerStoredProcedureParameter("CodGrupo", String.class, ParameterMode.IN);
             calcul.registerStoredProcedureParameter("Topping", String.class, ParameterMode.IN);
+            calcul.registerStoredProcedureParameter("CodigoDescuento", String.class, ParameterMode.IN);
+
             calcul.setParameter("Bandera", Bandera);
             calcul.setParameter("Operacion", Operacion);
             calcul.setParameter("Formato", Formato);
@@ -40,6 +42,7 @@ public class CalculadoraPagosClienteServiceImplementacion implements Calculadora
             calcul.setParameter("CodGrupo", CodGrupo);
             calcul.setParameter("Usucodig", Usucodig);
             calcul.setParameter("Topping", entidad.getRtaValor());
+            calcul.setParameter("CodigoDescuento", CodigoDescuento);
 
             return calcul.getResultList();
         } catch (Exception ex) {

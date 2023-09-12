@@ -200,17 +200,20 @@ public class CCarroComprasTemEntity {
 
     @JsonProperty("valorSinDesAncla")
     public String valorSinDesAncla;
-    
+
     @JsonProperty("IdCodGrupoParti")
     public Integer IdCodGrupoParti;
-    
+
     @JsonProperty("MostrarCodGrupoParti")
     public String MostrarCodGrupoParti;
-    
+
     @JsonProperty("DireccionLider")
     public String DireccionLider;
-    
+
     @JsonProperty("NombreLider")
     public String NombreLider;
-     
+
+    @JsonProperty("AhorroTopping")
+    public String AhorroTopping;
+
 }

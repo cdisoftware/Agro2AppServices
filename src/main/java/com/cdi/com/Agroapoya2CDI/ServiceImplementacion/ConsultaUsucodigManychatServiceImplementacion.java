@@ -2,6 +2,7 @@ package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaUsucodigManychatEntity;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychatService;
+import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -29,7 +30,7 @@ public class ConsultaUsucodigManychatServiceImplementacion implements ConsultaUs
             Object chatObjetc = response.getBody();
             Respuesta = chatObjetc.toString();
         } catch (Exception ex) {
-            return "Error:" + ex.getMessage();
+            return JSONObject.quote("Usuario NO existe");
         }
         return Respuesta;
     }

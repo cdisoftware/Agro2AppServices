@@ -195,4 +195,10 @@ public class CHistorialComprasEntity {
     @JsonProperty("OfertaVinculada")
     public String OfertaVinculada;
 
+    @JsonProperty("CodigoDescuentoGeneral")
+    public String CodigoDescuentoGeneral;
+
+    @JsonProperty("TPO_OFRTA")
+    public Integer TPO_OFRTA;
+
 }

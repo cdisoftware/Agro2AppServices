@@ -18,7 +18,7 @@ public class CCarroComprasTemServiceImplementacion implements CCarroComprasTemSe
     private EntityManager repositorio;
 
     @Override
-    public List<CCarroComprasTemEntity> consultaCarroComprasTem(CCarroComprasTemEntity entidad, Integer Bandera, Integer Usucodig, String CodigoDescuento) {
+    public List<CCarroComprasTemEntity> consultaCarroComprasTem(CCarroComprasTemEntity entidad, Integer Bandera, Integer Usucodig, String CodigoDescuento, String CodigoDescuentoGenera) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paC_CarroComprasTemporal");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
@@ -26,12 +26,14 @@ public class CCarroComprasTemServiceImplementacion implements CCarroComprasTemSe
             tpoDoc.registerStoredProcedureParameter("Info_oferta", String.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("Info_Toppings", String.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("CodigoDescuento", String.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("CodigoDescuentoGenera", String.class, ParameterMode.IN);
 
             tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("Usucodig", Usucodig);
             tpoDoc.setParameter("Info_oferta", entidad.getInfo_oferta());
             tpoDoc.setParameter("Info_Toppings", entidad.getInfo_Toppings());
             tpoDoc.setParameter("CodigoDescuento", CodigoDescuento);
+            tpoDoc.setParameter("CodigoDescuentoGenera", CodigoDescuentoGenera);
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {

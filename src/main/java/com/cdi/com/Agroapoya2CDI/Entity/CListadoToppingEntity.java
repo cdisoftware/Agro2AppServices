@@ -57,4 +57,19 @@ public class CListadoToppingEntity {
     @JsonProperty("Tipo_ToppingVenta")
     public String Tipo_ToppingVenta;
 
+    @JsonProperty("CrctrzcionCrta")
+    public String CrctrzcionCrta;
+
+    @JsonProperty("CrctrzcionLrga")
+    public String CrctrzcionLrga;
+
+    @JsonProperty("ImgDos")
+    public String ImgDos;
+
+    @JsonProperty("ImgTres")
+    public String ImgTres;
+
+    @JsonProperty("VlorRefencia")
+    public Integer VlorRefencia ;
+
 }

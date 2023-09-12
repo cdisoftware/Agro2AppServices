@@ -36,4 +36,6 @@ public class CrealacionCuponOfertaEntity {
     @JsonProperty("Mascara")
     public String Mascara;
 
+    @JsonProperty("descripcionCupon")
+    public String descripcionCupon;
 }

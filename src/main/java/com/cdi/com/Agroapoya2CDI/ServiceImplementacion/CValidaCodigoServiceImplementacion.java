@@ -23,11 +23,13 @@ public class CValidaCodigoServiceImplementacion implements CValidaCodigoService 
             conscode.registerStoredProcedureParameter("CODIGODOS", String.class, ParameterMode.IN);
             conscode.registerStoredProcedureParameter("Cd_cnsctivo", Integer.class, ParameterMode.IN);
             conscode.registerStoredProcedureParameter("id_sector", Integer.class, ParameterMode.IN);
+            conscode.registerStoredProcedureParameter("Usucodig", Integer.class, ParameterMode.IN);
 
             conscode.setParameter("Bandera", Bandera);
             conscode.setParameter("CODIGODOS", entidad.getCODIGODOS());
             conscode.setParameter("Cd_cnsctivo", entidad.getCd_cnsctivo());
             conscode.setParameter("id_sector", entidad.getId_sector());
+            conscode.setParameter("Usucodig", entidad.getUsucodig());
 
             conscode.execute();
             return JSONObject.quote((String) conscode.getOutputParameterValue("Respuesta"));
