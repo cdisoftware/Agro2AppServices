@@ -54,4 +54,15 @@ public class CCodigosDescuentoEntity {
     @JsonProperty("ApartirValor")
     public String ApartirValor;
 
+    @JsonProperty("scriptAdicional")
+    public String scriptAdicional;
+
+    @JsonProperty("DesEstado")
+    public String DesEstado;
+
+    @JsonProperty("DesCodigoAplicable")
+    public String DesCodigoAplicable;
+
+    @JsonProperty("DesTipoCuponGeneral")
+    public String DesTipoCuponGeneral;
 }

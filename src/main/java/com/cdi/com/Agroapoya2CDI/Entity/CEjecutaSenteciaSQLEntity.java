@@ -35,4 +35,7 @@ public class CEjecutaSenteciaSQLEntity {
 
     @JsonProperty("MSJ_AGROAMIGO")
     public String MSJ_AGROAMIGO;
+
+    @JsonProperty("ComplementoLink")
+    public String ComplementoLink;
 }

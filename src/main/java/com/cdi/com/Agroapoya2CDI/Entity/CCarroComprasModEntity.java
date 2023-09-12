@@ -54,4 +54,7 @@ public class CCarroComprasModEntity {
     @JsonProperty("LinkPartici")
     public String LinkPartici;
 
+    @JsonProperty("CodDescuento")
+    public String CodDescuento;
+
 }

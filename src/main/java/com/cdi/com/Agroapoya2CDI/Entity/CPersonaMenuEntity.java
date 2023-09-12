@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +16,8 @@ import lombok.Data;
             resultClasses = CPersonaMenuEntity.class)
 })
 public class CPersonaMenuEntity {
-     @Id
+
+    @Id
     @JsonProperty("USUCODIG")
     public Integer USUCODIG;
 
@@ -42,4 +42,9 @@ public class CPersonaMenuEntity {
     @JsonProperty("Ciudad")
     public String Ciudad;
 
+    @JsonProperty("CELULAR_PERSONA")
+    public String CELULAR_PERSONA;
+
+    @JsonProperty("id_manychat")
+    public String id_manychat;
 }

@@ -17,7 +17,8 @@ public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUs
 
     @Override
     public String ModManyChatCraeteUser(ManyChatCreateUserEntity entidad) {
-        String Respuesta = "";
+        //String Respuesta = "";
+        JSONObject ObjectJson = new JSONObject();
         try {
 
             RestTemplate restTemplate = new RestTemplate();
@@ -36,13 +37,21 @@ public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUs
             data.put("consent_phrase", entidad.getConsent_phrase());
 
             HttpEntity<String> request = new HttpEntity<>(data.toString(), headers);
-            ResponseEntity<String> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/createSubscriber", HttpMethod.POST, request, String.class);
-            Object chatObjetc = response.getBody();
-            Respuesta = chatObjetc.toString();
-        } catch (Exception ex) {
-            return JSONObject.quote(ex.toString());
+            ResponseEntity<Object> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/createSubscriber", HttpMethod.POST, request, Object.class);
+            //Object chatObjetc = response.getBody();
+            //Respuesta = chatObjetc.toString();
+            Object Respuesta = response.getBody();
+            com.fasterxml.jackson.databind.ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            String json = ow.writeValueAsString(Respuesta);
+            ObjectJson = new JSONObject(json);
+            String urlJson = ObjectJson.getJSONObject("data").getString("id");
+            return JSONObject.quote(urlJson);         
+                        
+        } catch (Exception ex) {            
+            //return JSONObject.quote(ex.toString());
+            return JSONObject.quote("Usuario ya existe");
         }
-        return Respuesta;
+        //return Respuesta;
     }
 
 }

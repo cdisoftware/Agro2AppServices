@@ -108,4 +108,10 @@ public class CValoracionOfertaModEntity {
 
     @JsonProperty("IMG_CUPONREGALO")
     public String IMG_CUPONREGALO;
+
+    @JsonProperty("IDTIPODOMICILIO")
+    public Integer IDTIPODOMICILIO;
+
+    @JsonProperty("VLORAPRTRDMCLIO")
+    public Integer VLORAPRTRDMCLIO;
 }

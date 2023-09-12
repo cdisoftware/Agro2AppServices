@@ -48,6 +48,8 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.registerStoredProcedureParameter("TIPO_CUPON", Integer.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("DES_CUPONREGALO", String.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("IMG_CUPONREGALO", String.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("IDTIPODOMICILIO", Integer.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("VLORAPRTRDMCLIO", Integer.class, ParameterMode.IN);
 
             modval.setParameter("BANDERA", BANDERA);
             modval.setParameter("CD_CNSCTVO", entidad.getCD_CNSCTVO());
@@ -78,6 +80,8 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.setParameter("TIPO_CUPON", entidad.getTIPO_CUPON());
             modval.setParameter("DES_CUPONREGALO", entidad.getDES_CUPONREGALO());
             modval.setParameter("IMG_CUPONREGALO", entidad.getIMG_CUPONREGALO());
+            modval.setParameter("IDTIPODOMICILIO", entidad.getIDTIPODOMICILIO());
+            modval.setParameter("VLORAPRTRDMCLIO", entidad.getVLORAPRTRDMCLIO());
 
             modval.execute();
             return JSONObject.quote((String) modval.getOutputParameterValue("Respuesta"));

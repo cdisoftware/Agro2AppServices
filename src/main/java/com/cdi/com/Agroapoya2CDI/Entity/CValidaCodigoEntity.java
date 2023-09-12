@@ -32,4 +32,7 @@ public class CValidaCodigoEntity {
 
     @JsonProperty("id_sector")
     public Integer id_sector;
+
+    @JsonProperty("Usucodig")
+    public Integer Usucodig;
 }

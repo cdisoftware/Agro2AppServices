@@ -104,4 +104,10 @@ public class CValoracionOfertaEntity {
 
     @JsonProperty("img_cupon")
     public String img_cupon;
+
+    @JsonProperty("IDTIPODOMICILIO")
+    public Integer IDTIPODOMICILIO;
+
+    @JsonProperty("VLORAPRTRDMCLIO")
+    public String VLORAPRTRDMCLIO;
 }

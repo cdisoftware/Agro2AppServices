@@ -17,7 +17,7 @@ public class ManyChatUpdateUserServiceImplemenatcion implements ManyChatUpdateUs
 
     @Override
     public String UpdateUserManyChat(ManyChatUpdateUserEntity entidad) {
-        String Respuesta = "";
+        JSONObject ObjectJson = new JSONObject();
         try {
 
             RestTemplate restTemplate = new RestTemplate();
@@ -31,21 +31,26 @@ public class ManyChatUpdateUserServiceImplemenatcion implements ManyChatUpdateUs
             data.put("subscriber_id", entidad.getSubscriber_id());
             data.put("first_name", entidad.getFirst_name());
             data.put("last_name", entidad.getLast_name());
-            data.put("whatsapp_phone", entidad.getWhatsapp_phone());
+            
+            data.put("email", entidad.getEmail());
+            data.put("gender", entidad.getGender());
             data.put("has_opt_in_sms", entidad.getHas_opt_in_sms());
             data.put("has_opt_in_email", entidad.getHas_opt_in_email());
             data.put("consent_phrase", entidad.getConsent_phrase());
 
             HttpEntity<String> request = new HttpEntity<>(data.toString(), headers);
-            ResponseEntity<String> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/updateSubscriber", HttpMethod.POST, request, String.class);
-            Object chatObjetc = response.getBody();
-
-            Respuesta = chatObjetc.toString();
+            ResponseEntity<Object> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/updateSubscriber", HttpMethod.POST, request, Object.class);
+            Object Respuesta = response.getBody();
+            com.fasterxml.jackson.databind.ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+            String json = ow.writeValueAsString(Respuesta);
+            ObjectJson = new JSONObject(json);
+            String urlJson = ObjectJson.getJSONObject("data").getString("id");
+            return JSONObject.quote(urlJson);
 
         } catch (Exception ex) {
             return JSONObject.quote(ex.toString());
         }
-        return Respuesta;
+
     }
 
 }
