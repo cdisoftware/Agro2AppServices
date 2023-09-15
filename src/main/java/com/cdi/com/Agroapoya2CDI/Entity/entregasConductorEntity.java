@@ -143,8 +143,11 @@ public class entregasConductorEntity {
 
     @JsonProperty("producto_add2")
     public String producto_add2;
-    
+
     @JsonProperty("ValorProductoPrincipal")
     public String ValorProductoPrincipal;
+
+    @JsonProperty("ValorDomiclio")
+    public String ValorDomiclio;
 
 }

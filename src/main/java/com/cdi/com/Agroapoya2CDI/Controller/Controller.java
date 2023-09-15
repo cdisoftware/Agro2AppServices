@@ -3707,14 +3707,14 @@ public class Controller {
     @GetMapping("/consPagosElectronicos/{Bandera}/{Id_carro}")
     public List<CPagosElectronicosEntity> ConsultaUnidadesReagalo(
             @PathVariable Integer Bandera,
-            @PathVariable Integer Id_carro) {
+            @PathVariable String Id_carro) {
         return serviceCPagosElectronicosService.ConsultaCPagosElectronicos(Bandera, Id_carro);
     }
 
     @GetMapping("/consPagosElectronicosToppings/{Bandera}/{Id_carro}")
     public List<PagosElectronicosToppingsEntity> ConsultaPagosElectronicosTopping(
             @PathVariable Integer Bandera,
-            @PathVariable Integer Id_carro) {
+            @PathVariable String Id_carro) {
         return servicePagosElectronicosToppingService.ConsultaPagosElectronicosTopping(Bandera, Id_carro);
     }
 

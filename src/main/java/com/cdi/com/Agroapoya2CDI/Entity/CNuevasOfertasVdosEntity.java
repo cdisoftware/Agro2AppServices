@@ -198,4 +198,7 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("ValorDmcilio")
     public String ValorDmcilio;
 
+    @JsonProperty("UndRestantes")
+    public Integer UndRestantes;
+
 }

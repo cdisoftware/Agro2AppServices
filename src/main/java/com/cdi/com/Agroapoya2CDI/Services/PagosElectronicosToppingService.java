@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface PagosElectronicosToppingService {
 
-    public List<PagosElectronicosToppingsEntity> ConsultaPagosElectronicosTopping(Integer Bandera, Integer Id_carro);
+    public List<PagosElectronicosToppingsEntity> ConsultaPagosElectronicosTopping(Integer Bandera, String Id_carro);
 }

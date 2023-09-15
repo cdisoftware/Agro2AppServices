@@ -70,6 +70,9 @@ public class CListadoToppingEntity {
     public String ImgTres;
 
     @JsonProperty("VlorRefencia")
-    public Integer VlorRefencia ;
+    public Integer VlorRefencia;
+
+    @JsonProperty("UndRestantes")
+    public Integer UndRestantes;
 
 }

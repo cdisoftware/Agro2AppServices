@@ -110,4 +110,7 @@ public class CValoracionOfertaEntity {
 
     @JsonProperty("VLORAPRTRDMCLIO")
     public String VLORAPRTRDMCLIO;
+
+    @JsonProperty("NumUsuaCupo")
+    public Integer NumUsuaCupo;
 }

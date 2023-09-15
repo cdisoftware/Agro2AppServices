@@ -149,7 +149,22 @@ public class CSeguimientoEntrEntity {
 
     @JsonProperty("imagen_evidencia")
     public String imagen_evidencia;
-    
-     @JsonProperty("forma_pago")
+
+    @JsonProperty("forma_pago")
     public String forma_pago;
+
+    @JsonProperty("VLOR_PGARSINDOMICILIO")
+    public String VLOR_PGARSINDOMICILIO;
+
+    @JsonProperty("VLOR_DOMICILIO")
+    public String VLOR_DOMICILIO;
+
+    @JsonProperty("ObsEvidencia")
+    public String ObsEvidencia;
+
+    @JsonProperty("ObsEvidenciaDos")
+    public String ObsEvidenciaDos;
+
+    @JsonProperty("VlorTotalDomicilio")
+    public String VlorTotalDomicilio;
 }

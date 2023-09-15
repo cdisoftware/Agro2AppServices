@@ -18,11 +18,11 @@ public class CPagosElectronicosServiceImplementacion implements CPagosElectronic
     private EntityManager repositorio;
 
     @Override
-    public List<CPagosElectronicosEntity> ConsultaCPagosElectronicos(Integer Bandera, Integer Id_carro) {
+    public List<CPagosElectronicosEntity> ConsultaCPagosElectronicos(Integer Bandera, String Id_carro) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("pac_PagosElectronicos");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("Id_carro", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("Id_carro", String.class, ParameterMode.IN);
 
             tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("Id_carro", Id_carro);
