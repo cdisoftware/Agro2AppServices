@@ -216,4 +216,9 @@ public class CCarroComprasTemEntity {
     @JsonProperty("AhorroTopping")
     public String AhorroTopping;
 
+    @JsonProperty("idtipodomicilio")
+    public Integer idtipodomicilio;
+
+    @JsonProperty("VLORAPRTRDMCLIO")
+    public String VLORAPRTRDMCLIO;
 }

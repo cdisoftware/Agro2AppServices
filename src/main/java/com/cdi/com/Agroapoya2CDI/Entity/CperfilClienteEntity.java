@@ -84,4 +84,6 @@ public class CperfilClienteEntity {
     @JsonProperty("Nit")
     public String Nit;
 
+    @JsonProperty("id_manychat")
+    public String id_manychat;
 }

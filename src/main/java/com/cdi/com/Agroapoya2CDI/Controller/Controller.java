@@ -69,6 +69,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CGeneracionQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CGrupoMillaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CHistorialComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CInfoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CLiderPartiEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLincortoSpEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CLinkSectorEntity;
@@ -108,6 +109,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDBasicosSubItemsModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionDatosBasicosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionLiderPartiEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRelacionLiderPartiModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CRelacionProdToppingEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CRepEstEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CReporteUsuariosEntity;
@@ -128,7 +130,10 @@ import com.cdi.com.Agroapoya2CDI.Entity.CTipoCosteoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoCosteoXOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoDomicilioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoNoEntrgaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CTipoOTpingVentaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoPagosTransEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CTipoProductoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CTipoProductoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoToppinEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CTipoTransporEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CToppingCarroModEntity;
@@ -139,6 +144,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CTrazabilidadEstadoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUltimaMillaInicialEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUnidadesDisponiblesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CUnidadesDisponiblesListaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CValidaCodGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValidaCodigoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValidaUniRegaloGrupEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CValorUbersGeneralEntity;
@@ -242,6 +248,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.cRelacionProdToppingModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cTipoPreguntaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.conductorModEntity;
@@ -341,6 +348,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CGeneracionQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.CGrupoMillaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CHistorialCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.CInfoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.CLiderPartiService;
 import com.cdi.com.Agroapoya2CDI.Services.CLincortoSpService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinkConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.CLinksCPyGModService;
@@ -380,6 +388,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CRelacionDBasicosSubItemsModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionDatosBasicoService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionLiderPartiModService;
 import com.cdi.com.Agroapoya2CDI.Services.CRelacionLiderPartiService;
+import com.cdi.com.Agroapoya2CDI.Services.CRelacionProdToppingService;
 import com.cdi.com.Agroapoya2CDI.Services.CRepEstEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CReporteUsuarioService;
@@ -401,7 +410,10 @@ import com.cdi.com.Agroapoya2CDI.Services.CTipoCosteoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoCosteoXOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoDomicilioService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoNoEntrgaService;
+import com.cdi.com.Agroapoya2CDI.Services.CTipoOTpingVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoPagosTransService;
+import com.cdi.com.Agroapoya2CDI.Services.CTipoProductoModService;
+import com.cdi.com.Agroapoya2CDI.Services.CTipoProductoService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoToppinService;
 import com.cdi.com.Agroapoya2CDI.Services.CTipoTransporService;
 import com.cdi.com.Agroapoya2CDI.Services.CToppingCarroModService;
@@ -413,6 +425,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CUltimaMillaInicialService;
 import com.cdi.com.Agroapoya2CDI.Services.CUnidadesDisponiblesListaService;
 import com.cdi.com.Agroapoya2CDI.Services.CUnidadesDisponiblesService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaCambioEtapaService;
+import com.cdi.com.Agroapoya2CDI.Services.CValidaCodGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaCodigoService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaSectorUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.CValidaUniRegaloGrupService;
@@ -538,6 +551,7 @@ import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.cRelacionProdToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.conductorModService;
@@ -560,12 +574,28 @@ import com.cdi.com.Agroapoya2CDI.Services.productosService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -1420,6 +1450,27 @@ public class Controller {
 
     @Autowired
     CarroComprasElectModService serviceCarroComprasElectModService;
+
+    @Autowired
+    CValidaCodGrupoService serviceCValidaCodGrupoService;
+
+    @Autowired
+    CLiderPartiService serviceCLiderPartiService;
+
+    @Autowired
+    CTipoOTpingVentaService serviceCTipoOTpingVentaService;
+
+    @Autowired
+    CTipoProductoService serviceCTipoProductoService;
+
+    @Autowired
+    CTipoProductoModService serviceCTipoProductoModService;
+
+    @Autowired
+    cRelacionProdToppingModService servicecRelacionProdToppingModService;
+
+    @Autowired
+    CRelacionProdToppingService serviceCRelacionProdToppingService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3730,5 +3781,53 @@ public class Controller {
             @RequestBody CarroComprasElectModEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceCarroComprasElectModService.ModCarroComprasElectronico(entidad, Bandera);
+    }
+
+    @GetMapping("/consCValidaCodGrupo/{Bandera}/{CodigoMostrar}")
+    public List<CValidaCodGrupoEntity> ConsultaInfoManyCompra(
+            @PathVariable Integer Bandera,
+            @PathVariable String CodigoMostrar) {
+        return serviceCValidaCodGrupoService.ConsultaCValidaCodGrupo(Bandera, CodigoMostrar);
+    }
+
+    @GetMapping("/conscLiderParti/{Bandera}/{IdCarro}")
+    public List<CLiderPartiEntity> ConsultaCLiderParticipante(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCarro) {
+        return serviceCLiderPartiService.ConsultaCLiderParticipante(Bandera, IdCarro);
+    }
+
+    @GetMapping("/consCTipoTpingVenta/{Bandera}")
+    public List<CTipoOTpingVentaEntity> ConsultaCLiderParticipante(
+            @PathVariable Integer Bandera) {
+        return serviceCTipoOTpingVentaService.ConsultaCTipoOTpingVenta(Bandera);
+    }
+
+    @GetMapping("/consCTipoProducto/{bandera}")
+    public List<CTipoProductoEntity> ConsultaCTipoProducto(
+            @PathVariable Integer bandera) {
+        return serviceCTipoProductoService.ConsultaCTipoProducto(bandera);
+    }
+
+    @PostMapping("/modCTipoProducto/{bandera}")
+    public String ModCTipoProducto(
+            @RequestBody CTipoProductoModEntity entidad,
+            @PathVariable Integer bandera) {
+        return serviceCTipoProductoModService.ModCTipoProducto(entidad, bandera);
+    }
+
+    @PostMapping("/modCRelacionProductoTopping/{Bandera}")
+    public String ModRelacionProdTopping(
+            @RequestBody cRelacionProdToppingModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicecRelacionProdToppingModService.ModRelacionProdTopping(entidad, Bandera);
+    }
+
+    @GetMapping("/consCRelacionProducTopping/{Bandera}/{IdTopping}/{IdSector}")
+    public List<CRelacionProdToppingEntity> ConsultaRelacionProdTopping(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdTopping,
+            @PathVariable Integer IdSector) {
+        return serviceCRelacionProdToppingService.ConsultaRelacionProdTopping(Bandera, IdTopping, IdSector);
     }
 }

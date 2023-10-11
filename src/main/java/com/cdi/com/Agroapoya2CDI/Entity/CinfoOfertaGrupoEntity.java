@@ -54,4 +54,9 @@ public class CinfoOfertaGrupoEntity {
     @JsonProperty("codigo_Mostrar")
     public String codigo_Mostrar;
 
+    @JsonProperty("desc_cupon")
+    public String desc_cupon;
+
+    @JsonProperty("RegaloParti")
+    public String RegaloParti;
 }

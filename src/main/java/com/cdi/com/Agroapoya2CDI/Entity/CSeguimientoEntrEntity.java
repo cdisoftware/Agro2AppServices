@@ -167,4 +167,16 @@ public class CSeguimientoEntrEntity {
 
     @JsonProperty("VlorTotalDomicilio")
     public String VlorTotalDomicilio;
+
+    @JsonProperty("VlorProductoPrincipal")
+    public String VlorProductoPrincipal;
+
+    @JsonProperty("producto_addBr")
+    public String producto_addBr;
+
+    @JsonProperty("VlorTotalDomiMovi")
+    public String VlorTotalDomiMovi;
+
+    @JsonProperty("producto_addTodos")
+    public String producto_addTodos;
 }

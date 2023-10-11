@@ -75,4 +75,18 @@ public class CListadoToppingEntity {
     @JsonProperty("UndRestantes")
     public Integer UndRestantes;
 
+    @JsonProperty("IdTipoToppingVenta")
+    public Integer IdTipoToppingVenta;
+
+    @JsonProperty("DesTipoVentaTopping")
+    public String DesTipoVentaTopping;
+
+    @JsonProperty("tyc")
+    public String tyc;
+
+    @JsonProperty("TextoWebVlrCero")
+    public String TextoWebVlrCero;
+
+    @JsonProperty("Presentacion")
+    public String Presentacion;
 }
