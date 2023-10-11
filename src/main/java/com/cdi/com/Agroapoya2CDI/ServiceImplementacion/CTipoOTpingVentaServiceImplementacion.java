@@ -1,7 +1,7 @@
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
-import com.cdi.com.Agroapoya2CDI.Entity.PagosElectronicosToppingsEntity;
-import com.cdi.com.Agroapoya2CDI.Services.PagosElectronicosToppingService;
+import com.cdi.com.Agroapoya2CDI.Entity.CTipoOTpingVentaEntity;
+import com.cdi.com.Agroapoya2CDI.Services.CTipoOTpingVentaService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,21 +12,17 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PagosElectronicosToppingServiceImplementacion implements PagosElectronicosToppingService {
+public class CTipoOTpingVentaServiceImplementacion implements CTipoOTpingVentaService {
 
     @PersistenceContext
     private EntityManager repositorio;
 
     @Override
-    public List<PagosElectronicosToppingsEntity> ConsultaPagosElectronicosTopping(Integer Bandera, String Id_carro) {
+    public List<CTipoOTpingVentaEntity> ConsultaCTipoOTpingVenta(Integer Bandera) {
         try {
-            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("pac_PagosElectronicosToppings");
+            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("pac_TipoOTpingVenta");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("Id_carro", String.class, ParameterMode.IN);
-
             tpoDoc.setParameter("Bandera", Bandera);
-            tpoDoc.setParameter("Id_carro", Id_carro);
-
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();

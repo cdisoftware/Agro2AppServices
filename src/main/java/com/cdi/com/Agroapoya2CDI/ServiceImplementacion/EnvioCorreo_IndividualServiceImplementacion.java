@@ -118,9 +118,7 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
                 correoremitente = rem[i] = remite.get(i).getCorreoRemitente();
                 servicePath = rem[i] = remite.get(i).getServicePath();
                 contrasena = rem[i] = clsEncriptacion.Desencriptar(remite.get(i).getClave());
-            }
-            
-            
+            }                      
             
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3

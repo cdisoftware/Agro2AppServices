@@ -69,4 +69,13 @@ public class CToppingModEntity {
     @JsonProperty("VlorRefencia")
     public Integer VlorRefencia;
 
+    @JsonProperty("IdTipoTopingVenta")
+    public Integer IdTipoTopingVenta;
+
+    @JsonProperty("IdProdTopin")
+    public Integer IdProdTopin;
+
+    @JsonProperty("PresentacionProd")
+    public String PresentacionProd;
+
 }

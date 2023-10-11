@@ -30,4 +30,10 @@ public class CSegEntDllEntity {
     @JsonProperty("valor")
     public String valor;
 
+    @JsonProperty("IdDevuelto")
+    public Integer IdDevuelto;
+
+    @JsonProperty("DescDevuelto")
+    public String DescDevuelto;
+
 }

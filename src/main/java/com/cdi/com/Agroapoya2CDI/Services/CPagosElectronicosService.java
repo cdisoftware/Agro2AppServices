@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CPagosElectronicosService {
 
-    public List<CPagosElectronicosEntity> ConsultaCPagosElectronicos(Integer Bandera, Integer Id_carro);
+    public List<CPagosElectronicosEntity> ConsultaCPagosElectronicos(Integer Bandera, String Id_carro);
 }

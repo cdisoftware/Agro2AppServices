@@ -198,4 +198,18 @@ public class CNuevasOfertasVdosEntity {
     @JsonProperty("ValorDmcilio")
     public String ValorDmcilio;
 
+    @JsonProperty("UndRestantes")
+    public Integer UndRestantes;
+
+    @JsonProperty("TituloModal")
+    public String TituloModal;
+
+    @JsonProperty("TextoModal")
+    public String TextoModal;
+
+    @JsonProperty("TycGrupo")
+    public String TycGrupo;
+
+    @JsonProperty("TipoVentaRegistro")
+    public String TipoVentaRegistro;
 }
