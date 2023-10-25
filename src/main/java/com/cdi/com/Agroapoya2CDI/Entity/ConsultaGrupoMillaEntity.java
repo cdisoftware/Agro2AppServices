@@ -39,4 +39,7 @@ public class ConsultaGrupoMillaEntity {
 
     @JsonProperty("Estado")
     public Integer Estado;
+
+    @JsonProperty("ValorTransporte")
+    public String ValorTransporte;
 }

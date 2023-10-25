@@ -89,4 +89,7 @@ public class CListadoToppingEntity {
 
     @JsonProperty("Presentacion")
     public String Presentacion;
+
+    @JsonProperty("PorDecuento")
+    public String PorDecuento;
 }
