@@ -117,4 +117,7 @@ public class CValoracionOfertaModEntity {
 
     @JsonProperty("NumUsuaCupo")
     public Integer NumUsuaCupo;
+
+    @JsonProperty("DirigidaRegiVent")
+    public Integer DirigidaRegiVent;
 }

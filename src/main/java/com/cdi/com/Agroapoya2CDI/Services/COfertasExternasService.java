@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface COfertasExternasService {
 
-    public List<COfertasExternasEntity> ConsultaCOfertasExt(Integer Bandera, Integer Cd_cnctvo, Integer Id_Sector);
+    public List<COfertasExternasEntity> ConsultaCOfertasExt(Integer Bandera, Integer Cd_cnctvo, Integer Id_Sector, String NombreProducto);
 }

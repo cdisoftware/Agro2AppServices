@@ -212,4 +212,7 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("TipoVentaRegistro")
     public String TipoVentaRegistro;
+
+    @JsonProperty("PorDecuento")
+    public String PorDecuento;
 }
