@@ -215,4 +215,13 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("PorDecuento")
     public String PorDecuento;
+
+    @JsonProperty("VigenciaDesdeForm")
+    public String VigenciaDesdeForm;
+
+    @JsonProperty("VigenciaHastaForm")
+    public String VigenciaHastaForm;
+
+    @JsonProperty("FechaEntregaForm")
+    public String FechaEntregaForm;
 }

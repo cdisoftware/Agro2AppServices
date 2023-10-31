@@ -188,6 +188,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.ConductorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConductorSectorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaGrupoMillaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ConsultaSectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaUsucodigManychatEntity;
 
 import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
@@ -258,10 +259,14 @@ import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cCalculadoraTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cRelacionProdToppingModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cTipoPreguntaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.clteConsTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.conductorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.consultaProductoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.entregasConductorEntity;
@@ -276,11 +281,15 @@ import com.cdi.com.Agroapoya2CDI.Entity.loginClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.loginTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.menuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.movileConsulatGeneralOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.mvConsGeneralEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaDetalleEntregasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaEntregasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_CiudadesActivasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_EnvioCorreoTransprtistaViejeEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_infoBasicaUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_listaSectoresConOfertasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.mvconsultaEvidenciaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.mvconultaReportePagosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.productosEntity;
@@ -483,6 +492,7 @@ import com.cdi.com.Agroapoya2CDI.Services.ConductorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorSectorModService;
 import com.cdi.com.Agroapoya2CDI.Services.ConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaGrupoMillaService;
+import com.cdi.com.Agroapoya2CDI.Services.ConsultaSectoreService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychatService;
 
 import com.cdi.com.Agroapoya2CDI.Services.CorreoIndividualService;
@@ -574,9 +584,13 @@ import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
+import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.cCalculadoraTranService;
 import com.cdi.com.Agroapoya2CDI.Services.cRelacionProdToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
+import com.cdi.com.Agroapoya2CDI.Services.clteConsTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.conductorModService;
 import com.cdi.com.Agroapoya2CDI.Services.consultaProductoService;
@@ -592,8 +606,12 @@ import com.cdi.com.Agroapoya2CDI.Services.loginClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.loginTransService;
 import com.cdi.com.Agroapoya2CDI.Services.menuService;
 import com.cdi.com.Agroapoya2CDI.Services.movileConsulatGeneralOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.mvConsGeneralEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsultaDetalleEntregaService;
+import com.cdi.com.Agroapoya2CDI.Services.mvConsultaEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mv_EnvioCorreoTransprtistaViejeService;
+import com.cdi.com.Agroapoya2CDI.Services.mvconsultaEvidenciaService;
+import com.cdi.com.Agroapoya2CDI.Services.mvconultaReportePagoService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.productosService;
@@ -1536,6 +1554,33 @@ public class Controller {
 
     @Autowired
     AdmUsuariosQueryService serviceAdmUsuariosQueryService;
+
+    @Autowired
+    mvConsGeneralEntregaService servicemvConsGeneralEntregaService;
+
+    @Autowired
+    mvconultaReportePagoService servicemvconultaReportePagoService;
+
+    @Autowired
+    ConsultaSectoreService serviceConsultaSectoreService;
+
+    @Autowired
+    mvConsultaEntregaService servicemvConsultaEntregaService;
+
+    @Autowired
+    clteConsTextoOfertaService serviceclteConsTextoOfertaService;
+
+    @Autowired
+    adminModTextoOfertaService ServiceadminModTextoOfertaService;
+
+    @Autowired
+    mvconsultaEvidenciaService servicemvconsultaEvidenciaService;
+
+    @Autowired
+    adreporteVentaService serviceadreporteVentaService;
+
+    @Autowired
+    adminreporteCantidadTotalService serviceadminreporteCantidadTotalService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3297,12 +3342,13 @@ public class Controller {
         return serviceCUltimaMillaInicialService.ModCUltimMillaIni(entidad, Bandera);
     }
 
-    @GetMapping("/conscpinultimailla/{Bandera}/{cd_cnctvo}/{idSector}")
+    @GetMapping("/conscpinultimailla/{Bandera}/{cd_cnctvo}/{idSector}/{IdGrupo}")
     public List<CPinUltimaMillaEntity> consultaCPinUltiMilla(
             @PathVariable Integer Bandera,
             @PathVariable Integer cd_cnctvo,
-            @PathVariable Integer idSector) {
-        return serviceCPinUltimaMillaService.consultaCPinUltiMilla(Bandera, cd_cnctvo, idSector);
+            @PathVariable Integer idSector,
+            @PathVariable Integer IdGrupo) {
+        return serviceCPinUltimaMillaService.consultaCPinUltiMilla(Bandera, cd_cnctvo, idSector, IdGrupo);
     }
 
     @PostMapping("/modcgrupomilla/{Bandera}")
@@ -3990,5 +4036,75 @@ public class Controller {
             @PathVariable Integer IdGrupo,
             @PathVariable Integer IdProducto) {
         return serviceMovileReporteEntregaService.ConsultaMovileReporteEntrega(Bandera, IdGrupo, IdProducto);
+    }
+
+    @GetMapping("/consGeneralEntregaMovile/{Bandera}/{IdGrupo}")
+    public List<mvConsGeneralEntregaEntity> CosultaGeneralEntregaMovile(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return servicemvConsGeneralEntregaService.CosultaGeneralEntregaMovile(Bandera, IdGrupo);
+    }
+
+    @GetMapping("/consReportePagosMovil/{Bandera}/{IdGrupo}")
+    public List<mvconultaReportePagosEntity> consultaReportePagoMovil(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return servicemvconultaReportePagoService.consultaReportePagoMovil(Bandera, IdGrupo);
+    }
+
+    @GetMapping("/conSectores/{bandera}/{CD_CNSCTVO}/{IdSector}")
+    public List<ConsultaSectoresEntity> ConsultaSectores(
+            @PathVariable Integer bandera,
+            @PathVariable Integer CD_CNSCTVO,
+            @PathVariable Integer IdSector) {
+        return serviceConsultaSectoreService.ConsultaSectores(bandera, CD_CNSCTVO, IdSector);
+    }
+
+    @GetMapping("/consEntregasMovile/{Bandera}/{IdGrupo}")
+    public List<mvConsultaEntregasEntity> ConsultaEntregaMovil(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return servicemvConsultaEntregaService.ConsultaEntregaMovil(Bandera, IdGrupo);
+    }
+
+    @GetMapping("/consClienteTextosOferta/{Bandera}/{cd_cnsctivo}/{idsector}")
+    public List<clteConsTextoOfertaEntity> ConsultaClienteTextOferta(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctivo,
+            @PathVariable Integer idsector) {
+        return serviceclteConsTextoOfertaService.ConsultaClienteTextOferta(Bandera, cd_cnsctivo, idsector);
+    }
+
+    @PostMapping("/modAdminTextOferta/{Bandera}")
+    public String ModificacionAdminTextoOferta(
+            @RequestBody adminModTextoOfertaEntity entidad,
+            @PathVariable Integer Bandera) {
+        return ServiceadminModTextoOfertaService.ModificacionAdminTextoOferta(entidad, Bandera);
+    }
+
+    @GetMapping("/consEvidenciaMovil/{Bandera}/{id_evidencia}/{id_factura}")
+    public List<mvconsultaEvidenciaEntity> ConsultaEvidenciaMovile(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer id_evidencia,
+            @PathVariable Integer id_factura) {
+        return servicemvconsultaEvidenciaService.ConsultaEvidenciaMovile(Bandera, id_evidencia, id_factura);
+    }
+
+    @PostMapping("/consAdminReporteVentas/{Bandera}/{cd_cnscutivo}/{IdSector}/{Id_Estado_Compra}/{Id_Estado_pago}")
+    public List<adreporteVentasEntity> ConsultAdminUsuariosQuery(
+            @RequestBody adreporteVentasEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnscutivo,
+            @PathVariable Integer IdSector,
+            @PathVariable Integer Id_Estado_Compra,
+            @PathVariable Integer Id_Estado_pago) {
+        return serviceadreporteVentaService.ConsultaAdminReporteVentas(entidad, Bandera, cd_cnscutivo, IdSector, Id_Estado_Compra, Id_Estado_pago);
+    }
+
+    @GetMapping("/consAdminReporteCantTotal/{Bandera}/{cd_cnsctivo}")
+    public List<adminreporteCantidadTotalEntity> ConsultaAdminReporteTotal(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctivo) {
+        return serviceadminreporteCantidadTotalService.ConsultaAdminReporteTotal(Bandera, cd_cnsctivo);
     }
 }

@@ -1,7 +1,7 @@
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
-import com.cdi.com.Agroapoya2CDI.Entity.CPinUltimaMillaEntity;
-import com.cdi.com.Agroapoya2CDI.Services.CPinUltimaMillaService;
+import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaEntregasEntity;
+import com.cdi.com.Agroapoya2CDI.Services.mvConsultaEntregaService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,23 +12,19 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CPinUltimaMillaServiceImplementacion implements CPinUltimaMillaService {
+public class mvConsultaEntregaServiceImplementacion implements mvConsultaEntregaService {
 
     @PersistenceContext
     private EntityManager repositorio;
 
     @Override
-    public List<CPinUltimaMillaEntity> consultaCPinUltiMilla(Integer Bandera, Integer cd_cnctvo, Integer idSector, Integer IdGrupo) {
+    public List<mvConsultaEntregasEntity> ConsultaEntregaMovil(Integer Bandera, Integer IdGrupo) {
         try {
-            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paC_PinUltimaMilla");
+            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("movile_ConsultaEntregas");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("cd_cnctvo", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("idSector", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("IdGrupo", Integer.class, ParameterMode.IN);
 
             tpoDoc.setParameter("Bandera", Bandera);
-            tpoDoc.setParameter("cd_cnctvo", cd_cnctvo);
-            tpoDoc.setParameter("idSector", idSector);
             tpoDoc.setParameter("IdGrupo", IdGrupo);
 
             return tpoDoc.getResultList();

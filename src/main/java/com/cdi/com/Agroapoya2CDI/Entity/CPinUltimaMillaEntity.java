@@ -78,4 +78,9 @@ public class CPinUltimaMillaEntity {
     @JsonProperty("NombreGrupoMilla")
     public String NombreGrupoMilla;
 
+    @JsonProperty("distancia")
+    public String distancia;
+
+    @JsonProperty("Orden")
+    public String Orden;
 }

@@ -57,4 +57,9 @@ public class mvConsultaDetalleEntregasEntity {
     @JsonProperty("VLOR_PGAR")
     public String VLOR_PGAR;
 
+    @JsonProperty("DesEntrego")
+    public String DesEntrego;
+
+    @JsonProperty("IdEntrego")
+    public Integer IdEntrego;
 }
