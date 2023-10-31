@@ -41,4 +41,7 @@ public class CRelacionProdToppingEntity {
 
     @JsonProperty("Ancla")
     public Integer Ancla;
+
+    @JsonProperty("cant_disponible")
+    public Integer cant_disponible;
 }
