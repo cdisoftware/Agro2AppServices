@@ -7,6 +7,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.AdmCamposPreQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AdmManyPreQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AdmUsuariosQueryEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AdminAuditoriaManyChatEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.AdminMillaTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AestadoOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AgroAmigosReporteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AgroCompraUsuModEntity;
@@ -190,9 +191,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.ConductorSectorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaGrupoMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaSectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaUsucodigManychatEntity;
-
 import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
-
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CosteoOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CpagosLiderEntity;
@@ -259,12 +258,16 @@ import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adUsuarioMapaCalorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admillaDtlleOfertaCompraEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cCalculadoraTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cRelacionProdToppingModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cTipoPreguntaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.clienteRegaloEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clteConsTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.conductorModEntity;
@@ -305,6 +308,7 @@ import com.cdi.com.Agroapoya2CDI.Services.AdmCamposPreQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.AdmManyPreQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.AdmUsuariosQueryService;
 import com.cdi.com.Agroapoya2CDI.Services.AdminAuditoriaManyChatService;
+import com.cdi.com.Agroapoya2CDI.Services.AdminMillaTransporteModService;
 import com.cdi.com.Agroapoya2CDI.Services.AestadoOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.AgroAmigosReporteService;
 import com.cdi.com.Agroapoya2CDI.Services.AgroCompraUsuModService;
@@ -494,7 +498,6 @@ import com.cdi.com.Agroapoya2CDI.Services.ConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaGrupoMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaSectoreService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychatService;
-
 import com.cdi.com.Agroapoya2CDI.Services.CorreoIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreoMomentoEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreosMasivosPandaService;
@@ -584,12 +587,16 @@ import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.adUsuarioMapaCalorService;
+import com.cdi.com.Agroapoya2CDI.Services.admillaDtlleOfertaCompraService;
+import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.cCalculadoraTranService;
 import com.cdi.com.Agroapoya2CDI.Services.cRelacionProdToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
+import com.cdi.com.Agroapoya2CDI.Services.clienteRegaloService;
 import com.cdi.com.Agroapoya2CDI.Services.clteConsTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.conductorModService;
@@ -618,28 +625,11 @@ import com.cdi.com.Agroapoya2CDI.Services.productosService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -1581,6 +1571,21 @@ public class Controller {
 
     @Autowired
     adminreporteCantidadTotalService serviceadminreporteCantidadTotalService;
+
+    @Autowired
+    AdminMillaTransporteModService serviceAdminMillaTransporteModService;
+
+    @Autowired
+    adminMillaTransporteService serviceadminMillaTransporteService;
+
+    @Autowired
+    admillaDtlleOfertaCompraService serviceadmillaDtlleOfertaCompraService;
+
+    @Autowired
+    adUsuarioMapaCalorService serviceadUsuarioMapaCalorService;
+
+    @Autowired
+    clienteRegaloService serviceclienteRegaloService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4106,5 +4111,40 @@ public class Controller {
             @PathVariable Integer Bandera,
             @PathVariable Integer cd_cnsctivo) {
         return serviceadminreporteCantidadTotalService.ConsultaAdminReporteTotal(Bandera, cd_cnsctivo);
+    }
+
+    @PostMapping("/modAdminMillaTransporte/{Bandera}")
+    public String ModificacionAdminTextoOferta(
+            @RequestBody AdminMillaTransporteModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceAdminMillaTransporteModService.ModAdminMillaTransporte(entidad, Bandera);
+    }
+
+    @GetMapping("/consAdminMillaTransportes/{Bandera}/{IdGrupo}")
+    public List<adminMillaTransportesEntity> ConsultaAdminMillaTransporte(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadminMillaTransporteService.ConsultaAdminMillaTransporte(Bandera, IdGrupo);
+    }
+
+    @GetMapping("/consAdMillaDtallOfertaCompra/{Bandera}/{IdGrupo}")
+    public List<admillaDtlleOfertaCompraEntity> ConsultaDetalleOfertComprAdmin(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmillaDtlleOfertaCompraService.ConsultaDetalleOfertComprAdmin(Bandera, IdGrupo);
+    }
+
+    @GetMapping("/consAdUserMapCalor/{Bandera}")
+    public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(
+            @PathVariable Integer Bandera) {
+        return serviceadUsuarioMapaCalorService.ConsultaAdminUsuarioMapCalor(Bandera);
+    }
+
+    @GetMapping("/consClienteRegalo/{Bandera}/{IntIdOferta}/{Usucodig}")
+    public List<clienteRegaloEntity> ConsultaRegaloCliente(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IntIdOferta,
+            @PathVariable Integer Usucodig) {
+        return serviceclienteRegaloService.ConsultaRegaloCliente(Bandera, IntIdOferta, Usucodig);
     }
 }
