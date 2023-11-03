@@ -44,4 +44,7 @@ public class CRelacionProdToppingEntity {
 
     @JsonProperty("cant_disponible")
     public Integer cant_disponible;
+
+    @JsonProperty("PorDecuento")
+    public String PorDecuento;
 }

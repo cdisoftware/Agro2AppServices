@@ -83,4 +83,7 @@ public class mvConsultaEntregasEntity {
 
     @JsonProperty("EstadoEnvioWhat")
     public Integer EstadoEnvioWhat;
+
+    @JsonProperty("ComplementoDireccion")
+    public String ComplementoDireccion;
 }
