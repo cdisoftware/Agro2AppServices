@@ -37,7 +37,7 @@ public class CPerfilCampesinoModServiceImplementacion implements CPerfilCampesin
             insertbackup.registerStoredProcedureParameter("DescripDos", String.class, ParameterMode.IN);
             insertbackup.registerStoredProcedureParameter("DescripTres", String.class, ParameterMode.IN);
             insertbackup.registerStoredProcedureParameter("Observacion", String.class, ParameterMode.IN);
-            insertbackup.registerStoredProcedureParameter("Imagen", String.class, ParameterMode.IN);
+            insertbackup.registerStoredProcedureParameter("FechaNacimiento", String.class, ParameterMode.IN);
 
             insertbackup.setParameter("Bandera", Bandera);
             insertbackup.setParameter("Usucodig", entidad.getUsucodig());
@@ -57,7 +57,7 @@ public class CPerfilCampesinoModServiceImplementacion implements CPerfilCampesin
             insertbackup.setParameter("DescripDos", entidad.getDescripDos());
             insertbackup.setParameter("DescripTres", entidad.getDescripTres());
             insertbackup.setParameter("Observacion", entidad.getObservacion());
-            insertbackup.setParameter("Imagen", entidad.getImagen());
+            insertbackup.setParameter("FechaNacimiento", entidad.getFechaNacimiento());
 
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));

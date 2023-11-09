@@ -95,4 +95,7 @@ public class CPagosElectronicosEntity {
 
     @JsonProperty("empaque")
     public String empaque;
+
+    @JsonProperty("OrdenExternal")
+    public String OrdenExternal;
 }

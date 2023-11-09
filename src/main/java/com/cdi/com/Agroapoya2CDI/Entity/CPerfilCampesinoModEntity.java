@@ -75,6 +75,6 @@ public class CPerfilCampesinoModEntity {
     @JsonProperty("Observacion")
     public String Observacion;
 
-    @JsonProperty("Imagen")
-    public String Imagen;
+    @JsonProperty("FechaNacimiento")
+    public String FechaNacimiento;
 }
