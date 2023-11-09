@@ -219,6 +219,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CundCarroModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CusuariosCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EmailEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EncriptacionEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.EnvioCorreoContactanosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EnvioCorreo_IndividualEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EnvioSMSNuevaEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EstadosOfertaEntity;
@@ -258,8 +259,14 @@ import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adImgUsuariosModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adUsuarioMapaCalorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adcoordenadasMillaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaDtlleOfertaCompraEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admillaEntregaDisponibleEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admillaPoligonoModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admillaSectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
@@ -267,6 +274,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cCalculadoraTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cRelacionProdToppingModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cTipoPreguntaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.clientOrdenExternalModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clienteRegaloEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clteConsTextoOfertaEntity;
@@ -296,6 +304,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.mvconultaReportePagosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.productosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.tipoConsContactEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
@@ -529,6 +538,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CusuariosCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaNumeroService;
 import com.cdi.com.Agroapoya2CDI.Services.CvalidaUsuSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.EncriptacionService;
+import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreoContactanoService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreoTransportistaService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioCorreo_IndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.EnvioSMSNuevaEntregaService;
@@ -587,8 +597,14 @@ import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
+import com.cdi.com.Agroapoya2CDI.Services.adImgUsuariosModService;
 import com.cdi.com.Agroapoya2CDI.Services.adUsuarioMapaCalorService;
+import com.cdi.com.Agroapoya2CDI.Services.adcoordenadasMillaModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaDtlleOfertaCompraService;
+import com.cdi.com.Agroapoya2CDI.Services.admillaEntregaDisponibleService;
+import com.cdi.com.Agroapoya2CDI.Services.admillaPoligonoModService;
+import com.cdi.com.Agroapoya2CDI.Services.admillaSectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
@@ -596,6 +612,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.cCalculadoraTranService;
 import com.cdi.com.Agroapoya2CDI.Services.cRelacionProdToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
+import com.cdi.com.Agroapoya2CDI.Services.clientOrdenExternalModService;
 import com.cdi.com.Agroapoya2CDI.Services.clienteRegaloService;
 import com.cdi.com.Agroapoya2CDI.Services.clteConsTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
@@ -622,6 +639,7 @@ import com.cdi.com.Agroapoya2CDI.Services.mvconultaReportePagoService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.productosService;
+import com.cdi.com.Agroapoya2CDI.Services.tipoConsContactService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
@@ -1586,6 +1604,33 @@ public class Controller {
 
     @Autowired
     clienteRegaloService serviceclienteRegaloService;
+
+    @Autowired
+    tipoConsContactService servicetipoConsContactService;
+
+    @Autowired
+    EnvioCorreoContactanoService serviceEnvioCorreoContactanoService;
+
+    @Autowired
+    clientOrdenExternalModService serviceclientOrdenExternalModService;
+
+    @Autowired
+    admillaEntregaDisponibleService serviceadmillaEntregaDisponibleService;
+
+    @Autowired
+    adImgUsuariosModService serviceadImgUsuariosModService;
+
+    @Autowired
+    adConsultaImagenesUsuarioService serviceadConsultaImagenesUsuarioService;
+
+    @Autowired
+    admillaSectoresModService serviceadmillaSectoresModService;
+
+    @Autowired
+    adcoordenadasMillaModService serviceadcoordenadasMillaModService;
+
+    @Autowired
+    admillaPoligonoModService serviceadmillaPoligonoModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4147,4 +4192,68 @@ public class Controller {
             @PathVariable Integer Usucodig) {
         return serviceclienteRegaloService.ConsultaRegaloCliente(Bandera, IntIdOferta, Usucodig);
     }
+
+    @GetMapping("/consTipoContacto/{Bandera}")
+    public List<tipoConsContactEntity> ConsultaTipoContacto(
+            @PathVariable Integer Bandera) {
+        return servicetipoConsContactService.ConsultaTipoContacto(Bandera);
+    }
+
+    @PostMapping("/EnvioCorreoContactanos/{bandera}/{TipoContanto}")
+    public String EnvioCorreoClienteCantactanos(
+            @RequestBody EnvioCorreoContactanosEntity entidad,
+            @PathVariable Integer bandera,
+            @PathVariable Integer TipoContanto) {
+        return serviceEnvioCorreoContactanoService.EnvioCorreoClienteCantactanos(entidad, bandera, TipoContanto);
+    }
+
+    @PostMapping("/modClientOrdenExternal/{Bandera}")
+    public String ModclientOrdenExternal(
+            @RequestBody clientOrdenExternalModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceclientOrdenExternalModService.ModclientOrdenExternal(entidad, Bandera);
+    }
+
+    @PostMapping("/consAdmillaEntregDisponible/{Bandera}")
+    public List<admillaEntregaDisponibleEntity> ConsultaadmillaEntregaDisponible(
+            @RequestBody admillaEntregaDisponibleEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadmillaEntregaDisponibleService.ConsultaadmillaEntregaDisponible(entidad, Bandera);
+    }
+
+    @PostMapping("/mosAdminImgUsers/{Bandera}")
+    public String ModAdminImgUsuaers(
+            @RequestBody adImgUsuariosModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadImgUsuariosModService.ModAdminImgUsuaers(entidad, Bandera);
+    }
+
+    @GetMapping("/consImagenesAdminUsers/{Bandera}/{Usucodig}")
+    public List<adConsultaImagenesUsuariosEntity> ConsultaImagenesUsers(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Usucodig) {
+        return serviceadConsultaImagenesUsuarioService.ConsultaImagenesUsers(Bandera, Usucodig);
+    }
+
+    @PostMapping("/modAdminMillaSectores/{Bandera}")
+    public String ModAdminSectors(
+            @RequestBody admillaSectoresModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadmillaSectoresModService.ModAdminSectors(entidad, Bandera);
+    }
+
+    @PostMapping("/mosAdminCoordsMilla/{Bandera}")
+    public String ModAdminCoordMilla(
+            @RequestBody adcoordenadasMillaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadcoordenadasMillaModService.ModAdminCoordMilla(entidad, Bandera);
+    }
+
+    @PostMapping("/modAdMillaPoligono/{Bandera}")
+    public String ModAdMillaPoligono(
+            @RequestBody admillaPoligonoModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadmillaPoligonoModService.ModAdMillaPoligono(entidad, Bandera);
+    }
+
 }
