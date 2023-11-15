@@ -77,4 +77,10 @@ public class CPerfilCampesinoModEntity {
 
     @JsonProperty("FechaNacimiento")
     public String FechaNacimiento;
+
+    @JsonProperty("Vereda")
+    public String Vereda;
+
+    @JsonProperty("Finca")
+    public String Finca;
 }

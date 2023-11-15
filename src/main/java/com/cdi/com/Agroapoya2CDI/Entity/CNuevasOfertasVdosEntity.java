@@ -224,4 +224,7 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("FechaEntregaForm")
     public String FechaEntregaForm;
+
+    @JsonProperty("UsucodigCampesino")
+    public Integer UsucodigCampesino;
 }
