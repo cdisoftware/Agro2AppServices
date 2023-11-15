@@ -72,7 +72,19 @@ public class CPerfilCampesinoEntity {
     @JsonProperty("Observacion")
     public String Observacion;
 
-    @JsonProperty("Imagen")
-    public String Imagen;
+    @JsonProperty("DescDocumento")
+    public String DescDocumento;
+
+    @JsonProperty("Vereda")
+    public String Vereda;
+
+    @JsonProperty("NombreFinca")
+    public String NombreFinca;
+
+    @JsonProperty("FechaNacimiento")
+    public String FechaNacimiento;
+
+    @JsonProperty("Edad")
+    public Integer Edad;
 
 }

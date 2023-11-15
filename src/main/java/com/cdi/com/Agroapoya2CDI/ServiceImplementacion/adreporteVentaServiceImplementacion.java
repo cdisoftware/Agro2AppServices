@@ -35,8 +35,8 @@ public class adreporteVentaServiceImplementacion implements adreporteVentaServic
             tpoDoc.setParameter("IdSector", IdSector);
             tpoDoc.setParameter("Id_Estado_Compra", Id_Estado_Compra);
             tpoDoc.setParameter("Id_Estado_pago", Id_Estado_pago);
-            tpoDoc.setParameter("fcha_compra_ini", entidad.getFechaCompra());
-            tpoDoc.setParameter("fcha_compra_fin", entidad.getFechaEntrega());
+            tpoDoc.setParameter("fcha_compra_ini", entidad.getFcha_compra_ini());
+            tpoDoc.setParameter("fcha_compra_fin", entidad.getFcha_compra_fin());
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {

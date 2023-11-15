@@ -116,4 +116,10 @@ public class adreporteVentasEntity {
 
     @JsonProperty("DesTipoOfeta")
     public String DesTipoOfeta;
+
+    @JsonProperty("fcha_compra_ini")
+    public String fcha_compra_ini;
+
+    @JsonProperty("fcha_compra_fin")
+    public String fcha_compra_fin;
 }
