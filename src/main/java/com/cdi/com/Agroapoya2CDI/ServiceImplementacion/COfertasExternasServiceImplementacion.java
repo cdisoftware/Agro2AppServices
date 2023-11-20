@@ -18,17 +18,19 @@ public class COfertasExternasServiceImplementacion implements COfertasExternasSe
     private EntityManager repositorio;
 
     @Override
-    public List<COfertasExternasEntity> ConsultaCOfertasExt(Integer Bandera, Integer Cd_cnctvo, Integer Id_Sector, String NombreProducto) {
+    public List<COfertasExternasEntity> ConsultaCOfertasExt(Integer Bandera, Integer Cd_cnctvo, Integer Id_Sector, Integer IdUsuario, String NombreProducto) {
         try {
             StoredProcedureQuery ofertExternas = repositorio.createNamedStoredProcedureQuery("paC_OfertasExternas");
             ofertExternas.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             ofertExternas.registerStoredProcedureParameter("Cd_cnctvo", Integer.class, ParameterMode.IN);
             ofertExternas.registerStoredProcedureParameter("Id_Sector", Integer.class, ParameterMode.IN);
+            ofertExternas.registerStoredProcedureParameter("IdUsuario", Integer.class, ParameterMode.IN);
             ofertExternas.registerStoredProcedureParameter("NombreProducto", String.class, ParameterMode.IN);
 
             ofertExternas.setParameter("Bandera", Bandera);
             ofertExternas.setParameter("Cd_cnctvo", Cd_cnctvo);
             ofertExternas.setParameter("Id_Sector", Id_Sector);
+            ofertExternas.setParameter("IdUsuario", IdUsuario);
             ofertExternas.setParameter("NombreProducto", NombreProducto);
 
             return ofertExternas.getResultList();
@@ -38,5 +40,4 @@ public class COfertasExternasServiceImplementacion implements COfertasExternasSe
             return list;
         }
     }
-
 }

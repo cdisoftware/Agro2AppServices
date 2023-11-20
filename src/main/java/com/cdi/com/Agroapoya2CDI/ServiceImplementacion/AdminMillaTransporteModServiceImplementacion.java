@@ -25,6 +25,7 @@ public class AdminMillaTransporteModServiceImplementacion implements AdminMillaT
             modRespuesta.registerStoredProcedureParameter("FechaEntrega", String.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("UbicacionEntrega", String.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("UbicacionRecoge", String.class, ParameterMode.IN);
+            modRespuesta.registerStoredProcedureParameter("Id_carrosManual", String.class, ParameterMode.IN);
 
             modRespuesta.setParameter("Bandera", Bandera);
             modRespuesta.setParameter("IdGrupoMilla", entidad.getIdGrupoMilla());
@@ -32,6 +33,7 @@ public class AdminMillaTransporteModServiceImplementacion implements AdminMillaT
             modRespuesta.setParameter("FechaEntrega", entidad.getFechaEntrega());
             modRespuesta.setParameter("UbicacionEntrega", entidad.getUbicacionEntrega());
             modRespuesta.setParameter("UbicacionRecoge", entidad.getUbicacionRecoge());
+            modRespuesta.setParameter("Id_carrosManual", entidad.getId_carrosManual());
 
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
