@@ -72,4 +72,7 @@ public class adminMillaTransportesEntity {
     @JsonProperty("PesoKilos")
     public Integer PesoKilos;
 
+    @JsonProperty("NombreGrupo")
+    public String NombreGrupo;
+
 }

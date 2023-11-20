@@ -262,6 +262,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adImgUsuariosModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaGruposFocoModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adMillaOrdenComprasGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaSectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adUsuarioMapaCalorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adcoordenadasMillaModEntity;
@@ -269,11 +270,14 @@ import com.cdi.com.Agroapoya2CDI.Entity.admillaComprasSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaCoordenadasSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaDtlleOfertaCompraEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaEntregaDisponibleEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admillaGruposEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admillaPinModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaPoligonoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaSectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adofertaFechasModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.advalidaSectorMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cCalculadoraTransEntity;
@@ -605,6 +609,7 @@ import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adImgUsuariosModService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaGruposFocoModService;
+import com.cdi.com.Agroapoya2CDI.Services.adMillaOrdenComprasGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaSectoreService;
 import com.cdi.com.Agroapoya2CDI.Services.adUsuarioMapaCalorService;
 import com.cdi.com.Agroapoya2CDI.Services.adcoordenadasMillaModService;
@@ -612,11 +617,14 @@ import com.cdi.com.Agroapoya2CDI.Services.admillaComprasSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaCoordenadasSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaDtlleOfertaCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaEntregaDisponibleService;
+import com.cdi.com.Agroapoya2CDI.Services.admillaGrupoService;
+import com.cdi.com.Agroapoya2CDI.Services.admillaPinModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaPoligonoModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaSectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
+import com.cdi.com.Agroapoya2CDI.Services.adofertaFechasModService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.advalidaSectorMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.cCalculadoraTranService;
@@ -1656,6 +1664,18 @@ public class Controller {
 
     @Autowired
     advalidaSectorMillaService serviceadvalidaSectorMillaService;
+
+    @Autowired
+    admillaGrupoService serviceadmillaGrupoService;
+
+    @Autowired
+    adMillaOrdenComprasGrupoService serviceadMillaOrdenComprasGrupoService;
+
+    @Autowired
+    admillaPinModService serviceadmillaPinModService;
+
+    @Autowired
+    adofertaFechasModService serviceadofertaFechasModService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3012,13 +3032,14 @@ public class Controller {
         return serviceCEntregaSegService.ConsultaCEntregaSeg(Bandera, cd_cnscutivo, IdSector);
     }
 
-    @GetMapping("/conscofertasexternas/{Bandera}/{Cd_cnctvo}/{Id_Sector}/{NombreProducto}")
+    @GetMapping("/conscofertasexternas/{Bandera}/{Cd_cnctvo}/{Id_Sector}/{IdUsuario}/{NombreProducto}")
     public List<COfertasExternasEntity> ConsultaCOfertasExt(
             @PathVariable Integer Bandera,
             @PathVariable Integer Cd_cnctvo,
             @PathVariable Integer Id_Sector,
+            @PathVariable Integer IdUsuario,
             @PathVariable String NombreProducto) {
-        return serviceCOfertasExternasService.ConsultaCOfertasExt(Bandera, Cd_cnctvo, Id_Sector, NombreProducto);
+        return serviceCOfertasExternasService.ConsultaCOfertasExt(Bandera, Cd_cnctvo, Id_Sector, IdUsuario, NombreProducto);
     }
 
     @GetMapping("/modcsectorpoligono/{BANDERA}/{ID_SCTOR}")
@@ -4314,5 +4335,33 @@ public class Controller {
             @RequestBody advalidaSectorMillaEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceadvalidaSectorMillaService.ValidaSectorAdmin(entidad, Bandera);
+    }
+
+    @GetMapping("/consAdMillaGrupos/{Bandera}/{IdGrupo}")
+    public List<admillaGruposEntity> consultaAdmillaGrupo(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmillaGrupoService.consultaAdmillaGrupo(Bandera, IdGrupo);
+    }
+
+    @PostMapping("/AdmillaOrdenComprasGrupo/{Bandera}")
+    public String ModAdmillaOrdenComprasGrupo(
+            @RequestBody adMillaOrdenComprasGrupoEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadMillaOrdenComprasGrupoService.ModAdmillaOrdenComprasGrupo(entidad, Bandera);
+    }
+
+    @PostMapping("/modAdmillaPin/{Bandera}")
+    public String ModAdmillaPin(
+            @RequestBody admillaPinModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadmillaPinModService.ModAdmillaPin(entidad, Bandera);
+    }
+
+    @PostMapping("/modAdmiOfertaFechas/{Bandera}")
+    public String ModAdminOfertaFechas(
+            @RequestBody adofertaFechasModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadofertaFechasModService.ModAdminOfertaFechas(entidad, Bandera);
     }
 }

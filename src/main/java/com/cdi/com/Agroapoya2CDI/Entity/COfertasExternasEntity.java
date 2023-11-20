@@ -140,4 +140,7 @@ public class COfertasExternasEntity {
 
     @JsonProperty("valorReferenciaProd")
     public String valorReferenciaProd;
+
+    @JsonProperty("PerSetor")
+    public Integer PerSetor;
 }
