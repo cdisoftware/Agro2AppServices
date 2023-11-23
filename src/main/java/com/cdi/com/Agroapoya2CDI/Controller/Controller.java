@@ -259,11 +259,15 @@ import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adImgUsuariosModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adMillaCopiarOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaGruposFocoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaOrdenComprasGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaSectoresEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adSegtoInfoGeneralEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adSeguimientoFiltroFechaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adUsuarioMapaCalorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adcoordenadasMillaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaComprasSectorEntity;
@@ -606,11 +610,15 @@ import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adImgUsuariosModService;
+import com.cdi.com.Agroapoya2CDI.Services.adMillaCopiarOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaGruposFocoModService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaOrdenComprasGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaSectoreService;
+import com.cdi.com.Agroapoya2CDI.Services.adSegtoInfoGeneralService;
+import com.cdi.com.Agroapoya2CDI.Services.adSeguimientoFiltroFechaService;
 import com.cdi.com.Agroapoya2CDI.Services.adUsuarioMapaCalorService;
 import com.cdi.com.Agroapoya2CDI.Services.adcoordenadasMillaModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaComprasSectorService;
@@ -1676,6 +1684,18 @@ public class Controller {
 
     @Autowired
     adofertaFechasModService serviceadofertaFechasModService;
+
+    @Autowired
+    adMillaCopiarOfertaService serviceadMillaCopiarOfertaService;
+
+    @Autowired
+    adSegtoInfoGeneralService serviceadSegtoInfoGeneralService;
+
+    @Autowired
+    adSeguimientoFiltroFechaService serviceadSeguimientoFiltroFechaService;
+
+    @Autowired
+    adCambioSectorOfertaService serviceadCambioSectorOfertaService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3794,13 +3814,11 @@ public class Controller {
         return serviceEnvioCorreoTransportistaService.EnvioPdfTrans(bandera, Id_Clnte, IdSctor, IdPlantilla, usucodig, Cd_cnctvo, file);
     }
 
-    @GetMapping("/consRepEstEntrega/{bandera}/{CD_CNSCTVO}/{ID_SECTOR}/{CD_CNDCTOR}")
+    @GetMapping("/consRepEstEntrega/{bandera}/{IdGrupoMilla}")
     public List<CRepEstEntregaEntity> ConsRepEntrega(
             @PathVariable Integer bandera,
-            @PathVariable Integer CD_CNSCTVO,
-            @PathVariable Integer ID_SECTOR,
-            @PathVariable Integer CD_CNDCTOR) {
-        return serviceCRepEstEntregaService.ConsRepEntrega(bandera, CD_CNSCTVO, ID_SECTOR, CD_CNDCTOR);
+            @PathVariable Integer IdGrupoMilla) {
+        return serviceCRepEstEntregaService.ConsRepEntrega(bandera, IdGrupoMilla);
     }
 
     @GetMapping("/consCondAsociadosOferta/{Bandera}/{cd_cnsctivo}/{idSector}/{idTipoTrans}")
@@ -4363,5 +4381,33 @@ public class Controller {
             @RequestBody adofertaFechasModEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceadofertaFechasModService.ModAdminOfertaFechas(entidad, Bandera);
+    }
+
+    @PostMapping("/CopiaAdminMillaOferta")
+    public String CopiaAdmillaOferta(
+            @RequestBody adMillaCopiarOfertaEntity entidad) {
+        return serviceadMillaCopiarOfertaService.CopiaAdmillaOferta(entidad);
+    }
+
+    @GetMapping("/consAdSeguimientoInfoGen/{Bandera}/{IdGrupoMilla}")
+    public List<adSegtoInfoGeneralEntity> ConsultaSeguiminetoGen(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupoMilla) {
+        return serviceadSegtoInfoGeneralService.ConsultaSeguiminetoGen(Bandera, IdGrupoMilla);
+    }
+
+    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}")
+    public List<adSeguimientoFiltroFechaEntity> CopiaAdmillaOferta(
+            @RequestBody adSeguimientoFiltroFechaEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdGrupoMilla) {
+        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla);
+    }
+
+    @PostMapping("/modCambioSectorOferta/{Bandera}")
+    public String ModCambioSectorOferta(
+            @RequestBody adCambioSectorOfertaEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadCambioSectorOfertaService.ModCambioSectorOferta(entidad, Bandera);
     }
 }

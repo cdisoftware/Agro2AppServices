@@ -1,7 +1,7 @@
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
-import com.cdi.com.Agroapoya2CDI.Entity.CRepEstEntregaEntity;
-import com.cdi.com.Agroapoya2CDI.Services.CRepEstEntregaService;
+import com.cdi.com.Agroapoya2CDI.Entity.adSegtoInfoGeneralEntity;
+import com.cdi.com.Agroapoya2CDI.Services.adSegtoInfoGeneralService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,25 +12,25 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CRepEstEntregaServiceImplementacion implements CRepEstEntregaService {
+public class adSegtoInfoGeneralServiceImplementacion implements adSegtoInfoGeneralService {
 
     @PersistenceContext
     private EntityManager repositorio;
 
     @Override
-    public List<CRepEstEntregaEntity> ConsRepEntrega(Integer bandera, Integer IdGrupoMilla) {
+    public List<adSegtoInfoGeneralEntity> ConsultaSeguiminetoGen(Integer Bandera, Integer IdGrupoMilla) {
         try {
-            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paC_Rep_Estadistico_Entrega");
-            tpoDoc.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
+            StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("admin_SeguimientoInfoGeneral");
+            tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("IdGrupoMilla", Integer.class, ParameterMode.IN);
 
-            tpoDoc.setParameter("bandera", bandera);
+            tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("IdGrupoMilla", IdGrupoMilla);
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex));
             return list;
         }
     }
