@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CRepEstEntregaService {
 
-    public List<CRepEstEntregaEntity> ConsRepEntrega(Integer bandera, Integer CD_CNSCTVO, Integer ID_SECTOR, Integer CD_CNDCTOR);
+    public List<CRepEstEntregaEntity> ConsRepEntrega(Integer bandera, Integer IdGrupoMilla);
 }
