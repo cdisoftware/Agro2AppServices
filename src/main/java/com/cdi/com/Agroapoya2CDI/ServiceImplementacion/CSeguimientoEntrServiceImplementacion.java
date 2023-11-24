@@ -18,20 +18,14 @@ public class CSeguimientoEntrServiceImplementacion implements CSeguimientoEntrSe
     private EntityManager repositorio;
 
     @Override
-    public List<CSeguimientoEntrEntity> ConsSeguimientoEntrega(CSeguimientoEntrEntity entidad, Integer bandera, Integer ID_CNDCTOR, Integer id_Sector, Integer cd_cnctivo) {
+    public List<CSeguimientoEntrEntity> ConsSeguimientoEntrega(Integer bandera, Integer id_grupo) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("paC_SeguimientoEntregas");
             tpoDoc.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("ID_CNDCTOR", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("id_Sector", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("cd_cnctivo", Integer.class, ParameterMode.IN);
-            tpoDoc.registerStoredProcedureParameter("coordernadas", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("id_grupo", Integer.class, ParameterMode.IN);
 
             tpoDoc.setParameter("bandera", bandera);
-            tpoDoc.setParameter("ID_CNDCTOR", ID_CNDCTOR);
-            tpoDoc.setParameter("id_Sector", id_Sector);
-            tpoDoc.setParameter("cd_cnctivo", cd_cnctivo);
-            tpoDoc.setParameter("coordernadas", entidad.getCOORDENADAS_ENTR());
+            tpoDoc.setParameter("id_grupo", id_grupo);
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {

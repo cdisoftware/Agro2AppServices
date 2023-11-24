@@ -3778,14 +3778,11 @@ public class Controller {
         return serviceCTipoCosteoXOfertaService.ConsTipoCosteoferta(bandera, ID_OFERTA);
     }
 
-    @PostMapping("/consSeguimientoEntregas/{bandera}/{ID_CNDCTOR}/{id_Sector}/{cd_cnctivo}")
+    @GetMapping("/consSeguimientoEntregas/{bandera}/{id_grupo}")
     public List<CSeguimientoEntrEntity> ActualizaCEstadoTransporte(
-            @RequestBody CSeguimientoEntrEntity entidad,
             @PathVariable Integer bandera,
-            @PathVariable Integer ID_CNDCTOR,
-            @PathVariable Integer id_Sector,
-            @PathVariable Integer cd_cnctivo) {
-        return serviceCSeguimientoEntrService.ConsSeguimientoEntrega(entidad, bandera, ID_CNDCTOR, id_Sector, cd_cnctivo);
+            @PathVariable Integer id_grupo) {
+        return serviceCSeguimientoEntrService.ConsSeguimientoEntrega(bandera, id_grupo);
     }
 
     @GetMapping("/conscGrupoMilla/{bandera}/{IdSector}/{Cd_cnsctvo}")
