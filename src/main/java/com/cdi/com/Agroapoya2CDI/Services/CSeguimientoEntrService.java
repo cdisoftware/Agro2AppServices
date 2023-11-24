@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface CSeguimientoEntrService {
 
-    public List<CSeguimientoEntrEntity> ConsSeguimientoEntrega(CSeguimientoEntrEntity entidad, Integer bandera, Integer ID_CNDCTOR, Integer id_Sector, Integer cd_cnctivo);
+    public List<CSeguimientoEntrEntity> ConsSeguimientoEntrega(Integer bandera, Integer id_grupo);
 }
