@@ -75,4 +75,6 @@ public class adminMillaTransportesEntity {
     @JsonProperty("NombreGrupo")
     public String NombreGrupo;
 
+    @JsonProperty("NumeroCompras")
+    public Integer NumeroCompras;
 }
