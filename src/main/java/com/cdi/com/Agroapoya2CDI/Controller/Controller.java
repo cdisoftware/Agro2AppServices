@@ -305,6 +305,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.loginClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.loginTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.menuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.movileConsulatGeneralOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.movile_TransActivosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsGeneralEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaDetalleEntregasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaEntregasEntity;
@@ -656,6 +657,7 @@ import com.cdi.com.Agroapoya2CDI.Services.loginClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.loginTransService;
 import com.cdi.com.Agroapoya2CDI.Services.menuService;
 import com.cdi.com.Agroapoya2CDI.Services.movileConsulatGeneralOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.movile_TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsGeneralEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsultaDetalleEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsultaEntregaService;
@@ -1696,6 +1698,9 @@ public class Controller {
 
     @Autowired
     adCambioSectorOfertaService serviceadCambioSectorOfertaService;
+    
+    @Autowired
+    movile_TransActivosService servicemovile_TransActivosService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4406,5 +4411,13 @@ public class Controller {
             @RequestBody adCambioSectorOfertaEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceadCambioSectorOfertaService.ModCambioSectorOferta(entidad, Bandera);
+    }
+    
+    @GetMapping("/ConsMovileTransActivos/{bandera}/{id_condutor}/{usucodigTrans}")
+    public List<movile_TransActivosEntity> ConMovileTransActivos(
+            @PathVariable Integer bandera,
+            @PathVariable Integer id_condutor,
+            @PathVariable Integer usucodigTrans) {
+        return servicemovile_TransActivosService.CosultaGeneralEntregaMovile(bandera, id_condutor, usucodigTrans);
     }
 }
