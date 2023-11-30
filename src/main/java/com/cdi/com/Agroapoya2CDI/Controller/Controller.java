@@ -280,6 +280,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.admillaPoligonoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaSectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admin_SeguiTarjetaDetalleEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admin_SeguiTarjetaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admin_segValoresTotalesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adofertaFechasModEntity;
@@ -633,6 +635,8 @@ import com.cdi.com.Agroapoya2CDI.Services.admillaPoligonoModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaSectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.admin_SeguiTarjetaDetalleService;
+import com.cdi.com.Agroapoya2CDI.Services.admin_SeguiTarjetaService;
 import com.cdi.com.Agroapoya2CDI.Services.admin_segValoresTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
 import com.cdi.com.Agroapoya2CDI.Services.adofertaFechasModService;
@@ -1706,6 +1710,12 @@ public class Controller {
     
     @Autowired
     admin_segValoresTotalesService serviceadmin_segValoresTotalesService;
+    
+    @Autowired
+    admin_SeguiTarjetaService serviceadmin_SeguiTarjetaService;
+    
+    @Autowired
+    admin_SeguiTarjetaDetalleService serviceadmin_SeguiTarjetaDetalleService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4404,12 +4414,13 @@ public class Controller {
         return serviceadSegtoInfoGeneralService.ConsultaSeguiminetoGen(Bandera, IdGrupoMilla);
     }
 
-    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}")
+    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}/{CdConsecutivo}")
     public List<adSeguimientoFiltroFechaEntity> CopiaAdmillaOferta(
             @RequestBody adSeguimientoFiltroFechaEntity entidad,
             @PathVariable Integer Bandera,
-            @PathVariable Integer IdGrupoMilla) {
-        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla);
+            @PathVariable Integer IdGrupoMilla,
+            @PathVariable String CdConsecutivo) {
+        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla, CdConsecutivo);
     }
 
     @PostMapping("/modCambioSectorOferta/{Bandera}")
@@ -4432,5 +4443,19 @@ public class Controller {
             @PathVariable Integer bandera,
             @PathVariable Integer IdGrupo) {
         return serviceadmin_segValoresTotalesService.conscalculadora(bandera, IdGrupo);
+    }
+    
+    @GetMapping("/Consadmin_SeguiTarjeta/{bandera}/{IdGrupo}")
+    public List<admin_SeguiTarjetaEntity> ConSegTarge(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmin_SeguiTarjetaService.ConsSegTar(bandera, IdGrupo);
+    }
+    
+    @GetMapping("/Consadmin_SeguiTarjetaDetalle/{bandera}/{IdGrupo}")
+    public List<admin_SeguiTarjetaDetalleEntity> ConSegTargeDetalle(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmin_SeguiTarjetaDetalleService.Cons(bandera, IdGrupo);
     }
 }

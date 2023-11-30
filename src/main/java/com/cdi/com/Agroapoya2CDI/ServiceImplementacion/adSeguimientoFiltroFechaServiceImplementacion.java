@@ -18,18 +18,20 @@ public class adSeguimientoFiltroFechaServiceImplementacion implements adSeguimie
     private EntityManager repositorio;
 
     @Override
-    public List<adSeguimientoFiltroFechaEntity> ConsultaSeguimientoFiltroFecha(adSeguimientoFiltroFechaEntity entidad, Integer Bandera, Integer IdGrupoMilla) {
+    public List<adSeguimientoFiltroFechaEntity> ConsultaSeguimientoFiltroFecha(adSeguimientoFiltroFechaEntity entidad, Integer Bandera, Integer IdGrupoMilla, String CdConsecutivo) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("admin_seguimientoFiltroFecha");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("IdGrupoMilla", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("FechaIncio", String.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("FechaFin", String.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("Cd_cnsctvo", String.class, ParameterMode.IN);
 
             tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("IdGrupoMilla", IdGrupoMilla);
             tpoDoc.setParameter("FechaIncio", entidad.getFechaIncio());
             tpoDoc.setParameter("FechaFin", entidad.getFechaFin());
+            tpoDoc.setParameter("Cd_cnsctvo", CdConsecutivo);
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {
