@@ -16,7 +16,7 @@ public class AdminMillaTransporteModServiceImplementacion implements AdminMillaT
     private EntityManager repositorio;
 
     @Override
-    public String ModAdminMillaTransporte(AdminMillaTransporteModEntity entidad, Integer Bandera) {
+    public String ModAdminMillaTransporte(AdminMillaTransporteModEntity entidad, Integer Bandera, Integer IdBodega) {
         try {
             StoredProcedureQuery modRespuesta = repositorio.createNamedStoredProcedureQuery("admin_MillaTransporteMod");
             modRespuesta.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
@@ -26,6 +26,7 @@ public class AdminMillaTransporteModServiceImplementacion implements AdminMillaT
             modRespuesta.registerStoredProcedureParameter("UbicacionEntrega", String.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("UbicacionRecoge", String.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("Id_carrosManual", String.class, ParameterMode.IN);
+            modRespuesta.registerStoredProcedureParameter("IdBodegaRecoge", Integer.class, ParameterMode.IN);
 
             modRespuesta.setParameter("Bandera", Bandera);
             modRespuesta.setParameter("IdGrupoMilla", entidad.getIdGrupoMilla());
@@ -34,11 +35,12 @@ public class AdminMillaTransporteModServiceImplementacion implements AdminMillaT
             modRespuesta.setParameter("UbicacionEntrega", entidad.getUbicacionEntrega());
             modRespuesta.setParameter("UbicacionRecoge", entidad.getUbicacionRecoge());
             modRespuesta.setParameter("Id_carrosManual", entidad.getId_carrosManual());
+            modRespuesta.setParameter("IdBodegaRecoge", IdBodega);
 
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: {admin_MillaTransporteMod}" + ex);
         }
     }
 

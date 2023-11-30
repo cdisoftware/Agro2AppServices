@@ -47,8 +47,13 @@ public class CRepEstEntregaEntity {
 
     @JsonProperty("VLR_PENDIENTE_RECAUDO")
     public String VLR_PENDIENTE_RECAUDO;
-    
-     @JsonProperty("VLOR_DEVOLUCION")
+
+    @JsonProperty("VLOR_DEVOLUCION")
     public String VLOR_DEVOLUCION;
 
+    @JsonProperty("VLRRECAUDADOCONTRAENTREGA")
+    public String VLRRECAUDADOCONTRAENTREGA;
+    
+    @JsonProperty("VLRRECAUDADOELECTRONICO")
+    public String VLRRECAUDADOELECTRONICO;
 }

@@ -280,6 +280,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.admillaPoligonoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaSectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admin_segValoresTotalesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adofertaFechasModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
@@ -632,6 +633,7 @@ import com.cdi.com.Agroapoya2CDI.Services.admillaPoligonoModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaSectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.admin_segValoresTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
 import com.cdi.com.Agroapoya2CDI.Services.adofertaFechasModService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
@@ -1701,6 +1703,9 @@ public class Controller {
     
     @Autowired
     movile_TransActivosService servicemovile_TransActivosService;
+    
+    @Autowired
+    admin_segValoresTotalesService serviceadmin_segValoresTotalesService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4224,11 +4229,12 @@ public class Controller {
         return serviceadminreporteCantidadTotalService.ConsultaAdminReporteTotal(Bandera, cd_cnsctivo);
     }
 
-    @PostMapping("/modAdminMillaTransporte/{Bandera}")
+    @PostMapping("/modAdminMillaTransporte/{Bandera}/{IdBodega}")
     public String ModificacionAdminTextoOferta(
             @RequestBody AdminMillaTransporteModEntity entidad,
-            @PathVariable Integer Bandera) {
-        return serviceAdminMillaTransporteModService.ModAdminMillaTransporte(entidad, Bandera);
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdBodega) {
+        return serviceAdminMillaTransporteModService.ModAdminMillaTransporte(entidad, Bandera, IdBodega);
     }
 
     @GetMapping("/consAdminMillaTransportes/{Bandera}/{IdGrupo}")
@@ -4419,5 +4425,12 @@ public class Controller {
             @PathVariable Integer id_condutor,
             @PathVariable Integer usucodigTrans) {
         return servicemovile_TransActivosService.CosultaGeneralEntregaMovile(bandera, id_condutor, usucodigTrans);
+    }
+    
+    @GetMapping("/Consadmin_segValores/{bandera}/{IdGrupo}")
+    public List<admin_segValoresTotalesEntity> ConSegValores(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmin_segValoresTotalesService.conscalculadora(bandera, IdGrupo);
     }
 }

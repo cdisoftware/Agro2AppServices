@@ -4,5 +4,5 @@ import com.cdi.com.Agroapoya2CDI.Entity.AdminMillaTransporteModEntity;
 
 public interface AdminMillaTransporteModService {
 
-    public String ModAdminMillaTransporte(AdminMillaTransporteModEntity entidad, Integer Bandera);
+    public String ModAdminMillaTransporte(AdminMillaTransporteModEntity entidad, Integer Bandera, Integer IdBodega);
 }
