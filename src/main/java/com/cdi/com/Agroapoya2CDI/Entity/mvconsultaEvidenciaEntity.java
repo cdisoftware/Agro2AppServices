@@ -38,4 +38,13 @@ public class mvconsultaEvidenciaEntity {
 
     @JsonProperty("Observacion")
     public String Observacion;
+
+    @JsonProperty("ValorTotaPagar")
+    public Integer ValorTotaPagar;
+    
+    @JsonProperty("ValorPagarSinDomicilio")
+    public Integer ValorPagarSinDomicilio;
+    
+    @JsonProperty("ValorDomicilio")
+    public Integer ValorDomicilio;
 }

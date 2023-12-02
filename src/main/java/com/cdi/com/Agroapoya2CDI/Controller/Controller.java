@@ -2757,13 +2757,11 @@ public class Controller {
         return serviceCTipoPagosTransService.ConsultaCTipoPagosTrans(Bandera, Usucodig);
     }
 
-    @GetMapping("/conscpagostranstotales/{Bandera}/{Cd_csnctivo}/{IdSector}/{idConductor}")
+    @GetMapping("/conscpagostranstotales/{Bandera}/{Id_Grupo}")
     public String ConsultaCPagosTransTotales(
             @PathVariable Integer Bandera,
-            @PathVariable Integer Cd_csnctivo,
-            @PathVariable Integer IdSector,
-            @PathVariable Integer idConductor) {
-        return serviceCPagosTransTotalesService.ConsultaCPagosTransTotales(Bandera, Cd_csnctivo, IdSector, idConductor);
+            @PathVariable Integer Id_Grupo) {
+        return serviceCPagosTransTotalesService.ConsultaCPagosTransTotales(Bandera, Id_Grupo);
     }
 
     @GetMapping("/enviosmsindividual/{Bandera}/{Usucodig}/{cd_cnctivo}/{idSector}/{idCliente}/{TelefonoP}/{Codigo}")
@@ -4161,12 +4159,11 @@ public class Controller {
         return serviceAdmUsuariosQueryService.ConsultAdminUsuariosQuery(entidad, Bandera);
     }
 
-    @GetMapping("/consMVReporteEntregas/{Bandera}/{IdGrupo}/{IdProducto}")
+    @GetMapping("/consMVReporteEntregas/{Bandera}/{IdGrupo}")
     public List<MovileReporteEntregasEntity> ConsultaMovileReporteEntrega(
             @PathVariable Integer Bandera,
-            @PathVariable Integer IdGrupo,
-            @PathVariable Integer IdProducto) {
-        return serviceMovileReporteEntregaService.ConsultaMovileReporteEntrega(Bandera, IdGrupo, IdProducto);
+            @PathVariable Integer IdGrupo) {
+        return serviceMovileReporteEntregaService.ConsultaMovileReporteEntrega(Bandera, IdGrupo);
     }
 
     @GetMapping("/consGeneralEntregaMovile/{Bandera}/{IdGrupo}")

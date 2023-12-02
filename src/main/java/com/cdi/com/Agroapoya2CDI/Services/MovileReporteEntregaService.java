@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface MovileReporteEntregaService {
 
-    public List<MovileReporteEntregasEntity> ConsultaMovileReporteEntrega(Integer Bandera, Integer IdGrupo, Integer IdProducto);
+    public List<MovileReporteEntregasEntity> ConsultaMovileReporteEntrega(Integer Bandera, Integer IdGrupo);
 }
