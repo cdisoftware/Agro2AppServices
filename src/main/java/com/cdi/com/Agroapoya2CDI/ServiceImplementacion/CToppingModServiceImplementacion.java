@@ -38,6 +38,7 @@ public class CToppingModServiceImplementacion implements CToppingModService {
             modTopping.registerStoredProcedureParameter("IdTipoTopingVenta", Integer.class, ParameterMode.IN);
             modTopping.registerStoredProcedureParameter("IdProdTopin", Integer.class, ParameterMode.IN);
             modTopping.registerStoredProcedureParameter("PresentacionProd", String.class, ParameterMode.IN);
+            modTopping.registerStoredProcedureParameter("IdCampesino", Integer.class, ParameterMode.IN);
 
             modTopping.setParameter("Bandera", Bandera);
             modTopping.setParameter("IdTopping", entidad.getIdTopping());
@@ -58,6 +59,7 @@ public class CToppingModServiceImplementacion implements CToppingModService {
             modTopping.setParameter("IdTipoTopingVenta", entidad.getIdTipoTopingVenta());
             modTopping.setParameter("IdProdTopin", entidad.getIdProdTopin());
             modTopping.setParameter("PresentacionProd", entidad.getPresentacionProd());
+            modTopping.setParameter("IdCampesino", entidad.getIdCampesino());
 
             modTopping.execute();
             return JSONObject.quote((String) modTopping.getOutputParameterValue("Respuesta"));

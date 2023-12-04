@@ -19,13 +19,10 @@ public class MovileReporteEntregasEntity {
 
     @Id
     @JsonProperty("Id")
-    public Integer Id;
+    public String Id;
 
     @JsonProperty("Producto")
     public String Producto;
-
-    @JsonProperty("imagen")
-    public String imagen;
 
     @JsonProperty("CantidadTotal")
     public Integer CantidadTotal;

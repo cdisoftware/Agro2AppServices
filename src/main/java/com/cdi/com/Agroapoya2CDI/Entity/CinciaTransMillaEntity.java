@@ -27,12 +27,6 @@ public class CinciaTransMillaEntity {
     @JsonProperty("idGrupo")
     public Integer idGrupo;
 
-    @JsonProperty("cd_cnsctivo")
-    public Integer cd_cnsctivo;
-
-    @JsonProperty("idSector")
-    public Integer idSector;
-
     @JsonProperty("Estado")
     public Integer Estado;
 

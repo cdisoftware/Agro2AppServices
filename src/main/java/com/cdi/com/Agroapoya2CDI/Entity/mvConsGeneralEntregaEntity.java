@@ -21,15 +21,6 @@ public class mvConsGeneralEntregaEntity {
     @JsonProperty("ID")
     public Integer ID;
 
-    @JsonProperty("CD_CNSCTVO")
-    public Integer CD_CNSCTVO;
-
-    @JsonProperty("IdSectorEntrega")
-    public Integer IdSectorEntrega;
-
-    @JsonProperty("descSectorEntrega")
-    public String descSectorEntrega;
-
     @JsonProperty("IdGrupoMilla")
     public Integer IdGrupoMilla;
 

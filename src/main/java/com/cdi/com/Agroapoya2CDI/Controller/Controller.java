@@ -280,6 +280,9 @@ import com.cdi.com.Agroapoya2CDI.Entity.admillaPoligonoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaSectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admin_SeguiTarjetaDetalleEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admin_SeguiTarjetaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.admin_segValoresTotalesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adofertaFechasModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
@@ -305,6 +308,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.loginClienteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.loginTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.menuEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.movileConsulatGeneralOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.movile_TransActivosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsGeneralEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaDetalleEntregasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvConsultaEntregasEntity;
@@ -631,6 +635,9 @@ import com.cdi.com.Agroapoya2CDI.Services.admillaPoligonoModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaSectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.admin_SeguiTarjetaDetalleService;
+import com.cdi.com.Agroapoya2CDI.Services.admin_SeguiTarjetaService;
+import com.cdi.com.Agroapoya2CDI.Services.admin_segValoresTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
 import com.cdi.com.Agroapoya2CDI.Services.adofertaFechasModService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
@@ -656,6 +663,7 @@ import com.cdi.com.Agroapoya2CDI.Services.loginClienteService;
 import com.cdi.com.Agroapoya2CDI.Services.loginTransService;
 import com.cdi.com.Agroapoya2CDI.Services.menuService;
 import com.cdi.com.Agroapoya2CDI.Services.movileConsulatGeneralOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.movile_TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsGeneralEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsultaDetalleEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mvConsultaEntregaService;
@@ -1696,6 +1704,18 @@ public class Controller {
 
     @Autowired
     adCambioSectorOfertaService serviceadCambioSectorOfertaService;
+    
+    @Autowired
+    movile_TransActivosService servicemovile_TransActivosService;
+    
+    @Autowired
+    admin_segValoresTotalesService serviceadmin_segValoresTotalesService;
+    
+    @Autowired
+    admin_SeguiTarjetaService serviceadmin_SeguiTarjetaService;
+    
+    @Autowired
+    admin_SeguiTarjetaDetalleService serviceadmin_SeguiTarjetaDetalleService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -2737,13 +2757,11 @@ public class Controller {
         return serviceCTipoPagosTransService.ConsultaCTipoPagosTrans(Bandera, Usucodig);
     }
 
-    @GetMapping("/conscpagostranstotales/{Bandera}/{Cd_csnctivo}/{IdSector}/{idConductor}")
+    @GetMapping("/conscpagostranstotales/{Bandera}/{Id_Grupo}")
     public String ConsultaCPagosTransTotales(
             @PathVariable Integer Bandera,
-            @PathVariable Integer Cd_csnctivo,
-            @PathVariable Integer IdSector,
-            @PathVariable Integer idConductor) {
-        return serviceCPagosTransTotalesService.ConsultaCPagosTransTotales(Bandera, Cd_csnctivo, IdSector, idConductor);
+            @PathVariable Integer Id_Grupo) {
+        return serviceCPagosTransTotalesService.ConsultaCPagosTransTotales(Bandera, Id_Grupo);
     }
 
     @GetMapping("/enviosmsindividual/{Bandera}/{Usucodig}/{cd_cnctivo}/{idSector}/{idCliente}/{TelefonoP}/{Codigo}")
@@ -4141,12 +4159,11 @@ public class Controller {
         return serviceAdmUsuariosQueryService.ConsultAdminUsuariosQuery(entidad, Bandera);
     }
 
-    @GetMapping("/consMVReporteEntregas/{Bandera}/{IdGrupo}/{IdProducto}")
+    @GetMapping("/consMVReporteEntregas/{Bandera}/{IdGrupo}")
     public List<MovileReporteEntregasEntity> ConsultaMovileReporteEntrega(
             @PathVariable Integer Bandera,
-            @PathVariable Integer IdGrupo,
-            @PathVariable Integer IdProducto) {
-        return serviceMovileReporteEntregaService.ConsultaMovileReporteEntrega(Bandera, IdGrupo, IdProducto);
+            @PathVariable Integer IdGrupo) {
+        return serviceMovileReporteEntregaService.ConsultaMovileReporteEntrega(Bandera, IdGrupo);
     }
 
     @GetMapping("/consGeneralEntregaMovile/{Bandera}/{IdGrupo}")
@@ -4219,11 +4236,12 @@ public class Controller {
         return serviceadminreporteCantidadTotalService.ConsultaAdminReporteTotal(Bandera, cd_cnsctivo);
     }
 
-    @PostMapping("/modAdminMillaTransporte/{Bandera}")
+    @PostMapping("/modAdminMillaTransporte/{Bandera}/{IdBodega}")
     public String ModificacionAdminTextoOferta(
             @RequestBody AdminMillaTransporteModEntity entidad,
-            @PathVariable Integer Bandera) {
-        return serviceAdminMillaTransporteModService.ModAdminMillaTransporte(entidad, Bandera);
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdBodega) {
+        return serviceAdminMillaTransporteModService.ModAdminMillaTransporte(entidad, Bandera, IdBodega);
     }
 
     @GetMapping("/consAdminMillaTransportes/{Bandera}/{IdGrupo}")
@@ -4393,12 +4411,13 @@ public class Controller {
         return serviceadSegtoInfoGeneralService.ConsultaSeguiminetoGen(Bandera, IdGrupoMilla);
     }
 
-    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}")
+    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}/{CdConsecutivo}")
     public List<adSeguimientoFiltroFechaEntity> CopiaAdmillaOferta(
             @RequestBody adSeguimientoFiltroFechaEntity entidad,
             @PathVariable Integer Bandera,
-            @PathVariable Integer IdGrupoMilla) {
-        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla);
+            @PathVariable Integer IdGrupoMilla,
+            @PathVariable String CdConsecutivo) {
+        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla, CdConsecutivo);
     }
 
     @PostMapping("/modCambioSectorOferta/{Bandera}")
@@ -4406,5 +4425,34 @@ public class Controller {
             @RequestBody adCambioSectorOfertaEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceadCambioSectorOfertaService.ModCambioSectorOferta(entidad, Bandera);
+    }
+    
+    @GetMapping("/ConsMovileTransActivos/{bandera}/{id_condutor}/{usucodigTrans}")
+    public List<movile_TransActivosEntity> ConMovileTransActivos(
+            @PathVariable Integer bandera,
+            @PathVariable Integer id_condutor,
+            @PathVariable Integer usucodigTrans) {
+        return servicemovile_TransActivosService.CosultaGeneralEntregaMovile(bandera, id_condutor, usucodigTrans);
+    }
+    
+    @GetMapping("/Consadmin_segValores/{bandera}/{IdGrupo}")
+    public List<admin_segValoresTotalesEntity> ConSegValores(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmin_segValoresTotalesService.conscalculadora(bandera, IdGrupo);
+    }
+    
+    @GetMapping("/Consadmin_SeguiTarjeta/{bandera}/{IdGrupo}")
+    public List<admin_SeguiTarjetaEntity> ConSegTarge(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmin_SeguiTarjetaService.ConsSegTar(bandera, IdGrupo);
+    }
+    
+    @GetMapping("/Consadmin_SeguiTarjetaDetalle/{bandera}/{IdGrupo}")
+    public List<admin_SeguiTarjetaDetalleEntity> ConSegTargeDetalle(
+            @PathVariable Integer bandera,
+            @PathVariable Integer IdGrupo) {
+        return serviceadmin_SeguiTarjetaDetalleService.Cons(bandera, IdGrupo);
     }
 }
