@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface adSeguimientoFiltroFechaService {
 
-    public List<adSeguimientoFiltroFechaEntity> ConsultaSeguimientoFiltroFecha(adSeguimientoFiltroFechaEntity entidad, Integer Bandera, Integer IdGrupoMilla);
+    public List<adSeguimientoFiltroFechaEntity> ConsultaSeguimientoFiltroFecha(adSeguimientoFiltroFechaEntity entidad, Integer Bandera, Integer IdGrupoMilla, String CdConsecutivo);
 }

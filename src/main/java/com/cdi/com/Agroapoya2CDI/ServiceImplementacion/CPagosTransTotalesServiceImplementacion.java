@@ -15,23 +15,19 @@ public class CPagosTransTotalesServiceImplementacion implements CPagosTransTotal
     private EntityManager repositorio;
 
     @Override
-    public String ConsultaCPagosTransTotales(Integer Bandera, Integer Cd_csnctivo, Integer IdSector, Integer idConductor) {
+    public String ConsultaCPagosTransTotales(Integer Bandera, Integer IdGrupo) {
         try {
             StoredProcedureQuery respu = repositorio.createNamedStoredProcedureQuery("paC_PagosTransTotales");
             respu.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
-            respu.registerStoredProcedureParameter("Cd_csnctivo", Integer.class, ParameterMode.IN);
-            respu.registerStoredProcedureParameter("IdSector", Integer.class, ParameterMode.IN);
-            respu.registerStoredProcedureParameter("idConductor", Integer.class, ParameterMode.IN);
+            respu.registerStoredProcedureParameter("Id_Grupo", Integer.class, ParameterMode.IN);
 
             respu.setParameter("Bandera", Bandera);
-            respu.setParameter("Cd_csnctivo", Cd_csnctivo);
-            respu.setParameter("IdSector", IdSector);
-            respu.setParameter("idConductor", idConductor);
+            respu.setParameter("Id_Grupo", IdGrupo);
 
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia {paC_PagosTransTotales} " + ex);
         }
     }
 }
