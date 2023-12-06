@@ -108,4 +108,6 @@ public class AOfertasEntity {
     @JsonProperty("Ciudad_Orig")
     public String Ciudad_Orig;
 
+    @JsonProperty("cd_cnctivo")
+    public Integer cd_cnctivo;
 }

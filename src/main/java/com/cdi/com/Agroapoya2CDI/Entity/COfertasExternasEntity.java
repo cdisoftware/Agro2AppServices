@@ -125,7 +125,7 @@ public class COfertasExternasEntity {
 
     @JsonProperty("ValorArranqueLiderText")
     public String ValorArranqueLiderText;
-
+                                                                
     @JsonProperty("ValorParticipante")
     public String ValorParticipante;
 
@@ -143,4 +143,7 @@ public class COfertasExternasEntity {
 
     @JsonProperty("PerSetor")
     public Integer PerSetor;
+
+    @JsonProperty("vgncia_hastaFormato")
+    public String vgncia_hastaFormato;
 }
