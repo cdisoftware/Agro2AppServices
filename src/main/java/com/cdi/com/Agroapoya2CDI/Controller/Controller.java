@@ -4411,13 +4411,13 @@ public class Controller {
         return serviceadSegtoInfoGeneralService.ConsultaSeguiminetoGen(Bandera, IdGrupoMilla);
     }
 
-    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}/{CdConsecutivo}")
+    @PostMapping("/consAdSeguimientoFiltroFecha/{Bandera}/{IdGrupoMilla}/{Cd_cnsctvo}")
     public List<adSeguimientoFiltroFechaEntity> CopiaAdmillaOferta(
             @RequestBody adSeguimientoFiltroFechaEntity entidad,
             @PathVariable Integer Bandera,
             @PathVariable Integer IdGrupoMilla,
-            @PathVariable String CdConsecutivo) {
-        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla, CdConsecutivo);
+            @PathVariable Integer Cd_cnsctvo) {
+        return serviceadSeguimientoFiltroFechaService.ConsultaSeguimientoFiltroFecha(entidad, Bandera, IdGrupoMilla, Cd_cnsctvo);
     }
 
     @PostMapping("/modCambioSectorOferta/{Bandera}")
