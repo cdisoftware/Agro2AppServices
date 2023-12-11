@@ -32,7 +32,9 @@ public class CInfoOfertaServiceImplementacion implements CInfoOfertaService {
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (pac_InfoOferta)"
+                    + " - Parametros: " + bandera + "/" + CD_CNSCTVO + "/" + Id_sector
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

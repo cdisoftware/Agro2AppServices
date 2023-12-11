@@ -34,7 +34,10 @@ public class adcoordenadasMillaModServiceImplementacion implements adcoordenadas
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_coordenadasMillaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getID() + "/" + entidad.getID_SCTOR_MILLA() + "/"
+                    + entidad.getLTTUD() + "/" + entidad.getLNGTUD()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

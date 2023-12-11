@@ -32,7 +32,9 @@ public class CValoracionOfertaServiceImplementacion implements CValoracionOferta
             return valor.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+             list.add(0, JSONObject.quote("ERROR LOG (paCValoracionOferta)"
+                    + " - Parametros: " + BANDERA + "/" + CD_CNSCTVO + "/" + ID_SCTOR_OFRTA
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

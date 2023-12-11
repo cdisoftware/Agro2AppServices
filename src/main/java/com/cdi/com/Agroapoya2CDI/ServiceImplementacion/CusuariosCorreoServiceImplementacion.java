@@ -12,7 +12,8 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CusuariosCorreoServiceImplementacion implements CusuariosCorreoService{
+public class CusuariosCorreoServiceImplementacion implements CusuariosCorreoService {
+
     @PersistenceContext
     private EntityManager repositorio;
 
@@ -24,7 +25,7 @@ public class CusuariosCorreoServiceImplementacion implements CusuariosCorreoServ
             respu.registerStoredProcedureParameter("TipoPersona", Integer.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("Correopersona", String.class, ParameterMode.IN);
             respu.registerStoredProcedureParameter("NombrePersona", String.class, ParameterMode.IN);
-            
+
             respu.setParameter("Bandera", Bandera);
             respu.setParameter("TipoPersona", TipoPersona);
             respu.setParameter("Correopersona", Correopersona);
@@ -32,7 +33,9 @@ public class CusuariosCorreoServiceImplementacion implements CusuariosCorreoServ
             return respu.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (pac_usuariosCorreo)"
+                    + " - Parametros: " + Bandera + "/" + TipoPersona + "/" + Correopersona + "/" + NombrePersona
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

@@ -34,7 +34,9 @@ public class CLinksCPyGModServiceImplementacion implements CLinksCPyGModService 
             modPyG.execute();
             return JSONObject.quote((String) modPyG.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCLinksCPyGMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getPRFJO_URL() + "/" + entidad.getLINK_LARGO() + "/" + entidad.getCOD_DCTO() + "/" + entidad.getTPO_LINK()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

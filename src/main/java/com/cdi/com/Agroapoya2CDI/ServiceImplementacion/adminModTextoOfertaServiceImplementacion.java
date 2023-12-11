@@ -38,7 +38,11 @@ public class adminModTextoOfertaServiceImplementacion implements adminModTextoOf
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_ModificacionTextoOferta)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctivo() + "/" + entidad.getIdsector() + "/"
+                    + entidad.getModalRegistroTextoUno() + "/" + entidad.getModalRegistroTextoDos() + "/"
+                    + entidad.getModalRegistroTextoTres() + "/" + entidad.getModalRegistroImagenUno()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

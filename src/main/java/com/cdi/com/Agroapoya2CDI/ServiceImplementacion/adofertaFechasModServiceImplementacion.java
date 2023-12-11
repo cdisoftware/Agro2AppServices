@@ -38,7 +38,11 @@ public class adofertaFechasModServiceImplementacion implements adofertaFechasMod
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_ofertaFechasMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctvo() + "/" + entidad.getIdSector() + "/"
+                    + entidad.getFechaInicio() + "/" + entidad.getFechaFin() + "/"
+                    + entidad.getFechaEntrega() + "/" + entidad.getFechaPartida()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

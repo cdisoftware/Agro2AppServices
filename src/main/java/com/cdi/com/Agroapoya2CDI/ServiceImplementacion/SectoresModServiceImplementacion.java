@@ -40,7 +40,12 @@ public class SectoresModServiceImplementacion implements SectoresModService {
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paT_SectoresMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getUSUCODIG() + "/" + entidad.getSCTOR_OFR() + "/"
+                    + entidad.getDSCRPCION_SCTOR() + "/" + entidad.getCD_RGION() + "/"
+                    + entidad.getCD_MNCPIO() + "/" + entidad.getCd_cnsctvo() + "/"
+                    + entidad.getTEMPORAL() + "/" + entidad.getID_ZONA()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -32,7 +32,9 @@ public class CPersonaTransServiceImplementacion implements CPersonaTransService 
             return consperson.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+             list.add(0, JSONObject.quote("ERROR LOG (paC_PersonaTrans)"
+                    + " - Parametros: " + bandera + "/" + usucodig + "/" + id_conductor
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

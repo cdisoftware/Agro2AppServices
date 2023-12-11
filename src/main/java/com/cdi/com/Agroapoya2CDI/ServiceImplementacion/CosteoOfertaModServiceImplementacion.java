@@ -34,7 +34,10 @@ public class CosteoOfertaModServiceImplementacion implements CosteoOfertaModServ
             modoferta.execute();
             return JSONObject.quote((String) modoferta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCCosteoOfertaMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getCD_TIPO_COSTEO() + "/"
+                    + entidad.getCD_TPO_VLOR() + "/" + entidad.getVLOR()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

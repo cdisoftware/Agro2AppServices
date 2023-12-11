@@ -26,7 +26,9 @@ public class AGROPREGUNTAMODServiceImplementacion implements AGROPREGUNTAMODServ
             actPregunt.execute();
             return JSONObject.quote((String) actPregunt.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (AGRO_PREGUNTAMOD)"
+                    + " - Parametros:" + Bandera + "/" + entidad.getTexto()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

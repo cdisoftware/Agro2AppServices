@@ -38,7 +38,10 @@ public class CCambiaEstadoOfertaModServiceImplementacion implements CCambiaEstad
             modestado.execute();
             return JSONObject.quote((String) modestado.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCCambiaEstadoOfertaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsucodig() + "/" + entidad.getCnctivoOferta() + "/" + entidad.getObsEstado()
+                    + "/" + entidad.getEstado() + "/" + entidad.getParametro1() + "/" + entidad.getParametro2() + "/" + entidad.getParametro3()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

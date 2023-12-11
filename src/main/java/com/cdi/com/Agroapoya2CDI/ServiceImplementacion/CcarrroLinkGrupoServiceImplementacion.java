@@ -30,7 +30,9 @@ public class CcarrroLinkGrupoServiceImplementacion implements CcarrroLinkGrupoSe
             SqlService.execute();
             return JSONObject.quote((String) SqlService.getOutputParameterValue("repuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_carrroLinkGrupo)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdHexaGrupo() + "/" + entidad.getID_CARRO()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

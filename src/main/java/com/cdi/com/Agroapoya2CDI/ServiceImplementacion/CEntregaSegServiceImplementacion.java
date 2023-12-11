@@ -30,7 +30,9 @@ public class CEntregaSegServiceImplementacion implements CEntregaSegService {
             return seguimiento.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_Consulta_Entregas_seguimiento)"
+                    + " - Parametros: " + Bandera + "/" + cd_cnscutivo + "/" + IdSector
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

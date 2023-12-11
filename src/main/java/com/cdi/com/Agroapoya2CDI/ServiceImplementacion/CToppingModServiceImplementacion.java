@@ -64,7 +64,15 @@ public class CToppingModServiceImplementacion implements CToppingModService {
             modTopping.execute();
             return JSONObject.quote((String) modTopping.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_ToppingMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdTopping() + "/" + entidad.getId_Sector() + "/"
+                    + entidad.getCd_cnctivo() + "/" + entidad.getDescricpcion() + "/" + entidad.getMaxCantidad() + "/"
+                    + entidad.getIdTipoTopping() + "/" + entidad.getValorUnitario() + "/" + entidad.getCantidadReserva() + "/"
+                    + entidad.getImagen() + "/" + entidad.getPesoKiloUnd() + "/" + entidad.getCrctrzcionCrta() + "/"
+                    + entidad.getCrctrzcionLrga() + "/" + entidad.getImgDos() + "/" + entidad.getImgTres() + "/"
+                    + entidad.getVlorRefencia() + "/" + entidad.getIdTipoTopingVenta() + "/" + entidad.getIdProdTopin() + "/"
+                    + entidad.getPresentacionProd() + "/" + entidad.getIdCampesino()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -37,7 +37,10 @@ public class EnviosmsIndividualServiceImplementacion implements EnviosmsIndividu
             smsindividual.execute();
             return JSONObject.quote((String) smsindividual.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (pac_EnviosmsIndividual)"
+                    + " - Parametros: " + Bandera + "/" + Usucodig + "/" + cd_cnctivo + "/"
+                    + idSector + "/" + idCliente + "/" + TelefonoP + "/" + Codigo
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

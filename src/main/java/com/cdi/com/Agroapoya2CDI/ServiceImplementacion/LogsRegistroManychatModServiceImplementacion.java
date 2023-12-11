@@ -34,7 +34,10 @@ public class LogsRegistroManychatModServiceImplementacion implements LogsRegistr
             modRegistro.execute();
             return JSONObject.quote((String) modRegistro.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_LogsRegistroManychatMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getUsucodig() + "/" + entidad.getCelular() + "/"
+                    + entidad.getRta_manychat() + "/" + entidad.getOrigen()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

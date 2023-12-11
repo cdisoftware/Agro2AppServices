@@ -34,7 +34,9 @@ public class TSectoresEtvServiceImplementacion implements TSectoresEtvService {
             return Etv.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paT_SectoresEtv)"
+                    + " - Parametros: " + bandera + "/" + NOMBRE_SECTOR + "/" + ID_ZONA + "/" + CD_CNSCTIVO
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

@@ -12,11 +12,11 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class admin_segValoresTotalesServiceImplementacion implements admin_segValoresTotalesService{
+public class admin_segValoresTotalesServiceImplementacion implements admin_segValoresTotalesService {
 
     @PersistenceContext
     private EntityManager repositorio;
-    
+
     @Override
     public List<admin_segValoresTotalesEntity> conscalculadora(Integer Bandera, Integer IdGrupo) {
         try {
@@ -30,7 +30,9 @@ public class admin_segValoresTotalesServiceImplementacion implements admin_segVa
             return Cons.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia {admin_segValoresTotales}" + ex));
+            list.add(0, JSONObject.quote("ERROR LOG (admin_segValoresTotales)"
+                    + " - Parametros: " + Bandera + "/" + IdGrupo
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

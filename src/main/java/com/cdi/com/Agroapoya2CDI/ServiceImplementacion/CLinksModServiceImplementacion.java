@@ -30,7 +30,9 @@ public class CLinksModServiceImplementacion implements CLinksModService {
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCLinksMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getPRFJO_URL()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

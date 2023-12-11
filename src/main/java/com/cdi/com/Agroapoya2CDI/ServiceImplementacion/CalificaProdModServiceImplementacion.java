@@ -38,7 +38,11 @@ public class CalificaProdModServiceImplementacion implements CalificaProdModServ
             modCalif.execute();
             return JSONObject.quote((String) modCalif.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_CalificaProdMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsucodig() + "/" + entidad.getCd_cnsctvo() + "/"
+                    + entidad.getIdZona() + "/" + entidad.getCalificacion() + "/"
+                    + entidad.getComemtario() + "/" + entidad.getWebApp()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

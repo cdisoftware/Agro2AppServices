@@ -26,7 +26,9 @@ public class TaccionPubliServiceImplementacion implements TaccionPubliService {
             return accionPubli.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paT_accionPubli)"
+                    + " - Parametros: " + Bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

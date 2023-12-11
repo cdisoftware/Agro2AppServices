@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Entity.TipoViasEntity;
@@ -13,19 +12,23 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TipoViasServiceImplementacion implements TipoViasService{
-  @PersistenceContext
-        private EntityManager repositorio;
+public class TipoViasServiceImplementacion implements TipoViasService {
+
+    @PersistenceContext
+    private EntityManager repositorio;
+
     @Override
     public List<TipoViasEntity> ConsultaTipoVias(Integer Bandera) {
-         try {
+        try {
             StoredProcedureQuery via = repositorio.createNamedStoredProcedureQuery("paT_TipoVias");
             via.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             via.setParameter("Bandera", Bandera);
             return via.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paT_TipoVias)"
+                    + " - Parametros: " + Bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

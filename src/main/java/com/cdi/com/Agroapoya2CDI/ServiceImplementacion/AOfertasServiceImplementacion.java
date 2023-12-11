@@ -58,7 +58,12 @@ public class AOfertasServiceImplementacion implements AOfertasService {
             return cons.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paA_Ofertas)"
+                    + " - Parametros:" + Bandera + "/" + entidad.getUsuCodig()+ "/" + cnctivoOferta + "/" + id_prdcto + "/" + entidad.getProducto() + "/" + idProductor
+                    + "/" + entidad.getNombreCompletoProductor() + "/" + entidad.getDescripcionProducto() + "/" + entidad.getCd_cndcion() + "/" + entidad.getCd_tmno()
+                    + "/" + entidad.getID_EMPAQUE() + "/" + entidad.getVigenciaDesde() + "/" + entidad.getVigenciaHasta() + "/" + entidad.getIdEstado_Oferta() + "/" + entidad.getCD_RGION()
+                    + "/" + entidad.getCD_MNCPIO()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

@@ -48,7 +48,12 @@ public class COfertasNuevasServiceImplementacion implements COfertasNuevasServic
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_OfertasNuevas)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsuCodig() + "/" + cnctivoOferta + "/" + id_prdcto + "/"
+                    + entidad.getProducto() + "/" + entidad.getDescripcionProducto() + "/" + entidad.getCd_cndcion() + "/"
+                    + entidad.getCd_tmno() + "/" + entidad.getID_EMPAQUE() + "/" + entidad.getCD_RGION() + "/"
+                    + entidad.getCD_MNCPIO()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

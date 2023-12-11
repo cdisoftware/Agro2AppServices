@@ -34,7 +34,10 @@ public class admillaSectoresModServiceImplementacion implements admillaSectoresM
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_millaSectoresMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdSectorMilla() + "/" + entidad.getNombreSector() + "/"
+                    + entidad.getCd_rgion() + "/" + entidad.getCd_mncpio()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

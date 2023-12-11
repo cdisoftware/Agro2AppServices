@@ -34,7 +34,10 @@ public class CValorUbersOfertaModServiceImplemnetacion implements CValorUbersOfe
             SqlService.execute();
             return JSONObject.quote((String) SqlService.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_ValorUbersOfertaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getValorTrans() + "/" + entidad.getCd_cnctvo() + "/"
+                    + entidad.getIdSector() + "/" + entidad.getIdGrupo()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

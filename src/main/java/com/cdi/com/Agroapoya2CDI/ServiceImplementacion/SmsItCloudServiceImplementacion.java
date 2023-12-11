@@ -21,7 +21,7 @@ public class SmsItCloudServiceImplementacion implements SmsItCloudService {
             ResponseEntity<String> response = rt.exchange("https://contacto-masivo.com/sms/back_sms/public/api/sendsms?user=" + entidad.getUser() + "&token=" + entidad.getToken() + "&GSM=" + entidad.getGSM() + "&SMSText=" + entidad.getSMSText() + "&metodo_envio=" + entidad.getMetodo_envio(), HttpMethod.POST, null, String.class);
             Respuesta = JSONObject.quote("SMS Enviado Correctamente");
         } catch (Exception ex) {
-            return "Error:" + ex.getMessage();
+            return "Error envio de SMS:" + ex.getMessage();
         }
         return Respuesta;
     }

@@ -29,7 +29,10 @@ public class CEjecutaSenteciaSQLServiceImplementacion implements CEjecutaSenteci
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {
-            List list = new ArrayList();            
+            List list = new ArrayList();
+            list.add(0, JSONObject.quote("ERROR LOG (paC_EjecutaSenteciaSQL)"
+                    + " - Parametros: " + bandera + "/" + entidad.getMSJ_AGROAMIGO().replace("''", "'")
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

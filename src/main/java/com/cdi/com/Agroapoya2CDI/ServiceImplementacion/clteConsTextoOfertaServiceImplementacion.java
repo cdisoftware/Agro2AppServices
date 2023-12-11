@@ -30,7 +30,9 @@ public class clteConsTextoOfertaServiceImplementacion implements clteConsTextoOf
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex));
+            list.add(0, JSONObject.quote("ERROR LOG (cliente_ConsultaTextoOferta)"
+                    + " - Parametros: " + Bandera + "/" + cd_cnsctivo + "/" + idsector
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

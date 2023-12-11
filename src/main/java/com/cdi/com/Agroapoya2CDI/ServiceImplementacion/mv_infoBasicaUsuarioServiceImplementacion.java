@@ -23,14 +23,16 @@ public class mv_infoBasicaUsuarioServiceImplementacion implements mv_infoBasicaU
             StoredProcedureQuery consinfouser = repositorio.createNamedStoredProcedureQuery("paC_infoBasicaUsuario");
             consinfouser.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
             consinfouser.registerStoredProcedureParameter("usucodig", Integer.class, ParameterMode.IN);
-             consinfouser.registerStoredProcedureParameter("correo", String.class, ParameterMode.IN);
+            consinfouser.registerStoredProcedureParameter("correo", String.class, ParameterMode.IN);
             consinfouser.setParameter("bandera", bandera);
             consinfouser.setParameter("usucodig", entidad.getUSUCODIG());
-              consinfouser.setParameter("correo", entidad.getCORREO_PERSONA());
+            consinfouser.setParameter("correo", entidad.getCORREO_PERSONA());
             return consinfouser.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_infoBasicaUsuario)"
+                    + " - Parametros: " + bandera + "/" + entidad.getUSUCODIG() + "/" + entidad.getCORREO_PERSONA()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

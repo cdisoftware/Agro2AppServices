@@ -28,7 +28,9 @@ public class clientOrdenExternalModServiceImplementacion implements clientOrdenE
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (cliente_OrdenExternalMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getId_carro()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

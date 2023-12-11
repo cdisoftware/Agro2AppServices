@@ -48,7 +48,11 @@ public class CCarroComprasModServiceImplementacion implements CCarroComprasModSe
             modCarro.execute();
             return JSONObject.quote((String) modCarro.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_CarroComprasMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctivo() + "/" + entidad.getUnidades()
+                    + "/" + entidad.getObservaciones() + "/" + entidad.getUsucodig() + "/" + entidad.getCodGrupo() + "/" + entidad.getTipoUsuarioCompra()
+                    + "/" + entidad.getIdSector() + "/" + entidad.getIdCarro() + "/" + entidad.getToppings() + "/" + entidad.getLinkPartici() + "/" + entidad.getCodDescuento()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

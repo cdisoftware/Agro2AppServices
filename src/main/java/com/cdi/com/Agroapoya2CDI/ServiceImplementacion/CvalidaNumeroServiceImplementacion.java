@@ -25,7 +25,9 @@ public class CvalidaNumeroServiceImplementacion implements CvalidaNumeroService 
             rolconsola.execute();
             return JSONObject.quote((String) rolconsola.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_validaNumero)"
+                    + " - Parametros: " + Bandera + "/" + numeroTel
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

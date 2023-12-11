@@ -32,7 +32,9 @@ public class CtableroModServiceImplementacion implements CtableroModService {
             modTablero.execute();
             return JSONObject.quote((String) modTablero.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_tableroMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsucodigTrans() + "/" + entidad.getIdConductor() + "/" + entidad.getIdPlataforma()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

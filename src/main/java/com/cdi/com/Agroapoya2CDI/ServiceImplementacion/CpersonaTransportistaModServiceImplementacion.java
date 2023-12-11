@@ -65,7 +65,18 @@ public class CpersonaTransportistaModServiceImplementacion implements CpersonaTr
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_personaTransportistaMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCodUsuario() + "/" + entidad.getNombres() + "/"
+                    + entidad.getApellido() + "/" + entidad.getTelefono() + "/"
+                    + entidad.getCorreo() + "/" + entidad.getTipo_identificacion() + "/"
+                    + entidad.getNumero_identificacion() + "/" + entidad.getDireccion() + "/"
+                    + entidad.getCMNTRIO() + "/" + entidad.getTOKEN() + "/"
+                    + entidad.getDpto() + "/" + entidad.getCiudad() + "/"
+                    + entidad.getComplemento_direccion() + "/" + entidad.getCOORDENADAS() + "/"
+                    + entidad.getTPO_TRANSPORTE() + "/" + entidad.getFrma_pgo() + "/"
+                    + entidad.getTpo_cnta() + "/" + entidad.getNocuenta() + "/"
+                    + entidad.getId_bnco() + "/" + entidad.getId_tpoprsn()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

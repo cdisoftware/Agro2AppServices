@@ -34,7 +34,10 @@ public class CiudadOfertaModServiceImplementacion implements CiudadOfertaModServ
             mod.execute();
             return JSONObject.quote((String) mod.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCCiudadOfertaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getCD_PAIS()
+                    + "/" + entidad.getCD_DPTO() + "/" + entidad.getCD_MNCPIO()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

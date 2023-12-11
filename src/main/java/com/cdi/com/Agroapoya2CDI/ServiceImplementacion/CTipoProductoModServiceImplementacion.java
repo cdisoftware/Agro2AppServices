@@ -43,7 +43,12 @@ public class CTipoProductoModServiceImplementacion implements CTipoProductoModSe
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_TipoProductoMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getDSCRPCION() + "/" + entidad.getImagen() + "/"
+                    + entidad.getImagenDos() + "/" + entidad.getImagenTres() + "/" + entidad.getCrctzcionCrta() + "/"
+                    + entidad.getCrctzcionLrga() + "/" + entidad.getESTADO() + "/" + entidad.getCD_PRDCTO() + "/"
+                    + entidad.getPREFIJO()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

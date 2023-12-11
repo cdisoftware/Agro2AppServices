@@ -90,7 +90,24 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.execute();
             return JSONObject.quote((String) modval.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCValoracionOfertaMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getTPO_OFRTA() + "/"
+                    + entidad.getTPO_CMSION_INDVDUAL() + "/" + entidad.getVLOR_CMSION_INDVDUAL() + "/"
+                    + entidad.getMNMO_UNDDES_INDVDUAL() + "/" + entidad.getMXMO_UNDDES_INDVDUAL() + "/"
+                    + entidad.getVLOR_DMNCLIO_INDVDUAL() + "/" + entidad.getVLOR_FNAL_INDVDUAL() + "/"
+                    + entidad.getTPO_CMSION_GRPAL() + "/" + entidad.getVLOR_CMSION_GRPAL() + "/"
+                    + entidad.getMNMO_UNDDES_LIDER() + "/" + entidad.getMXMO_UNDDES_LIDER() + "/"
+                    + entidad.getPRCNTJE_DCTO_LIDER() + "/" + entidad.getVLOR_DMNCLIO_GRPAL() + "/"
+                    + entidad.getCNTDAD_GRPOS() + "/" + entidad.getMNMO_PRSNAS_XGRUPO() + "/"
+                    + entidad.getMNMO_UNDDES_PRCPNTE() + "/" + entidad.getMXMO_UNDDES_PRCPNTE() + "/"
+                    + entidad.getCNTDAD_CMPRAS_INDVDLES() + "/" + entidad.getVLOR_ARRNQUE_LIDER() + "/"
+                    + entidad.getVLOR_FNAL_PRTCPNTE() + "/" + entidad.getID_SCTOR_OFRTA() + "/"
+                    + entidad.getLINKLANDIGN() + "/" + entidad.getTPO_DESCUENTO() + "/"
+                    + entidad.getVALOR_REFERENCIA() + "/" + entidad.getTIPO_CUPON() + "/"
+                    + entidad.getDES_CUPONREGALO() + "/" + entidad.getIMG_CUPONREGALO() + "/"
+                    + entidad.getIDTIPODOMICILIO() + "/" + entidad.getVLORAPRTRDMCLIO() + "/"
+                    + entidad.getNumUsuaCupo() + "/" + entidad.getDirigidaRegiVent()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

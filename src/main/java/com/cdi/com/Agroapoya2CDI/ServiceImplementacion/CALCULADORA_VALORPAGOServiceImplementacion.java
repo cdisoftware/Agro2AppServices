@@ -33,7 +33,10 @@ public class CALCULADORA_VALORPAGOServiceImplementacion implements CALCULADORA_V
             valorpago.execute();
             return JSONObject.quote((String) valorpago.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_CalculadoraPagos)"
+                    + " - Parametros: " + TIPOCOMPRA + "/" + CD_CNSCTVO + "/" + CD_UNDAD + "/" + USUCODIG + "/" + descarga + "/" + Bandera
+                    + " - ERROR JAVA = " + ex
+            );
         }
     }
 }

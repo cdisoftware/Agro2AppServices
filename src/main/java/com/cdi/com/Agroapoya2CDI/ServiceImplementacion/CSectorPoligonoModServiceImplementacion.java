@@ -25,7 +25,9 @@ public class CSectorPoligonoModServiceImplementacion implements CSectorPoligonoM
             poligono.execute();
             return JSONObject.quote((String) poligono.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCSectorPoligonoMod)"
+                    + " - Parametros: " + BANDERA + "/" + ID_SCTOR
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }
