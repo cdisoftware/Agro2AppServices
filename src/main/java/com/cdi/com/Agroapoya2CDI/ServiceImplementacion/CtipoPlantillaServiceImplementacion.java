@@ -19,14 +19,16 @@ public class CtipoPlantillaServiceImplementacion implements CtipoPlantillaServic
 
     @Override
     public List<CtipoPlantillaEntity> ConsultaTipoPlantillas(Integer Bandera) {
-         try {
+        try {
             StoredProcedureQuery plnt = repositorio.createNamedStoredProcedureQuery("paC_tipoPlantilla");
             plnt.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             plnt.setParameter("Bandera", Bandera);
             return plnt.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_tipoPlantilla)"
+                    + " - Parametros: " + Bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

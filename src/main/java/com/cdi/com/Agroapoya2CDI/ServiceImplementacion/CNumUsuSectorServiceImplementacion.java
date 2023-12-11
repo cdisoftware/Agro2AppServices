@@ -27,7 +27,9 @@ public class CNumUsuSectorServiceImplementacion implements CNumUsuSectorService 
             NumUsu.execute();
             return JSONObject.quote((String) NumUsu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_NumUsuSector)"
+                        +" - Parametros: " + Bandera + "/" + IdSector
+                        +" - ERROR JAVA = " + ex);
         }
     }
 }

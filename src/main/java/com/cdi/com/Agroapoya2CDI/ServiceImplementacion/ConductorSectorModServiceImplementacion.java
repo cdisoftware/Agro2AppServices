@@ -39,7 +39,12 @@ public class ConductorSectorModServiceImplementacion implements ConductorSectorM
             modconduct.execute();
             return JSONObject.quote((String) modconduct.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_conductorSectorMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctivo() + "/" + entidad.getId_Sector() + "/"
+                    + entidad.getId_Conductor() + "/" + entidad.getUsucodigTrans() + "/"
+                    + entidad.getVlor_flete() + "/" + entidad.getIdEstado() + "/"
+                    + entidad.getIdGrupoMilla()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

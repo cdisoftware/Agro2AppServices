@@ -27,7 +27,9 @@ public class CPagosTransTotalesServiceImplementacion implements CPagosTransTotal
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia {paC_PagosTransTotales} " + ex);
+             return JSONObject.quote("ERROR LOG (paC_PagosTransTotales)"
+                        +" - Parametros: " + Bandera + "/" + IdGrupo
+                        +" - ERROR JAVA = " + ex);
         }
     }
 }

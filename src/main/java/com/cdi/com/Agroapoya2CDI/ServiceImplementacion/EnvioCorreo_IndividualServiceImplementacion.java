@@ -99,7 +99,10 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
 
         } catch (Exception e) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
+            return JSONObject.quote("ERROR LOG (paC_EnvioCorreo_Individual)"
+                    + " - Parametros: " + bandera + "/" + entidad.getIdPlantilla() + "/" + entidad.getUsucodig() + "/"
+                    + entidad.getCd_cnctvo() + "/" + Id_Clnte + "/" + IdSctor
+                    + " - ERROR JAVA = " + e);
         }
         return Respuesta;
     }
@@ -118,16 +121,15 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
                 correoremitente = rem[i] = remite.get(i).getCorreoRemitente();
                 servicePath = rem[i] = remite.get(i).getServicePath();
                 contrasena = rem[i] = clsEncriptacion.Desencriptar(remite.get(i).getClave());
-            }                      
-            
+            }
+
             Properties props = new Properties();
             props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
             props.setProperty("mail.host", servicePath); // servidor pop3
             props.setProperty("mail.smtp.auth", "true");
             //Linea problema: Could not convert socket to TLS
             //props.put("mail.smtp.starttls.enable", "true");
-            
-            
+
             // Crear objeto de instancia de sesión
             Session session = Session.getInstance(props);
             session.setDebug(true);
@@ -140,7 +142,8 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             ts.close();
 
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_RemitenteCorreo || paC_EnvioCorreo_Individual)"
+                    + " - ERROR JAVA = " + ex);
         }
     }
 
@@ -239,7 +242,8 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             message.setContent(mp2);
             message.saveChanges();
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_EnvioCorreo_Individual)"
+                    + " - ERROR JAVA = " + ex);
         }
         return message;
     }

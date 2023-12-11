@@ -9,7 +9,6 @@ import javax.persistence.StoredProcedureQuery;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CTipoCosteoModServiceImplementacion implements CTipoCosteoModService {
 
@@ -29,7 +28,9 @@ public class CTipoCosteoModServiceImplementacion implements CTipoCosteoModServic
             modCon.execute();
             return JSONObject.quote((String) modCon.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_TipoCosteoMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getDescripcion() + "/" + entidad.getIdTipoCosteo()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

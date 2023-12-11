@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
@@ -13,19 +12,23 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CorreoMomentoEnvioServiceImplementacion implements CorreoMomentoEnvioService{
-   @PersistenceContext
-        private EntityManager repositorio;
+public class CorreoMomentoEnvioServiceImplementacion implements CorreoMomentoEnvioService {
+
+    @PersistenceContext
+    private EntityManager repositorio;
+
     @Override
     public List<CorreoMomentoEnvioEntoty> ConsultaCorreoMomentoEnvio(Integer Bandera) {
-       try {
+        try {
             StoredProcedureQuery correo = repositorio.createNamedStoredProcedureQuery("paC_CorreoMomentoEnvio");
             correo.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             correo.setParameter("Bandera", Bandera);
             return correo.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_CorreoMomentoEnvio)"
+                    + " - Parametros: " + Bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

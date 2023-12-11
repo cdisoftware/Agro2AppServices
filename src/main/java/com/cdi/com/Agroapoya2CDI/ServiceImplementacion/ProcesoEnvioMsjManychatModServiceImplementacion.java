@@ -40,7 +40,12 @@ public class ProcesoEnvioMsjManychatModServiceImplementacion implements ProcesoE
             sql.execute();
             return JSONObject.quote((String) sql.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_LogsEnvioMsjManychatMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getId_proceso() + "/" + entidad.getSql_proceso() + "/"
+                    + entidad.getUsucodig() + "/" + entidad.getUsucodig_msj() + "/"
+                    + entidad.getCelular() + "/" + entidad.getId_manychat() + "/"
+                    + entidad.getMensaje()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

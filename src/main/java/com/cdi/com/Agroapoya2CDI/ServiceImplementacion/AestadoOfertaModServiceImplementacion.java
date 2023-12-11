@@ -32,7 +32,9 @@ public class AestadoOfertaModServiceImplementacion implements AestadoOfertaModSe
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paA_estadoOfertaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsucodig() + "/" + entidad.getCnctivoOferta() + "/" + entidad.getDescripcion() + "/" + entidad.getEstado()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

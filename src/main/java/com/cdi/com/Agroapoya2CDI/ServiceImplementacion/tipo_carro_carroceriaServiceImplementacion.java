@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
@@ -13,9 +12,11 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class tipo_carro_carroceriaServiceImplementacion implements tipo_carro_carroceriaService{
-     @PersistenceContext
-        private EntityManager repositorio;
+public class tipo_carro_carroceriaServiceImplementacion implements tipo_carro_carroceriaService {
+
+    @PersistenceContext
+    private EntityManager repositorio;
+
     @Override
     public List<tipo_carro_carroceriaEntity> ConsultaTipoCarroCarroceria(Integer bandera) {
         try {
@@ -25,7 +26,9 @@ public class tipo_carro_carroceriaServiceImplementacion implements tipo_carro_ca
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paT_tipo_carro_carroceria)"
+                    + " - Parametros: " + bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

@@ -47,7 +47,11 @@ public class CalcSidorPgsClintServiceImplementacion implements CalcSidorPgsClint
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_CalculadoraSimuladorPagosCliente)"
+                    + " - Parametros: " + Bandera + "/" + Operacion + "/" + Formato + "/" + Cd_Cnsctvo + "/"
+                    + Id_Sector + "/" + Unidades + "/" + Usucodig + "/"
+                    + CodGrupo + "/" + entidad.getRtaValor() + "/" + undParti
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

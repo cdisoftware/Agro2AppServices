@@ -32,7 +32,9 @@ public class CGrupoMillaModServiceImplementacion implements CGrupoMillaModServic
             SqlService.execute();
             return JSONObject.quote((String) SqlService.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_GrupoMillaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdGrupo() + "/" + entidad.getCd_csctvo() + "/" + entidad.getIdSector()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

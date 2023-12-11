@@ -98,7 +98,10 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
 
         } catch (Exception e) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
+            return JSONObject.quote("ERROR LOG (paC_EnvioCorreo_Individual)"
+                    + " - Parametros: " + bandera + "/" + IdPlantilla + "/" + usucodig + "/" + Cd_cnctvo + "/"
+                    + Id_Clnte + "/" + IdSctor
+                    + " - ERROR JAVA = " + e);
         }
         return Respuesta;
     }
@@ -124,7 +127,7 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
             props.setProperty("mail.smtp.auth", "true");
             //Linea problema: Could not convert socket to TLS
             //props.put("mail.smtp.starttls.enable", "true");
-            
+
             // Crear objeto de instancia de sesión
             Session session = Session.getInstance(props);
             session.setDebug(true);
@@ -137,7 +140,8 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
             ts.close();
 
         } catch (Exception ex) {
-            System.err.println("ERROR ---------> " + ex);
+            System.out.println("ERROR LOG (paC_RemitenteCorreo || paC_EnvioCorreo_Individual)"
+                    + " - ERROR JAVA = " + ex);
         }
     }
 
@@ -236,7 +240,8 @@ public class CorreoIndividualServiceImplementacion implements CorreoIndividualSe
             message.setContent(mp2);
             message.saveChanges();
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_DocuEnvioCorreo || paC_EnvioCorreo_Individual)"
+                    + " - ERROR JAVA = " + ex);
         }
         return message;
     }

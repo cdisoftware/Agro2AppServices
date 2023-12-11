@@ -30,7 +30,9 @@ public class CundCarroModServiceImplementacion implements CundCarroModService {
             modCarro.execute();
             return JSONObject.quote((String) modCarro.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_undCarroMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUnidades() + "/" + entidad.getId_carro()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

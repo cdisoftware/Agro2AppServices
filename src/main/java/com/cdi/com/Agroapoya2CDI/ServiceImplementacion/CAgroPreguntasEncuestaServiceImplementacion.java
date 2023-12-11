@@ -32,7 +32,9 @@ public class CAgroPreguntasEncuestaServiceImplementacion implements CAgroPregunt
             return preguntEnc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paCAgro_Preguntas_Encuesta)"
+                    + " - Parametros: " + bandera + "/" + CD_CNSCTVO + "/" + ID_SCTOR_OFRTA
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

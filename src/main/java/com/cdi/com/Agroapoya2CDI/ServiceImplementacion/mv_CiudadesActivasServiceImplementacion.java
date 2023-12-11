@@ -26,7 +26,9 @@ public class mv_CiudadesActivasServiceImplementacion implements mv_CiudadesActiv
             return consciudact.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paT_Geografica)"
+                    + " - Parametros: " + bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

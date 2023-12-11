@@ -40,7 +40,10 @@ public class CReporteVentasServiceImplementacion implements CReporteVentasServic
             return repotVentas.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_ReporteVentas)"
+                    + " - Parametros: " + Bandera + "/" + cd_cnscutivo + "/" + IdSector + "/" + Id_Estado_Compra + "/"
+                    + Id_Estado_pago + "/" + entidad.getFechaCompra() + "/" + entidad.getFECHA_ENTREGA()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

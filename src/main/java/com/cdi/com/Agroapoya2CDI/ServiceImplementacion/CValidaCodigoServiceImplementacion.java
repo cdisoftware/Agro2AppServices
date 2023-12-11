@@ -34,7 +34,10 @@ public class CValidaCodigoServiceImplementacion implements CValidaCodigoService 
             conscode.execute();
             return JSONObject.quote((String) conscode.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_ValidaCodigo)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCODIGODOS() + "/" + entidad.getCd_cnsctivo() + "/"
+                    + entidad.getId_sector() + "/" + entidad.getUsucodig()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

@@ -34,7 +34,10 @@ public class CCordenadasSectorModServiceImplementacion implements CCordenadasSec
             cordMod.execute();
             return JSONObject.quote((String) cordMod.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCCordenadasSectorMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getID() + "/" + entidad.getID_SCTOR_OFRTA() + "/" + entidad.getLTTUD()
+                    + "/" + entidad.getLNGTUD()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

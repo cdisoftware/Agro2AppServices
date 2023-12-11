@@ -36,7 +36,10 @@ public class CDtlleDescargasModServiceImplementacion implements CDtlleDescargasM
             SqlService.execute();
             return JSONObject.quote((String) SqlService.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_DtlleDescargasMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCd_cnctvo() + "/" + entidad.getCantidadMax()
+                    + "/" + entidad.getKilosMax() + "/" + entidad.getDistanciaMax() + "/" + entidad.getIdSector()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -26,7 +26,9 @@ public class AdminAuditoriaManyChatServiceImplementacion implements AdminAuditor
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (Admin_AuditoriaManyChat)"
+                        +" - Parametros: " + Bandera + "/" + entidad.getQueryPre() 
+                        +" - ERROR JAVA = " + ex);
         }
     }
 

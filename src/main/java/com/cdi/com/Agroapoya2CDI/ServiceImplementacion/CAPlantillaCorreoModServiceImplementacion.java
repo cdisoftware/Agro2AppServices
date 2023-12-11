@@ -32,7 +32,6 @@ public class CAPlantillaCorreoModServiceImplementacion implements CAPlantillaCor
             modplnll.registerStoredProcedureParameter("imgEncabezado", String.class, ParameterMode.IN);
             modplnll.registerStoredProcedureParameter("imgPiePagina", String.class, ParameterMode.IN);
             modplnll.registerStoredProcedureParameter("Query", String.class, ParameterMode.IN);
-            
 
             modplnll.setParameter("Bandera", Bandera);
             modplnll.setParameter("UsucodigAdmin", entidad.getUsucodigAdmin());
@@ -51,7 +50,11 @@ public class CAPlantillaCorreoModServiceImplementacion implements CAPlantillaCor
             modplnll.execute();
             return JSONObject.quote((String) modplnll.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_APlantillaCorreoMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsucodigAdmin() + "/" + entidad.getIdplantilla() + "/" + entidad.getNombrePlantilla()
+                    + "/" + entidad.getIdTipoPlantilla() + "/" + entidad.getIdMomentoEnvio() + "/" + entidad.getAsunto() + "/" + entidad.getIdEstado() + "/" + entidad.getDescripcion()
+                    + "/" + entidad.getHtml() + "/" + entidad.getImgEncabezado() + "/" + entidad.getImgPiePagina() + "/" + entidad.getQuery()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

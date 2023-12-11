@@ -38,7 +38,11 @@ public class ClistaPersonaServiceImplementacion implements ClistaPersonaService 
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_listaPersona)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCD_TPO_PRSNA() + "/" + entidad.getCORREO_PERSONA() + "/"
+                    + entidad.getCELULAR_PERSONA() + "/" + entidad.getDOCUMENTO_USUARIO() + "/"
+                    + entidad.getNOMBRES_PERSONA()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

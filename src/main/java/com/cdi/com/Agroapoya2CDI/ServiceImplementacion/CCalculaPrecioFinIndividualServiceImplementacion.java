@@ -34,7 +34,9 @@ public class CCalculaPrecioFinIndividualServiceImplementacion implements CCalcul
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paCCalculaPrecioFinIndividual)"
+                    + " - Parametros: " + BANDERA + "/" + CD_CNSCTVO + "/" + ID_SCTOR_OFRTA + "/" + tpo_cmsion_indvdual + "/" + vlor_cmsion_indvdual
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

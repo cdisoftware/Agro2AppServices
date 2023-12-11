@@ -27,7 +27,9 @@ public class RespuestaSmsModServiceImplementacion implements RespuestaSmsModServ
             respusms.execute();
             return JSONObject.quote((String) respusms.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_RespuestaSmsMod)"
+                    + " - Parametros: " + mensaje + "/" + celular
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -109,7 +109,10 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
             }
 
         } catch (Exception e) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
+            return JSONObject.quote("ERROR LOG (paC_EnvioCorreo_Individual)"
+                    + " - Parametros: " + bandera + "/" + IdPlantilla + "/" + usucodig + "/"
+                    + Cd_cnctvo + "/" + Id_Clnte + "/" + IdSctor
+                    + " - ERROR JAVA = " + e);
         }
         return Respuesta;
     }
@@ -148,7 +151,8 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
             ts.close();
 
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_RemitenteCorreo || paC_EnvioCorreo_Individual)"
+                    + " - ERROR JAVA = " + ex);
         }
     }
 
@@ -188,7 +192,8 @@ public class EnvioCorreoPdfTransportistaServiceImplementacion implements EnvioCo
             message.setContent(mp2);
             message.saveChanges();
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_EnvioCorreo_Individual)"
+                    + " - ERROR JAVA = " + ex);
         }
         return message;
     }

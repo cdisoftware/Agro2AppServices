@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+
 @Service
 public class CNovedadModServiceImplementacion implements CNovedadModService {
 
@@ -47,7 +48,11 @@ public class CNovedadModServiceImplementacion implements CNovedadModService {
             modNov.execute();
             return JSONObject.quote((String) modNov.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_NovedadMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdNov() + "/" + entidad.getIdSubNov() + "/" + entidad.getUsucodig() + "/" + entidad.getTipoUsu()
+                    + "/" + entidad.getObservacion() + "/" + entidad.getCoordenadas() + "/" + entidad.getTiempoRetraso() + "/" + entidad.getTimepo() + "/" + entidad.getHorMin()
+                    + "/" + entidad.getCd_cnctvo() + "/" + entidad.getIdConductor() + "/" + entidad.getIdSector()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -32,7 +32,9 @@ public class CAgroRespuestasEncuestaModServiceImplementacion implements CAgroRes
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCAgro_Respuestas_Encuesta_Mod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getID_CLNTE() + "/" + entidad.getID_PRGNTA_OFR() + "/" + entidad.getCD_TPO_PRGNTA() + "/" + entidad.getRESPUESTA_PRG()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

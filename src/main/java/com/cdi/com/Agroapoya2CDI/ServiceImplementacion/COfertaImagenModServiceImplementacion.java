@@ -47,7 +47,11 @@ public class COfertaImagenModServiceImplementacion implements COfertaImagenModSe
             cofert.execute();
             return JSONObject.quote((String) cofert.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCOfertaImagenMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getID_IMAGEN1() + "/" + entidad.getIMAGEN1() + "/" + entidad.getID_IMAGEN2()
+                    + "/" + entidad.getIMAGEN2() + "/" + entidad.getID_IMAGEN3() + "/" + entidad.getIMAGEN3() + "/" + entidad.getID_IMAGEN4() + "/" + entidad.getIMAGEN4()
+                    + "/" + entidad.getID_IMAGEN5() + "/" + entidad.getIMAGEN5()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

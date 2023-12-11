@@ -23,7 +23,9 @@ public class codigoPersonaModServiceImplementacion implements codigoPersonaModSe
             cod.execute();
             return JSONObject.quote((String) cod.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_codigoPersonaMod)"
+                    + " - Parametros: " + bandera
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

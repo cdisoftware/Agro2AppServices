@@ -12,7 +12,8 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class movile_TransActivosServiceImplementacion implements movile_TransActivosService{
+public class movile_TransActivosServiceImplementacion implements movile_TransActivosService {
+
     @PersistenceContext
     private EntityManager repositorio;
 
@@ -31,7 +32,9 @@ public class movile_TransActivosServiceImplementacion implements movile_TransAct
             return Cos.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("movile_TransActivos" + ex));
+            list.add(0, JSONObject.quote("ERROR LOG (movile_TransActivos)"
+                    + " - Parametros: " + bandera + "/" + IdConductor + "/" + UsuCodTrans
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

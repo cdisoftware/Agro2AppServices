@@ -18,14 +18,14 @@ import org.springframework.scheduling.annotation.EnableScheduling;
     FileStorageProperties.class
 })
 @Configuration
-//@PropertySource("dev.properties")
-//@Profile("dev")
+@PropertySource("dev.properties")
+@Profile("dev")
 
 //@PropertySource("contingencia.properties")
 //@Profile("contingencia")
 
-@PropertySource("prod.properties")
-@Profile("prod")
+//@PropertySource("prod.properties")
+//@Profile("prod")
 
 public class BasicApplication {
 

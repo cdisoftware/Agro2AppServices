@@ -34,7 +34,10 @@ public class CCalificaAppServiceImplementacion implements CCalificaAppService {
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_CalificaApp)"
+                    + " - Parametros: " + entidad.getUsucodig() + "/" + entidad.getTipoUsuario() + "/" + entidad.getSubTipoUsuario()
+                    + "/" + entidad.getCalificacion() + "/" + entidad.getObservacion()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

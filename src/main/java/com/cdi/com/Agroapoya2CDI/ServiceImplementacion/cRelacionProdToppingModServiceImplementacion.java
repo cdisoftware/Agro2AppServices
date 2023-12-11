@@ -44,7 +44,12 @@ public class cRelacionProdToppingModServiceImplementacion implements cRelacionPr
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (pac_RelacionProdToppingMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdTopping() + "/" + entidad.getIdRelacion() + "/"
+                    + entidad.getPresentacion() + "/" + entidad.getValorReal() + "/" + entidad.getValorReferencia()
+                    + "/" + entidad.getUnidadesOferta() + "/" + entidad.getMximoUnidades() + "/" + entidad.getId_Sector()
+                    + "/" + entidad.getPesoUnidad()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

@@ -54,7 +54,14 @@ public class conductorModServiceImplementacion implements conductorModService {
             mod.execute();
             return JSONObject.quote((String) mod.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_conductorMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getID_CNDCTOR() + "/" + entidad.getUSUCODIG_TRANS() + "/"
+                    + entidad.getNMBRE_CNDCTOR() + "/" + entidad.getTIPO_DOCUMENTO() + "/" + entidad.getNUMERO_ID()
+                    + "/" + entidad.getPLCA() + "/" + entidad.getTEL_CNDCTOR() + "/" + entidad.getCD_DPTO()
+                    + "/" + entidad.getCD_CDAD() + "/" + entidad.getDIRECCION() + "/" + entidad.getCOORDENADAS()
+                    + "/" + id_carroceria + "/" + id_pesoCargaCarro + "/" + entidad.getObservacion()
+                    + "/" + entidad.getCorreoConductor()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

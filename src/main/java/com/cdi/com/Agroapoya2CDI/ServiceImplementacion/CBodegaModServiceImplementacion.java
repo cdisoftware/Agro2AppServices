@@ -42,7 +42,11 @@ public class CBodegaModServiceImplementacion implements CBodegaModService {
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_BodegaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdBodega() + "/" + entidad.getIdDepto() + "/" + entidad.getIdCiudad()
+                    + "/" + entidad.getNombreBodega() + "/" + entidad.getDescripcion() + "/" + entidad.getDireccion() + "/" + entidad.getCoordenadas()
+                    + "/" + entidad.getIdSector()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

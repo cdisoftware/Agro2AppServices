@@ -40,7 +40,11 @@ public class CPubliModServiceImplementacion implements CPubliModService {
             modPublic.execute();
             return JSONObject.quote((String) modPublic.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_PubliMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getId() + "/" + entidad.getIdVista() + "/"
+                    + entidad.getAlto() + "/" + entidad.getAncho() + "/" + entidad.getOrden() + "/"
+                    + entidad.getUsucodig() + "/" + entidad.getObservacion()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

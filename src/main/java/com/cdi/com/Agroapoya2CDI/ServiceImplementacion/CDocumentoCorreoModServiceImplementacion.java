@@ -32,7 +32,10 @@ public class CDocumentoCorreoModServiceImplementacion implements CDocumentoCorre
             moddoc.execute();
             return JSONObject.quote((String) moddoc.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_DocumentoCorreoMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdPlantilla() + "/" + entidad.getIdDocumento()
+                    + "/" + entidad.getNombreDocumento() + "/" + entidad.getRutaDocumento()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

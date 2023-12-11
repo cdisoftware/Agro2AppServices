@@ -34,7 +34,9 @@ public class CAnadirValoresModServiceImplementacion implements CAnadirValoresMod
             valor.execute();
             return JSONObject.quote((String) valor.getOutputParameterValue("Repuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_AnadirValoresMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctvo() + "/" + entidad.getIdSector() + "/" + entidad.getIdValor() + "/" + entidad.getValorUnd()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -31,7 +31,9 @@ public class CEnvioRealCorreoServiceImplementacion implements CEnvioCodigoCorreo
             insertCD.execute();
             return JSONObject.quote((String) insertCD.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCEnvioRealCorreo)"
+                    + " - Parametros: " + bandera + "/" + IdPlantilla + "/" + IdTipoUsuario + "/" + cd_cnctvo
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

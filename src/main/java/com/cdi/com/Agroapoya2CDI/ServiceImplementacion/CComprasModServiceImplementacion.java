@@ -46,7 +46,11 @@ public class CComprasModServiceImplementacion implements CComprasModService {
             mod.execute();
             return JSONObject.quote((String) mod.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_ComprasMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctivo() + "/" + entidad.getUnidades()
+                    + "/" + entidad.getObservaciones() + "/" + entidad.getUsucodig() + "/" + entidad.getCodGrupo() + "/" + entidad.getTipoComra()
+                    + "/" + entidad.getTipoUsuarioCompra() + "/" + entidad.getIdSector() + "/" + entidad.getIdCliente() + "/" + entidad.getToppings()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

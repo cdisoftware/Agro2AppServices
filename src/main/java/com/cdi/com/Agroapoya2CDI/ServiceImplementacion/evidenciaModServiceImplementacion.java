@@ -44,7 +44,11 @@ public class evidenciaModServiceImplementacion implements evidenciaModService {
             mod.execute();
             return JSONObject.quote((String) mod.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_evidenciaMod)"
+                    + " - Parametros: " + bandera + "/" + id_conductor + "/" + id_factura + "/" + Entregado + "/" + entidad.getImagen() + "/"
+                    + entidad.getObservacion() + "/" + entidad.getCoordenadas() + "/" + entidad.getObservacionesDos() + "/"
+                    + entidad.getObservacionesPago() + "/" + entidad.getIdTipoPago()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

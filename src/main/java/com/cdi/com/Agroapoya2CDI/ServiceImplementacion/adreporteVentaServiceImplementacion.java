@@ -41,7 +41,11 @@ public class adreporteVentaServiceImplementacion implements adreporteVentaServic
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex));
+            list.add(0, JSONObject.quote("ERROR LOG (admin_reporteVentas)"
+                    + " - Parametros: " + Bandera + "/" + cd_cnscutivo + "/" + IdSector + "/" + Id_Estado_Compra + "/"
+                    + Id_Estado_pago + "/" + entidad.getFcha_compra_ini() + "/"
+                    + entidad.getFcha_compra_fin()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }
