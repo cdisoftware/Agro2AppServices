@@ -21,14 +21,18 @@ public class AdminAuditoriaManyChatServiceImplementacion implements AdminAuditor
             StoredProcedureQuery modRespuesta = repositorio.createNamedStoredProcedureQuery("Admin_AuditoriaManyChat");
             modRespuesta.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("QueryPre", String.class, ParameterMode.IN);
+            modRespuesta.registerStoredProcedureParameter("CodigoPlantilla", String.class, ParameterMode.IN);
+
             modRespuesta.setParameter("Bandera", Bandera);
             modRespuesta.setParameter("QueryPre", entidad.getQueryPre());
+            modRespuesta.setParameter("CodigoPlantilla", entidad.getCodigoPlantilla());
+
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
             return JSONObject.quote("ERROR LOG (Admin_AuditoriaManyChat)"
-                        +" - Parametros: " + Bandera + "/" + entidad.getQueryPre() 
-                        +" - ERROR JAVA = " + ex);
+                    + " - Parametros: " + Bandera + "/" + entidad.getQueryPre() + "/" + entidad.getCodigoPlantilla()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

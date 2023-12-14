@@ -13,20 +13,26 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "Admin_AuditoriaManyChat",
-            procedureName = "Admin_AuditoriaManyChat",
+            name = "admin_ProdVerPrimeroMod",
+            procedureName = "admin_ProdVerPrimeroMod",
             parameters = {
-                @StoredProcedureParameter(name = "Respuesta",
+                @StoredProcedureParameter(name = "Repuesta",
                         mode = ParameterMode.OUT,
                         type = String.class)
             })
 })
-public class AdminAuditoriaManyChatEntity {
+public class adProdVerPrimeroModEntity {
 
     @Id
-    @JsonProperty("QueryPre")
-    public String QueryPre;
+    @JsonProperty("Ancla")
+    public Integer Ancla;
 
-    @JsonProperty("CodigoPlantilla")
-    public String CodigoPlantilla;
+    @JsonProperty("IdProducto")
+    public Integer IdProducto;
+
+    @JsonProperty("Cd_cnsctvo")
+    public Integer Cd_cnsctvo;
+
+    @JsonProperty("Id_Sector")
+    public Integer Id_Sector;
 }
