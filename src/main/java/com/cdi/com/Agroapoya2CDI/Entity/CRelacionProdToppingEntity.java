@@ -53,4 +53,7 @@ public class CRelacionProdToppingEntity {
 
     @JsonProperty("valorLibra")
     public String valorLibra;
+
+    @JsonProperty("PrimeroVer")
+    public String PrimeroVer;
 }

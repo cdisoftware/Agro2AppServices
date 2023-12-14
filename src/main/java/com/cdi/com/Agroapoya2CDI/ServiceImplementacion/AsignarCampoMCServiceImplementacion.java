@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Entity.AsignarCampoMCEntity;
@@ -13,11 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class AsignarCampoMCServiceImplementacion implements AsignarCampoMCService{
+public class AsignarCampoMCServiceImplementacion implements AsignarCampoMCService {
 
     @Override
     public String AsignarCampoUser(AsignarCampoMCEntity entidad) {
-       String Respuesta = "";
+        String Respuesta = "";
         try {
 
             RestTemplate restTemplate = new RestTemplate();
@@ -35,9 +34,10 @@ public class AsignarCampoMCServiceImplementacion implements AsignarCampoMCServic
             HttpEntity<String> request = new HttpEntity<>(data.toString(), headers);
             ResponseEntity<String> response = restTemplate.exchange("https://api.manychat.com/fb/subscriber/setCustomField", HttpMethod.POST, request, String.class);
             Object chatObjetc = response.getBody();
-            Respuesta = chatObjetc.toString();
+            //Respuesta = chatObjetc.toString();
+            Respuesta = JSONObject.quote("1");
         } catch (Exception ex) {
-            return JSONObject.quote(ex.toString());
+            return JSONObject.quote("ERROR: -1 " + ex);
         }
         return Respuesta;
     }
