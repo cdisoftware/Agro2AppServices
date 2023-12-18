@@ -38,4 +38,10 @@ public class CSegEntDllEntity {
 
     @JsonProperty("ValorReal")
     public String ValorReal;
+
+    @JsonProperty("PesoProd")
+    public String PesoProd;
+
+    @JsonProperty("PesoProdTotal")
+    public String PesoProdTotal;
 }
