@@ -268,6 +268,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adMillaCopiarOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaGruposFocoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaOrdenComprasGrupoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaSectoresEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adModificacionLinkCortoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adOrdenProductosModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adOrdenRelacionsModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adProdVerPrimeroModEntity;
@@ -299,6 +300,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.cTipoPreguntaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clientOrdenExternalModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clienteRegaloEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.clienteinfoCompraEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clteConsTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.conductorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.consultaProductoEntity;
@@ -629,6 +631,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adMillaCopiarOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaGruposFocoModService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaOrdenComprasGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaSectoreService;
+import com.cdi.com.Agroapoya2CDI.Services.adModificacionLinkCortoService;
 import com.cdi.com.Agroapoya2CDI.Services.adOrdenProductosModService;
 import com.cdi.com.Agroapoya2CDI.Services.adOrdenRelacionsModService;
 import com.cdi.com.Agroapoya2CDI.Services.adProdVerPrimeroModService;
@@ -659,6 +662,7 @@ import com.cdi.com.Agroapoya2CDI.Services.cRelacionProdToppingModService;
 import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
 import com.cdi.com.Agroapoya2CDI.Services.clientOrdenExternalModService;
 import com.cdi.com.Agroapoya2CDI.Services.clienteRegaloService;
+import com.cdi.com.Agroapoya2CDI.Services.clienteinfoCompraService;
 import com.cdi.com.Agroapoya2CDI.Services.clteConsTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.conductorModService;
@@ -1746,6 +1750,12 @@ public class Controller {
 
     @Autowired
     adAuditoriaManyChatEnvioService serviceadAuditoriaManyChatEnvioService;
+
+    @Autowired
+    clienteinfoCompraService serviceclienteinfoCompraService;
+
+    @Autowired
+    adModificacionLinkCortoService serviceadModificacionLinkCortoService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4528,5 +4538,19 @@ public class Controller {
             @RequestBody adAuditoriaManyChatEnvioEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceadAuditoriaManyChatEnvioService.AuditoriaManychatEnviod(entidad, Bandera);
+    }
+
+    @GetMapping("/consClienteInfoCompra/{Bandera}/{IdCarro}")
+    public List<clienteinfoCompraEntity> ConsClienteInfoCompra(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdCarro) {
+        return serviceclienteinfoCompraService.ConsClienteInfoCompra(Bandera, IdCarro);
+    }
+
+    @PostMapping("/modLinkCortoCalificar/{BANDERA}")
+    public String ModLinkCorto(
+            @RequestBody adModificacionLinkCortoEntity entidad,
+            @PathVariable Integer BANDERA) {
+        return serviceadModificacionLinkCortoService.ModLinkCorto(entidad, BANDERA);
     }
 }

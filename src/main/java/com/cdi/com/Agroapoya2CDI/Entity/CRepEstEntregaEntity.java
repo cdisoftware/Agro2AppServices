@@ -53,7 +53,16 @@ public class CRepEstEntregaEntity {
 
     @JsonProperty("VLRRECAUDADOCONTRAENTREGA")
     public String VLRRECAUDADOCONTRAENTREGA;
-    
+
     @JsonProperty("VLRRECAUDADOELECTRONICO")
     public String VLRRECAUDADOELECTRONICO;
+
+    @JsonProperty("NombreProd")
+    public String NombreProd;
+
+    @JsonProperty("PesoProdUnidad")
+    public String PesoProdUnidad;
+
+    @JsonProperty("PesoProdTotal")
+    public String PesoProdTotal;
 }
