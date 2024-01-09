@@ -263,6 +263,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adAuditoriaManyChatEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adDireccionUsuModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adImgUsuariosModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaCopiarOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adMillaGruposFocoModEntity;
@@ -272,10 +273,13 @@ import com.cdi.com.Agroapoya2CDI.Entity.adModificacionLinkCortoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adOrdenProductosModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adOrdenRelacionsModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adProdVerPrimeroModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adReporteTransGeneralEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adSegtoInfoGeneralEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adSeguimientoFiltroFechaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adTranportesConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adUsuarioMapaCalorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adcoordenadasMillaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adlistaPersonaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adlistadoProductoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaComprasSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaCoordenadasSectorEntity;
@@ -292,7 +296,11 @@ import com.cdi.com.Agroapoya2CDI.Entity.admin_SeguiTarjetaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admin_segValoresTotalesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminreporteCantidadTotalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adofertaFechasModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adrelOfertaTransEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adrelOfertaTransModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adreporteTransportEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adtransnuevoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.advalidaSectorMillaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cCalculadoraTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cRelacionProdToppingModEntity;
@@ -301,6 +309,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.clientOrdenExternalModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clienteRegaloEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.cliente_select_ofertasNuevasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clienteinfoCompraEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.cliepersonasPendieModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.clteConsTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.conductorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.consultaProductoEntity;
@@ -626,6 +635,7 @@ import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
 import com.cdi.com.Agroapoya2CDI.Services.adAuditoriaManyChatEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
+import com.cdi.com.Agroapoya2CDI.Services.adDireccionUsuModService;
 import com.cdi.com.Agroapoya2CDI.Services.adImgUsuariosModService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaCopiarOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adMillaGruposFocoModService;
@@ -635,10 +645,13 @@ import com.cdi.com.Agroapoya2CDI.Services.adModificacionLinkCortoService;
 import com.cdi.com.Agroapoya2CDI.Services.adOrdenProductosModService;
 import com.cdi.com.Agroapoya2CDI.Services.adOrdenRelacionsModService;
 import com.cdi.com.Agroapoya2CDI.Services.adProdVerPrimeroModService;
+import com.cdi.com.Agroapoya2CDI.Services.adReporteTransGeneralService;
 import com.cdi.com.Agroapoya2CDI.Services.adSegtoInfoGeneralService;
 import com.cdi.com.Agroapoya2CDI.Services.adSeguimientoFiltroFechaService;
+import com.cdi.com.Agroapoya2CDI.Services.adTranportesConService;
 import com.cdi.com.Agroapoya2CDI.Services.adUsuarioMapaCalorService;
 import com.cdi.com.Agroapoya2CDI.Services.adcoordenadasMillaModService;
+import com.cdi.com.Agroapoya2CDI.Services.adlistaPersonaService;
 import com.cdi.com.Agroapoya2CDI.Services.adlistadoProductoService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaComprasSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaCoordenadasSectorService;
@@ -655,7 +668,11 @@ import com.cdi.com.Agroapoya2CDI.Services.admin_SeguiTarjetaService;
 import com.cdi.com.Agroapoya2CDI.Services.admin_segValoresTotalesService;
 import com.cdi.com.Agroapoya2CDI.Services.adminreporteCantidadTotalService;
 import com.cdi.com.Agroapoya2CDI.Services.adofertaFechasModService;
+import com.cdi.com.Agroapoya2CDI.Services.adrelOfertaTranService;
+import com.cdi.com.Agroapoya2CDI.Services.adrelOfertaTransModService;
+import com.cdi.com.Agroapoya2CDI.Services.adreporteTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
+import com.cdi.com.Agroapoya2CDI.Services.adtransnuevoModService;
 import com.cdi.com.Agroapoya2CDI.Services.advalidaSectorMillaService;
 import com.cdi.com.Agroapoya2CDI.Services.cCalculadoraTranService;
 import com.cdi.com.Agroapoya2CDI.Services.cRelacionProdToppingModService;
@@ -663,6 +680,7 @@ import com.cdi.com.Agroapoya2CDI.Services.cTipoPreguntaService;
 import com.cdi.com.Agroapoya2CDI.Services.clientOrdenExternalModService;
 import com.cdi.com.Agroapoya2CDI.Services.clienteRegaloService;
 import com.cdi.com.Agroapoya2CDI.Services.clienteinfoCompraService;
+import com.cdi.com.Agroapoya2CDI.Services.cliepersonasPendieModService;
 import com.cdi.com.Agroapoya2CDI.Services.clteConsTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.codigoPersonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.conductorModService;
@@ -695,6 +713,7 @@ import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -1756,6 +1775,33 @@ public class Controller {
 
     @Autowired
     adModificacionLinkCortoService serviceadModificacionLinkCortoService;
+
+    @Autowired
+    adreporteTransporteService serviceadreporteTransporteService;
+
+    @Autowired
+    adReporteTransGeneralService serviceadReporteTransGeneralService;
+
+    @Autowired
+    cliepersonasPendieModService servicecliepersonasPendieModService;
+
+    @Autowired
+    adlistaPersonaService serviceadlistaPersonaService;
+
+    @Autowired
+    adDireccionUsuModService serviceadDireccionUsuModService;
+
+    @Autowired
+    adTranportesConService serviceadTranportesConService;
+
+    @Autowired
+    adtransnuevoModService serviceadtransnuevoModService;
+
+    @Autowired
+    adrelOfertaTransModService serviceadrelOfertaTransModService;
+    
+    @Autowired
+    adrelOfertaTranService serviceadrelOfertaTranService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4553,4 +4599,82 @@ public class Controller {
             @PathVariable Integer BANDERA) {
         return serviceadModificacionLinkCortoService.ModLinkCorto(entidad, BANDERA);
     }
+
+    @PostMapping("/consAdminReporteTransport/{Bandera}")
+    public List<adreporteTransportEntity> ConsultaReporteTransport(
+            @PathVariable Integer Bandera,
+            @RequestBody Map<String, String> params) {
+        return serviceadreporteTransporteService.ConsultaReporteTransport(
+                Bandera,
+                params.get("IdsOferta"),
+                params.get("IdsGrupo"),
+                params.get("FechaIncio"),
+                params.get("FechaFin")
+        );
+    }
+
+    @PostMapping("/consAdReporteTransGeneral/{bandera}")
+    public List<adReporteTransGeneralEntity> ConsultaRepoteTransGen(
+            @PathVariable Integer bandera,
+            @RequestBody Map<String, String> params) {
+        return serviceadReporteTransGeneralService.ConsultaRepoteTransGen(bandera, params.get("IdGrupoMilla"));
+    }
+
+    @PostMapping("/modClientPersonPendiente/{Bandera}")
+    public String ModClientPersonPendiente(
+            @RequestBody cliepersonasPendieModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicecliepersonasPendieModService.ModClientPersonPendiente(entidad, Bandera);
+    }
+
+    @PostMapping("/consAdListaPersona/{Bandera}/{Cd_tpo_usuario}/{Usucodig}")
+    public List<adlistaPersonaEntity> consultaadlistaPersona(
+            @RequestBody adlistaPersonaEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Cd_tpo_usuario,
+            @PathVariable Integer Usucodig) {
+        return serviceadlistaPersonaService.consultaadlistaPersona(entidad, Bandera, Cd_tpo_usuario, Usucodig);
+    }
+
+    @PostMapping("/modAdDireccionUsuario/{Bandera}")
+    public String ModadDireccionUsu(
+            @RequestBody adDireccionUsuModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadDireccionUsuModService.ModadDireccionUsu(entidad, Bandera);
+    }
+
+    @PostMapping("/consAdTrasportesCons/{Bandera}/{cd_cnsctivo}/{idSector}")
+    public List<adTranportesConsEntity> ConsultaReporteTransport(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctivo,
+            @PathVariable Integer idSector,
+            @RequestBody Map<String, String> params) {
+        return serviceadTranportesConService.ConsultAdmTransportesAsigna(
+                Bandera, cd_cnsctivo, idSector,
+                params.get("fechaDesde"),
+                params.get("fechaHasta")
+        );
+    }
+
+    @PostMapping("/modTransporteNew/{Bandera}")
+    public String ModTransporteNew(
+            @RequestBody adtransnuevoModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadtransnuevoModService.ModTransporteNew(entidad, Bandera);
+    }
+
+    @PostMapping("/modAdRelaTranspOferta/{Bandera}")
+    public String ModAdRelacionTransporteOfert(
+            @RequestBody adrelOfertaTransModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceadrelOfertaTransModService.ModAdRelacionTransporteOfert(entidad, Bandera);
+    }
+    
+       @GetMapping("/consRelaOfertaTrans/{Bandera}/{idTrans}")
+    public List<adrelOfertaTransEntity> ConsrelaOfertaTrans(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer idTrans) {
+        return serviceadrelOfertaTranService.ConsrelaOfertaTrans(Bandera, idTrans);
+    }
+
 }
