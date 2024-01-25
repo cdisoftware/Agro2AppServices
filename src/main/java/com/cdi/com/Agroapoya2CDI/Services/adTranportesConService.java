@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface adTranportesConService {
 
-    public List<adTranportesConsEntity> ConsultAdmTransportesAsigna(Integer Bandera, Integer cd_cnsctivo, Integer idSector, String fechaDesde, String fechaHasta);
+    public List<adTranportesConsEntity> ConsultAdmTransportesAsigna(Integer Bandera, Integer cd_cnsctivo, Integer idSector, String fechaDesde, String fechaHasta, String NombreTrans);
 }

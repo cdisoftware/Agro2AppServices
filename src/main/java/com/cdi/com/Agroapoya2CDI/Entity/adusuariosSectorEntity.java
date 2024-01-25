@@ -11,38 +11,34 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "PaCUserAA2",
-            procedureName = "PaCUserAA2",
-            resultClasses = PaCUserAA2Entity.class)
+            name = "admin_usuariosSector",
+            procedureName = "admin_usuariosSector",
+            resultClasses = adusuariosSectorEntity.class)
 })
-public class PaCUserAA2Entity {
+public class adusuariosSectorEntity {
 
     @Id
+    @JsonProperty("Id")
+    public Integer Id;
+
     @JsonProperty("USUCODIG")
     public Integer USUCODIG;
-
-    @JsonProperty("TipoPersona")
-    public String TipoPersona;
 
     @JsonProperty("NOMBRES_PERSONA")
     public String NOMBRES_PERSONA;
 
+    @JsonProperty("APELLIDOS_PERSONA")
+    public String APELLIDOS_PERSONA;
+
     @JsonProperty("CELULAR_PERSONA")
     public String CELULAR_PERSONA;
 
-    @JsonProperty("CORREO_PERSONA")
-    public String CORREO_PERSONA;
+    @JsonProperty("IdSector")
+    public Integer IdSector;
 
-    @JsonProperty("FECHA_CREACION")
-    public String FECHA_CREACION;
-
-    @JsonProperty("DRCCION")
-    public String DRCCION;
+    @JsonProperty("DSCRPCION_SCTOR")
+    public String DSCRPCION_SCTOR;
 
     @JsonProperty("id_manychat")
     public String id_manychat;
-
-    @JsonProperty("Parametro")
-    public String Parametro;
-
 }

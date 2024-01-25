@@ -33,14 +33,14 @@ public class PaCUserAA2ServiceImplementacion implements PaCUserAA2Service {
             tpoDoc.setParameter("UsuCodig", entidad.getUSUCODIG());
             tpoDoc.setParameter("Email", entidad.getCORREO_PERSONA());
             tpoDoc.setParameter("NumTelefono", entidad.getCELULAR_PERSONA());
-            tpoDoc.setParameter("Parametro", "0");
+            tpoDoc.setParameter("Parametro", entidad.getParametro());
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
             list.add(0, JSONObject.quote("ERROR LOG (PaCUserAA2)"
                     + " - Parametros: " + Bandera + "/" + TipoUser + "/" + entidad.getUSUCODIG()
-                    + "/" + entidad.getCORREO_PERSONA() + "/" + entidad.getCELULAR_PERSONA() + "/" + "0"
+                    + "/" + entidad.getCORREO_PERSONA() + "/" + entidad.getCELULAR_PERSONA() + "/" + entidad.getParametro()
                     + " - ERROR JAVA = " + ex));
             return list;
 
