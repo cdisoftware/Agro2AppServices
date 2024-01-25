@@ -20,6 +20,7 @@ public class adrelOfertaTransModServiceImplemnetacion implements adrelOfertaTran
         try {
             StoredProcedureQuery parametros = repositorio.createNamedStoredProcedureQuery("admin_relacion_Oferta_Trans_Mod");
             parametros.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
+            parametros.registerStoredProcedureParameter("Id", Integer.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("IdTrans", Integer.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("IdTipoProducto", Integer.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("IdProducto", Integer.class, ParameterMode.IN);
@@ -27,6 +28,7 @@ public class adrelOfertaTransModServiceImplemnetacion implements adrelOfertaTran
             parametros.registerStoredProcedureParameter("cd_cnsctvo", Integer.class, ParameterMode.IN);
 
             parametros.setParameter("Bandera", Bandera);
+            parametros.setParameter("Id", entidad.getId());
             parametros.setParameter("IdTrans", entidad.getIdTrans());
             parametros.setParameter("IdTipoProducto", entidad.getIdTipoProducto());
             parametros.setParameter("IdProducto", entidad.getIdProducto());
@@ -37,7 +39,7 @@ public class adrelOfertaTransModServiceImplemnetacion implements adrelOfertaTran
             return JSONObject.quote((String) parametros.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
             return JSONObject.quote("ERROR LOG (admin_relacion_Oferta_Trans_Mod)"
-                    + " - Parametros: " + Bandera + "/" + entidad.getIdTrans()
+                    + " - Parametros: " + Bandera + "/" + entidad.getId() + "/" + entidad.getIdTrans()
                     + "/" + entidad.getIdTipoProducto() + "/" + entidad.getIdProducto() + "/" + entidad.getCantidad() + "/" + entidad.getCd_cnsctvo()
                     + " - ERROR JAVA = " + ex);
         }

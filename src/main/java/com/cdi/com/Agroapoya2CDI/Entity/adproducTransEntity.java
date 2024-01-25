@@ -11,27 +11,21 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "admin_relacion_Oferta_Trans",
-            procedureName = "admin_relacion_Oferta_Trans",
-            resultClasses = adrelOfertaTransEntity.class)
+            name = "admin_productosTrans",
+            procedureName = "admin_productosTrans",
+            resultClasses = adproducTransEntity.class)
 })
-public class adrelOfertaTransEntity {
+public class adproducTransEntity {
 
     @Id
     @JsonProperty("id")
     public Integer id;
 
-    @JsonProperty("IdTran")
-    public Integer IdTran;
+    @JsonProperty("TipoProducto")
+    public Integer TipoProducto;
 
     @JsonProperty("IdProducto")
     public Integer IdProducto;
-
-    @JsonProperty("cantidad")
-    public Integer cantidad;
-
-    @JsonProperty("cd_cnsctvo")
-    public Integer cd_cnsctvo;
 
     @JsonProperty("Descripcion")
     public String Descripcion;
@@ -39,9 +33,10 @@ public class adrelOfertaTransEntity {
     @JsonProperty("Presentacion")
     public String Presentacion;
 
-    @JsonProperty("PesoKilos")
-    public String PesoKilos;
+    @JsonProperty("Peso")
+    public String Peso;
 
-    @JsonProperty("TipoProducto")
-    public Integer TipoProducto;
+    @JsonProperty("cd_cnctivo")
+    public Integer cd_cnctivo;
+
 }

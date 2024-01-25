@@ -25,6 +25,7 @@ public class adtransnuevoModServiceImplementacion implements adtransnuevoModServ
             parametros.registerStoredProcedureParameter("FechaRecoge", String.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("IdConductor", Integer.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("IdBodegaEntrega", Integer.class, ParameterMode.IN);
+            parametros.registerStoredProcedureParameter("IdTransporte", Integer.class, ParameterMode.IN);
 
             parametros.setParameter("Bandera", Bandera);
             parametros.setParameter("UbicacionRecoge", entidad.getUbicacionRecoge());
@@ -32,13 +33,14 @@ public class adtransnuevoModServiceImplementacion implements adtransnuevoModServ
             parametros.setParameter("FechaRecoge", entidad.getFechaRecoge());
             parametros.setParameter("IdConductor", entidad.getIdConductor());
             parametros.setParameter("IdBodegaEntrega", entidad.getIdBodegaEntrega());
+            parametros.setParameter("IdTransporte", entidad.getIdTransporte());
 
             parametros.execute();
             return JSONObject.quote((String) parametros.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
             return JSONObject.quote("ERROR LOG (admin_transnuevoMod)"
                     + " - Parametros: " + Bandera + "/" + entidad.getUbicacionRecoge()
-                    + "/" + entidad.getValorFlete() + "/" + entidad.getFechaRecoge() + "/" + entidad.getIdConductor() + "/" + entidad.getIdBodegaEntrega()
+                    + "/" + entidad.getValorFlete() + "/" + entidad.getFechaRecoge() + "/" + entidad.getIdConductor() + "/" + entidad.getIdBodegaEntrega() + "/" + entidad.getIdTransporte()
                     + " - ERROR JAVA = " + ex);
         }
 

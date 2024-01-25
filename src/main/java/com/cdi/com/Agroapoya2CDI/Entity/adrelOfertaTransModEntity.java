@@ -24,6 +24,9 @@ import lombok.Data;
 public class adrelOfertaTransModEntity {
 
     @Id
+    @JsonProperty("Id")
+    public Integer Id;
+
     @JsonProperty("IdTrans")
     public Integer IdTrans;
 
