@@ -29,4 +29,10 @@ public class adminreporteCantidadTotalEntity {
 
     @JsonProperty("CantidadTotal")
     public Integer CantidadTotal;
+    
+     @JsonProperty("PesoTotal")
+    public String PesoTotal;
+     
+      @JsonProperty("PesoUnid")
+    public String PesoUnid;
 }
