@@ -44,4 +44,7 @@ public class CSegEntDllEntity {
 
     @JsonProperty("PesoProdTotal")
     public String PesoProdTotal;
+
+    @JsonProperty("valorForm")
+    public String valorForm;
 }

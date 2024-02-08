@@ -282,6 +282,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adSeguimientoFiltroFechaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adTranportesConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adUsuarioMapaCalorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adcoordenadasMillaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adlistaLocalidadesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adlistaPersonaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adlistadoProductoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaComprasSectorEntity;
@@ -303,6 +304,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adproducTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adrelOfertaTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adrelOfertaTransModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteTransportEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adreporteUsuarioServEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adtransnuevoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adusuariosSectorEntity;
@@ -659,6 +661,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adSeguimientoFiltroFechaService;
 import com.cdi.com.Agroapoya2CDI.Services.adTranportesConService;
 import com.cdi.com.Agroapoya2CDI.Services.adUsuarioMapaCalorService;
 import com.cdi.com.Agroapoya2CDI.Services.adcoordenadasMillaModService;
+import com.cdi.com.Agroapoya2CDI.Services.adlistaLocalidadeService;
 import com.cdi.com.Agroapoya2CDI.Services.adlistaPersonaService;
 import com.cdi.com.Agroapoya2CDI.Services.adlistadoProductoService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaComprasSectorService;
@@ -680,6 +683,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adproducTranService;
 import com.cdi.com.Agroapoya2CDI.Services.adrelOfertaTranService;
 import com.cdi.com.Agroapoya2CDI.Services.adrelOfertaTransModService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteTransporteService;
+import com.cdi.com.Agroapoya2CDI.Services.adreporteUsuarioServService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.adtransnuevoModService;
 import com.cdi.com.Agroapoya2CDI.Services.adusuariosSectorService;
@@ -1827,6 +1831,12 @@ public class Controller {
 
     @Autowired
     adusuariosSectorService serviceadusuariosSectorService;
+
+    @Autowired
+    adlistaLocalidadeService serviceadlistaLocalidadeService;
+
+    @Autowired
+    adreporteUsuarioServService serviceadreporteUsuarioServService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4538,12 +4548,13 @@ public class Controller {
         return serviceadCambioSectorOfertaService.ModCambioSectorOferta(entidad, Bandera);
     }
 
-    @GetMapping("/ConsMovileTransActivos/{bandera}/{id_condutor}/{usucodigTrans}")
+    @GetMapping("/ConsMovileTransActivos/{bandera}/{id_condutor}/{usucodigTrans}/{IdGrupoMilla}")
     public List<movile_TransActivosEntity> ConMovileTransActivos(
             @PathVariable Integer bandera,
             @PathVariable Integer id_condutor,
-            @PathVariable Integer usucodigTrans) {
-        return servicemovile_TransActivosService.CosultaGeneralEntregaMovile(bandera, id_condutor, usucodigTrans);
+            @PathVariable Integer usucodigTrans,
+            @PathVariable Integer IdGrupoMilla) {
+        return servicemovile_TransActivosService.CosultaGeneralEntregaMovile(bandera, id_condutor, usucodigTrans, IdGrupoMilla);
     }
 
     @GetMapping("/Consadmin_segValores/{bandera}/{IdGrupo}")
@@ -4731,5 +4742,19 @@ public class Controller {
     public List<adusuariosSectorEntity> ConsultaUsuariosSector(
             @PathVariable Integer Bandera) {
         return serviceadusuariosSectorService.ConsultaUsuariosSector(Bandera);
+    }
+
+    @GetMapping("/consLocalidades/{Bandera}")
+    public List<adlistaLocalidadesEntity> ConsultaLocalidades(
+            @PathVariable Integer Bandera) {
+        return serviceadlistaLocalidadeService.ConsultaLocalidades(Bandera);
+    }
+
+    @GetMapping("/consReporteUsuarios/{Bandera}/{IdLocalidad}")
+    public List<adreporteUsuarioServEntity> ConsultaLocalidades(
+            @RequestBody adreporteUsuarioServEntity entidad,
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdLocalidad) {
+        return serviceadreporteUsuarioServService.ConsultaReporteUsuarios(entidad, Bandera, IdLocalidad);
     }
 }

@@ -18,22 +18,24 @@ public class movile_TransActivosServiceImplementacion implements movile_TransAct
     private EntityManager repositorio;
 
     @Override
-    public List<movile_TransActivosEntity> CosultaGeneralEntregaMovile(Integer bandera, Integer IdConductor, Integer UsuCodTrans) {
+    public List<movile_TransActivosEntity> CosultaGeneralEntregaMovile(Integer bandera, Integer IdConductor, Integer UsuCodTrans, Integer IdGrupoMilla) {
         try {
             StoredProcedureQuery Cos = repositorio.createNamedStoredProcedureQuery("movile_TransActivos");
             Cos.registerStoredProcedureParameter("bandera", Integer.class, ParameterMode.IN);
             Cos.registerStoredProcedureParameter("id_condutor", Integer.class, ParameterMode.IN);
             Cos.registerStoredProcedureParameter("usucodigTrans", Integer.class, ParameterMode.IN);
+            Cos.registerStoredProcedureParameter("IdGrupoMilla", Integer.class, ParameterMode.IN);
 
             Cos.setParameter("bandera", bandera);
             Cos.setParameter("id_condutor", IdConductor);
             Cos.setParameter("usucodigTrans", UsuCodTrans);
+            Cos.setParameter("IdGrupoMilla", IdGrupoMilla);
 
             return Cos.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
             list.add(0, JSONObject.quote("ERROR LOG (movile_TransActivos)"
-                    + " - Parametros: " + bandera + "/" + IdConductor + "/" + UsuCodTrans
+                    + " - Parametros: " + bandera + "/" + IdConductor + "/" + UsuCodTrans + "/" + IdGrupoMilla
                     + " - ERROR JAVA = " + ex));
             return list;
         }
