@@ -18,19 +18,27 @@ import org.springframework.scheduling.annotation.EnableScheduling;
     FileStorageProperties.class
 })
 @Configuration
-@PropertySource("dev.properties")
-@Profile("dev")
+//@PropertySource("dev.properties")
+//@Profile("dev")
 
-//@PropertySource("contingencia.properties")
-//@Profile("contingencia")
+@PropertySource("contingencia.properties")
+@Profile("contingencia")
 
 //@PropertySource("prod.properties")
 //@Profile("prod")
-
 public class BasicApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BasicApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BasicApplication.class, args);
+    }
 
+    public static String ACCESS_TOKEN;
+
+    public String getTOKEN() {
+        return ACCESS_TOKEN;
+    }
+
+    public void setTOKEN(String token) {
+        this.ACCESS_TOKEN = token;
+    }
 }
