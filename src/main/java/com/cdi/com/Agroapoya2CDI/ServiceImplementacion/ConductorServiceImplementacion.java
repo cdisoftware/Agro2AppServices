@@ -40,7 +40,10 @@ public class ConductorServiceImplementacion implements ConductorService {
             return conduct.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paT_Conductor)"
+                    + " - Parametros: " + bandera + "/" + Cd_cnsctivo + "/" + entidad.getNombre_conductor() + "/"
+                    + CODIGO_TRANS + "/" + CD_PAIS + "/" + CD_RGION + "/" + CD_MNCPIO
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

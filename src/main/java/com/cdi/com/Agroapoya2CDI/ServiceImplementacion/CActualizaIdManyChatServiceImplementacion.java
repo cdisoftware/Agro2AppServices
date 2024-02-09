@@ -30,7 +30,9 @@ public class CActualizaIdManyChatServiceImplementacion implements CActualizaIdMa
             resp.execute();
             return JSONObject.quote((String) resp.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCActualizaIdManyChat)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getCorreo_persona() + "/" + entidad.getID_MANYCHAT()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

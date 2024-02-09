@@ -42,7 +42,12 @@ public class CVigenciaOfertaModServiceImplementacion implements CVigenciaOfertaM
             modvigci.execute();
             return JSONObject.quote((String) modvigci.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCVigenciaOfertaMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getVGNCIA_DESDE() + "/"
+                    + entidad.getVGNCIA_HASTA() + "/" + entidad.getHORA_DESDE() + "/"
+                    + entidad.getHORA_HASTA() + "/" + entidad.getFCHA_ENTRGA() + "/"
+                    + entidad.getOBSERVACIONES() + "/" + entidad.getID_SCTOR_OFRTA()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

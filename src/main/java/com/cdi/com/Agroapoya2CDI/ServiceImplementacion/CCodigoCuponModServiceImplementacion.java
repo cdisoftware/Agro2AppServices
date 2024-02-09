@@ -48,7 +48,11 @@ public class CCodigoCuponModServiceImplementacion implements CCodigoCuponModServ
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_CodigoCuponMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdGrupoAux() + "/" + entidad.getCodigo_Mostrar() + "/" + entidad.getDescripcion()
+                    + "/" + entidad.getIdTipoCuponGeneral() + "/" + entidad.getIdTipoCuponCodigoAplicableGeneral() + "/" + entidad.getFechaInicio()
+                    + "/" + entidad.getFechaFin() + "/" + entidad.getDescuentoAplicable() + "/" + entidad.getEstado() + "/" + entidad.getApartirValor() + "/" + entidad.getScriptAdicional()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

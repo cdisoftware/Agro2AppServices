@@ -26,4 +26,7 @@ public class AdminAuditoriaManyChatEntity {
     @Id
     @JsonProperty("QueryPre")
     public String QueryPre;
+
+    @JsonProperty("CodigoPlantilla")
+    public String CodigoPlantilla;
 }

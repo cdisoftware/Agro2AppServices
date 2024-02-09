@@ -37,5 +37,14 @@ public class CSegEntDllEntity {
     public String DescDevuelto;
 
     @JsonProperty("ValorReal")
-    public Integer ValorReal;
+    public String ValorReal;
+
+    @JsonProperty("PesoProd")
+    public String PesoProd;
+
+    @JsonProperty("PesoProdTotal")
+    public String PesoProdTotal;
+
+    @JsonProperty("valorForm")
+    public String valorForm;
 }

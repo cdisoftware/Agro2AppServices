@@ -92,7 +92,10 @@ public class CListadoToppingEntity {
 
     @JsonProperty("PorDecuento")
     public String PorDecuento;
-    
+
     @JsonProperty("IdCampesino")
     public Integer IdCampesino;
+
+    @JsonProperty("Id_Producto")
+    public Integer Id_Producto;
 }

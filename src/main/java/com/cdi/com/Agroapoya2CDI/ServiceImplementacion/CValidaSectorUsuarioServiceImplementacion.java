@@ -25,7 +25,9 @@ public class CValidaSectorUsuarioServiceImplementacion implements CValidaSectorU
             sectorUsu.execute();
             return JSONObject.quote((String) sectorUsu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_validaSectorUsuario)"
+                    + " - Parametros: " + Bandera + "/" + IdUsuario
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

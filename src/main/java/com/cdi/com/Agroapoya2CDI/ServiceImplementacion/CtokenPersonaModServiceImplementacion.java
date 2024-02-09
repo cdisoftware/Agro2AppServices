@@ -30,7 +30,9 @@ public class CtokenPersonaModServiceImplementacion implements CtokenPersonaModSe
             modtoken.execute();
             return JSONObject.quote((String) modtoken.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_tokenPersonaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCorreoPersona() + "/" + entidad.getTokePrsna()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -34,7 +34,10 @@ public class CGeneracionQueryServiceImplementacion implements CGeneracionQuerySe
             ActLink.execute();
             return JSONObject.quote((String) ActLink.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (pac_GeneracionQuery)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdplantilla() + "/" + entidad.getIdSector()
+                    + "/" + entidad.getCd_cnctivo() + "/" + entidad.getTipoUsuario()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

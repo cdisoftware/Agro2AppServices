@@ -66,7 +66,15 @@ public class CPerfilCampesinoModServiceImplementacion implements CPerfilCampesin
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_PerfilCampesinoMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsucodig() + "/" + entidad.getCorreoPersona() + "/"
+                    + entidad.getNombrePersona() + "/" + entidad.getApellidoPersona() + "/" + entidad.getCelularPersona() + "/"
+                    + entidad.getTipoDocumento() + "/" + entidad.getDocumentoUsuario() + "/" + entidad.getIdDepto() + "/"
+                    + entidad.getIdCiudad() + "/" + entidad.getDireccion() + "/" + entidad.getComentario() + "/"
+                    + entidad.getComplementoDireccion() + "/" + entidad.getIdManychat() + "/" + entidad.getDescripUno() + "/"
+                    + entidad.getDescripDos() + "/" + entidad.getDescripTres() + "/" + entidad.getObservacion() + "/"
+                    + entidad.getFechaNacimiento() + "/" + entidad.getVereda() + "/" + entidad.getFinca()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

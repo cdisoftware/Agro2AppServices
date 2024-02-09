@@ -62,7 +62,17 @@ public class CpersonaCampesinoModServiceImplementacion implements CpersonaCampes
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_personaCampesinoMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCodUsuario() + "/" + entidad.getNombres() + "/"
+                    + entidad.getApellido() + "/" + entidad.getTipo_identificacion() + "/"
+                    + entidad.getNumero_identificacion() + "/" + entidad.getDpto() + "/"
+                    + entidad.getCiudad() + "/" + entidad.getDireccion() + "/"
+                    + entidad.getComplemento_direccion() + "/" + entidad.getTelefono() + "/"
+                    + entidad.getCorreo() + "/" + entidad.getCMNTRIO() + "/"
+                    + entidad.getTOKEN() + "/" + entidad.getFrma_pgo() + "/"
+                    + entidad.getTpo_cnta() + "/" + entidad.getNocuenta() + "/"
+                    + entidad.getId_bnco() + "/" + entidad.getId_tpoprsn()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

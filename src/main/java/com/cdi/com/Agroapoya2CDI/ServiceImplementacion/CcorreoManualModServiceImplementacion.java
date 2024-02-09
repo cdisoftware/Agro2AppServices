@@ -46,7 +46,13 @@ public class CcorreoManualModServiceImplementacion implements CcorreoManualModSe
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_correoManualMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdEnvio() + "/" + entidad.getQuery() + "/"
+                    + entidad.getIdSector() + "/" + entidad.getCd_cnctivo() + "/"
+                    + entidad.getIdPlantilla() + "/" + entidad.getIdEstado() + "/"
+                    + entidad.getIdProgramado() + "/" + entidad.getFechaEnvio() + "/"
+                    + entidad.getHorarioEnvio()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

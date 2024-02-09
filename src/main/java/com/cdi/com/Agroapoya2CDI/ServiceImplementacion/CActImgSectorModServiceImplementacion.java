@@ -30,7 +30,9 @@ public class CActImgSectorModServiceImplementacion implements CActImgSectorModSe
             Mod.execute();
             return JSONObject.quote((String) Mod.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCActualizaImagenSectorMod)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getID_SECTOR() + "/" + entidad.getNOMBRE_IMG()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

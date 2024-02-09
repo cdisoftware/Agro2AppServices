@@ -34,7 +34,10 @@ public class adMillaCopiarOfertaServiceImplementacion implements adMillaCopiarOf
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_millaCopiarOferta)"
+                    + " - Parametros: " + entidad.getCD_CNSCTVO() + "/" + entidad.getFechaRecoge() + "/"
+                    + entidad.getFechaDesde() + "/" + entidad.getFechaHasta() + "/" + entidad.getFechaEntrega()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

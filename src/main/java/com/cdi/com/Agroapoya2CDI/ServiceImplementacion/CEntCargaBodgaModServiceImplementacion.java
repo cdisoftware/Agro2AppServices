@@ -34,7 +34,9 @@ public class CEntCargaBodgaModServiceImplementacion implements CEntCargaBodgaMod
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Repuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_EntregaCargaBodegaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getEstado() + "/" + entidad.getCd_cnctivo() + "/" + entidad.getId_Sector() + "/" + entidad.getObservacion()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

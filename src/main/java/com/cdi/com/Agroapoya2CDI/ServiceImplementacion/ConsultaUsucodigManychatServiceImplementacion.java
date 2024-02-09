@@ -30,7 +30,7 @@ public class ConsultaUsucodigManychatServiceImplementacion implements ConsultaUs
             Object chatObjetc = response.getBody();
             Respuesta = chatObjetc.toString();
         } catch (Exception ex) {
-            return JSONObject.quote("Usuario NO existe");
+            return JSONObject.quote("Usuario NO existe, ERROR:  " + ex);
         }
         return Respuesta;
     }

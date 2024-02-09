@@ -34,7 +34,10 @@ public class CFechaTransModServiceImplementacion implements CFechaTransModServic
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_FechaTransMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctivo() + "/" + entidad.getIdSecotor()
+                    + "/" + entidad.getIdGrupo() + "/" + entidad.getFechaActualizar()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

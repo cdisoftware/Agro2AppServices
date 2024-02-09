@@ -30,7 +30,9 @@ public class adMillaOrdenComprasGrupoServiceImplementacion implements adMillaOrd
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_MillaOrdenComprasGrupo)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCadenaOrden() + "/" + entidad.getIdGrupo()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

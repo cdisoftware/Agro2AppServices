@@ -201,4 +201,6 @@ public class CHistorialComprasEntity {
     @JsonProperty("TPO_OFRTA")
     public Integer TPO_OFRTA;
 
+    @JsonProperty("RegalosCompra")
+    public String RegalosCompra;
 }

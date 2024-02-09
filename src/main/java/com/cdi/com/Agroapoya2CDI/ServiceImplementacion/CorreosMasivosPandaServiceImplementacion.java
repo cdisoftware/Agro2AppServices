@@ -115,10 +115,9 @@ public class CorreosMasivosPandaServiceImplementacion implements CorreosMasivosP
                 bodyFinal.put("subject", asunto);
                 bodyFinal.put("body", content);
                 HttpEntity<Object> request = new HttpEntity<>(bodyFinal.toString(), headers);
-                
+
                 // API DE PRUEBAS 
                 //ResponseEntity<Object> response = rt.exchange("http://api.ckpnd.com:5000/v1/email", HttpMethod.POST, request, Object.class);
-                
                 //API DE PRODUCCION CON PUERTO 1016 - HTTPS
                 ResponseEntity<Object> response = rt.exchange("https://api.ckpnd.com:5001/v1/email", HttpMethod.POST, request, Object.class);
 
@@ -129,8 +128,10 @@ public class CorreosMasivosPandaServiceImplementacion implements CorreosMasivosP
             }
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
         } catch (Exception ex) {
-            
-            return JSONObject.quote("No fue posible ejecutar los datos: Error" + ex);
+
+            return JSONObject.quote("ERROR LOG (paCEnvioRealCorreo)"
+                    + " - Parametros: " + bandera + "/" + IdPlantilla + "/" + IdTipoUsuario + "/" + cd_cnctvo + "/" + IdSector
+                    + " - ERROR JAVA = " + ex);
         }
         return Respuesta;
     }

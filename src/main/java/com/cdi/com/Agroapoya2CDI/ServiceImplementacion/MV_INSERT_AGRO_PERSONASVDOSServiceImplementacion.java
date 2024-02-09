@@ -72,7 +72,20 @@ public class MV_INSERT_AGRO_PERSONASVDOSServiceImplementacion implements MV_INSE
             insertagropersds.execute();
             return JSONObject.quote((String) insertagropersds.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_personaMod)"
+                    + " - Parametros: " + bandera + "/" + codUsuario + "/" + entidad.getCD_TIPO_PRSNA() + "/"
+                    + entidad.getNOMBRES_PERSONA() + "/" + entidad.getAPELLIDOS_PERSONA() + "/"
+                    + entidad.getCELULAR_PERSONA() + "/" + entidad.getCORREO_PERSONA() + "/"
+                    + entidad.getTIPO_DOCUMENTO() + "/" + entidad.getDOCUMENTO_USUARIO() + "/"
+                    + entidad.getDRCCION() + "/" + entidad.getCD_DPTO() + "/" + entidad.getCD_CDAD() + "/"
+                    + entidad.getCMPLMNTO_DRRCCION() + "/" + entidad.getCMNTRIO() + "/"
+                    + entidad.getTOKEN_PERSONA() + "/" + entidad.getNIT() + "/" + entidad.getCOORDENADAS_ENTR() + "/"
+                    + entidad.getTPO_TRANSPORTE() + "/" + entidad.getCD_TIPO_CLIENTE() + "/"
+                    + entidad.getRAZON_SOCIAL() + "/" + entidad.getID_FRMA_PGO() + "/"
+                    + entidad.getID_TPO_CUENTA() + "/" + entidad.getNOCUENTA() + "/"
+                    + entidad.getID_BNCO() + "/" + entidad.getID_TPO_PRSNA()
+                    + " - ERROR JAVA = " + ex
+            );
         }
 
     }

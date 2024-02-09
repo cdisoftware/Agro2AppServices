@@ -32,7 +32,9 @@ public class EnvioSMSNuevaEntregaServiceImplementacion implements EnvioSMSNuevaE
             smsNew.execute();
             return JSONObject.quote((String) smsNew.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_EnvioSMSNuevaEntrega)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getId_cliete() + "/" + entidad.getTimepo() + "/" + entidad.getHorMin()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

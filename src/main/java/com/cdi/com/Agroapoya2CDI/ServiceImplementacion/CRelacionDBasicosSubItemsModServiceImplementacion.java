@@ -34,7 +34,10 @@ public class CRelacionDBasicosSubItemsModServiceImplementacion implements CRelac
             moddatos.execute();
             return JSONObject.quote((String) moddatos.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_RelacionDBasicosSubItemsMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdDtoBasico() + "/" + entidad.getIdDtoRelacion() + "/"
+                    + entidad.getIdSubitem() + "/" + entidad.getIdSubitemDos()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

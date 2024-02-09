@@ -26,10 +26,11 @@ public class CLincortoSpServiceImplementacion implements CLincortoSpService {
             link.execute();
             return JSONObject.quote((String) link.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_LincortoSp)"
+                    + " - Parametros: " + BANDERA + "/" + entidad.getIdCarro()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }
 
-  
 }

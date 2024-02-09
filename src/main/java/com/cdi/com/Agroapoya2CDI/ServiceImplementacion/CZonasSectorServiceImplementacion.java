@@ -34,7 +34,9 @@ public class CZonasSectorServiceImplementacion implements CZonasSectorService {
             return Zonas.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_ZonasSector)"
+                    + " - Parametros: " + Bandera + "/" + id + "/" + cd_mncpio + "/" + cd_dpto + "/" + entidad.getDescripcion()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

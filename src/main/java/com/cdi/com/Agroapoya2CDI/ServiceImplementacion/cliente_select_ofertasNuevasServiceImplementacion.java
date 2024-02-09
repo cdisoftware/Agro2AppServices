@@ -28,7 +28,9 @@ public class cliente_select_ofertasNuevasServiceImplementacion implements client
             return consbackup.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (pa_cliente_select_ofertasNuevas)"
+                    + " - Parametros: " + US_CLIENTE
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

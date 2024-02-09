@@ -41,7 +41,10 @@ public class CCalculaPrecioFinGrupalServiceImplementacion implements CCalculaPre
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paCCalculaPrecioFinGrupal)"
+                    + " - Parametros: " + BANDERA + "/" + CD_CNSCTVO + "/" + ID_SCTOR_OFRTA + "/" + tpo_cmsion_grupal + "/" + vlor_cmsion_grupal
+                    + "/" + vlor_dmcilio_grupal + "/" + mnmo_prsnas_xgrupo
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

@@ -101,7 +101,10 @@ public class CEnvioCorreoIndEmailServiceImplementacion implements CEnvioCorreoIn
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
 
         } catch (Exception e) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
+            return JSONObject.quote("ERROR LOG (paC_EnvioCorreo_IndEmail)"
+                    + " - Parametros: " + bandera + "/" + entidad.getIdPlantilla() + "/" + entidad.getEmail() + "/" + entidad.getCd_cnctvo()
+                    + "/" + entidad.getIdSector() + "/" + entidad.getTextUno() + "/" + entidad.getTextDos() + "/" + entidad.getTextTres()
+                    + " - ERROR JAVA = " + e);
         }
         return Respuesta;
     }
@@ -139,7 +142,8 @@ public class CEnvioCorreoIndEmailServiceImplementacion implements CEnvioCorreoIn
             ts.close();
 
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_RemitenteCorreo || paC_EnvioCorreo_IndEmail)"
+                    + " - ERROR JAVA = " + ex);
         }
     }
 
@@ -202,7 +206,8 @@ public class CEnvioCorreoIndEmailServiceImplementacion implements CEnvioCorreoIn
             message.setContent(mp2);
             message.saveChanges();
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_DocuEnvioCorreo || paC_EnvioCorreo_IndEmail)"
+                    + " - ERROR JAVA = " + ex);
         }
         return message;
     }

@@ -34,7 +34,9 @@ public class CAgroPreguntaOfertaServiceImplementacion implements CAgroPreguntaOf
             return agro.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paCAgro_Pregunta_Oferta)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getID_SCTOR_OFRTA() + "/" + entidad.getID_PRGNTA_OFR()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

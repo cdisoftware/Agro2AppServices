@@ -19,7 +19,7 @@ public class AdmUsuariosQueryEntity {
 
     @Id
     @JsonProperty("ID")
-    public Integer ID;
+    public String ID;
 
     @JsonProperty("USUCODIG")
     public Integer USUCODIG;

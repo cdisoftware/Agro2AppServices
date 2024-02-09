@@ -36,7 +36,9 @@ public class COfertasExternasServiceImplementacion implements COfertasExternasSe
             return ofertExternas.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_OfertasExternas)"
+                    + " - Parametros: " + Bandera + "/" + Cd_cnctvo + "/" + Id_Sector + "/" + IdUsuario + "/" + NombreProducto
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

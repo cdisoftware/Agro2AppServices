@@ -30,7 +30,9 @@ public class CModuloModServiceImplementacion implements CModuloModService {
             modmodulo.execute();
             return JSONObject.quote((String) modmodulo.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_ModuloMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdModulo() + "/" + entidad.getNomModulo()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

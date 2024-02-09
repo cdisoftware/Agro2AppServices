@@ -34,7 +34,10 @@ public class CtorUltMillaModServiceImplementacion implements CtorUltMillaModServ
             SqlService.execute();
             return JSONObject.quote((String) SqlService.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_ConductorUltimaMuillaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdGrupo() + "/" + entidad.getCd_cnsctivo() + "/"
+                    + entidad.getIdSector() + "/" + entidad.getIdConductor()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

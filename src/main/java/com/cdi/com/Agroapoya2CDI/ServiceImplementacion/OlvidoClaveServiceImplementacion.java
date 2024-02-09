@@ -57,7 +57,9 @@ public class OlvidoClaveServiceImplementacion implements OlvidoClaveService {
             }
             return "[{\"codigo\":\"" + codigo + "\",\"fecha\":\"" + fecha + "\"}]";
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos sendEmail, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_OlvidoClave)"
+                    + " - Parametros: " + emailentity.getEmail() + "/" + emailentity.getTipoUsu()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }
@@ -94,7 +96,8 @@ public class OlvidoClaveServiceImplementacion implements OlvidoClaveService {
             ts.close();
 
         } catch (Exception ex) {
-            System.out.print("Error en sendMessage: " + ex);
+            System.out.println("ERROR LOG (paC_RemitenteCorreo || paC_OlvidoClave)"
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

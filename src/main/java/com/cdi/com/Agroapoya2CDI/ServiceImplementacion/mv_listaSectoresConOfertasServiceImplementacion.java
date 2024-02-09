@@ -28,7 +28,9 @@ public class mv_listaSectoresConOfertasServiceImplementacion implements mv_lista
             return conslistsector.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (mv_listaSectoresConOfertas)"
+                    + " - Parametros: " + bandera + "/" + ciudad
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

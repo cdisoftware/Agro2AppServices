@@ -25,7 +25,9 @@ public class CvalidaUsuSectorServiceImplementacion implements CvalidaUsuSectorSe
             rolconsola.execute();
             return JSONObject.quote((String) rolconsola.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_validaUsuSector)"
+                    + " - Parametros: " + Bandera + "/" + IdSector
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

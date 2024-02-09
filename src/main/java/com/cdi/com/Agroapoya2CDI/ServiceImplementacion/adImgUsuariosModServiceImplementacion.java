@@ -36,7 +36,10 @@ public class adImgUsuariosModServiceImplementacion implements adImgUsuariosModSe
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_ImgUsuariosMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdImagen() + "/" + entidad.getUsucodig() + "/" + entidad.getNombreImagen() + "/"
+                    + entidad.getImgPrincipal() + "/" + entidad.getOrden()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

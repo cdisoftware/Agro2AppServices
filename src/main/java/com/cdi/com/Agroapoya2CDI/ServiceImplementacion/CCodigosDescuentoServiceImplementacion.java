@@ -39,7 +39,10 @@ public class CCodigosDescuentoServiceImplementacion implements CCodigosDescuento
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_CodigosDescuento)"
+                    + " - Parametros: " + Bandera + "/" + agro_tipoCuponDescuentoGeneral + "/" + IdTipoCuponCodigoAplicableGeneral + "/" + Cd_cnsctvo
+                    + "/" + entidad.getFechaCreacion() + "/" + Estado
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

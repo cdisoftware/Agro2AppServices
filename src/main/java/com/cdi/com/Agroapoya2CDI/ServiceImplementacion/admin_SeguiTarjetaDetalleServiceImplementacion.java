@@ -12,7 +12,8 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class admin_SeguiTarjetaDetalleServiceImplementacion implements admin_SeguiTarjetaDetalleService{
+public class admin_SeguiTarjetaDetalleServiceImplementacion implements admin_SeguiTarjetaDetalleService {
+
     @PersistenceContext
     private EntityManager repositorio;
 
@@ -29,7 +30,9 @@ public class admin_SeguiTarjetaDetalleServiceImplementacion implements admin_Seg
             return Cons.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia {admin_SeguiTarjetaDetalle} " + ex));
+            list.add(0, JSONObject.quote("ERROR LOG (admin_SeguiTarjetaDetalle)"
+                    + " - Parametros: " + Bandera + "/" + IdGrupo
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

@@ -40,7 +40,11 @@ public class CReporteUsuarioServiceImplementacion implements CReporteUsuarioServ
             return RepotUser.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_ReporteUsuarios)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdTipoPersona() + "/" + entidad.getUsucodig() + "/"
+                    + FechaDesde + "/" + FechaHasta + "/" + entidad.getCorreoPersona() + "/"
+                    + entidad.getNombrePersona()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

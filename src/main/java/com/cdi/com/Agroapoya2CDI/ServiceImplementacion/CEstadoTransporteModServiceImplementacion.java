@@ -38,7 +38,10 @@ public class CEstadoTransporteModServiceImplementacion implements CEstadoTranspo
             Actestado.execute();
             return JSONObject.quote((String) Actestado.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_EstadoTransporteMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getEstado() + "/" + entidad.getCd_cnsctvo()
+                    + "/" + entidad.getIdSector() + "/" + entidad.getIdConctor() + "/" + entidad.getObservacion() + "/" + entidad.getCoordenadas()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

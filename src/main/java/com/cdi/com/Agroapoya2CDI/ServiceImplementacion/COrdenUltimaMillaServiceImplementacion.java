@@ -34,7 +34,10 @@ public class COrdenUltimaMillaServiceImplementacion implements COrdenUltimaMilla
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_OrdenUltimaMilla)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCadenaOrden() + "/" + entidad.getIdGrupo() + "/"
+                    + entidad.getCd_cnsctivo() + "/" + entidad.getIdSector()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

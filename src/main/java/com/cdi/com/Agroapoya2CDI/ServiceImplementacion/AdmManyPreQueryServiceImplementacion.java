@@ -32,7 +32,9 @@ public class AdmManyPreQueryServiceImplementacion implements AdmManyPreQueryServ
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+             return JSONObject.quote("ERROR LOG (Admin_ManyPreQuery)"
+                        +" - Parametros: " + Bandera + "/" + entidad.getId_sector() + "/" +entidad.getCd_cnsctivo()+ "/" + entidad.getQueryAdicional()
+                        +" - ERROR JAVA = " + ex);
         }
     }
 

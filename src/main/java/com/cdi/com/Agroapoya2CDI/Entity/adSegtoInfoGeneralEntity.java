@@ -84,6 +84,15 @@ public class adSegtoInfoGeneralEntity {
     @JsonProperty("ValorDomicilio")
     public String ValorDomicilio;
 
+    @JsonProperty("ValorTotalPagarForm")
+    public String ValorTotalPagarForm;
+
+    @JsonProperty("ValorPagarSinDomicilioForm")
+    public String ValorPagarSinDomicilioForm;
+
+    @JsonProperty("ValorDomicilioForm")
+    public String ValorDomicilioForm;
+
     @JsonProperty("IDGRUPOCOMPRA")
     public String IDGRUPOCOMPRA;
 

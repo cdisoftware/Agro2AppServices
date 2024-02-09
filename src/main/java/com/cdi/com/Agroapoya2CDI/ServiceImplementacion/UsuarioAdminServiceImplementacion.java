@@ -30,7 +30,9 @@ public class UsuarioAdminServiceImplementacion implements UsuarioAdminService {
             return admin.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paA_UsuarioAdmin)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCorreoPersona()
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

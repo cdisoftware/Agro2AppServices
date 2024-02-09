@@ -30,7 +30,9 @@ public class CRelacionCuponOfertaModServiceImplementacion implements CRelacionCu
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_RelacionCuponOfertaMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getCd_cnsctivo() + "/" + entidad.getId_cuponCodigo()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

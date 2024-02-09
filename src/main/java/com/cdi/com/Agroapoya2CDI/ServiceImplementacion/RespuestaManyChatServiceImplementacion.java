@@ -28,9 +28,11 @@ public class RespuestaManyChatServiceImplementacion implements RespuestaManyChat
             modRespuesta.setParameter("Usucodig", Usucodig);
 
             modRespuesta.execute();
-             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("RespMicro"));
+            return JSONObject.quote((String) modRespuesta.getOutputParameterValue("RespMicro"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_RespuestaManyChat)"
+                    + " - Parametros: " + entidad.getRespuesta() + "/" + IdPregunta + "/" + Usucodig
+                    + " - ERROR JAVA = " + ex);
         }
     }
 

@@ -36,7 +36,10 @@ public class CSectorOfertaModServiceImplementacion implements CSectorOfertaModSe
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCSectorOfertaMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getID() + "/" + entidad.getCD_CNSCTVO() + "/"
+                    + entidad.getID_SCTOR_OFRTA() + "/" + entidad.getCNTDAD() + "/" + entidad.getVLOR_FLTE_SGRDO()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

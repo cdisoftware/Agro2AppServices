@@ -47,4 +47,13 @@ public class CRelacionProdToppingEntity {
 
     @JsonProperty("PorDecuento")
     public String PorDecuento;
+
+    @JsonProperty("suborden")
+    public String suborden;
+
+    @JsonProperty("valorLibra")
+    public String valorLibra;
+
+    @JsonProperty("PrimeroVer")
+    public String PrimeroVer;
 }

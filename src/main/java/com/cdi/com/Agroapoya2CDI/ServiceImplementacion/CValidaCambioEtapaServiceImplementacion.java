@@ -27,7 +27,9 @@ public class CValidaCambioEtapaServiceImplementacion implements CValidaCambioEta
             valida.execute();
             return JSONObject.quote((String) valida.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCValidaCambioEtapa)"
+                    + " - Parametros: " + Bandera + "/" + CD_CNSCTVO + "/" + FASE_SIGUIENTE
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

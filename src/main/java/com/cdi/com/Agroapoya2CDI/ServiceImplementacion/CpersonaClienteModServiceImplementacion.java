@@ -61,7 +61,17 @@ public class CpersonaClienteModServiceImplementacion implements CpersonaClienteM
             modperson.execute();
             return JSONObject.quote((String) modperson.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paC_personaClienteMod)"
+                    + " - Parametros: " + bandera + "/" + banderaDos + "/" + entidad.getCodUsuario() + "/"
+                    + entidad.getNombres() + "/" + entidad.getApellido() + "/"
+                    + entidad.getTelefono() + "/" + entidad.getCorreo() + "/"
+                    + entidad.getTipo_identificacion() + "/" + entidad.getNumero_identificacion() + "/"
+                    + entidad.getDireccion() + "/" + entidad.getCMNTRIO() + "/"
+                    + entidad.getTOKEN() + "/" + entidad.getDpto() + "/"
+                    + entidad.getCiudad() + "/" + entidad.getComplemento_direccion() + "/"
+                    + entidad.getRZON_SCIAL() + "/" + entidad.getNIT() + "/"
+                    + entidad.getCOORDENADAS() + "/" + entidad.getTPO_CLNTEINST()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

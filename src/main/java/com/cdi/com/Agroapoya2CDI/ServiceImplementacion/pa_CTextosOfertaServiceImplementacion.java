@@ -37,7 +37,10 @@ public class pa_CTextosOfertaServiceImplementacion implements pa_CTextosOfertaSe
             respu.execute();
             return JSONObject.quote((String) respu.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (pa_CTextosOferta)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdSector() + "/" + entidad.getCd_cnctivo() + "/" + entidad.getTextoCorreo() + "/"
+                    + entidad.getTextoWhat() + "/" + entidad.getImgCorreo() + "/" + entidad.getTextoSms()
+                    + " - ERROR JAVA = " + ex);
         }
     }
 }

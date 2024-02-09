@@ -32,10 +32,10 @@ public class AddTagUserServiceIplementacion implements AddTagUserService {
             HttpEntity<String> request = new HttpEntity<>(data.toString(), headers);
             ResponseEntity<String> response = rt.exchange("https://api.manychat.com/fb/subscriber/addTag", HttpMethod.POST, request, String.class);
             Object chatObjetc = response.getBody();
-
-            Respuesta = chatObjetc.toString();
+            //Respuesta = chatObjetc.toString();
+            Respuesta = JSONObject.quote("1|Registro exitoso");
         } catch (Exception ex) {
-            return "Error:" + ex.getMessage();
+            return JSONObject.quote("ERROR: -1 " + ex);
         }
         return Respuesta;
     }

@@ -1,4 +1,3 @@
-
 package com.cdi.com.Agroapoya2CDI.ServiceImplementacion;
 
 import com.cdi.com.Agroapoya2CDI.Entity.CtipoUsuarioEntity;
@@ -13,9 +12,10 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CtipoUsuarioServiceImplementacion implements CtipoUsuarioService{
- @PersistenceContext
-        private EntityManager repositorio;
+public class CtipoUsuarioServiceImplementacion implements CtipoUsuarioService {
+
+    @PersistenceContext
+    private EntityManager repositorio;
 
     @Override
     public List<CtipoUsuarioEntity> ConsultaCTipoUsuario(Integer Bandera) {
@@ -26,7 +26,9 @@ public class CtipoUsuarioServiceImplementacion implements CtipoUsuarioService{
             return tipuser.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_tipoUsuario)"
+                    + " - Parametros: " + Bandera
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

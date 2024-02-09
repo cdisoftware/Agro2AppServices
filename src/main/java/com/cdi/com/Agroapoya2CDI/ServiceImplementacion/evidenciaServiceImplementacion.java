@@ -32,7 +32,9 @@ public class evidenciaServiceImplementacion implements evidenciaService {
             return evid.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_evidencia)"
+                    + " - Parametros: " + bandera + "/" + id_evidencia + "/" + id_factura
+                    + " - ERROR JAVA = " + ex));
             return list;
         }
     }

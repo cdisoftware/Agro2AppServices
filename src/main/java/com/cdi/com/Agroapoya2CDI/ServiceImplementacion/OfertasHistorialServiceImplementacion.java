@@ -38,7 +38,12 @@ public class OfertasHistorialServiceImplementacion implements OfertasHistorialSe
             return ofert.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia"));
+            list.add(0, JSONObject.quote("ERROR LOG (paC_OfertasHistorial)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getUsuCodig() + "/" + cnctivoOferta + "/"
+                    + id_prdcto + "/" + entidad.getProducto() + "/"
+                    + entidad.getDescripcionProducto()
+                    + " - ERROR JAVA = " + ex
+            ));
             return list;
         }
     }

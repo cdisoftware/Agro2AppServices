@@ -30,7 +30,9 @@ public class TipObliCrroManModServiceImplementacion implements TipObliCrroManMod
             modCorreoMan.execute();
             return JSONObject.quote((String) modCorreoMan.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (Agro_TipObliCorreoManualMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getId() + "/" + entidad.getIdPlantilla()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

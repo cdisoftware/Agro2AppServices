@@ -76,7 +76,16 @@ public class COfertaModServiceImplementacion implements COfertaModService {
             insertofrta.execute();
             return JSONObject.quote((String) insertofrta.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCOfertaMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getCD_PRDCTO() + "/" + ID_EMPAQUE + "/" + entidad.getUND_EMPQUE() + "/"
+                    + entidad.getCD_CNDCION() + "/" + entidad.getCD_TMNO() + "/" + entidad.getDSCRPCION_PRDCTO() + "/"
+                    + entidad.getVR_UNDAD_EMPQUE() + "/" + entidad.getCD_UNDAD() + "/" + entidad.getVR_TOTAL_OFRTA() + "/"
+                    + entidad.getVGNCIA_DESDE() + "/" + entidad.getCD_JRNDA() + "/" + entidad.getCD_RGION() + "/"
+                    + entidad.getCD_MNCPIO() + "/" + entidad.getUBCCION_PRCLA() + "/" + entidad.getCOORDENADAS_PRCLA() + "/"
+                    + entidad.getUSUCODIG() + "/" + entidad.getID_PRODUCTOR() + "/" + entidad.getCD_CNSCTVO() + "/"
+                    + entidad.getCRCTRZCION() + "/" + entidad.getOBS_EDICION() + "/" + entidad.getIMAGEN1() + "/"
+                    + entidad.getIMAGEN2() + "/" + entidad.getIMAGEN3() + "/" + entidad.getIMAGEN4() + "/" + entidad.getIMAGEN5()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

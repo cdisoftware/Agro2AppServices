@@ -42,7 +42,11 @@ public class CAgroPreguntaOfertaModServiceImplementacion implements CAgroPregunt
             insertbackup.execute();
             return JSONObject.quote((String) insertbackup.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCAgro_Pregunta_Oferta_Mod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getID_PRGNTA_OFR() + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getID_SCTOR_OFRTA()
+                    + "/" + entidad.getCD_TPO_PRGNTA() + "/" + entidad.getTTLO_PRGNTA() + "/" + entidad.getOPCIONES_PRGNTA() + "/" + entidad.getORIGEN()
+                    + "/" + entidad.getCD_TPO_SEGMENTO()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }

@@ -32,8 +32,10 @@ public class adMillaGruposFocoModServiceImplementacion implements adMillaGruposF
             tpoDoc.execute();
             return JSONObject.quote((String) tpoDoc.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia: " + ex);
+            return JSONObject.quote("ERROR LOG (admin_millaGruposFocoMod)"
+                    + " - Parametros: " + Bandera + "/" + entidad.getIdGrupo() + "/" + entidad.getIdCarros()
+                    + " - ERROR JAVA = " + ex);
         }
-    }   
+    }
 
 }

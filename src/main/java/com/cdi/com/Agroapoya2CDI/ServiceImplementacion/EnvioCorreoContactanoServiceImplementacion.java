@@ -93,7 +93,12 @@ public class EnvioCorreoContactanoServiceImplementacion implements EnvioCorreoCo
             Respuesta = JSONObject.quote("Correo Enviado Correctamente");
 
         } catch (Exception e) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia || EnvioCorreoIndividual");
+            return JSONObject.quote("ERROR LOG (cliente_CorreoContactanos)"
+                    + " - Parametros: " + bandera + "/" + entidad.getIdPlantilla() + "/" + entidad.getNombrePersona() + "/"
+                    + entidad.getTelefonoPersona() + "/" + entidad.getEmail() + "/"
+                    + entidad.getRespuWhat() + "/" + TipoContanto + "/"
+                    + entidad.getMensajePersona()
+                    + " - ERROR JAVA = " + e);
         }
         return Respuesta;
     }
@@ -131,7 +136,8 @@ public class EnvioCorreoContactanoServiceImplementacion implements EnvioCorreoCo
             ts.close();
 
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (paC_RemitenteCorreo || cliente_CorreoContactanos)"
+                    + " - ERROR JAVA = " + ex);
         }
     }
 
@@ -201,7 +207,8 @@ public class EnvioCorreoContactanoServiceImplementacion implements EnvioCorreoCo
             message.setContent(mp2);
             message.saveChanges();
         } catch (Exception ex) {
-
+            System.out.println("ERROR LOG (cliente_CorreoContactanos)"
+                    + " - ERROR JAVA = " + ex);
         }
         return message;
     }

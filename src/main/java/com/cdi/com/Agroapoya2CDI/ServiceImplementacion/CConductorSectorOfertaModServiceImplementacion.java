@@ -36,7 +36,10 @@ public class CConductorSectorOfertaModServiceImplementacion implements CConducto
             mod.execute();
             return JSONObject.quote((String) mod.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos, verifique el Log para validar la inconsistencia");
+            return JSONObject.quote("ERROR LOG (paCConductorSectorOfertaMod)"
+                    + " - Parametros: " + bandera + "/" + entidad.getID() + "/" + entidad.getCD_CNSCTVO() + "/" + entidad.getID_SCTOR_OFRTA()
+                    + "/" + entidad.getID_CNDCTOR() + "/" + entidad.getUSUCODIG_TRANS() + "/" + entidad.getVLOR_FLTE_PCTDO()
+                    + " - ERROR JAVA = " + ex);
         }
 
     }
