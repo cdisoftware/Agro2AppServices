@@ -225,6 +225,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.EnvioSMSNuevaEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EstadosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.INFOGENERALEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.JornadasOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ListArchivosDriveEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ListasDatosBancoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.LogsRegistroManychatModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.MV_INSERT_AGRO_PERSONASVDOSEntity;
@@ -565,6 +566,7 @@ import com.cdi.com.Agroapoya2CDI.Services.FirebaseNotificationService;
 import com.cdi.com.Agroapoya2CDI.Services.INFOGENERALService;
 import com.cdi.com.Agroapoya2CDI.Services.ImagesApiService;
 import com.cdi.com.Agroapoya2CDI.Services.JornadasOfertaService;
+import com.cdi.com.Agroapoya2CDI.Services.ListDocDriveService;
 import com.cdi.com.Agroapoya2CDI.Services.ListasDatosBancoService;
 import com.cdi.com.Agroapoya2CDI.Services.LogsRegistroManychatModService;
 import com.cdi.com.Agroapoya2CDI.Services.cliente_select_ofertasNuevasService;
@@ -1716,6 +1718,9 @@ public class Controller {
     
     @Autowired
     admin_SeguiTarjetaDetalleService serviceadmin_SeguiTarjetaDetalleService;
+    
+    @Autowired
+    ListDocDriveService serviceListDocDriveService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4454,5 +4459,10 @@ public class Controller {
             @PathVariable Integer bandera,
             @PathVariable Integer IdGrupo) {
         return serviceadmin_SeguiTarjetaDetalleService.Cons(bandera, IdGrupo);
+    }
+    
+    @GetMapping("/ListDocumentos")
+    public List<ListArchivosDriveEntity> ConsultaValorPago() {
+        return serviceListDocDriveService.ListDoc();
     }
 }
