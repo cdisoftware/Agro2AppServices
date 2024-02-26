@@ -53,10 +53,13 @@ public class movileConsulatGeneralOfertaEntity {
 
     @JsonProperty("IdSector")
     public Integer IdSector;
-    
+
     @JsonProperty("complementoDireccion")
     public String complementoDireccion;
-    
+
     @JsonProperty("IdCondutor")
     public String IdCondutor;
+
+    @JsonProperty("IdMedioPago")
+    public String IdMedioPago;
 }

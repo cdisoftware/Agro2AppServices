@@ -16,9 +16,10 @@ public class CClisModServiceImplementacion implements CClisModService {
     private EntityManager repositorio;
 
     @Override
-    public String ModCClis(CClisModEntity entidad) {
+    public String ModCClis(CClisModEntity entidad, Integer Bandera) {
         try {
             StoredProcedureQuery parametros = repositorio.createNamedStoredProcedureQuery("PaC_ClisMod");
+            parametros.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("Cedula", Integer.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("Fecha", String.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("Estado", String.class, ParameterMode.IN);
@@ -27,6 +28,7 @@ public class CClisModServiceImplementacion implements CClisModService {
             parametros.registerStoredProcedureParameter("Nombre", String.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("Celular", String.class, ParameterMode.IN);
 
+            parametros.setParameter("Bandera", Bandera);
             parametros.setParameter("Cedula", entidad.getCedula());
             parametros.setParameter("Fecha", entidad.getFecha());
             parametros.setParameter("Estado", entidad.getEstado());
@@ -39,8 +41,8 @@ public class CClisModServiceImplementacion implements CClisModService {
             return JSONObject.quote((String) parametros.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
             return JSONObject.quote("ERROR LOG (PaC_ClisMod)"
-                    + " - Parametros: " + entidad.getCedula() + "/" + entidad.getFecha() + "/" + entidad.getEstado() + "/" + entidad.getEmpresa() 
-                    + "/" + entidad.getNom_Archivo()+ "/" + entidad.getNombre()+ "/" + entidad.getCelular()
+                    + " - Parametros: " + Bandera + "/" + entidad.getCedula() + "/" + entidad.getFecha() + "/" + entidad.getEstado() + "/" + entidad.getEmpresa()
+                    + "/" + entidad.getNom_Archivo() + "/" + entidad.getNombre() + "/" + entidad.getCelular()
                     + " - ERROR JAVA = " + ex);
         }
 

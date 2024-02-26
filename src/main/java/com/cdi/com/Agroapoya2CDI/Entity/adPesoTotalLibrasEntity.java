@@ -11,31 +11,22 @@ import lombok.Data;
 @Data
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
-            name = "admin_reporteCantidadTotal",
-            procedureName = "admin_reporteCantidadTotal",
-            resultClasses = adminreporteCantidadTotalEntity.class)
+            name = "admin_PesoTotalLibras",
+            procedureName = "admin_PesoTotalLibras",
+            resultClasses = adPesoTotalLibrasEntity.class)
 })
-public class adminreporteCantidadTotalEntity {
+public class adPesoTotalLibrasEntity {
 
     @Id
-    @JsonProperty("Id")
-    public Integer Id;
+    @JsonProperty("IdProducto")
+    public Integer IdProducto;
 
     @JsonProperty("Producto")
     public String Producto;
 
-    @JsonProperty("imagen")
-    public String imagen;
+    @JsonProperty("PesoTotal")
+    public Integer PesoTotal;
 
     @JsonProperty("CantidadTotal")
     public Integer CantidadTotal;
-
-    @JsonProperty("PesoTotal")
-    public String PesoTotal;
-
-    @JsonProperty("PesoUnid")
-    public String PesoUnid;
-
-    @JsonProperty("idProducto")
-    public Integer idProducto;
 }
