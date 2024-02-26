@@ -50,4 +50,13 @@ public class adlistaPersonaEntity {
 
     @JsonProperty("NombreCompleto")
     public String NombreCompleto;
+
+    @JsonProperty("DesTipoRegistro")
+    public String DesTipoRegistro;
+
+    @JsonProperty("DesUsuarioValidado")
+    public String DesUsuarioValidado;
+
+    @JsonProperty("IdUsuarioValidado")
+    public Integer IdUsuarioValidado;
 }

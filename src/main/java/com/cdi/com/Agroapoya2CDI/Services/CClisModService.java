@@ -4,5 +4,5 @@ import com.cdi.com.Agroapoya2CDI.Entity.CClisModEntity;
 
 public interface CClisModService {
 
-    public String ModCClis(CClisModEntity entidad);
+    public String ModCClis(CClisModEntity entidad, Integer Bandera);
 }

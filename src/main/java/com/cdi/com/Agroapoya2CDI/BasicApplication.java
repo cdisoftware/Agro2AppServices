@@ -21,11 +21,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //@PropertySource("dev.properties")
 //@Profile("dev")
 
-@PropertySource("contingencia.properties")
-@Profile("contingencia")
+//@PropertySource("contingencia.properties")
+//@Profile("contingencia")
 
-//@PropertySource("prod.properties")
-//@Profile("prod")
+@PropertySource("prod.properties")
+@Profile("prod")
 public class BasicApplication {
 
     public static void main(String[] args) {
