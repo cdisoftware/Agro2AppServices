@@ -227,4 +227,19 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("UsucodigCampesino")
     public Integer UsucodigCampesino;
+
+    @JsonProperty("UndEmpa")
+    public Integer UndEmpa;
+
+    @JsonProperty("defectpEmpa")
+    public Integer defectpEmpa;
+
+    @JsonProperty("CD_PRDCTO")
+    public Integer CD_PRDCTO;
+
+    @JsonProperty("TieneReceta")
+    public Integer TieneReceta;
+
+    @JsonProperty("TieneConserva")
+    public Integer TieneConserva;
 }

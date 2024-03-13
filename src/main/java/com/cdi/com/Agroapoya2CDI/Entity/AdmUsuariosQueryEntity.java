@@ -41,4 +41,7 @@ public class AdmUsuariosQueryEntity {
 
     @JsonProperty("CORREO_PERSONA")
     public String CORREO_PERSONA;
+
+    @JsonProperty("id_carro")
+    public String id_carro;
 }

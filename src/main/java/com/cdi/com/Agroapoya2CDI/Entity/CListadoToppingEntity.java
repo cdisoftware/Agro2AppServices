@@ -98,4 +98,16 @@ public class CListadoToppingEntity {
 
     @JsonProperty("Id_Producto")
     public Integer Id_Producto;
+
+    @JsonProperty("UniProd")
+    public Integer UniProd;
+
+    @JsonProperty("DefectoUniProd")
+    public Integer DefectoUniProd;
+
+    @JsonProperty("TieneReceta")
+    public Integer TieneReceta;
+
+    @JsonProperty("TieneConserva")
+    public Integer TieneConserva;
 }

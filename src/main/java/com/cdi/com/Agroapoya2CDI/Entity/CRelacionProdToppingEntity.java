@@ -56,4 +56,10 @@ public class CRelacionProdToppingEntity {
 
     @JsonProperty("PrimeroVer")
     public String PrimeroVer;
+
+    @JsonProperty("DefectoEmp")
+    public Integer DefectoEmp;
+
+    @JsonProperty("UndEmp")
+    public Integer UndEmp;
 }

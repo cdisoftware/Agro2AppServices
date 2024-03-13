@@ -77,7 +77,13 @@ public class CToppingModEntity {
 
     @JsonProperty("PresentacionProd")
     public String PresentacionProd;
-    
+
     @JsonProperty("IdCampesino")
     public Integer IdCampesino;
+
+    @JsonProperty("UnidadesPeso")
+    public Integer UnidadesPeso;
+
+    @JsonProperty("DefectoUnidadesPeso")
+    public Integer DefectoUnidadesPeso;
 }
