@@ -52,4 +52,10 @@ public class cRelacionProdToppingModEntity {
     @JsonProperty("Id_Sector")
     public Integer Id_Sector;
 
+    @JsonProperty("UnidadesPeso")
+    public Integer UnidadesPeso;
+
+    @JsonProperty("DefectoUnidadesPeso")
+    public Integer DefectoUnidadesPeso;
+
 }

@@ -269,6 +269,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adAuditoriaManyChatEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adDashProductosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adDashUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDireccionUsuModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adImgUsuariosModEntity;
@@ -311,6 +313,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adofertaFechasModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adproducTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adrelOfertaTransEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adrelOfertaTransModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adreporteCantidadTotalxLibrasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteTransportEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteUsuarioServEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adreporteVentasEntity;
@@ -657,6 +660,8 @@ import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
 import com.cdi.com.Agroapoya2CDI.Services.adAuditoriaManyChatEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
+import com.cdi.com.Agroapoya2CDI.Services.adDashProductoService;
+import com.cdi.com.Agroapoya2CDI.Services.adDashUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.adDireccionUsuModService;
 import com.cdi.com.Agroapoya2CDI.Services.adImgUsuariosModService;
@@ -699,6 +704,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adofertaFechasModService;
 import com.cdi.com.Agroapoya2CDI.Services.adproducTranService;
 import com.cdi.com.Agroapoya2CDI.Services.adrelOfertaTranService;
 import com.cdi.com.Agroapoya2CDI.Services.adrelOfertaTransModService;
+import com.cdi.com.Agroapoya2CDI.Services.adreporteCantidadTotalxLibraService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteUsuarioServService;
 import com.cdi.com.Agroapoya2CDI.Services.adreporteVentaService;
@@ -1882,6 +1888,15 @@ public class Controller {
 
     @Autowired
     adDashVentaService serviceadDashVentaService;
+
+    @Autowired
+    adDashProductoService serviceadDashProductoService;
+
+    @Autowired
+    adreporteCantidadTotalxLibraService serviceadreporteCantidadTotalxLibraService;
+
+    @Autowired
+    adDashUsuarioService serviceadDashUsuarioService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4861,5 +4876,24 @@ public class Controller {
     public List<adDashVentasEntity> ConsultasAdDashVentas(
             @PathVariable Integer Bandera) {
         return serviceadDashVentaService.ConsultasAdDashVentas(Bandera);
+    }
+
+    @GetMapping("/consAdDashProducts/{Bandera}")
+    public List<adDashProductosEntity> ConsultadDashProducto(
+            @PathVariable Integer Bandera) {
+        return serviceadDashProductoService.ConsultadDashProducto(Bandera);
+    }
+
+    @GetMapping("/consAdReporteCantTotalxLibras/{Bandera}/{cd_cnsctivo}")
+    public List<adreporteCantidadTotalxLibrasEntity> ConsultaResporteTotalLibras(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer cd_cnsctivo) {
+        return serviceadreporteCantidadTotalxLibraService.ConsultaResporteTotalLibras(Bandera, cd_cnsctivo);
+    }
+
+    @GetMapping("/consAdDashUsuarios/{Bandera}")
+    public List<adDashUsuariosEntity> ConsultaDashUsers(
+            @PathVariable Integer Bandera) {
+        return serviceadDashUsuarioService.ConsultaDashUsers(Bandera);
     }
 }

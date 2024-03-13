@@ -26,4 +26,11 @@ public class listaEmpaqueEntity {
 
     @JsonProperty("PESO")
     public Double PESO;
+
+    @JsonProperty("unidades")
+    public Integer unidades;
+
+    @JsonProperty("defecto")
+    public Integer defecto;
+
 }

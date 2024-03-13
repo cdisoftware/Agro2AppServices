@@ -39,6 +39,8 @@ public class CToppingModServiceImplementacion implements CToppingModService {
             modTopping.registerStoredProcedureParameter("IdProdTopin", Integer.class, ParameterMode.IN);
             modTopping.registerStoredProcedureParameter("PresentacionProd", String.class, ParameterMode.IN);
             modTopping.registerStoredProcedureParameter("IdCampesino", Integer.class, ParameterMode.IN);
+            modTopping.registerStoredProcedureParameter("UnidadesPeso", Integer.class, ParameterMode.IN);
+            modTopping.registerStoredProcedureParameter("DefectoUnidadesPeso", Integer.class, ParameterMode.IN);
 
             modTopping.setParameter("Bandera", Bandera);
             modTopping.setParameter("IdTopping", entidad.getIdTopping());
@@ -60,6 +62,8 @@ public class CToppingModServiceImplementacion implements CToppingModService {
             modTopping.setParameter("IdProdTopin", entidad.getIdProdTopin());
             modTopping.setParameter("PresentacionProd", entidad.getPresentacionProd());
             modTopping.setParameter("IdCampesino", entidad.getIdCampesino());
+            modTopping.setParameter("UnidadesPeso", entidad.getUnidadesPeso());
+            modTopping.setParameter("DefectoUnidadesPeso", entidad.getDefectoUnidadesPeso());
 
             modTopping.execute();
             return JSONObject.quote((String) modTopping.getOutputParameterValue("Respuesta"));
@@ -71,7 +75,7 @@ public class CToppingModServiceImplementacion implements CToppingModService {
                     + entidad.getImagen() + "/" + entidad.getPesoKiloUnd() + "/" + entidad.getCrctrzcionCrta() + "/"
                     + entidad.getCrctrzcionLrga() + "/" + entidad.getImgDos() + "/" + entidad.getImgTres() + "/"
                     + entidad.getVlorRefencia() + "/" + entidad.getIdTipoTopingVenta() + "/" + entidad.getIdProdTopin() + "/"
-                    + entidad.getPresentacionProd() + "/" + entidad.getIdCampesino()
+                    + entidad.getPresentacionProd() + "/" + entidad.getIdCampesino() + "/" + entidad.getUnidadesPeso() + "/" + entidad.getDefectoUnidadesPeso()
                     + " - ERROR JAVA = " + ex);
         }
 

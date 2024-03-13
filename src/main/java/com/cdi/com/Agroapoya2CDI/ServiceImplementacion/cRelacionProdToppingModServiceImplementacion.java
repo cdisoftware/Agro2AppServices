@@ -29,6 +29,8 @@ public class cRelacionProdToppingModServiceImplementacion implements cRelacionPr
             modRespuesta.registerStoredProcedureParameter("MximoUnidades", Integer.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("Id_Sector", Integer.class, ParameterMode.IN);
             modRespuesta.registerStoredProcedureParameter("PesoUnidad", String.class, ParameterMode.IN);
+            modRespuesta.registerStoredProcedureParameter("UnidadesPeso", Integer.class, ParameterMode.IN);
+            modRespuesta.registerStoredProcedureParameter("DefectoUnidadesPeso", Integer.class, ParameterMode.IN);
 
             modRespuesta.setParameter("Bandera", Bandera);
             modRespuesta.setParameter("IdTopping", entidad.getIdTopping());
@@ -40,6 +42,8 @@ public class cRelacionProdToppingModServiceImplementacion implements cRelacionPr
             modRespuesta.setParameter("MximoUnidades", entidad.getMximoUnidades());
             modRespuesta.setParameter("Id_Sector", entidad.getId_Sector());
             modRespuesta.setParameter("PesoUnidad", entidad.getPesoUnidad());
+            modRespuesta.setParameter("UnidadesPeso", entidad.getUnidadesPeso());
+            modRespuesta.setParameter("DefectoUnidadesPeso", entidad.getDefectoUnidadesPeso());
 
             modRespuesta.execute();
             return JSONObject.quote((String) modRespuesta.getOutputParameterValue("Respuesta"));
@@ -48,7 +52,7 @@ public class cRelacionProdToppingModServiceImplementacion implements cRelacionPr
                     + " - Parametros: " + Bandera + "/" + entidad.getIdTopping() + "/" + entidad.getIdRelacion() + "/"
                     + entidad.getPresentacion() + "/" + entidad.getValorReal() + "/" + entidad.getValorReferencia()
                     + "/" + entidad.getUnidadesOferta() + "/" + entidad.getMximoUnidades() + "/" + entidad.getId_Sector()
-                    + "/" + entidad.getPesoUnidad()
+                    + "/" + entidad.getPesoUnidad() + "/" + entidad.getUnidadesPeso() + "/" + entidad.getDefectoUnidadesPeso()
                     + " - ERROR JAVA = " + ex);
         }
     }
