@@ -270,6 +270,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adAuditoriaManyChatEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashProductosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adDashProductosLibrasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDireccionUsuModEntity;
@@ -661,6 +662,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adAuditoriaManyChatEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashProductoService;
+import com.cdi.com.Agroapoya2CDI.Services.adDashProductosLibraService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.adDireccionUsuModService;
@@ -1897,6 +1899,9 @@ public class Controller {
 
     @Autowired
     adDashUsuarioService serviceadDashUsuarioService;
+
+    @Autowired
+    adDashProductosLibraService serviceadDashProductosLibraService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4895,5 +4900,11 @@ public class Controller {
     public List<adDashUsuariosEntity> ConsultaDashUsers(
             @PathVariable Integer Bandera) {
         return serviceadDashUsuarioService.ConsultaDashUsers(Bandera);
+    }
+
+    @GetMapping("/consadDashProductosLibras/{Bandera}")
+    public List<adDashProductosLibrasEntity> ConsultaadDashProductosLibra(
+            @PathVariable Integer Bandera) {
+        return serviceadDashProductosLibraService.ConsultaadDashProductosLibra(Bandera);
     }
 }
