@@ -38,6 +38,7 @@ public class CpersonaClienteModServiceImplementacion implements CpersonaClienteM
             modperson.registerStoredProcedureParameter("NIT", String.class, ParameterMode.IN);
             modperson.registerStoredProcedureParameter("COORDENADAS", String.class, ParameterMode.IN);
             modperson.registerStoredProcedureParameter("TPO_CLNTEINST", Integer.class, ParameterMode.IN);
+            modperson.registerStoredProcedureParameter("NombreEmpresa", String.class, ParameterMode.IN);
 
             modperson.setParameter("bandera", bandera);
             modperson.setParameter("banderaDos", banderaDos);
@@ -58,6 +59,8 @@ public class CpersonaClienteModServiceImplementacion implements CpersonaClienteM
             modperson.setParameter("NIT", entidad.getNIT());
             modperson.setParameter("COORDENADAS", entidad.getCOORDENADAS());
             modperson.setParameter("TPO_CLNTEINST", entidad.getTPO_CLNTEINST());
+            modperson.setParameter("NombreEmpresa", entidad.getNombreEmpresa());
+
             modperson.execute();
             return JSONObject.quote((String) modperson.getOutputParameterValue("respuesta"));
         } catch (Exception ex) {
@@ -70,7 +73,7 @@ public class CpersonaClienteModServiceImplementacion implements CpersonaClienteM
                     + entidad.getTOKEN() + "/" + entidad.getDpto() + "/"
                     + entidad.getCiudad() + "/" + entidad.getComplemento_direccion() + "/"
                     + entidad.getRZON_SCIAL() + "/" + entidad.getNIT() + "/"
-                    + entidad.getCOORDENADAS() + "/" + entidad.getTPO_CLNTEINST()
+                    + entidad.getCOORDENADAS() + "/" + entidad.getTPO_CLNTEINST()+ "/" + entidad.getNombreEmpresa()
                     + " - ERROR JAVA = " + ex);
         }
 

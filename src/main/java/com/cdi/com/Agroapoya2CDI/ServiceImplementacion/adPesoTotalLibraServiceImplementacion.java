@@ -30,7 +30,7 @@ public class adPesoTotalLibraServiceImplementacion implements adPesoTotalLibraSe
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("ERROR LOG (paA_Ofertas)"
+            list.add(0, JSONObject.quote("ERROR LOG (admin_PesoTotalLibras)"
                     + " - Parametros: " + Bandera + "/" + Cd_cnctvo
                     + " - ERROR JAVA = " + ex));
             return list;

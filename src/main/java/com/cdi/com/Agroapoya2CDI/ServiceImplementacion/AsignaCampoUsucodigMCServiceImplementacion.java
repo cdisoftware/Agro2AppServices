@@ -37,9 +37,9 @@ public class AsignaCampoUsucodigMCServiceImplementacion implements AsignaCampoUs
             Object chatObjetc = response.getBody();
             Respuesta = chatObjetc.toString();
         } catch (Exception ex) {
-            return JSONObject.quote(ex.toString());
+            return JSONObject.quote("-1|No se realizo.");
         }
-        return Respuesta;
+        return "1|Correcto.";
     }
 
 }

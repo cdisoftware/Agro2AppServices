@@ -74,4 +74,7 @@ public class CpersonaClienteModEntity {
 
     @JsonProperty("TPO_CLNTEINST")
     public Integer TPO_CLNTEINST;
+
+    @JsonProperty("NombreEmpresa")
+    public String NombreEmpresa;
 }

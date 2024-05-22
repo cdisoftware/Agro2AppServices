@@ -40,7 +40,7 @@ public class adreporteUsuarioServServiceImplementacion implements adreporteUsuar
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
-            list.add(0, JSONObject.quote("ERROR LOG (paA_Ofertas)"
+            list.add(0, JSONObject.quote("ERROR LOG (admin_reporteUsuarioServices)"
                     + " - Parametros: " + Bandera + "/" + entidad.getNombrePersona() + "/" + entidad.getCelularPersona() + "/" + entidad.getCorreoPersona() + "/" + IdLocalidad
                     + "/" + entidad.getFechaCreacion() + "/" + entidad.getNumCompras()
                     + " - ERROR JAVA = " + ex));
