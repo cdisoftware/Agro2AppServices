@@ -194,6 +194,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.ConductorSectorModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsUserLocalidadComprasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsUserLocalidadEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaGrupoMillaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ConsultaIdManyChatEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaSectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ConsultaUsucodigManychatEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CorreoMomentoEnvioEntoty;
@@ -271,6 +272,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashProductosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashProductosLibrasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adDashProductosPesosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashUsuariosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDashVentasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adDireccionUsuModEntity;
@@ -304,6 +306,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.admillaGruposEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaPinModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaPoligonoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admillaSectoresModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.adminEnvioSMSEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminMillaTransportesEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adminModTextoOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.admin_SeguiTarjetaDetalleEntity;
@@ -564,6 +567,7 @@ import com.cdi.com.Agroapoya2CDI.Services.ConductorService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsUserLocalidadComprasService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsUserLocalidadService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaGrupoMillaService;
+import com.cdi.com.Agroapoya2CDI.Services.ConsultaIdManyChatService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaSectoreService;
 import com.cdi.com.Agroapoya2CDI.Services.ConsultaUsucodigManychatService;
 import com.cdi.com.Agroapoya2CDI.Services.CorreoIndividualService;
@@ -663,6 +667,7 @@ import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashProductoService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashProductosLibraService;
+import com.cdi.com.Agroapoya2CDI.Services.adDashProductosPesoService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.adDashVentaService;
 import com.cdi.com.Agroapoya2CDI.Services.adDireccionUsuModService;
@@ -696,6 +701,7 @@ import com.cdi.com.Agroapoya2CDI.Services.admillaGrupoService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaPinModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaPoligonoModService;
 import com.cdi.com.Agroapoya2CDI.Services.admillaSectoresModService;
+import com.cdi.com.Agroapoya2CDI.Services.adminEnvioSMService;
 import com.cdi.com.Agroapoya2CDI.Services.adminMillaTransporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adminModTextoOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.admin_SeguiTarjetaDetalleService;
@@ -1902,6 +1908,15 @@ public class Controller {
 
     @Autowired
     adDashProductosLibraService serviceadDashProductosLibraService;
+
+    @Autowired
+    adDashProductosPesoService serviceadDashProductosPesoService;
+
+    @Autowired
+    ConsultaIdManyChatService serviceConsultaIdManyChatService;
+
+    @Autowired
+    adminEnvioSMService serviceadminEnvioSMService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -3931,6 +3946,13 @@ public class Controller {
         return serviceConsultaUsucodigManychatService.ConsUsucodigMC(entidad);
     }
 
+    //Consulta id manychat por numero de whastapp - ManyChat
+    @PostMapping("/ConsultaSubscriberId")
+    public String ConsIdMC(
+            @RequestBody ConsultaIdManyChatEntity entidad) {
+        return serviceConsultaIdManyChatService.ConsIdMC(entidad);
+    }
+
     @PostMapping("/consccarrocomprastem/{Bandera}/{Usucodig}/{CodigoDescuento}/{CodigoDescuentoGenera}")
     public List<CCarroComprasTemEntity> consultaCarroComprasTem(
             @RequestBody CCarroComprasTemEntity entidad,
@@ -4906,5 +4928,18 @@ public class Controller {
     public List<adDashProductosLibrasEntity> ConsultaadDashProductosLibra(
             @PathVariable Integer Bandera) {
         return serviceadDashProductosLibraService.ConsultaadDashProductosLibra(Bandera);
+    }
+
+    @GetMapping("/consadDashProductosPesos/{Bandera}")
+    public List<adDashProductosPesosEntity> ConsultaProductosPeso(
+            @PathVariable Integer Bandera) {
+        return serviceadDashProductosPesoService.ConsultaProductosPeso(Bandera);
+    }
+
+    @GetMapping("/consAdminEnvioSMS/{Bandera}/{idSector}")
+    public List<adminEnvioSMSEntity> ConsultaEnvioSMS(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer idSector) {
+        return serviceadminEnvioSMService.ConsultaEnvioSMS(Bandera, idSector);
     }
 }

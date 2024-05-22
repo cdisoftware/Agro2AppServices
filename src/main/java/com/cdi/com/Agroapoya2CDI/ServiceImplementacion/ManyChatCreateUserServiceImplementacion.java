@@ -45,11 +45,11 @@ public class ManyChatCreateUserServiceImplementacion implements ManyChatCreateUs
             String json = ow.writeValueAsString(Respuesta);
             ObjectJson = new JSONObject(json);
             String urlJson = ObjectJson.getJSONObject("data").getString("id");
-            return JSONObject.quote(urlJson);         
+            return JSONObject.quote("1|" + urlJson);         
                         
         } catch (Exception ex) {            
             //return JSONObject.quote(ex.toString());
-            return JSONObject.quote("Usuario ya existe");
+            return JSONObject.quote("-1|Usuario ya existe");
         }
         //return Respuesta;
     }
