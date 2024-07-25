@@ -242,4 +242,8 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("TieneConserva")
     public Integer TieneConserva;
+
+    @JsonProperty("codigo_Mostrar")
+    public String codigo_Mostrar;
+
 }

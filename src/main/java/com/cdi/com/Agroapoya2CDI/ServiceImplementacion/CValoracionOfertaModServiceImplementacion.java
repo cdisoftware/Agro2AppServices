@@ -52,6 +52,8 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.registerStoredProcedureParameter("VLORAPRTRDMCLIO", Integer.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("NumUsuaCupo", Integer.class, ParameterMode.IN);
             modval.registerStoredProcedureParameter("DirigidaRegiVent", Integer.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("PorcentajeCuponxCupon", Integer.class, ParameterMode.IN);
+            modval.registerStoredProcedureParameter("Maximo_PorcentajeCuponxCupon", Integer.class, ParameterMode.IN);
 
             modval.setParameter("BANDERA", BANDERA);
             modval.setParameter("CD_CNSCTVO", entidad.getCD_CNSCTVO());
@@ -86,6 +88,8 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
             modval.setParameter("VLORAPRTRDMCLIO", entidad.getVLORAPRTRDMCLIO());
             modval.setParameter("NumUsuaCupo", entidad.getNumUsuaCupo());
             modval.setParameter("DirigidaRegiVent", entidad.getDirigidaRegiVent());
+            modval.setParameter("PorcentajeCuponxCupon", entidad.getPorcentajeCuponxCupon());
+            modval.setParameter("Maximo_PorcentajeCuponxCupon", entidad.getMaximo_PorcentajeCuponxCupon());
 
             modval.execute();
             return JSONObject.quote((String) modval.getOutputParameterValue("Respuesta"));
@@ -107,6 +111,7 @@ public class CValoracionOfertaModServiceImplementacion implements CValoracionOfe
                     + entidad.getDES_CUPONREGALO() + "/" + entidad.getIMG_CUPONREGALO() + "/"
                     + entidad.getIDTIPODOMICILIO() + "/" + entidad.getVLORAPRTRDMCLIO() + "/"
                     + entidad.getNumUsuaCupo() + "/" + entidad.getDirigidaRegiVent()
+                    + entidad.getPorcentajeCuponxCupon() + "/" + entidad.getMaximo_PorcentajeCuponxCupon()
                     + " - ERROR JAVA = " + ex);
         }
 
