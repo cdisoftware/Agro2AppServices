@@ -203,4 +203,26 @@ public class CHistorialComprasEntity {
 
     @JsonProperty("RegalosCompra")
     public String RegalosCompra;
+    
+    @JsonProperty("codigo_mostrar")
+    public String codigo_mostrar;
+    
+    @JsonProperty("descripcion")
+    public String descripcion;
+    
+    @JsonProperty("estado")
+    public Integer estado;
+    
+    @JsonProperty("descuentoAplicable")
+    public String descuentoAplicable;
+    
+    @JsonProperty("NumeParti")
+    public String NumeParti;
+    
+    @JsonProperty("FechaDesdeCupon")
+    public String FechaDesdeCupon;
+    
+    @JsonProperty("FechaHastaCupon")
+    public String FechaHastaCupon;
+    
 }

@@ -120,4 +120,10 @@ public class CValoracionOfertaModEntity {
 
     @JsonProperty("DirigidaRegiVent")
     public Integer DirigidaRegiVent;
+
+    @JsonProperty("PorcentajeCuponxCupon")
+    public Integer PorcentajeCuponxCupon;
+
+    @JsonProperty("Maximo_PorcentajeCuponxCupon")
+    public Integer Maximo_PorcentajeCuponxCupon;
 }
