@@ -5014,4 +5014,6 @@ public class Controller {
             @PathVariable Integer IdCarroLider) {
         return serviceCuponesRelacionDetalleService.ConsultaCuponesRela(Bandera, IdCarroLider);
     }
+
+//Trabajo Diego
 }
