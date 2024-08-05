@@ -50,4 +50,7 @@ public class RelacionCuponesUsuarioEntity {
 
     @JsonProperty("Valor")
     public String Valor;
+
+    @JsonProperty("Compartir")
+    public String Compartir;
 }
