@@ -18,6 +18,12 @@ import lombok.Data;
 public class CLiderPartiEntity {
 
     @Id
+    @JsonProperty("Id")
+    public Integer Id;
+
     @JsonProperty("TextoWhat")
     public String TextoWhat;
+
+    @JsonProperty("LinkCompartir")
+    public String LinkCompartir;
 }

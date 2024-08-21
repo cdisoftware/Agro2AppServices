@@ -35,4 +35,10 @@ public class CuponesRelacionDetallEntity {
 
     @JsonProperty("CodigoDescuento")
     public String CodigoDescuento;
+    
+    @JsonProperty("ValorDescu")
+    public String ValorDescu;
+    
+    @JsonProperty("ValorDescuTotal")
+    public String ValorDescuTotal;
 }
