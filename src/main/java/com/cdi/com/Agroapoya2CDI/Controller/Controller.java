@@ -371,7 +371,12 @@ import com.cdi.com.Agroapoya2CDI.Entity.tipoConsContactEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zImagenesAsociadasSectorOfertaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zImagenesAsociadasSectorOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaProductosCoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zRelacionLocalidadZonaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoLocalidadConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoZonaConsEntity;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageException;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageService;
 import com.cdi.com.Agroapoya2CDI.Services.AGROPREGUNTAMODService;
@@ -770,7 +775,12 @@ import com.cdi.com.Agroapoya2CDI.Services.tipoConsContactService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
+import com.cdi.com.Agroapoya2CDI.Services.zImagenesAsociadasSectorOfertaConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zImagenesAsociadasSectorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaProductosCoService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoZonaConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zRelacionLocalidadZonaConsServices;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoLocalidadConsService;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -1952,6 +1962,21 @@ public class Controller {
 
     @Autowired
     zOfertaActivaProductosCoService servicezOfertaActivaProductosCoService;
+
+    @Autowired
+    zImagenesAsociadasSectorOfertaConsService servicezImagenesAsociadasSectorOfertaConsService;
+
+    @Autowired
+    zTipoZonaConsService servicezTipoZonaConsService;
+
+    @Autowired
+    zImagenesAsociadasSectorOfertaModService servicezImagenesAsociadasSectorOfertaModService;
+
+    @Autowired
+    zRelacionLocalidadZonaConsServices servicezRelacionLocalidadZonaConsServices;
+
+    @Autowired
+    zTipoLocalidadConsService servicezTipoLocalidadConsService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -5024,5 +5049,38 @@ public class Controller {
     public List<zOfertaActivaProductosCoEntity> ConszOfertaActivaProductosCoService(
             @PathVariable Integer Bandera) {
         return servicezOfertaActivaProductosCoService.ConszOfertaActivaProductosCoService(Bandera);
+    }
+
+    @GetMapping("/conszImgAsociadosSectorOferta/{Bandera}/{IdOferta}")
+    public List<zImagenesAsociadasSectorOfertaConsEntity> conszImgAsoSecOferta(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdOferta) {
+        return servicezImagenesAsociadasSectorOfertaConsService.conszImgAsoSecOferta(Bandera, IdOferta);
+    }
+
+    @GetMapping("/conszTipoZona/{Bandera}")
+    public List<zTipoZonaConsEntity> conszTipoZona(
+            @PathVariable Integer Bandera) {
+        return servicezTipoZonaConsService.conszTipoZona(Bandera);
+    }
+
+    @PostMapping("/modImgAsociadasSectorOfertas/{Bandera}")
+    public String modzImagenesAsociSectorOferta(
+            @RequestBody zImagenesAsociadasSectorOfertaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicezImagenesAsociadasSectorOfertaModService.modzImagenesAsociSectorOferta(entidad, Bandera);
+    }
+
+    @GetMapping("/consRelacionLocalidadZona/{Bandera}/{Localidad}")
+    public List<zRelacionLocalidadZonaConsEntity> conszRelacionLocalidadCons(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Localidad) {
+        return servicezRelacionLocalidadZonaConsServices.conszRelacionLocalidadCons(Bandera, Localidad);
+    }
+
+    @GetMapping("/consTipoLocalidad/{Bandera}")
+    public List<zTipoLocalidadConsEntity> conszTipoLocalidad(
+            @PathVariable Integer Bandera) {
+        return servicezTipoLocalidadConsService.conszTipoLocalidad(Bandera);
     }
 }
