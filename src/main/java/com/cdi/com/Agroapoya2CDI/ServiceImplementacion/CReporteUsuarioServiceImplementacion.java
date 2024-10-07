@@ -28,6 +28,7 @@ public class CReporteUsuarioServiceImplementacion implements CReporteUsuarioServ
             RepotUser.registerStoredProcedureParameter("FechaHasta", String.class, ParameterMode.IN);
             RepotUser.registerStoredProcedureParameter("Correo", String.class, ParameterMode.IN);
             RepotUser.registerStoredProcedureParameter("NombrePers", String.class, ParameterMode.IN);
+            RepotUser.registerStoredProcedureParameter("Telefono", String.class, ParameterMode.IN);
 
             RepotUser.setParameter("Bandera", Bandera);
             RepotUser.setParameter("IdTipoUsuario", entidad.getIdTipoPersona());
@@ -36,6 +37,7 @@ public class CReporteUsuarioServiceImplementacion implements CReporteUsuarioServ
             RepotUser.setParameter("FechaHasta", FechaHasta);
             RepotUser.setParameter("Correo", entidad.getCorreoPersona());
             RepotUser.setParameter("NombrePers", entidad.getNombrePersona());
+            RepotUser.setParameter("Telefono", entidad.getNumeroCelular());
 
             return RepotUser.getResultList();
         } catch (Exception ex) {
@@ -43,7 +45,7 @@ public class CReporteUsuarioServiceImplementacion implements CReporteUsuarioServ
             list.add(0, JSONObject.quote("ERROR LOG (paC_ReporteUsuarios)"
                     + " - Parametros: " + Bandera + "/" + entidad.getIdTipoPersona() + "/" + entidad.getUsucodig() + "/"
                     + FechaDesde + "/" + FechaHasta + "/" + entidad.getCorreoPersona() + "/"
-                    + entidad.getNombrePersona()
+                    + entidad.getNombrePersona()+ "/" + entidad.getNumeroCelular()
                     + " - ERROR JAVA = " + ex));
             return list;
         }

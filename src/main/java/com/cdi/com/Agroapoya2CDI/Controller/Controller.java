@@ -371,6 +371,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.tipoConsContactEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaProductosCoEntity;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageException;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageService;
 import com.cdi.com.Agroapoya2CDI.Services.AGROPREGUNTAMODService;
@@ -769,6 +770,7 @@ import com.cdi.com.Agroapoya2CDI.Services.tipoConsContactService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaProductosCoService;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -1947,6 +1949,9 @@ public class Controller {
 
     @Autowired
     CuponesRelacionDetalleService serviceCuponesRelacionDetalleService;
+
+    @Autowired
+    zOfertaActivaProductosCoService servicezOfertaActivaProductosCoService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -5013,5 +5018,11 @@ public class Controller {
             @PathVariable Integer Bandera,
             @PathVariable Integer IdCarroLider) {
         return serviceCuponesRelacionDetalleService.ConsultaCuponesRela(Bandera, IdCarroLider);
+    }
+
+    @GetMapping("/conszOfertaActivaProductosCo/{Bandera}")
+    public List<zOfertaActivaProductosCoEntity> ConszOfertaActivaProductosCoService(
+            @PathVariable Integer Bandera) {
+        return servicezOfertaActivaProductosCoService.ConszOfertaActivaProductosCoService(Bandera);
     }
 }
