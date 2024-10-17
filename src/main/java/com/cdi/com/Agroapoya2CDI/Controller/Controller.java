@@ -271,6 +271,8 @@ import com.cdi.com.Agroapoya2CDI.Entity.TvistasPubliEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UploadFileResponse;
 import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ZOfertaActivaInfoModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ZZonaOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adAuditoriaManyChatEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
@@ -373,9 +375,18 @@ import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zImagenesAsociadasSectorOfertaConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zImagenesAsociadasSectorOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zInfoReferidosModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaProductosCoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaRegalosConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaRegalosModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zPersonasAplicaRegaloConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zProductosActivosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zRelacionLocalidadZonaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoDomicilioConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoLocalidadConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoOfertaconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoRegaloConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoVentaProductoConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoZonaConsEntity;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageException;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageService;
@@ -678,6 +689,8 @@ import com.cdi.com.Agroapoya2CDI.Services.TransActivosService;
 import com.cdi.com.Agroapoya2CDI.Services.TvistasPubliService;
 import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
+import com.cdi.com.Agroapoya2CDI.Services.ZOfertaActivaInfoModService;
+import com.cdi.com.Agroapoya2CDI.Services.ZZonaOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.adAuditoriaManyChatEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
@@ -777,10 +790,19 @@ import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
 import com.cdi.com.Agroapoya2CDI.Services.zImagenesAsociadasSectorOfertaConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zImagenesAsociadasSectorOfertaModService;
+import com.cdi.com.Agroapoya2CDI.Services.zInfoReferidosModService;
 import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaProductosCoService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaRegalosConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaRegalosModService;
+import com.cdi.com.Agroapoya2CDI.Services.zPersonasAplicaRegaloConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zProductosActivosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoZonaConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zRelacionLocalidadZonaConsServices;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoDomicilioConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoLocalidadConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoOfertaconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoRegaloConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoVentaProductoConsService;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -1978,6 +2000,39 @@ public class Controller {
     @Autowired
     zTipoLocalidadConsService servicezTipoLocalidadConsService;
 
+    @Autowired
+    zTipoDomicilioConsService servicezTipoDomicilioConsService;
+
+    @Autowired
+    zTipoRegaloConsService servicezTipoRegaloConsService;
+
+    @Autowired
+    zPersonasAplicaRegaloConsService servicezPersonasAplicaRegaloConsService;
+
+    @Autowired
+    zInfoReferidosModService servicezInfoReferidosModService;
+
+    @Autowired
+    zOfertaRegalosModService servicezOfertaRegalosModService;
+
+    @Autowired
+    zTipoVentaProductoConsService servicezTipoVentaProductoConsService;
+
+    @Autowired
+    zProductosActivosOfertaService servicezProductosActivosOfertaService;
+
+    @Autowired
+    zTipoOfertaconsService servicezTipoOfertaconsService;
+
+    @Autowired
+    ZZonaOfertaModService serviceZZonaOfertaModService;
+
+    @Autowired
+    zOfertaRegalosConsService servicezOfertaRegalosConsService;
+
+    @Autowired
+    ZOfertaActivaInfoModService serviceZOfertaActivaInfoModService;
+
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
             @PathVariable Integer ID,
@@ -2257,6 +2312,30 @@ public class Controller {
         fileDownloadUri = fileDownloadUri.replace(":8089/ImagenesAgroapoya2", "");
         try {
             file.transferTo(new File("C:/inetpub/wwwroot/ImagenesAgroapoya2/ImagenesUsuarios/" + fileName));
+        } catch (IOException | IllegalStateException ex) {
+            System.out.println("Error " + ex);
+        }
+        UploadFileResponse uploadfile = new UploadFileResponse(fileName, fileDownloadUri,
+                file.getContentType(), file.getSize());
+        uploadfile.getFileDownloadUri();
+        return JSONObject.quote("Archivo Subido Correctamente");
+    }
+
+    @PostMapping("/uploadImgSector")
+    public String uploadSector(@RequestParam("file") MultipartFile file) {
+        String fileName = null;
+        try {
+            fileName = fileStorageService.storeFile(file);
+        } catch (FileStorageException ex) {
+            System.out.println("Error " + ex);
+        }
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/ImagenesAgroapoya2/")
+                .path(fileName)
+                .toUriString();
+        fileDownloadUri = fileDownloadUri.replace(":8089/ImagenesAgroapoya2", "");
+        try {
+            file.transferTo(new File("C:/inetpub/wwwroot/ImagenesAgroapoya2/ImagenesSectores/" + fileName));
         } catch (IOException | IllegalStateException ex) {
             System.out.println("Error " + ex);
         }
@@ -5082,5 +5161,77 @@ public class Controller {
     public List<zTipoLocalidadConsEntity> conszTipoLocalidad(
             @PathVariable Integer Bandera) {
         return servicezTipoLocalidadConsService.conszTipoLocalidad(Bandera);
+    }
+
+    @GetMapping("/consZTipoDomicilio/{Bandera}")
+    public List<zTipoDomicilioConsEntity> conszTipoDomicilio(
+            @PathVariable Integer Bandera) {
+        return servicezTipoDomicilioConsService.conszTipoDomicilio(Bandera);
+    }
+
+    @GetMapping("/consTipoRegalo/{Bandera}")
+    public List<zTipoRegaloConsEntity> consTipoRegalo(
+            @PathVariable Integer Bandera) {
+        return servicezTipoRegaloConsService.consTipoRegalo(Bandera);
+    }
+
+    @GetMapping("/consPersonasAplicaRegalo/{Bandera}")
+    public List<zPersonasAplicaRegaloConsEntity> consPersonasAplicaRegalo(
+            @PathVariable Integer Bandera) {
+        return servicezPersonasAplicaRegaloConsService.consPersonasAplicaRegalo(Bandera);
+    }
+
+    @PostMapping("/modInfoReferidos/{Bandera}")
+    public String modInfoReferidos(
+            @RequestBody zInfoReferidosModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicezInfoReferidosModService.modInfoReferidos(entidad, Bandera);
+    }
+
+    @PostMapping("/modOfertaRegalos/{Bandera}")
+    public String modOfertaRegalos(
+            @RequestBody zOfertaRegalosModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicezOfertaRegalosModService.modOfertaRegalos(entidad, Bandera);
+    }
+
+    @GetMapping("/consTipoVentaProducto/{Bandera}")
+    public List<zTipoVentaProductoConsEntity> consTipoVentaProducto(
+            @PathVariable Integer Bandera) {
+        return servicezTipoVentaProductoConsService.consTipoVentaProducto(Bandera);
+    }
+
+    @GetMapping("/consProductosActivosOferta/{Bandera}/{IdOferta}")
+    public List<zProductosActivosOfertaEntity> consProductosActivosOferta(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdOferta) {
+        return servicezProductosActivosOfertaService.consProductosActivosOferta(Bandera, IdOferta);
+    }
+
+    @GetMapping("/consTipoOferta/{Bandera}")
+    public List<zTipoOfertaconsEntity> consTipoOferta(
+            @PathVariable Integer Bandera) {
+        return servicezTipoOfertaconsService.consTipoOferta(Bandera);
+    }
+
+    @PostMapping("/modZonaOferta/{Bandera}")
+    public String modzZonaOferta(
+            @RequestBody ZZonaOfertaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceZZonaOfertaModService.modzZonaOferta(entidad, Bandera);
+    }
+
+    @GetMapping("/consOfertaRegalos/{Bandera}/{IdOferta}")
+    public List<zOfertaRegalosConsEntity> consOfertaRegalos(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdOferta) {
+        return servicezOfertaRegalosConsService.consOfertaRegalos(Bandera, IdOferta);
+    }
+
+    @PostMapping("/modOfertaActivaInfo/{Bandera}")
+    public String modzOfertaActivaInfo(
+            @RequestBody ZOfertaActivaInfoModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceZOfertaActivaInfoModService.modzOfertaActivaInfo(entidad, Bandera);
     }
 }

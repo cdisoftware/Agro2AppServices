@@ -40,5 +40,4 @@ public class adMillaCopiarOfertaServiceImplementacion implements adMillaCopiarOf
                     + " - ERROR JAVA = " + ex);
         }
     }
-
 }
