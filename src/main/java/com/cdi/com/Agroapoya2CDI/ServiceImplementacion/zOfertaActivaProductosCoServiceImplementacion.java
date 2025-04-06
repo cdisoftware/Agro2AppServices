@@ -18,20 +18,22 @@ public class zOfertaActivaProductosCoServiceImplementacion implements zOfertaAct
     private EntityManager repositorio;
 
     @Override
-    public List<zOfertaActivaProductosCoEntity> ConszOfertaActivaProductosCoService(Integer Bandera) {
+    public List<zOfertaActivaProductosCoEntity> ConszOfertaActivaProductosCoService(Integer Bandera, Integer IdOferta) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("z_OfertaActivaProductos_Cons");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("IdOferta", Integer.class, ParameterMode.IN);
+
             tpoDoc.setParameter("Bandera", Bandera);
+            tpoDoc.setParameter("IdOferta", IdOferta);
+
             return tpoDoc.getResultList();
         } catch (Exception ex) {
-            List list = new ArrayList();           
+            List list = new ArrayList();
             list.add(0, JSONObject.quote("ERROR LOG (z_OfertaActivaProductos_Cons)"
-                    + " - Parametros: " + Bandera 
+                    + " - Parametros: " + Bandera + "/" + IdOferta
                     + " - ERROR JAVA = " + ex));
             return list;
-            
         }
     }
-
 }

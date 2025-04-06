@@ -18,20 +18,22 @@ public class zProductosActivosOfertaServiceImplementacion implements zProductosA
     private EntityManager repositorio;
 
     @Override
-    public List<zProductosActivosOfertaEntity> consProductosActivosOferta(Integer Bandera, Integer IdOferta) {
+    public List<zProductosActivosOfertaEntity> consProductosActivosOferta(Integer Bandera, Integer IdOferta, Integer TipoVentaProducto) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("z_ProductosActivosOferta");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("IdOferta", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("TipoVentaProducto", Integer.class, ParameterMode.IN);
             
             tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("IdOferta", IdOferta);
+            tpoDoc.setParameter("TipoVentaProducto", TipoVentaProducto);
             
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
             list.add(0, JSONObject.quote("ERROR LOG (z_ProductosActivosOferta)"
-                    + " - Parametros: " + Bandera + "/" + IdOferta
+                    + " - Parametros: " + Bandera + "/" + IdOferta + "/" + TipoVentaProducto
                     + " - ERROR JAVA = " + ex));
             return list;
         }

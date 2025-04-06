@@ -4,5 +4,5 @@ import com.cdi.com.Agroapoya2CDI.Entity.zProductosActivosOfertaEntity;
 import java.util.List;
 
 public interface zProductosActivosOfertaService {
-    public List<zProductosActivosOfertaEntity> consProductosActivosOferta(Integer Bandera, Integer IdOferta);
+    public List<zProductosActivosOfertaEntity> consProductosActivosOferta(Integer Bandera, Integer IdOferta, Integer TipoVentaProducto);
 }
