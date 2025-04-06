@@ -30,4 +30,7 @@ public class zTipoLocalidadConsEntity {
 
     @JsonProperty("DescripEstasdo")
     public String DescripEstasdo;
+
+    @JsonProperty("CantidadUsu")
+    public String CantidadUsu;
 }

@@ -62,4 +62,10 @@ public class movileConsulatGeneralOfertaEntity {
 
     @JsonProperty("IdMedioPago")
     public String IdMedioPago;
+
+    @JsonProperty("ValorFiar")
+    public Integer ValorFiar;
+
+    @JsonProperty("ValorFiarForm")
+    public String ValorFiarForm;
 }

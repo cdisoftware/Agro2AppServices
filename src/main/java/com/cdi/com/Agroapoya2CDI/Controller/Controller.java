@@ -273,6 +273,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.UrlShortnerEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.UsuarioAdminEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ZOfertaActivaInfoModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ZZonaOfertaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ZembajadorVecinosReporteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adAuditoriaManyChatEnvioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adCambioSectorOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.adConsultaImagenesUsuariosEntity;
@@ -373,21 +374,65 @@ import com.cdi.com.Agroapoya2CDI.Entity.tipoConsContactEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_pesoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zActualizaInfoUsuarioModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zConsultarEstadosPagosFiadoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zConsultarPagosFiadoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zDuplicarOfertamodEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zEmbajadorModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zEstadoOfertamodEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zFnPromedioCompraUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zImagenesAsociadasSectorOfertaConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zImagenesAsociadasSectorOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zInfoReferidosModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zMapaCalorconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zMensajesParametrizablesConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zMovileFiadoModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaInfomarcionAdicionalconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaInfomarcionAdicionalmodEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaProductosCoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaProductosDetallesconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaProductosDetallesmodEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zOfertaActivaZonasConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zOfertaRegalosConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zOfertaRegalosModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zPersonaClienteConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zPersonaValidadorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zPersonasAplicaRegaloConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zProductosActivosOfertaEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zProductosActivosOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zRelacionLocalidadZonaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zRelacionProductoPresentacionconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zRelacionProductoPresentacionmodEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoCoordenadasZonaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoCoordenadasZonaModDosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoCoordenadasZonaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoDomicilioConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoEstadoconstEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoImagenOfertaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoImagenOfertamodEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoLocalidadConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoOfertaconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoPesoUnidadesconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoPresentacionconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoPresentacionmodEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoProductoconsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoRegaloConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoRegaloReglajeConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoVentaProductoConsEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.zTipoZonaConsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zTipoZonaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zValidaUsuarioEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zZonaOfertaconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zcuponesDescuentoconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zcuponesDescuentomodeEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zembajadorConjuntosReporteEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zfiadoUsuarioEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zmultilistasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zrelacionEmbajadorVecinoModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ztipoCuponconsEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.ztipoproductomodEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zvalidaPersonaEmbajadorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.zvalidaPersonaEmbajadorVecinoEntity;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageException;
 import com.cdi.com.Agroapoya2CDI.ServiceImplementacion.FileStorageService;
 import com.cdi.com.Agroapoya2CDI.Services.AGROPREGUNTAMODService;
@@ -691,6 +736,7 @@ import com.cdi.com.Agroapoya2CDI.Services.UrlShortnerService;
 import com.cdi.com.Agroapoya2CDI.Services.UsuarioAdminService;
 import com.cdi.com.Agroapoya2CDI.Services.ZOfertaActivaInfoModService;
 import com.cdi.com.Agroapoya2CDI.Services.ZZonaOfertaModService;
+import com.cdi.com.Agroapoya2CDI.Services.ZembajadorVecinosReporteService;
 import com.cdi.com.Agroapoya2CDI.Services.adAuditoriaManyChatEnvioService;
 import com.cdi.com.Agroapoya2CDI.Services.adCambioSectorOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.adConsultaImagenesUsuarioService;
@@ -788,21 +834,65 @@ import com.cdi.com.Agroapoya2CDI.Services.tipoConsContactService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_pesoService;
+import com.cdi.com.Agroapoya2CDI.Services.zActualizaInfoUsuarioModService;
+import com.cdi.com.Agroapoya2CDI.Services.zConsultarEstadosPagosFiadoService;
+import com.cdi.com.Agroapoya2CDI.Services.zConsultarPagosFiadoService;
+import com.cdi.com.Agroapoya2CDI.Services.zDuplicarOfertamodService;
+import com.cdi.com.Agroapoya2CDI.Services.zEmbajadorModService;
+import com.cdi.com.Agroapoya2CDI.Services.zEstadoOfertamodServices;
+import com.cdi.com.Agroapoya2CDI.Services.zFnPromedioCompraUsuarioService;
 import com.cdi.com.Agroapoya2CDI.Services.zImagenesAsociadasSectorOfertaConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zImagenesAsociadasSectorOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.zInfoReferidosModService;
+import com.cdi.com.Agroapoya2CDI.Services.zMapaCalorconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zMensajesParametrizablesConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zMovileFiadoModService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaInfomarcionAdicionalconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaInfomarcionAdicionalmodService;
 import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaProductosCoService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaProductosDetallesconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaProductosDetallesmodService;
+import com.cdi.com.Agroapoya2CDI.Services.zOfertaActivaZonasConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zOfertaRegalosConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zOfertaRegalosModService;
+import com.cdi.com.Agroapoya2CDI.Services.zPersonaClienteConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zPersonaValidadorService;
 import com.cdi.com.Agroapoya2CDI.Services.zPersonasAplicaRegaloConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zProductosActivosOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.zProductosActivosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoZonaConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zRelacionLocalidadZonaConsServices;
+import com.cdi.com.Agroapoya2CDI.Services.zRelacionProductoPresentacionconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zRelacionProductoPresentacionmodService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoCoordenadasZonaConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoCoordenadasZonaModDosService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoCoordenadasZonaModService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoDomicilioConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoEstadoconstService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoImagenOfertaConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoImagenOfertamodService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoLocalidadConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoOfertaconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoPesoUnidadesconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoPresentacionconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoPresentacionmodService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoProductoconsService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoRegaloConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoRegaloReglajeConsService;
 import com.cdi.com.Agroapoya2CDI.Services.zTipoVentaProductoConsService;
+import com.cdi.com.Agroapoya2CDI.Services.zTipoZonaModService;
+import com.cdi.com.Agroapoya2CDI.Services.zValidaUsuarioService;
+import com.cdi.com.Agroapoya2CDI.Services.zZonaOfertaconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zcuponesDescuentoconsService;
+import com.cdi.com.Agroapoya2CDI.Services.zcuponesDescuentomodeServices;
+import com.cdi.com.Agroapoya2CDI.Services.zembajadorConjuntosReporteService;
+import com.cdi.com.Agroapoya2CDI.Services.zfiadoUsuarioService;
+import com.cdi.com.Agroapoya2CDI.Services.zmultilistasServices;
+import com.cdi.com.Agroapoya2CDI.Services.zrelacionEmbajadorVecinoModService;
+import com.cdi.com.Agroapoya2CDI.Services.ztipoCuponconsService;
+import com.cdi.com.Agroapoya2CDI.Services.ztipoproductomodService;
+import com.cdi.com.Agroapoya2CDI.Services.zvalidaPersonaEmbajadorService;
+import com.cdi.com.Agroapoya2CDI.Services.zvalidaPersonaEmbajadorVecinoService;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
@@ -2032,6 +2122,141 @@ public class Controller {
 
     @Autowired
     ZOfertaActivaInfoModService serviceZOfertaActivaInfoModService;
+
+    @Autowired
+    zOfertaActivaZonasConsService serviceZOfertaActivaZonasConsService;
+
+    @Autowired
+    zProductosActivosOfertaModService servicezProductosActivosOfertaModService;
+
+    @Autowired
+    zRelacionProductoPresentacionconsService servicezRelacionProductoPresentacionconsService;
+
+    @Autowired
+    zOfertaActivaProductosDetallesmodService servicezOfertaActivaProductosDetallesmodService;
+
+    @Autowired
+    zOfertaActivaProductosDetallesconsService servicezOfertaActivaProductosDetallesconsService;
+
+    @Autowired
+    zTipoImagenOfertamodService servicezTipoImagenOfertamodService;
+
+    @Autowired
+    zTipoImagenOfertaConsService servicezTipoImagenOfertaConsService;
+
+    @Autowired
+    zTipoRegaloReglajeConsService servicezTipoRegaloReglajeConsService;
+
+    @Autowired
+    ztipoproductomodService serviceztipoproductomodService;
+
+    @Autowired
+    zOfertaActivaInfomarcionAdicionalmodService servicezOfertaActivaInfomarcionAdicionalmodService;
+
+    @Autowired
+    zOfertaActivaInfomarcionAdicionalconsService servicezOfertaActivaInfomarcionAdicionalconsService;
+
+    @Autowired
+    zTipoEstadoconstService servicezTipoEstadoconstService;
+
+    @Autowired
+    zTipoProductoconsService servicezTipoProductoconsService;
+
+    @Autowired
+    zTipoPresentacionconsService servicezTipoPresentacionconsService;
+
+    @Autowired
+    zTipoPesoUnidadesconsService servicezTipoPesoUnidadesconsService;
+
+    @Autowired
+    zTipoPresentacionmodService servicezTipoPresentacionmodService;
+
+    @Autowired
+    zEstadoOfertamodServices servicezEstadoOfertamodServices;
+
+    @Autowired
+    zRelacionProductoPresentacionmodService servicezRelacionProductoPresentacionmodService;
+
+    @Autowired
+    zcuponesDescuentomodeServices servicezcuponesDescuentomodeServices;
+
+    @Autowired
+    zcuponesDescuentoconsService servicezcuponesDescuentoconsService;
+
+    @Autowired
+    ztipoCuponconsService serviceztipoCuponconsService;
+
+    @Autowired
+    zTipoZonaModService servicezTipoZonaModService;
+
+    @Autowired
+    zTipoCoordenadasZonaModService servicezTipoCoordenadasZonaModService;
+
+    @Autowired
+    zTipoCoordenadasZonaModDosService servicezTipoCoordenadasZonaModDosService;
+
+    @Autowired
+    zMapaCalorconsService servicezMapaCalorconsService;
+
+    @Autowired
+    zmultilistasServices servicezmultilistasServices;
+
+    @Autowired
+    zvalidaPersonaEmbajadorService servicezvalidaPersonaEmbajadorService;
+
+    @Autowired
+    zEmbajadorModService servicezEmbajadorModService;
+
+    @Autowired
+    zMensajesParametrizablesConsService servicezMensajesParametrizablesConsService;
+
+    @Autowired
+    zrelacionEmbajadorVecinoModService servicezrelacionEmbajadorVecinoModService;
+
+    @Autowired
+    zvalidaPersonaEmbajadorVecinoService servicezvalidaPersonaEmbajadorVecinoService;
+
+    @Autowired
+    zembajadorConjuntosReporteService servicezembajadorConjuntosReporteService;
+
+    @Autowired
+    ZembajadorVecinosReporteService serviceZembajadorVecinosReporteService;
+
+    @Autowired
+    zFnPromedioCompraUsuarioService servicezFnPromedioCompraUsuarioService;
+
+    @Autowired
+    zMovileFiadoModService servicezMovileFiadoModService;
+
+    @Autowired
+    zConsultarEstadosPagosFiadoService servicezConsultarEstadosPagosFiadoService;
+
+    @Autowired
+    zConsultarPagosFiadoService servicezConsultarPagosFiadoService;
+
+    @Autowired
+    zTipoCoordenadasZonaConsService servicezTipoCoordenadasZonaConsService;
+
+    @Autowired
+    zPersonaClienteConsService servicezPersonaClienteConsService;
+
+    @Autowired
+    zfiadoUsuarioService servicezfiadoUsuarioService;
+
+    @Autowired
+    zValidaUsuarioService servicezValidaUsuarioService;
+
+    @Autowired
+    zPersonaValidadorService servicezPersonaValidadorService;
+
+    @Autowired
+    zActualizaInfoUsuarioModService servicezActualizaInfoUsuarioModService;
+
+    @Autowired
+    zDuplicarOfertamodService servicezDuplicarOfertamodService;
+
+    @Autowired
+    zZonaOfertaconsService servicezZonaOfertaconsService;
 
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -5124,10 +5349,11 @@ public class Controller {
         return serviceCuponesRelacionDetalleService.ConsultaCuponesRela(Bandera, IdCarroLider);
     }
 
-    @GetMapping("/conszOfertaActivaProductosCo/{Bandera}")
+    @GetMapping("/conszOfertaActivaProductosCo/{Bandera}/{IdOferta}")
     public List<zOfertaActivaProductosCoEntity> ConszOfertaActivaProductosCoService(
-            @PathVariable Integer Bandera) {
-        return servicezOfertaActivaProductosCoService.ConszOfertaActivaProductosCoService(Bandera);
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdOferta) {
+        return servicezOfertaActivaProductosCoService.ConszOfertaActivaProductosCoService(Bandera, IdOferta);
     }
 
     @GetMapping("/conszImgAsociadosSectorOferta/{Bandera}/{IdOferta}")
@@ -5201,11 +5427,12 @@ public class Controller {
         return servicezTipoVentaProductoConsService.consTipoVentaProducto(Bandera);
     }
 
-    @GetMapping("/consProductosActivosOferta/{Bandera}/{IdOferta}")
+    @GetMapping("/consProductosActivosOferta/{Bandera}/{IdOferta}/{TipoVentaProducto}")
     public List<zProductosActivosOfertaEntity> consProductosActivosOferta(
             @PathVariable Integer Bandera,
-            @PathVariable Integer IdOferta) {
-        return servicezProductosActivosOfertaService.consProductosActivosOferta(Bandera, IdOferta);
+            @PathVariable Integer IdOferta,
+            @PathVariable Integer TipoVentaProducto) {
+        return servicezProductosActivosOfertaService.consProductosActivosOferta(Bandera, IdOferta, TipoVentaProducto);
     }
 
     @GetMapping("/consTipoOferta/{Bandera}")
@@ -5233,5 +5460,368 @@ public class Controller {
             @RequestBody ZOfertaActivaInfoModEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceZOfertaActivaInfoModService.modzOfertaActivaInfo(entidad, Bandera);
+    }
+
+    @GetMapping("/consOfertaActivaZonas/{Bandera}/{IdOfertaActiva}")
+    public List<zOfertaActivaZonasConsEntity> consultaZOfertaActivaZonas(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdOfertaActiva) {
+        return serviceZOfertaActivaZonasConsService.consultaZOfertaActivaZonas(Bandera, IdOfertaActiva);
+    }
+
+    @PostMapping("/modProductosActivosOferta/{Bandera}")
+    public String modProductosActivosOferta(
+            @RequestBody zProductosActivosOfertaModEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicezProductosActivosOfertaModService.modProductosActivosOferta(entidad, Bandera);
+    }
+
+    @GetMapping("/consRelacionProductoPresentacion/{Bandera}/{IdProuducto}")
+    public List<zRelacionProductoPresentacionconsEntity> consRelacionProductoPresentacion(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdProuducto) {
+        return servicezRelacionProductoPresentacionconsService.consRelacionProductoPresentacion(Bandera, IdProuducto);
+    }
+
+    @PostMapping("/modOfertaActivaProductosDetalles/{Bandera}")
+    public String modOfertaActivaProductosDetalles(
+            @RequestBody zOfertaActivaProductosDetallesmodEntity entidad,
+            @PathVariable Integer Bandera) {
+        return servicezOfertaActivaProductosDetallesmodService.modOfertaActivaProductosDetalles(entidad, Bandera);
+    }
+
+    @GetMapping("/consOfertaActivaProductosDetalles/{Bandera}/{IdProducto}/{IdOferta}")
+    public List<zOfertaActivaProductosDetallesconsEntity> consOfertaActivaProductosDetalles(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdProducto,
+            @PathVariable Integer IdOferta) {
+        return servicezOfertaActivaProductosDetallesconsService.consOfertaActivaProductosDetalles(Bandera, IdProducto, IdOferta);
+    }
+
+    @PostMapping("/modTipoImagenOferta/{Bandedera}")
+    public String modTipoImagenOferta(
+            @RequestBody zTipoImagenOfertamodEntity entidad,
+            @PathVariable Integer Bandedera) {
+        return servicezTipoImagenOfertamodService.modTipoImagenOferta(entidad, Bandedera);
+    }
+
+    @GetMapping("/consTipoImagenOferta/{Bandedera}/{IdProducto}")
+    public List<zTipoImagenOfertaConsEntity> consTipoImagenOferta(
+            @PathVariable Integer Bandedera,
+            @PathVariable Integer IdProducto) {
+        return servicezTipoImagenOfertaConsService.consTipoImagenOferta(Bandedera, IdProducto);
+    }
+
+    @GetMapping("/consTipoRegaloReglaje/{Bandera}")
+    public List<zTipoRegaloReglajeConsEntity> consTipoRegaloReglaje(
+            @PathVariable Integer Bandera) {
+        return servicezTipoRegaloReglajeConsService.consTipoRegaloReglaje(Bandera);
+    }
+
+    @PostMapping("/modTipoProducto/{Bandera}")
+    public String modTipoProducto(
+            @RequestBody ztipoproductomodEntity entidad,
+            @PathVariable Integer Bandera) {
+        return serviceztipoproductomodService.modTipoProducto(entidad, Bandera);
+    }
+
+    @PostMapping("/modOfertaActivaInfoAdicional/{Bandera}")
+    public String modOfertaActivaInfoAdicional(
+            @RequestBody zOfertaActivaInfomarcionAdicionalmodEntity Entidad,
+            @PathVariable Integer Bandera) {
+        return servicezOfertaActivaInfomarcionAdicionalmodService.modOfertaActivaInfoAdicional(Entidad, Bandera);
+    }
+
+    @GetMapping("/consOfertaActivaInfoAdicional/{Bandera}/{IdOferta}")
+    public List<zOfertaActivaInfomarcionAdicionalconsEntity> consOfertaActivaInfoAdicional(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdOferta) {
+        return servicezOfertaActivaInfomarcionAdicionalconsService.consOfertaActivaInfoAdicional(Bandera, IdOferta);
+    }
+
+    @GetMapping("/consTipoEstado/{Bandera}")
+    public List<zTipoEstadoconstEntity> consTipoEstado(
+            @PathVariable Integer Bandera) {
+        return servicezTipoEstadoconstService.consTipoEstado(Bandera);
+    }
+
+    @GetMapping("/consTipoProducto/{Bandera}/{IdProducto}")
+    public List<zTipoProductoconsEntity> consTipoProdcuto(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdProducto) {
+        return servicezTipoProductoconsService.consTipoProdcuto(Bandera, IdProducto);
+    }
+
+    @GetMapping("/consTipoPresentacion/{Bandera}/{Parametro}")
+    public List<zTipoPresentacionconsEntity> consTipoPresentacion(
+            @PathVariable Integer Bandera,
+            @PathVariable String Parametro) {
+        return servicezTipoPresentacionconsService.consTipoPresentacion(Bandera, Parametro);
+    }
+
+    @GetMapping("/consTipoPesoUnidades/{Bandera}/{Parametro}")
+    public List<zTipoPesoUnidadesconsEntity> consTipoPesoUnidades(
+            @PathVariable Integer Bandera,
+            @PathVariable String Parametro) {
+        return servicezTipoPesoUnidadesconsService.consTipoPesoUnidades(Bandera, Parametro);
+    }
+
+    @PostMapping("/modTipoPresentacion/{Bandera}")
+    public String modTipoPresentacion(
+            @PathVariable Integer Bandera,
+            @RequestBody zTipoPresentacionmodEntity Entidad) {
+        return servicezTipoPresentacionmodService.modTipoPresentacion(Bandera, Entidad);
+    }
+
+    @PostMapping("/modEstadoOferta/{Bandera}")
+    public String modEstadoOferta(
+            @PathVariable Integer Bandera,
+            @RequestBody zEstadoOfertamodEntity Entidad) {
+        return servicezEstadoOfertamodServices.modEstadoOferta(Bandera, Entidad);
+    }
+
+    @PostMapping("/modRelacionProductoPresentacion/{Bandera}")
+    public String modRelacionProductoPresentacion(
+            @PathVariable Integer Bandera,
+            @RequestBody zRelacionProductoPresentacionmodEntity Entidad) {
+        return servicezRelacionProductoPresentacionmodService.modRelacionProductoPresentacion(Bandera, Entidad);
+    }
+
+    @PostMapping("/modCuponesDescuento/{Bandera}")
+    public String modCuponesDescuento(
+            @PathVariable Integer Bandera,
+            @RequestBody zcuponesDescuentomodeEntity Entidad) {
+        return servicezcuponesDescuentomodeServices.modCuponesDescuento(Bandera, Entidad);
+    }
+
+    @GetMapping("/consCuponesDescuento/{Bandera}/{TipoCupon}/{IdOferta}/{IdRegalo}")
+    public List<zcuponesDescuentoconsEntity> consCuponesDescuento(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer TipoCupon,
+            @PathVariable Integer IdOferta,
+            @PathVariable Integer IdRegalo) {
+        return servicezcuponesDescuentoconsService.consCuponesDescuento(Bandera, TipoCupon, IdOferta, IdRegalo);
+    }
+
+    @GetMapping("/consTipoCupon/{Bandera}/{Parametro}")
+    public List<ztipoCuponconsEntity> consTipoCupon(
+            @PathVariable Integer Bandera,
+            @PathVariable String Parametro) {
+        return serviceztipoCuponconsService.consTipoCupon(Bandera, Parametro);
+    }
+
+    @PostMapping("/modTipoZona/{Bandera}")
+    public String modTipoZona(
+            @PathVariable Integer Bandera,
+            @RequestBody zTipoZonaModEntity Entidad) {
+        return servicezTipoZonaModService.modTipoZona(Bandera, Entidad);
+    }
+
+    @PostMapping("/modTipoCoordenadasZona/{Bandera}")
+    public String modTipoCoordenadasZona(
+            @PathVariable Integer Bandera,
+            @RequestBody zTipoCoordenadasZonaModEntity Entidad) {
+        return servicezTipoCoordenadasZonaModService.modTipoCoordenadasZona(Bandera, Entidad);
+    }
+
+    @PostMapping("/modTipoCoordenadasZonaDos/{Bandera}")
+    public String modTipoCoordenadasZonaDos(
+            @PathVariable Integer Bandera,
+            @RequestBody zTipoCoordenadasZonaModDosEntity Entidad) {
+        return servicezTipoCoordenadasZonaModDosService.modTipoCoordenadasZonaDos(Bandera, Entidad);
+    }
+
+    @PostMapping("/consMapaCalor/{Bandera}/{IdLocalidad}/{NumCompras}")
+    public List<zMapaCalorconsEntity> consMapaCalor(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdLocalidad,
+            @PathVariable Integer NumCompras,
+            @RequestBody Map<String, String> params) {
+        return servicezMapaCalorconsService.consMapaCalor(
+                Bandera,
+                params.get("FechaIncioCompra"),
+                params.get("FechaFinCompra"),
+                params.get("FechaRegistro"),
+                IdLocalidad,
+                NumCompras
+        );
+    }
+
+    @GetMapping("/consMultilistas/{Bandera}/{FiltroUno}/{FiltroDos}")
+    public List<zmultilistasEntity> consMultilistas(
+            @PathVariable Integer Bandera,
+            @PathVariable String FiltroUno,
+            @PathVariable String FiltroDos) {
+        return servicezmultilistasServices.consMultilistas(Bandera, FiltroUno, FiltroDos);
+    }
+
+    @GetMapping("/conszvalidaPersonaEmbajador/{Bandera}/{TokenUsuario}")
+    public List<zvalidaPersonaEmbajadorEntity> conszvalidaPersonaEmbajador(
+            @PathVariable Integer Bandera,
+            @PathVariable String TokenUsuario) {
+        return servicezvalidaPersonaEmbajadorService.conszvalidaPersonaEmbajador(Bandera, TokenUsuario);
+    }
+
+    @PostMapping("/modzEmbajador/{Bandera}")
+    public String modzEmbajador(
+            @PathVariable Integer Bandera,
+            @RequestBody zEmbajadorModEntity Entidad) {
+        return servicezEmbajadorModService.modzEmbajador(Bandera, Entidad);
+    }
+
+    @GetMapping("/consMensajesParametrizables/{Bandera}/{usucodig}/{CorreoPersona}")
+    public List<zMensajesParametrizablesConsEntity> consMensajesParametrizables(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer usucodig,
+            @PathVariable String CorreoPersona) {
+        return servicezMensajesParametrizablesConsService.consMensajesParametrizables(Bandera, usucodig, CorreoPersona);
+    }
+
+    @PostMapping("/modRelacionEmbajadorVecino/{Bandera}")
+    public String modZRelacionEmbajadorVecino(
+            @PathVariable Integer Bandera,
+            @RequestBody zrelacionEmbajadorVecinoModEntity Entidad) {
+        return servicezrelacionEmbajadorVecinoModService.modZRelacionEmbajadorVecino(Bandera, Entidad);
+    }
+
+    @GetMapping("/consValidaPersonaEmbajador/{Bandera}/{CorreoPersona}/{UsucodigEmbajador}")
+    public List<zvalidaPersonaEmbajadorVecinoEntity> consValidaPersonaEmbajador(
+            @PathVariable Integer Bandera,
+            @PathVariable String CorreoPersona,
+            @PathVariable Integer UsucodigEmbajador) {
+        return servicezvalidaPersonaEmbajadorVecinoService.consValidaPersonaEmbajador(Bandera, CorreoPersona, UsucodigEmbajador);
+    }
+
+    @PostMapping("/consEmbajadorConjuntosReporte/{Bandera}/{UsucodigEmbajador}/{CorreoEmbajador}/{TelefonoEmbajador}/{UsucodigVecino}/{CorreoVecino}/{TelefonoVecino}")
+    public List<zembajadorConjuntosReporteEntity> consEmbajadorConjuntosReporte(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer UsucodigEmbajador,
+            @PathVariable String CorreoEmbajador,
+            @PathVariable String TelefonoEmbajador,
+            @PathVariable Integer UsucodigVecino,
+            @PathVariable String CorreoVecino,
+            @PathVariable String TelefonoVecino,
+            @RequestBody Map<String, String> params) {
+        return servicezembajadorConjuntosReporteService.consEmbajadorConjuntosReporte(
+                Bandera,
+                params.get("Fechainicio"),
+                params.get("Fechafin"),
+                UsucodigEmbajador,
+                CorreoEmbajador,
+                TelefonoEmbajador,
+                UsucodigVecino,
+                CorreoVecino,
+                TelefonoVecino
+        );
+    }
+
+    @GetMapping("/consEmbajadorVecinosReporte/{Bandera}/{UsucodigEmbajador}")
+    public List<ZembajadorVecinosReporteEntity> consEmbajadorVecinosReporte(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer UsucodigEmbajador) {
+        return serviceZembajadorVecinosReporteService.consEmbajadorVecinosReporte(Bandera, UsucodigEmbajador);
+    }
+
+    @GetMapping("/consPromedioCompraUsuario/{Bandera}/{Usucodig}")
+    public List<zFnPromedioCompraUsuarioEntity> consPromedioCompraUsuario(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Usucodig) {
+        return servicezFnPromedioCompraUsuarioService.consPromedioCompraUsuario(Bandera, Usucodig);
+    }
+
+    @PostMapping("/modMovileFiado/{IdCarro}")
+    public String modMovileFiado(
+            @PathVariable Integer IdCarro,
+            @RequestBody zMovileFiadoModEntity Entidad) {
+        return servicezMovileFiadoModService.modMovileFiado(IdCarro, Entidad);
+    }
+
+    @GetMapping("/consEstadosPagosFiado/{Bandera}")
+    public List<zConsultarEstadosPagosFiadoEntity> consEstadosPagosFiado(
+            @PathVariable Integer Bandera) {
+        return servicezConsultarEstadosPagosFiadoService.consEstadosPagosFiado(Bandera);
+    }
+
+    @PostMapping("/consPagosFiado/{CodigoUsuario}/{Correo}/{Telefono}/{IDEstadoPago}/{IdLocalidad}")
+    public List<zConsultarPagosFiadoEntity> consPagosFiado(
+            @PathVariable Integer CodigoUsuario,
+            @PathVariable String Correo,
+            @PathVariable String Telefono,
+            @PathVariable Integer IDEstadoPago,
+            @PathVariable Integer IdLocalidad,
+            @RequestBody Map<String, String> params) {
+        return servicezConsultarPagosFiadoService.consPagosFiado(
+                params.get("FechaInicio"),
+                params.get("FechaFin"),
+                CodigoUsuario,
+                Correo,
+                Telefono,
+                IDEstadoPago,
+                IdLocalidad
+        );
+    }
+
+    @GetMapping("/consTipoCoordenadasZona/{Bandera}/{IdZona}")
+    public List<zTipoCoordenadasZonaConsEntity> consTipoCoordenadasZona(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdZona) {
+        return servicezTipoCoordenadasZonaConsService.consTipoCoordenadasZona(Bandera, IdZona);
+    }
+
+    @GetMapping("/consPersonaCliente/{IdUsuario}/{Correo}/{NumeroCompras}/{Telefono}/{NombreApellido}/{Localidad}")
+    public List<zPersonaClienteConsEntity> consPersonaCliente(
+            @PathVariable Integer IdUsuario,
+            @PathVariable String Correo,
+            @PathVariable Integer NumeroCompras,
+            @PathVariable String Telefono,
+            @PathVariable String NombreApellido,
+            @PathVariable Integer Localidad) {
+        return servicezPersonaClienteConsService.consPersonaCliente(IdUsuario, Correo, NumeroCompras, Telefono, NombreApellido, Localidad);
+    }
+
+    @GetMapping("/consFiadoUsuario/{Bandera}/{Usucodig}")
+    public List<zfiadoUsuarioEntity> consFiadoUsuario(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Usucodig) {
+        return servicezfiadoUsuarioService.consFiadoUsuario(Bandera, Usucodig);
+    }
+
+    @GetMapping("/consValidaUsuario/{Bandera}/{IdSector}/{Provado}/{Telefono}/{Usucodig}")
+    public List<zValidaUsuarioEntity> consValidaUsuario(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdSector,
+            @PathVariable String Provado,
+            @PathVariable String Telefono,
+            @PathVariable Integer Usucodig) {
+        return servicezValidaUsuarioService.consValidaUsuario(Bandera, IdSector, Provado, Telefono, Usucodig);
+    }
+
+    @GetMapping("/consPersonaValidador/{Bandera}")
+    public List<zPersonaValidadorEntity> consPersonaValidador(
+            @PathVariable Integer Bandera) {
+        return servicezPersonaValidadorService.consPersonaValidador(Bandera);
+    }
+
+    @PostMapping("/modActualizaInfoUsuario/{Bandera}")
+    public String modActualizaInfoUsuario(
+            @PathVariable Integer Bandera,
+            @RequestBody zActualizaInfoUsuarioModEntity Entidad) {
+        return servicezActualizaInfoUsuarioModService.modActualizaInfoUsuario(Bandera, Entidad);
+    }
+
+    @PostMapping("/modDuplicarOferta/{Bandera}")
+    public String modDuplicarOferta(
+            @PathVariable Integer Bandera,
+            @RequestBody zDuplicarOfertamodEntity Entidad) {
+        return servicezDuplicarOfertamodService.modDuplicarOferta(Bandera, Entidad);
+    }
+
+    @GetMapping("/consZonaOferta/{Bandera}/{Localidad}/{IdZona}/{IdEstado}")
+    public List<zZonaOfertaconsEntity> consZonaOferta(
+            @PathVariable Integer Bandera,
+            @PathVariable String Localidad,
+            @PathVariable Integer IdZona,
+            @PathVariable Integer IdEstado) {
+        return servicezZonaOfertaconsService.consZonaOferta(Bandera, Localidad, IdZona, IdEstado);
     }
 }

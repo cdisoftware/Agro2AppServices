@@ -51,4 +51,7 @@ public class zProductosActivosOfertaEntity {
 
     @JsonProperty("NombreProductor")
     public String NombreProductor;
+
+    @JsonProperty("ImagenOferta")
+    public String ImagenOferta;
 }

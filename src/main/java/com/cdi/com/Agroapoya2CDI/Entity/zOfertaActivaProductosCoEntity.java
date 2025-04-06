@@ -24,6 +24,9 @@ public class zOfertaActivaProductosCoEntity {
     @JsonProperty("FechaCreacion")
     public String FechaCreacion;
 
+    @JsonProperty("FechaInicio")
+    public String FechaInicio;
+
     @JsonProperty("FechaFin")
     public String FechaFin;
 
@@ -41,4 +44,19 @@ public class zOfertaActivaProductosCoEntity {
 
     @JsonProperty("DesEstadoOferta")
     public String DesEstadoOferta;
+
+    @JsonProperty("MascaraSector")
+    public String MascaraSector;
+
+    @JsonProperty("TipoDomicilio")
+    public Integer TipoDomicilio;
+
+    @JsonProperty("ValorInicialDomicilio")
+    public Integer ValorInicialDomicilio;
+
+    @JsonProperty("ValorDomicilio")
+    public Integer ValorDomicilio;
+
+    @JsonProperty("DescDomicilio")
+    public String DescDomicilio;
 }

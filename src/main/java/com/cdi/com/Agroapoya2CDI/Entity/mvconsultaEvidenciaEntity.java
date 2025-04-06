@@ -41,10 +41,13 @@ public class mvconsultaEvidenciaEntity {
 
     @JsonProperty("ValorTotaPagar")
     public Integer ValorTotaPagar;
-    
+
     @JsonProperty("ValorPagarSinDomicilio")
     public Integer ValorPagarSinDomicilio;
-    
+
     @JsonProperty("ValorDomicilio")
     public Integer ValorDomicilio;
+
+    @JsonProperty("FiadoForm")
+    public String FiadoForm;
 }
