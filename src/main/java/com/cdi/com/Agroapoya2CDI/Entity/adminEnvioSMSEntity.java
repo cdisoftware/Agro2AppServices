@@ -27,6 +27,4 @@ public class adminEnvioSMSEntity {
     @JsonProperty("NOMBRES_PERSONA")
     public String NOMBRES_PERSONA;
 
-    @JsonProperty("CadenaUrl")
-    public String CadenaUrl;
 }

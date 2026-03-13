@@ -146,4 +146,16 @@ public class COfertasExternasEntity {
 
     @JsonProperty("vgncia_hastaFormato")
     public String vgncia_hastaFormato;
+    
+    @JsonProperty("vgncia_EntregaFormato")
+    public String vgncia_EntregaFormato;
+    
+    @JsonProperty("ComprasRealizadasTotales")
+    public Integer ComprasRealizadasTotales;
+    
+    @JsonProperty("ComprasFaltantesTotales")
+    public Integer ComprasFaltantesTotales;
+    
+    @JsonProperty("ComprasMetaTotales")
+    public Integer ComprasMetaTotales;
 }

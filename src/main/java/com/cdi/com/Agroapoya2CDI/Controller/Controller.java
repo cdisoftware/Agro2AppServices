@@ -12,6 +12,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.AdminMillaTransporteModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AestadoOfertaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AgroAmigosReporteEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AgroCompraUsuModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Agro_ActualizaCompraEmbajadorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AsignaCampoUsucodigMCEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.AsignarCampoMCEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.BuscarUserManyChatEntity;
@@ -252,6 +253,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.RelacionCuponesUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.RemitenteCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.RespuestaManyChatEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SELECT_MNCPIOEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.SP_Agro_ConsultarBarriosPorSectorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.SectoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.Select_TipoDocumentoEntity;
@@ -367,9 +369,18 @@ import com.cdi.com.Agroapoya2CDI.Entity.mv_infoBasicaUsuarioEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mv_listaSectoresConOfertasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvconsultaEvidenciaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.mvconultaReportePagosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.paC_MinimoCompraEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.paC_MinimoCompraTotalEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.paC_MinimoCompraTotalModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.paC_MinimoCompraTotalRelacionModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaConsultaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.pa_CTextosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.productosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_ActualizarConjuntoEmbajadorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_ConsultarPagosPorEmbajadorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_ReporteEmbajadoresConjuntosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_ReporteVecinoConjuntosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_embajador_redimirGananciaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoConsContactEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipo_carro_carroceriaEntity;
@@ -447,6 +458,7 @@ import com.cdi.com.Agroapoya2CDI.Services.AdminMillaTransporteModService;
 import com.cdi.com.Agroapoya2CDI.Services.AestadoOfertaModService;
 import com.cdi.com.Agroapoya2CDI.Services.AgroAmigosReporteService;
 import com.cdi.com.Agroapoya2CDI.Services.AgroCompraUsuModService;
+import com.cdi.com.Agroapoya2CDI.Services.Agro_ActualizaCompraEmbajadorService;
 import com.cdi.com.Agroapoya2CDI.Services.AsignaCampoUsucodigMCService;
 import com.cdi.com.Agroapoya2CDI.Services.AsignarCampoMCService;
 import com.cdi.com.Agroapoya2CDI.Services.BuscarUserManyChatService;
@@ -716,6 +728,7 @@ import com.cdi.com.Agroapoya2CDI.Services.RemitenteCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.RespuestaManyChatService;
 import com.cdi.com.Agroapoya2CDI.Services.RespuestaSmsModService;
 import com.cdi.com.Agroapoya2CDI.Services.SELECT_MNCPIOService;
+import com.cdi.com.Agroapoya2CDI.Services.SP_Agro_ConsultarBarriosPorSectorService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.SectoresService;
 import com.cdi.com.Agroapoya2CDI.Services.Select_TipoDocumentoService;
@@ -827,9 +840,18 @@ import com.cdi.com.Agroapoya2CDI.Services.mvConsultaEntregaService;
 import com.cdi.com.Agroapoya2CDI.Services.mv_EnvioCorreoTransprtistaViejeService;
 import com.cdi.com.Agroapoya2CDI.Services.mvconsultaEvidenciaService;
 import com.cdi.com.Agroapoya2CDI.Services.mvconultaReportePagoService;
+import com.cdi.com.Agroapoya2CDI.Services.paC_MinimoCompraService;
+import com.cdi.com.Agroapoya2CDI.Services.paC_MinimoCompraTotalModService;
+import com.cdi.com.Agroapoya2CDI.Services.paC_MinimoCompraTotalRelacionModService;
+import com.cdi.com.Agroapoya2CDI.Services.paC_MinimoCompraTotalService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaConsultaService;
 import com.cdi.com.Agroapoya2CDI.Services.pa_CTextosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.productosService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_ActualizarConjuntoEmbajadorService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_ConsultarPagosPorEmbajadorService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_ReporteEmbajadoresConjuntosService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_ReporteVecinoConjuntosService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_embajador_redimirGananciaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoConsContactService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
 import com.cdi.com.Agroapoya2CDI.Services.tipo_carro_carroceriaService;
@@ -2254,10 +2276,43 @@ public class Controller {
 
     @Autowired
     zDuplicarOfertamodService servicezDuplicarOfertamodService;
+    
+    @Autowired
+    paC_MinimoCompraService servicepaC_MinimoCompraService;
 
     @Autowired
     zZonaOfertaconsService servicezZonaOfertaconsService;
-
+    
+     @Autowired
+    paC_MinimoCompraTotalService servicepaC_MinimoCompraTotalService;
+     
+     @Autowired
+    paC_MinimoCompraTotalRelacionModService servicepaC_MinimoCompraTotalRelacionModService;
+     
+    @Autowired
+    paC_MinimoCompraTotalModService servicepaC_MinimoCompraTotalModService;
+    
+    @Autowired
+    SP_Agro_ConsultarBarriosPorSectorService serviceSP_Agro_ConsultarBarriosPorSectorService;
+    
+    @Autowired
+    sp_ReporteEmbajadoresConjuntosService servicesp_ReporteEmbajadoresConjuntosService;
+    
+    @Autowired
+    sp_ReporteVecinoConjuntosService servicesp_ReporteVecinoConjuntosService;
+    
+    @Autowired
+    sp_ConsultarPagosPorEmbajadorService servicesp_ConsultarPagosPorEmbajadorService;
+    
+    @Autowired
+    sp_ActualizarConjuntoEmbajadorService servicesp_ActualizarConjuntoEmbajadorService;
+    
+    @Autowired
+    Agro_ActualizaCompraEmbajadorService serviceAgro_ActualizaCompraEmbajadorService;
+    
+    @Autowired
+    sp_embajador_redimirGananciaService servicesp_embajador_redimirGananciaService;
+    
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
             @PathVariable Integer ID,
@@ -4837,10 +4892,11 @@ public class Controller {
         return serviceadmillaDtlleOfertaCompraService.ConsultaDetalleOfertComprAdmin(Bandera, IdGrupo);
     }
 
-    @GetMapping("/consAdUserMapCalor/{Bandera}")
+    @GetMapping("/consAdUserMapCalor/{Bandera}/{Parametro}")
     public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(
-            @PathVariable Integer Bandera) {
-        return serviceadUsuarioMapaCalorService.ConsultaAdminUsuarioMapCalor(Bandera);
+            @PathVariable Integer Bandera,
+            @PathVariable String Parametro) {
+        return serviceadUsuarioMapaCalorService.ConsultaAdminUsuarioMapCalor(Bandera, Parametro);
     }
 
     @GetMapping("/consClienteRegalo/{Bandera}/{IntIdOferta}/{Usucodig}")
@@ -5307,11 +5363,13 @@ public class Controller {
         return serviceadDashProductosPesoService.ConsultaProductosPeso(Bandera);
     }
 
-    @GetMapping("/consAdminEnvioSMS/{Bandera}/{idSector}")
+    @GetMapping("/consAdminEnvioSMS/{Bandera}/{idSector}/{TamanoLote}/{NumeroLote}")
     public List<adminEnvioSMSEntity> ConsultaEnvioSMS(
             @PathVariable Integer Bandera,
-            @PathVariable Integer idSector) {
-        return serviceadminEnvioSMService.ConsultaEnvioSMS(Bandera, idSector);
+            @PathVariable Integer idSector,
+            @PathVariable Integer TamanoLote,
+            @PathVariable Integer NumeroLote) {
+        return serviceadminEnvioSMService.ConsultaEnvioSMS(Bandera, idSector, TamanoLote, NumeroLote);
     }
 
     @PostMapping("/EnvioSMSIndv")
@@ -5823,5 +5881,87 @@ public class Controller {
             @PathVariable Integer IdZona,
             @PathVariable Integer IdEstado) {
         return servicezZonaOfertaconsService.consZonaOferta(Bandera, Localidad, IdZona, IdEstado);
+    }
+    
+    @GetMapping("/consultaminimocompra/{Bandera}/{Consecutivo}")
+    public List<paC_MinimoCompraEntity> ConsultaRelacion(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Consecutivo) {
+        return servicepaC_MinimoCompraService.ConsultaRelacion(Bandera, Consecutivo);
+    }
+    
+    @GetMapping("/consultaminimocompraTotal/{Bandera}/{Id}/{Consecutivo}")
+    public List<paC_MinimoCompraTotalEntity> ConsultaCompras(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer Id,
+            @PathVariable Integer Consecutivo) {
+        return servicepaC_MinimoCompraTotalService.ConsultaCompras(Bandera,Id, Consecutivo);
+    }
+    
+    @PostMapping("/modminimocomprarelacion/{Bandera}")
+    public String ModMinimoCompraRelacion(
+            @PathVariable Integer Bandera,
+            @RequestBody paC_MinimoCompraTotalRelacionModEntity Entidad) {
+        return servicepaC_MinimoCompraTotalRelacionModService.ModMinimoCompraRelacion(Entidad, Bandera);
+    }
+    
+     @PostMapping("/modminimocompratotal/{Bandera}")
+    public String ModMinimoCompraTotal(
+            @PathVariable Integer Bandera,
+            @RequestBody paC_MinimoCompraTotalModEntity Entidad) {
+        return servicepaC_MinimoCompraTotalModService.ModMinimoCompraTotal(Entidad, Bandera);
+    }
+    
+    @GetMapping("/consultabarriosporsector/{IdSector}")
+    public List<SP_Agro_ConsultarBarriosPorSectorEntity> ConsultaCompras(
+            @PathVariable Integer IdSector) {
+        return serviceSP_Agro_ConsultarBarriosPorSectorService.ConsultaBarrioPorSector(IdSector);
+    }
+    
+    @GetMapping("/consultaembajadoresconjuntos/{Bandera}/{IdEmbajador}/{correoEmbajador}")
+    public List<sp_ReporteEmbajadoresConjuntosEntity> ConsultaEmbajador(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdEmbajador,
+            @PathVariable String correoEmbajador) {
+        return servicesp_ReporteEmbajadoresConjuntosService.ConsultaEmbajador(Bandera, IdEmbajador, correoEmbajador);
+    }
+    
+    @GetMapping("/consultavecinosconjuntos/{Bandera}/{IdEmbajador}/{correoEmbajador}/{IdVecino}/{correoVecino}")
+    public List<sp_ReporteVecinoConjuntosEntity> ConsultaVecino(
+            @PathVariable Integer Bandera,
+            @PathVariable Integer IdEmbajador,
+            @PathVariable String correoEmbajador,
+            @PathVariable Integer IdVecino,
+            @PathVariable String correoVecino) {
+        return servicesp_ReporteVecinoConjuntosService.ConsultaVecino(Bandera, IdEmbajador, correoEmbajador, IdVecino, correoVecino);
+    }
+    
+    @GetMapping("/consultapagosporembajador/{Bandera}/{UsucodigEmbajador}/{UsucodigVecino}")
+    public List<sp_ConsultarPagosPorEmbajadorEntity> ConsultaRelacionEmbajador(
+            @PathVariable Integer Bandera,
+            @PathVariable String UsucodigEmbajador,
+            @PathVariable String UsucodigVecino) {
+        return servicesp_ConsultarPagosPorEmbajadorService.ConsultaRelacionEmbajador(Bandera, UsucodigEmbajador, UsucodigVecino);
+    }
+    
+    @PostMapping("/modconjuntoembajador/{Bandera}")
+    public String ModConjuntoEmbajador(
+            @PathVariable Integer Bandera,
+            @RequestBody sp_ActualizarConjuntoEmbajadorEntity Entidad) {
+        return servicesp_ActualizarConjuntoEmbajadorService.ModConjuntoEmbajador(Entidad, Bandera);
+    }
+    
+    @PostMapping("/modcompraembajador/{Bandera}")
+    public String ModCompraEmbajador(
+            @PathVariable Integer Bandera,
+            @RequestBody Agro_ActualizaCompraEmbajadorEntity Entidad) {
+        return serviceAgro_ActualizaCompraEmbajadorService.ModCompraEmbajador(Entidad, Bandera);
+    }
+    
+    @PostMapping("/redimegananciaembajador/{Bandera}")
+    public String RedimeGanancia(
+            @PathVariable Integer Bandera,
+            @RequestBody sp_embajador_redimirGananciaEntity Entidad) {
+        return servicesp_embajador_redimirGananciaService.RedimeGanancia(Entidad, Bandera);
     }
 }

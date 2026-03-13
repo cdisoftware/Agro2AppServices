@@ -110,4 +110,19 @@ public class CListadoToppingEntity {
 
     @JsonProperty("TieneConserva")
     public Integer TieneConserva;
+    
+    @JsonProperty("Productor")
+    public String Productor;
+    
+    @JsonProperty("UbicacionProd")
+    public String UbicacionProd;
+    
+    @JsonProperty("CalificaProducto")
+    public String CalificaProducto;
+    
+    @JsonProperty("Calificacion")
+    public String Calificacion;
+    
+    @JsonProperty("incremento")
+    public String incremento;
 }

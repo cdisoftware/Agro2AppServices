@@ -124,11 +124,13 @@ public class EnvioCorreo_IndividualServiceImplementacion implements EnvioCorreo_
             }
 
             Properties props = new Properties();
-            props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
-            props.setProperty("mail.host", servicePath); // servidor pop3
+            props.setProperty("mail.transport.protocol", "smtp");
+            props.setProperty("mail.smtp.host", servicePath);
             props.setProperty("mail.smtp.auth", "true");
-            //Linea problema: Could not convert socket to TLS
-            //props.put("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.starttls.required", "true");
+            props.setProperty("mail.smtp.ssl.trust", servicePath);
+            props.put("mail.smtp.port", "587"); 
 
             // Crear objeto de instancia de sesión
             Session session = Session.getInstance(props);

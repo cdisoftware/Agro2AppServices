@@ -57,4 +57,10 @@ public class zembajadorConjuntosReporteEntity {
 
     @JsonProperty("FechaCreacioncomoEmbajador")
     public String FechaCreacioncomoEmbajador;
+    
+    @JsonProperty("tipoDePago")
+    public String tipoDePago;
+
+    @JsonProperty("llaveDePago")
+    public String llaveDePago;
 }

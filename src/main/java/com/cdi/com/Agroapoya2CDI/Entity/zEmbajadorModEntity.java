@@ -43,4 +43,6 @@ public class zEmbajadorModEntity {
     @JsonProperty("Coordenadas")
     public String Coordenadas;
 
+    @JsonProperty("idTipoEmbajador")
+    public String idTipoEmbajador;
 }

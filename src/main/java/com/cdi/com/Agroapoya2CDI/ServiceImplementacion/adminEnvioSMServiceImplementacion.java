@@ -18,15 +18,17 @@ public class adminEnvioSMServiceImplementacion implements adminEnvioSMService {
     private EntityManager repositorio;
 
     @Override
-    public List<adminEnvioSMSEntity> ConsultaEnvioSMS(Integer Bandera, Integer idSector) {
+    public List<adminEnvioSMSEntity> ConsultaEnvioSMS(Integer Bandera, Integer idSector,Integer TamanoLote,Integer NumeroLote) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("pa_admin_envioSMS");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("idSector", Integer.class, ParameterMode.IN);
-
+            tpoDoc.registerStoredProcedureParameter("TamanoLote", Integer.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("NumeroLote", Integer.class, ParameterMode.IN);
             tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("idSector", idSector);
-
+            tpoDoc.setParameter("TamanoLote", TamanoLote);
+            tpoDoc.setParameter("NumeroLote", NumeroLote);
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();

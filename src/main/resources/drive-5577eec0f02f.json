@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ipslineadevida",
+  "private_key_id": "5577eec0f02f0c74f93015fe3f724b9d162b7c0f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC2bEpd/apgRgcB\nPDDM3cJA0hNS8HXEz+ivRpJJUvkV1ExhrVThc3Y9rUUB0OcriY0jv1sL9WUwu0fT\n6Z56JrAs0zLLLjLt4UIhrVLGiWo9tsYshmx+E99MO39sXkZ5D8ZGpDU1ofm8qp2I\nHzU6tssbgYk5bzC5H/21WrcPRBd1ZCNyME9i45nO6xu3Qqydgr+K1pyG8W6GfqXB\niUGkzAjOzwEkE9wGoEmbFP8VWEtQRUgPYTy5jo6+FspnraFrUGxohKqxCY6Sufkz\nYjB9Syv+vlW0lHcK8kMVwax4EqTabgUd0m28XSlR111koMvrAWuuH25eM1fdKKhj\n8tUePHjDAgMBAAECggEAKUzkG1qCV9CS5msvqzorsAw/tr/dEeV2SzSBixs/bHtH\nnbel53MCGp2faXVX2QoHy8eXf+Ibekh0Txxttj8LFOLt9YUsn6GnnMNGYc+bn4RB\nYrQ+XN7356TyyOChOOhi3fxwVYep6FaCWt6h6PyYiE4v+LJdSBRfls8GcezbGMbk\npoCpnlCjTnhED76LvUWr/ZvV1Eywznp1D9ALzAOsZOB/6Gs9JZj0tDap73cEr5mm\nKjVnhjsnhZCcanse0JXoAkjrwKFpZ9wriobn80igqKaIJSS4nl3YBPDWWWVcd2sQ\nE1gni//OkEBE4o2aEZFX3u+oWDUpaVpqG0s9K8NObQKBgQDkJdOvg1MUIXlBa7BT\nxuy4FqBvCopVpkGuXW26e9cfkyWbGktPppYGG/gs4+MQJhVikqDsnO+tPA0gSv1+\nMmV2Nw4aP+pKNwL9M+LA7TPmNBq5MZdMipKxIqtRRuDtM6Uk0+TFJK1ol9Vmk9J7\nGrMOzOkxCvGGCK9E22n2i2P8vQKBgQDMsXQqOLWZGDVpsrqd/mQ/fR4TU8L2R5Ls\nStZ6LPXERmdmEvod4tQ/AfdM80A+JcpPuFXUFQRwkiRFFQbdwYCBZoKvKTcKtZiT\nnn2OOB0SISmbMFIZ0wku88V1MqpvN1WskGwp58wkfF0PiNL/eAD5ElLd9ViDwdxN\n5M0DV0ljfwKBgFRzWBdY0jDabyrzNNLeCJPf9EUGLsyjfR6RAOQNoUTT0BDIu+Xg\n8RmT0tqzBELfBf1171GGigWi++zfNVQ4TWxj1rmKvSv5jwaw5Req9hIZaWbx32J6\nzO/6uFWemfXTryahtMXw3KuhwGF3CGt/J5ar7Qm1Vk/Z+R7Q5TlYwYs1AoGAbXdZ\nEFtTgpQXvHcApg2tvuZCd0OMN/j+8a70FFKG/HhKQ6RSbjkoGKoMfvJ3oMTE9O03\nuTukLC97hhZAnccl2g3gRZxc+zUya3+O1cfchB2ICp5Eydq6RonHR23ZB7En+Ckk\nLyTvX3PCsNQTQtwCaTELb/gNZij+kAmUOf0sGjECgYAIM4Hi6TVjNc0RyTo2c+h8\n6Fk38vwAUWwynYnkuyPBkqopGNj1Da5Ts0GAaDJFPOPUuCNp7Peox9PUxL5olj1V\njMVMVak/J4mVJGkDSNR/tf/BPiWOKXCQvVPEGBHyWqmJ3unA8zkQzuKvq0qZ577G\n68YYbia7VackhAaAStPw4Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "driveips@ipslineadevida.iam.gserviceaccount.com",
+  "client_id": "103912113399051554461",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/driveips%40ipslineadevida.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

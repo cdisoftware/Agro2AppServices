@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface adUsuarioMapaCalorService {
 
-    public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(Integer Bandera);
+    public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(Integer Bandera, String Parametro);
 }

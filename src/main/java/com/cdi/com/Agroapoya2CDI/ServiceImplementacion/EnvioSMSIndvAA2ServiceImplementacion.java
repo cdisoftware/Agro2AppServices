@@ -8,49 +8,68 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
+import kong.unirest.HttpResponse;
+import kong.unirest.JsonNode;
+import kong.unirest.Unirest;
+
 @Service
 public class EnvioSMSIndvAA2ServiceImplementacion implements EnvioSMSIndvAA2Service {
 
     @Override
     public String EnvioSMSIndvAA2(EnvioSMSIndvAA2Entity entidad) {
-        String Respuesta = "";
-        String user = "cdiamazonws@gmail.com";
-        String token = "x86ad3ce6oprr9b382xma";
-        String metodoEnvio = "1via";
+
+        String respuesta = "";
+        String token = "NqZT6M9dwq1PDU5c5fzF9kjHFmEFQuNt";
+
         try {
-            RestTemplate restTemplate = new RestTemplate();
-       
-            ResponseEntity<String> response = restTemplate.exchange("https://contacto-masivo.com/sms/back_sms/public/api/sendsms?user=" + user + "&token=" + 
-            token + "&GSM=" + entidad.getTelefono() + "&SMSText=" + entidad.getMensaje() + "&metodo_envio=" + metodoEnvio, HttpMethod.POST, null, String.class);
-            
+
+            HttpResponse<String> response = Unirest.post("https://api.labsmobile.com/json/send")
+                    .header("Content-Type", "application/json")
+                    .basicAuth("rdiaz@cdi.com.co", token)
+                    .header("Cache-Control", "no-cache")
+                    .body(
+                        "{"
+                        + "\"message\":\"" + entidad.Mensaje + "\","
+                        + "\"tpoa\":\"Sender\","
+                        + "\"recipient\":[{\"msisdn\":\""+entidad.Telefono+"\"}]"
+                        + "}"
+                    )
+                    .asString();
+
+            System.out.println("Status HTTP: " + response.getStatus());
+            System.out.println("Respuesta API: " + response.getBody());
+
             String responseBody = response.getBody();
 
-            // Extraer el valor después de la coma y eliminar el <br>
+            // Procesamiento de la respuesta
             String[] parts = responseBody.split(",");
+
             if (parts.length > 1) {
                 String status = parts[1].replace("<br>", "").trim();
-                
-                // Asignar mensaje basado en el valor de status
+
                 switch (status) {
                     case "-4":
-                        Respuesta = JSONObject.quote("El número no cumple con la cantidad de caracteres.");
+                        respuesta = JSONObject.quote("El número no cumple con la cantidad de caracteres.");
                         break;
                     case "0":
-                        Respuesta = JSONObject.quote("El operador no existe.");
+                        respuesta = JSONObject.quote("El operador no existe.");
                         break;
                     case "-3":
-                        Respuesta = JSONObject.quote("No hay saldo suficiente para eL envío de sms.");
+                        respuesta = JSONObject.quote("No hay saldo suficiente para el envío de SMS.");
                         break;
                     default:
-                        Respuesta = JSONObject.quote("Mensaje enviado correctamente.");
+                        respuesta = JSONObject.quote("Mensaje enviado corectamente.");
                         break;
                 }
             } else {
-                Respuesta = JSONObject.quote("Respuesta inesperada del microservicio envio SMS.");
+                respuesta = JSONObject.quote("Respuesta inesperada del servicio de envío SMS.");
             }
+
         } catch (Exception ex) {
-            return JSONObject.quote("No fue posible ejecutar los datos: Error " + ex.getMessage());
+            respuesta = JSONObject.quote("No fue posible ejecutar el envío SMS. Error: " + ex.getMessage());
         }
-        return Respuesta;
+
+        return respuesta;
     }
 }

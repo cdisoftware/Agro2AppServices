@@ -4,6 +4,7 @@ import com.cdi.com.Agroapoya2CDI.BasicApplication;
 import com.cdi.com.Agroapoya2CDI.Entity.ListArchivosDriveEntity;
 import com.cdi.com.Agroapoya2CDI.Services.GeneraAccesTokenService;
 import com.cdi.com.Agroapoya2CDI.Services.ListDocDriveService;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
@@ -17,66 +18,54 @@ import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.drive.Drive;
+import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.FileList;
+import java.io.FileInputStream;
+import java.util.Collections;
+import org.springframework.core.io.ClassPathResource;
 
 @Service
 public class ListDocDriveServiceImplementacion implements ListDocDriveService {
 
-    private static String ACCESS_TOKEN = "";
     private static final JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static final String APPLICATION_NAME = "DriveApiApp";
 
-    @Autowired
-    GeneraAccesTokenService serviceGeneraAccesTokenService;
+    private Drive getDriveService() throws Exception {
+        GoogleCredential credential = GoogleCredential.fromStream(
+                new ClassPathResource("drive-5577eec0f02f.json").getInputStream())
+                .createScoped(Collections.singleton(DriveScopes.DRIVE));
+
+        return new Drive.Builder(
+                GoogleNetHttpTransport.newTrustedTransport(),
+                JSON_FACTORY,
+                credential)
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+    }
 
     @Override
     public List<ListArchivosDriveEntity> ListDoc() {
-        BasicApplication classprincipal = new BasicApplication();
-        ACCESS_TOKEN = classprincipal.getTOKEN();
-
-        if (ACCESS_TOKEN == null) {
-            ACCESS_TOKEN = serviceGeneraAccesTokenService.Token();
-        }
-
-        System.out.println(ACCESS_TOKEN);
-
         List<ListArchivosDriveEntity> fileList = new ArrayList<>();
         try {
-            fileList = listFilesInFolder();
-        } catch (IOException ex) {
-            classprincipal.setTOKEN(null);
-            Logger.getLogger(GeneraAccesTokenImplementacion.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (GeneralSecurityException ex) {
-            classprincipal.setTOKEN(null);
-            Logger.getLogger(GeneraAccesTokenImplementacion.class.getName()).log(Level.SEVERE, null, ex);
+            Drive driveService = getDriveService();
+
+            String folderId = "1qq0Ems58rENhLk5s1qDEy1ZfkmidmgEo"; // ID de la carpeta nueva
+            FileList result = driveService.files().list()
+                    .setQ("'" + folderId + "' in parents")
+                    .setFields("files(name, id, webViewLink)")
+                    .execute();
+
+            for (com.google.api.services.drive.model.File file : result.getFiles()) {
+                ListArchivosDriveEntity obj = new ListArchivosDriveEntity();
+                obj.setId(file.getId());
+                obj.setNombreDocumento(file.getName());
+                obj.setLink(file.getWebViewLink());
+                obj.setComplemento(file.getName() + "|" + file.getId() + "|" + file.getWebViewLink());
+                fileList.add(obj);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        return fileList;
-    }
-
-    public List<ListArchivosDriveEntity> listFilesInFolder() throws IOException, GeneralSecurityException {
-        HttpRequestInitializer requestInitializer = request -> {
-            request.getHeaders().setAuthorization("Bearer " + ACCESS_TOKEN);
-        };
-
-        Drive driveService = new Drive.Builder(
-                GoogleNetHttpTransport.newTrustedTransport(),
-                JSON_FACTORY,
-                requestInitializer)
-                .setApplicationName("DriveApiApp")
-                .build();
-
-        List<ListArchivosDriveEntity> fileList = new ArrayList<>();
-        String fields = "files(name, id, webViewLink)";
-        FileList result = driveService.files().list().setQ("'" + "1QVkB7Y-rOloiSc0h0VRUGq9b4SKikjNc" + "' in parents").setFields(fields).execute();
-        for (com.google.api.services.drive.model.File file : result.getFiles()) {
-            ListArchivosDriveEntity obj = new ListArchivosDriveEntity();
-            obj.setId(file.getId());
-            obj.setNombreDocumento(file.getName());
-            obj.setLink(file.getWebViewLink());
-            obj.setComplemento(file.getName() + "|" + file.getId() + "|" + file.getWebViewLink());
-
-            fileList.add(obj);
-        }
-
         return fileList;
     }
 }

@@ -245,5 +245,17 @@ public class CNuevasOfertasVdosEntity {
 
     @JsonProperty("codigo_Mostrar")
     public String codigo_Mostrar;
+    
+    @JsonProperty("UbicacionProd")
+    public String UbicacionProd;
+    
+    @JsonProperty("CalificaProducto")
+    public String CalificaProducto;
+    
+    @JsonProperty("Calificacion")
+    public String Calificacion;
+    
+    @JsonProperty("incremento")
+    public String incremento;
 
 }

@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface adminEnvioSMService {
 
-    public List<adminEnvioSMSEntity> ConsultaEnvioSMS(Integer Bandera, Integer idSector);
+    public List<adminEnvioSMSEntity> ConsultaEnvioSMS(Integer Bandera, Integer idSector,Integer TamanoLote,Integer NumeroLote);
 }

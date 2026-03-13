@@ -116,28 +116,32 @@ public class CEnvioCorreoIndEmailServiceImplementacion implements CEnvioCorreoIn
             String contrasena = null;
 
             StoredProcedureQuery remitente = repositorio.createNamedStoredProcedureQuery("paC_RemitenteCorreo");
-            remitente.getResultList();
             List<RemitenteCorreoEntity> remite = remitente.getResultList();
-            String[] rem = new String[remite.size()];
-            for (int i = 0; i < remite.size(); i++) {
-                correoremitente = rem[i] = remite.get(i).getCorreoRemitente();
-                servicePath = rem[i] = remite.get(i).getServicePath();
-                contrasena = rem[i] = clsEncriptacion.Desencriptar(remite.get(i).getClave());
+
+            for (RemitenteCorreoEntity r : remite) {
+                correoremitente = r.getCorreoRemitente();
+                servicePath = r.getServicePath();
+                contrasena = clsEncriptacion.Desencriptar(r.getClave());
             }
+
             Properties props = new Properties();
-            props.setProperty("mail.transport.protocol", "smtp"); // usa el protocolo pop3
-            props.setProperty("mail.host", servicePath); // servidor pop3
+            props.setProperty("mail.transport.protocol", "smtp");
+            props.setProperty("mail.smtp.host", servicePath);
             props.setProperty("mail.smtp.auth", "true");
-            //Linea problema: Could not convert socket to TLS
-            //props.put("mail.smtp.starttls.enable", "true");
-            // Crear objeto de instancia de sesión
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.starttls.required", "true");
+            props.setProperty("mail.smtp.ssl.trust", servicePath);
+            props.put("mail.smtp.port", "587"); 
+
+            // Crear la sesión
             Session session = Session.getInstance(props);
             session.setDebug(true);
+
             Transport ts = session.getTransport();
             ts.connect(servicePath, correoremitente, contrasena);
-            // Crear correo electrónico
+
             Message message = createMixedMail(session, mapMessage, correoremitente, entidad, bandera);
-            //enviar correo electrónico 
+
             ts.sendMessage(message, message.getAllRecipients());
             ts.close();
 

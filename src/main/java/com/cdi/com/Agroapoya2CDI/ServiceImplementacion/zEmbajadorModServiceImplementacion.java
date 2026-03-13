@@ -26,7 +26,8 @@ public class zEmbajadorModServiceImplementacion implements zEmbajadorModService 
             parametros.registerStoredProcedureParameter("Direccion", String.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("ComplementoDireccion", String.class, ParameterMode.IN);
             parametros.registerStoredProcedureParameter("Coordenadas", String.class, ParameterMode.IN);
-
+            parametros.registerStoredProcedureParameter("idTipoEmbajador", String.class, ParameterMode.IN);
+            
             parametros.setParameter("Bandera", Bandera);
             parametros.setParameter("UsucodigEmbajador", Entidad.getUsucodigEmbajador());
             parametros.setParameter("CorreoEmbajado", Entidad.getCorreoEmbajado());
@@ -34,13 +35,14 @@ public class zEmbajadorModServiceImplementacion implements zEmbajadorModService 
             parametros.setParameter("Direccion", Entidad.getDireccion());
             parametros.setParameter("ComplementoDireccion", Entidad.getComplementoDireccion());
             parametros.setParameter("Coordenadas", Entidad.getCoordenadas());
+            parametros.setParameter("idTipoEmbajador", Entidad.getIdTipoEmbajador());
             
             parametros.execute();
             return JSONObject.quote((String) parametros.getOutputParameterValue("Respuesta"));
         } catch (Exception ex) {
             return JSONObject.quote("ERROR LOG (z_EmbajadorMod)"
                     + " - Parametros: " + Bandera + "/" + Entidad.getUsucodigEmbajador() + "/" + Entidad.getCorreoEmbajado() + "/" + Entidad.getNombreConjunto() + "/" +
-                   Entidad.getDireccion() + "/" + Entidad.getComplementoDireccion() + "/" + Entidad.getCoordenadas() + "/"
+                   Entidad.getDireccion() + "/" + Entidad.getComplementoDireccion() + "/" + Entidad.getCoordenadas() + "/" + Entidad.getIdTipoEmbajador()
                     + " - ERROR JAVA = " + ex);
         }
     }
