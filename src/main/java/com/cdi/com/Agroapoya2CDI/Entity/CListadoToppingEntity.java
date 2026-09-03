@@ -125,4 +125,13 @@ public class CListadoToppingEntity {
     
     @JsonProperty("incremento")
     public String incremento;
+    
+    @JsonProperty("porcentajeDescuento")
+    public String porcentajeDescuento;
+    
+    @JsonProperty("idproducto")
+    public String idproducto;
+    
+    @JsonProperty("UnidadesVendidas")
+    public String UnidadesVendidas;
 }

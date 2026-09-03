@@ -32,5 +32,8 @@ public class adUsuarioMapaCalorEntity {
 
     @JsonProperty("comprador")
     public String comprador;
+    
+    @JsonProperty("CorreoPersona")
+    public String CorreoPersona;
 
 }

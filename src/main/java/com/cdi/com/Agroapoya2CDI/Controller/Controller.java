@@ -35,6 +35,7 @@ import com.cdi.com.Agroapoya2CDI.Entity.CAnadirValoresModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAplantillaCorreoEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CAsignaBodegaModEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CBodegaModEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.CCalculaCoordenadasEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinGrupalEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinIndividualEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.CCalculaPrecioFinMixtaEntity;
@@ -482,6 +483,7 @@ import com.cdi.com.Agroapoya2CDI.Services.CAnadirValoresModService;
 import com.cdi.com.Agroapoya2CDI.Services.CAplantillaCorreoService;
 import com.cdi.com.Agroapoya2CDI.Services.CAsignaBodegaModService;
 import com.cdi.com.Agroapoya2CDI.Services.CBodegaModService;
+import com.cdi.com.Agroapoya2CDI.Services.CCalculaCoordenadaService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinGrupalService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.CCalculaPrecioFinMixtaService;
@@ -1190,6 +1192,9 @@ public class Controller {
 
     @Autowired
     CVigenciaOfertaService serviceCVigenciaOfertaService;
+
+    @Autowired
+    CCalculaCoordenadaService serviceCCalculaCoordenadaService;
 
     @Autowired
     CCalculaPrecioFinIndividualService serviceCCalculaPrecioFinIndividualService;
@@ -3291,6 +3296,12 @@ public class Controller {
             @RequestBody CValidaCodigoEntity entidad,
             @PathVariable Integer Bandera) {
         return serviceCValidaCodigoService.ConsultaCValidaCodigo(entidad, Bandera);
+    }
+
+    @PostMapping("/validarusuariosector")
+    public String validarusuariosector(
+            @RequestBody CCalculaCoordenadasEntity entidad) {
+        return serviceCCalculaCoordenadaService.ConsultaCoordenadas(entidad);
     }
 
     @PostMapping("/conscalculadorapagoscliente/{Bandera}/{Operacion}/{Formato}/{Cd_Cnsctvo}/{Id_Sector}/{Unidades}/{Usucodig}/{CodGrupo}/{CodigoDescuento}")

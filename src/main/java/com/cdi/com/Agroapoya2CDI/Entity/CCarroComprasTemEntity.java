@@ -221,4 +221,10 @@ public class CCarroComprasTemEntity {
 
     @JsonProperty("VLORAPRTRDMCLIO")
     public String VLORAPRTRDMCLIO;
+    
+    @JsonProperty("Incremento")
+    public String Incremento;
+    
+    @JsonProperty("Porcentaje")
+    public String Porcentaje;
 }
