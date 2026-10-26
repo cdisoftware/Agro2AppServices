@@ -381,6 +381,10 @@ import com.cdi.com.Agroapoya2CDI.Entity.sp_ActualizarConjuntoEmbajadorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.sp_ConsultarPagosPorEmbajadorEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.sp_ReporteEmbajadoresConjuntosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.sp_ReporteVecinoConjuntosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_ListarVecinosEmbajadorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_DetalleComprasVecino_PorEmbajadorEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.sp_SolicitarPagoComision_PorVecinoEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Admin_listadoEmbajadoresEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.sp_embajador_redimirGananciaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoConsContactEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.tipoCunponEntity;
@@ -853,6 +857,10 @@ import com.cdi.com.Agroapoya2CDI.Services.sp_ActualizarConjuntoEmbajadorService;
 import com.cdi.com.Agroapoya2CDI.Services.sp_ConsultarPagosPorEmbajadorService;
 import com.cdi.com.Agroapoya2CDI.Services.sp_ReporteEmbajadoresConjuntosService;
 import com.cdi.com.Agroapoya2CDI.Services.sp_ReporteVecinoConjuntosService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_ListarVecinosEmbajadorService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_DetalleComprasVecino_PorEmbajadorService;
+import com.cdi.com.Agroapoya2CDI.Services.sp_SolicitarPagoComision_PorVecinoService;
+import com.cdi.com.Agroapoya2CDI.Services.Admin_listadoEmbajadoresService;
 import com.cdi.com.Agroapoya2CDI.Services.sp_embajador_redimirGananciaService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoConsContactService;
 import com.cdi.com.Agroapoya2CDI.Services.tipoCunponService;
@@ -2317,6 +2325,18 @@ public class Controller {
     
     @Autowired
     sp_embajador_redimirGananciaService servicesp_embajador_redimirGananciaService;
+    
+    @Autowired
+    sp_ListarVecinosEmbajadorService servicesp_ListarVecinosEmbajadorService;
+    
+    @Autowired
+    sp_DetalleComprasVecino_PorEmbajadorService servicesp_DetalleComprasVecino_PorEmbajadorService;
+    
+    @Autowired
+    sp_SolicitarPagoComision_PorVecinoService servicesp_SolicitarPagoComision_PorVecinoService;
+    
+    @Autowired
+    Admin_listadoEmbajadoresService serviceAdmin_listadoEmbajadoresService;
     
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -5974,5 +5994,30 @@ public class Controller {
             @PathVariable Integer Bandera,
             @RequestBody sp_embajador_redimirGananciaEntity Entidad) {
         return servicesp_embajador_redimirGananciaService.RedimeGanancia(Entidad, Bandera);
+    }
+
+    @GetMapping("/listarvecinosembajador/{IdEmbajador}")
+    public List<sp_ListarVecinosEmbajadorEntity> ListarVecinosEmbajador(
+            @PathVariable Integer IdEmbajador) {
+        return servicesp_ListarVecinosEmbajadorService.ListarVecinosEmbajador(IdEmbajador);
+    }
+
+    @GetMapping("/detallecomprasvecinoporembajador/{UsucodigEmbajador}/{UsucodigVecino}")
+    public List<sp_DetalleComprasVecino_PorEmbajadorEntity> ConsultaDetalleComprasVecino(
+            @PathVariable Integer UsucodigEmbajador,
+            @PathVariable Integer UsucodigVecino) {
+        return servicesp_DetalleComprasVecino_PorEmbajadorService.ConsultaDetalleComprasVecino(UsucodigEmbajador, UsucodigVecino);
+    }
+
+    @PostMapping("/solicitarpagocomisionporvecino")
+    public List<sp_SolicitarPagoComision_PorVecinoEntity> SolicitarPagoComisionPorVecino(
+            @RequestBody sp_SolicitarPagoComision_PorVecinoEntity Entidad) {
+        return servicesp_SolicitarPagoComision_PorVecinoService.SolicitarPagoComisionPorVecino(Entidad);
+    }
+
+    @GetMapping({"/adminlistadoembajadores/{Bandera}", "/Admin_listadoEmbajadores/{Bandera}"})
+    public List<Admin_listadoEmbajadoresEntity> ConsultaAdminListadoEmbajadores(
+            @PathVariable Integer Bandera) {
+        return serviceAdmin_listadoEmbajadoresService.ConsultaAdminListadoEmbajadores(Bandera);
     }
 }

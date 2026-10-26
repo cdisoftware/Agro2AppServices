@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de Microservicios - Módulo Embajador Agroapoya2</title>
+    <style>
+        :root {
+            --bg-body: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --primary: #2b6cb0;
+            --primary-light: #ebf8ff;
+            --success: #2f855a;
+            --success-light: #f0fff4;
+            --warning: #c05621;
+            --warning-light: #fffaf0;
+            --border: #e2e8f0;
+            --code-bg: #1a202c;
+            --code-color: #68d391;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .card-header {
+            padding: 16px 22px;
+            background: #fafbfc;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-weight: 700;
+            font-size: 13px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-get {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid #bee3f8;
+        }
+
+        .badge-post {
+            background-color: var(--success-light);
+            color: var(--success);
+            border: 1px solid #c6f6d5;
+        }
+
+        .endpoint-url {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            word-break: break-all;
+        }
+
+        .card-body {
+            padding: 22px;
+        }
+
+        h3 {
+            font-size: 17px;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        p.desc {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a5568;
+            margin: 18px 0 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+            font-size: 13.5px;
+        }
+
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #f7fafc;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .field-name {
+            font-family: monospace;
+            font-weight: 600;
+            color: #2b6cb0;
+        }
+
+        .field-type {
+            font-family: monospace;
+            color: #805ad5;
+            font-size: 12px;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: #e2e8f0;
+            padding: 14px 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 13px;
+            font-family: "Courier New", Courier, monospace;
+            margin-bottom: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📖 Documentación de Servicios - Embajadores y Vecinos</h1>
+        <p class="subtitle">API Agroapoya2 CDISoftware &bull; Microservicios de Gestión de Vecinos, Compras y Solicitud de Comisiones</p>
+    </header>
+
+    <!-- SERVICIO 1 -->
+    <div class="service-card">
+        <div class="card-header">
+            <span class="badge badge-get">GET</span>
+            <span class="endpoint-url">https://localhost:1016/Agroapoya2/listarvecinosembajador/{IdEmbajador}</span>
+        </div>
+        <div class="card-body">
+            <h3>1. Listar Vecinos de un Embajador</h3>
+            <p class="desc">
+                Devuelve la lista consolidada de vecinos registrados bajo un embajador, detallando sus datos de contacto, 
+                un conteo de sus compras clasificadas por estado y el acumulado de ganancias del embajador.
+            </p>
+
+            <h4>Parámetros de Ruta (Obligatorio)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="field-name">IdEmbajador</td>
+                        <td class="field-type">Integer</td>
+                        <td>Identificador del usuario embajador (ej. 123).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Campos que Devuelve</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>Significado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="field-name">UsucodigVecino</td>
+                        <td class="field-type">Integer</td>
+                        <td>ID de usuario único del vecino en el sistema (AGRO_PERSONAS).</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">NombreCliente</td>
+                        <td class="field-type">String</td>
+                        <td>Nombre y apellido completo del vecino.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">Telefono</td>
+                        <td class="field-type">String</td>
+                        <td>Número de celular o teléfono del vecino.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">DireccionEntrega</td>
+                        <td class="field-type">String</td>
+                        <td>Dirección completa y complemento de entrega del vecino.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">FechaRelacion</td>
+                        <td class="field-type">String (Fecha)</td>
+                        <td>Fecha en que se vinculó la relación entre el embajador y el vecino.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">TotalCompras</td>
+                        <td class="field-type">Integer</td>
+                        <td>Total global de compras realizadas por el vecino.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">ComprasPendientesEntrega</td>
+                        <td class="field-type">Integer</td>
+                        <td>Cantidad de compras pendientes de entrega (estados 1 y 2).</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">ComprasEntregadas</td>
+                        <td class="field-type">Integer</td>
+                        <td>Cantidad de compras entregadas al cliente (estados 3 y 4).</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">ComprasCanceladas</td>
+                        <td class="field-type">Integer</td>
+                        <td>Cantidad de compras canceladas (estado 5).</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">GananciaPendienteReclamar</td>
+                        <td class="field-type">String ($)</td>
+                        <td>Ganancia <b>habilitada</b> que el embajador ya puede solicitar para cobro.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">GananciaEnProceso</td>
+                        <td class="field-type">String ($)</td>
+                        <td>Ganancia que el embajador <b>ya solicitó</b> y está en trámite de desembolso.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">GananciaReclamada</td>
+                        <td class="field-type">String ($)</td>
+                        <td>Ganancia histórica que <b>ya fue pagada</b> y desembolsada al embajador.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">GananciaNoHabilitada</td>
+                        <td class="field-type">String ($)</td>
+                        <td>Ganancia bloqueada de pedidos aún no entregados o cancelados.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Ejemplo de Respuesta JSON</h4>
+            <pre>[
+  {
+    "UsucodigVecino": 456,
+    "NombreCliente": "Carlos Alberto Pérez Gómez",
+    "Telefono": "3104567890",
+    "DireccionEntrega": "Calle 140 # 15-20 Torre 1 Apto 402",
+    "FechaRelacion": "2026-09-12 11:45:00",
+    "TotalCompras": 3,
+    "ComprasPendientesEntrega": 1,
+    "ComprasEntregadas": 2,
+    "ComprasCanceladas": 0,
+    "GananciaPendienteReclamar": "15000",
+    "GananciaEnProceso": "5000",
+    "GananciaReclamada": "20000",
+    "GananciaNoHabilitada": "0"
+  }
+]</pre>
+        </div>
+    </div>
+
+    <!-- SERVICIO 2 -->
+    <div class="service-card">
+        <div class="card-header">
+            <span class="badge badge-get">GET</span>
+            <span class="endpoint-url">https://localhost:1016/Agroapoya2/detallecomprasvecinoporembajador/{UsucodigEmbajador}/{UsucodigVecino}</span>
+        </div>
+        <div class="card-body">
+            <h3>2. Detalle de Compras del Vecino</h3>
+            <p class="desc">
+                Devuelve el historial compra por compra de un vecino específico bajo un embajador, con los montos pagados, 
+                la comisión calculada y los datos transaccionales del pago.
+            </p>
+
+            <h4>Parámetros de Ruta (Obligatorios)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="field-name">UsucodigEmbajador</td>
+                        <td class="field-type">Integer</td>
+                        <td>Código de usuario del embajador (ej. 123).</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">UsucodigVecino</td>
+                        <td class="field-type">Integer</td>
+                        <td>Código de usuario del vecino (ej. 456).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Campos que Devuelve</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>Significado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="field-name">NumeroCarrito</td>
+                        <td class="field-type">String</td>
+                        <td>Número identificador del carrito / pedido del vecino.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">ValorCompra</td>
+                        <td class="field-type">String ($)</td>
+                        <td>Monto total pagado por el vecino en la compra.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">EstadoCompraVecino</td>
+                        <td class="field-type">String</td>
+                        <td>Estado del pedido (ej. "Entregado", "Pendiente", "Pagado").</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">FechaPagoCliente</td>
+                        <td class="field-type">String (Fecha)</td>
+                        <td>Fecha y hora en que el cliente pagó la compra.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">PorcentajeComision</td>
+                        <td class="field-type">String (%)</td>
+                        <td>Porcentaje de ganancia pactado para el embajador (ej. "10").</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">ValorComision</td>
+                        <td class="field-type">String ($)</td>
+                        <td>Valor de la comisión en pesos ganada por el embajador.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">EstadoComisionEmbajador</td>
+                        <td class="field-type">String</td>
+                        <td>Estado de la comisión (ej. "Habilitada", "Comisión solicitada", "Pagada").</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">FechaPagoComision</td>
+                        <td class="field-type">String (Fecha)</td>
+                        <td>Fecha en que se le transfirió la comisión al embajador (null si no ha sido pagada).</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">TipoMedioPago</td>
+                        <td class="field-type">String</td>
+                        <td>Medio o pasarela con la que se tramitó el pago (ej. "Nequi", "Daviplata", "Tarjeta").</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">LlaveTransaccion</td>
+                        <td class="field-type">String</td>
+                        <td>Referencia o número de cuenta de la transacción.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Ejemplo de Respuesta JSON</h4>
+            <pre>[
+  {
+    "NumeroCarrito": "90214",
+    "ValorCompra": "95000",
+    "EstadoCompraVecino": "Entregado",
+    "FechaPagoCliente": "2026-10-18 16:30:10",
+    "PorcentajeComision": "10",
+    "ValorComision": "9500",
+    "EstadoComisionEmbajador": "Habilitada",
+    "FechaPagoComision": null,
+    "TipoMedioPago": "Nequi",
+    "LlaveTransaccion": "3104567890"
+  }
+]</pre>
+        </div>
+    </div>
+
+    <!-- SERVICIO 3 -->
+    <div class="service-card">
+        <div class="card-header">
+            <span class="badge badge-post">POST</span>
+            <span class="endpoint-url">https://localhost:1016/Agroapoya2/solicitarpagocomisionporvecino</span>
+        </div>
+        <div class="card-body">
+            <h3>3. Solicitar Pago de Comisión por Vecino</h3>
+            <p class="desc">
+                Ejecuta la solicitud de pago para todas las comisiones en estado <b>Habilitado (2)</b> pertenecientes a las compras del vecino indicado. 
+                Pasa las comisiones a estado <b>3 ("Comisión solicitada")</b> y registra el medio de desembolso donde el embajador recibirá su dinero.
+            </p>
+
+            <div class="grid-2">
+                <div>
+                    <h4>Cuerpo de la Petición (Request Body JSON)</h4>
+                    <p class="desc" style="margin-bottom: 8px;">Todos los 4 campos son obligatorios:</p>
+                    <pre>{
+  "UsucodigEmbajador": 123,
+  "UsucodigVecino": 456,
+  "TipoDePago": "Nequi",
+  "LlaveDePago": "3001234567"
+}</pre>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Campo</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="field-name">UsucodigEmbajador</td>
+                                <td class="field-type">Integer</td>
+                                <td>ID del embajador.</td>
+                            </tr>
+                            <tr>
+                                <td class="field-name">UsucodigVecino</td>
+                                <td class="field-type">Integer</td>
+                                <td>ID del vecino cuyas comisiones se reclaman.</td>
+                            </tr>
+                            <tr>
+                                <td class="field-name">TipoDePago</td>
+                                <td class="field-type">String</td>
+                                <td>Canal de pago (Nequi, Daviplata, Bancolombia, etc.).</td>
+                            </tr>
+                            <tr>
+                                <td class="field-name">LlaveDePago</td>
+                                <td class="field-type">String</td>
+                                <td>Número celular o cuenta bancaria destinataria.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h4>Respuesta que Devuelve (Response JSON)</h4>
+                    <p class="desc" style="margin-bottom: 8px;">Devuelve la cantidad de comisiones actualizadas a solicitadas:</p>
+                    <pre>[
+  {
+    "ComisionesSolicitadas": 2
+  }
+]</pre>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Campo</th>
+                                <th>Tipo</th>
+                                <th>Significado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="field-name">ComisionesSolicitadas</td>
+                                <td class="field-type">Integer</td>
+                                <td>
+                                    Cantidad exacta de compras/comisiones que se actualizaron exitosamente. 
+                                    Si retorna <b>0</b>, significa que no habían comisiones en estado "Habilitado" pendientes por solicitar.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Agroapoya2 &bull; CDI Software. Microservicios listos para consumo.</p>
+    </footer>
+</div>
+
+</body>
+</html>
