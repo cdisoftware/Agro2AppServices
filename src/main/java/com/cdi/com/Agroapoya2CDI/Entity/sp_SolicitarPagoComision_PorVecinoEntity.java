@@ -23,6 +23,9 @@ public class sp_SolicitarPagoComision_PorVecinoEntity {
     @JsonProperty("ComisionesSolicitadas")
     public Integer ComisionesSolicitadas;
 
+    @JsonProperty("Bandera")
+    public Integer Bandera;
+
     @JsonProperty("UsucodigEmbajador")
     public Integer UsucodigEmbajador;
 
@@ -35,4 +38,6 @@ public class sp_SolicitarPagoComision_PorVecinoEntity {
     @JsonProperty("LlaveDePago")
     public String LlaveDePago;
 
+    @JsonProperty("IdCarro")
+    public Integer IdCarro;
 }

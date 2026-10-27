@@ -19,24 +19,28 @@ public class sp_SolicitarPagoComision_PorVecinoServiceImplementacion implements 
 
     @Override
     public List<sp_SolicitarPagoComision_PorVecinoEntity> SolicitarPagoComisionPorVecino(sp_SolicitarPagoComision_PorVecinoEntity entidad) {
+        Integer bandera = (entidad != null && entidad.getBandera() != null) ? entidad.getBandera() : 1;
         try {
-            if (entidad == null || entidad.getUsucodigEmbajador() == null || entidad.getUsucodigVecino() == null
-                    || entidad.getTipoDePago() == null || entidad.getLlaveDePago() == null) {
+            if (entidad == null || entidad.getUsucodigEmbajador() == null || entidad.getUsucodigVecino() == null) {
                 List list = new ArrayList();
-                list.add(0, JSONObject.quote("ERROR: Todos los parámetros (UsucodigEmbajador, UsucodigVecino, TipoDePago, LlaveDePago) son obligatorios."));
+                list.add(0, JSONObject.quote("ERROR: Los parámetros UsucodigEmbajador y UsucodigVecino son obligatorios."));
                 return list;
             }
 
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("sp_SolicitarPagoComision_PorVecino");
+            tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("UsucodigEmbajador", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("UsucodigVecino", Integer.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("TipoDePago", String.class, ParameterMode.IN);
             tpoDoc.registerStoredProcedureParameter("LlaveDePago", String.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("IdCarro", Integer.class, ParameterMode.IN);
 
+            tpoDoc.setParameter("Bandera", bandera);
             tpoDoc.setParameter("UsucodigEmbajador", entidad.getUsucodigEmbajador());
             tpoDoc.setParameter("UsucodigVecino", entidad.getUsucodigVecino());
             tpoDoc.setParameter("TipoDePago", entidad.getTipoDePago());
             tpoDoc.setParameter("LlaveDePago", entidad.getLlaveDePago());
+            tpoDoc.setParameter("IdCarro", entidad.getIdCarro());
 
             return tpoDoc.getResultList();
         } catch (Exception ex) {
@@ -50,7 +54,7 @@ public class sp_SolicitarPagoComision_PorVecinoServiceImplementacion implements 
             }
             List list = new ArrayList();
             list.add(0, JSONObject.quote("ERROR LOG (sp_SolicitarPagoComision_PorVecino)"
-                    + " - Parametros: " + (entidad != null ? (entidad.getUsucodigEmbajador() + "/" + entidad.getUsucodigVecino() + "/" + entidad.getTipoDePago() + "/" + entidad.getLlaveDePago()) : "null")
+                    + " - Parametros: " + (entidad != null ? (bandera + "/" + entidad.getUsucodigEmbajador() + "/" + entidad.getUsucodigVecino() + "/" + entidad.getTipoDePago() + "/" + entidad.getLlaveDePago() + "/" + entidad.getIdCarro()) : "null")
                     + " - ERROR JAVA = " + mensaje));
             return list;
         }
