@@ -18,13 +18,15 @@ public class adUsuarioMapaCalorServiceImplementacion implements adUsuarioMapaCal
     private EntityManager repositorio;
 
     @Override
-    public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(Integer Bandera, String Parametro) {
+    public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(Integer Bandera, String Parametro, Integer Embajador) {
         try {
             StoredProcedureQuery tpoDoc = repositorio.createNamedStoredProcedureQuery("admin_usuarioMapaCalor");
             tpoDoc.registerStoredProcedureParameter("Bandera", Integer.class, ParameterMode.IN); 
             tpoDoc.registerStoredProcedureParameter("Parametro", String.class, ParameterMode.IN);
+            tpoDoc.registerStoredProcedureParameter("Embajador", Integer.class, ParameterMode.IN);
             tpoDoc.setParameter("Bandera", Bandera);
             tpoDoc.setParameter("Parametro", Parametro);
+            tpoDoc.setParameter("Embajador", Embajador);
             return tpoDoc.getResultList();
         } catch (Exception ex) {
             List list = new ArrayList();
