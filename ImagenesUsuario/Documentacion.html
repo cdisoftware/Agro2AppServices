@@ -451,24 +451,27 @@
     <div class="service-card">
         <div class="card-header">
             <span class="badge badge-post">POST</span>
-            <span class="endpoint-url">https://localhost:1016/Agroapoya2/solicitarpagocomisionporvecino</span>
+            <span class="endpoint-url">https://localhost:1016/Agroapoya2/solicitarpagocomisionporvecino [/{Bandera}]</span>
         </div>
         <div class="card-body">
             <h3>3. Solicitar Pago de Comisión por Vecino</h3>
             <p class="desc">
-                Ejecuta la solicitud de pago para todas las comisiones en estado <b>Habilitado (2)</b> pertenecientes a las compras del vecino indicado. 
-                Pasa las comisiones a estado <b>3 ("Comisión solicitada")</b> y registra el medio de desembolso donde el embajador recibirá su dinero.
+                Permite gestionar el estado de las comisiones de un vecino vinculadas a un embajador:
+                <br>&bull; <b>Bandera 1:</b> Pasa comisiones de estado <b>2 (Habilitadas)</b> a <b>3 ("Comisión solicitada")</b> y actualiza el medio de pago.
+                <br>&bull; <b>Bandera 2:</b> Pasa comisiones de estado <b>3 (Solicitadas)</b> a <b>4 ("Comisión pagada")</b>.
             </p>
 
             <div class="grid-2">
                 <div>
                     <h4>Cuerpo de la Petición (Request Body JSON)</h4>
-                    <p class="desc" style="margin-bottom: 8px;">Todos los 4 campos son obligatorios:</p>
+                    <p class="desc" style="margin-bottom: 8px;">Parámetros de entrada:</p>
                     <pre>{
+  "Bandera": 1,
   "UsucodigEmbajador": 123,
   "UsucodigVecino": 456,
   "TipoDePago": "Nequi",
-  "LlaveDePago": "3001234567"
+  "LlaveDePago": "3001234567",
+  "IdCarro": 0
 }</pre>
                     <table>
                         <thead>
@@ -480,24 +483,34 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td class="field-name">Bandera</td>
+                                <td class="field-type">Integer</td>
+                                <td>1: Solicitar pago (estado 2 &rarr; 3). 2: Confirmar pago (estado 3 &rarr; 4). (Por defecto 1).</td>
+                            </tr>
+                            <tr>
                                 <td class="field-name">UsucodigEmbajador</td>
                                 <td class="field-type">Integer</td>
-                                <td>ID del embajador.</td>
+                                <td>ID del embajador (Obligatorio).</td>
                             </tr>
                             <tr>
                                 <td class="field-name">UsucodigVecino</td>
                                 <td class="field-type">Integer</td>
-                                <td>ID del vecino cuyas comisiones se reclaman.</td>
+                                <td>ID del vecino (Obligatorio).</td>
                             </tr>
                             <tr>
                                 <td class="field-name">TipoDePago</td>
                                 <td class="field-type">String</td>
-                                <td>Canal de pago (Nequi, Daviplata, Bancolombia, etc.).</td>
+                                <td>Canal de pago (Nequi, Daviplata, Bancolombia, etc. Usado en Bandera 1).</td>
                             </tr>
                             <tr>
                                 <td class="field-name">LlaveDePago</td>
                                 <td class="field-type">String</td>
-                                <td>Número celular o cuenta bancaria destinataria.</td>
+                                <td>Número celular o cuenta bancaria destinataria (Usado en Bandera 1).</td>
+                            </tr>
+                            <tr>
+                                <td class="field-name">IdCarro</td>
+                                <td class="field-type">Integer</td>
+                                <td>ID del carro o compra (opcional / configurable).</td>
                             </tr>
                         </tbody>
                     </table>
@@ -651,6 +664,26 @@
                         <td class="field-type">Integer</td>
                         <td>Total acumulado de compras realizadas por los vecinos referidos.</td>
                     </tr>
+                    <tr>
+                        <td class="field-name">NumeroSolicitados</td>
+                        <td class="field-type">String (VARCHAR)</td>
+                        <td>Número o cantidad de comisiones solicitadas.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">NumeroHabilitados</td>
+                        <td class="field-type">String (VARCHAR)</td>
+                        <td>Número o cantidad de comisiones habilitadas.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">SumaValorSolicitados</td>
+                        <td class="field-type">String (VARCHAR)</td>
+                        <td>Monto total o sumatoria de valores solicitados.</td>
+                    </tr>
+                    <tr>
+                        <td class="field-name">SumaValorHabilitados</td>
+                        <td class="field-type">String (VARCHAR)</td>
+                        <td>Monto total o sumatoria de valores habilitados.</td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -671,7 +704,11 @@
     "IdManichatEmbajador": "982736412",
     "NumeroComprasEmbajador": 5,
     "NumeroClienteReferidos": 12,
-    "NumeroComprasTotalClienteReferidos": 28
+    "NumeroComprasTotalClienteReferidos": 28,
+    "NumeroSolicitados": "3",
+    "NumeroHabilitados": "2",
+    "SumaValorSolicitados": "75000",
+    "SumaValorHabilitados": "50000"
   }
 ]</pre>
         </div>

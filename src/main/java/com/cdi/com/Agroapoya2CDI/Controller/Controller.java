@@ -6009,9 +6009,13 @@ public class Controller {
         return servicesp_DetalleComprasVecino_PorEmbajadorService.ConsultaDetalleComprasVecino(UsucodigEmbajador, UsucodigVecino);
     }
 
-    @PostMapping("/solicitarpagocomisionporvecino")
+    @PostMapping({"/solicitarpagocomisionporvecino", "/solicitarpagocomisionporvecino/{Bandera}"})
     public List<sp_SolicitarPagoComision_PorVecinoEntity> SolicitarPagoComisionPorVecino(
-            @RequestBody sp_SolicitarPagoComision_PorVecinoEntity Entidad) {
+            @RequestBody sp_SolicitarPagoComision_PorVecinoEntity Entidad,
+            @PathVariable(required = false) Integer Bandera) {
+        if (Bandera != null) {
+            Entidad.setBandera(Bandera);
+        }
         return servicesp_SolicitarPagoComision_PorVecinoService.SolicitarPagoComisionPorVecino(Entidad);
     }
 

@@ -62,4 +62,16 @@ public class Admin_listadoEmbajadoresEntity {
 
     @JsonProperty("NumeroComprasTotalClienteReferidos")
     public Integer NumeroComprasTotalClienteReferidos;
+
+    @JsonProperty("NumeroSolicitados")
+    public String NumeroSolicitados;
+
+    @JsonProperty("NumeroHabilitados")
+    public String NumeroHabilitados;
+
+    @JsonProperty("SumaValorSolicitados")
+    public String SumaValorSolicitados;
+
+    @JsonProperty("SumaValorHabilitados")
+    public String SumaValorHabilitados;
 }
