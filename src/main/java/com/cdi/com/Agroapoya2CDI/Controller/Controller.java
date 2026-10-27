@@ -235,6 +235,15 @@ import com.cdi.com.Agroapoya2CDI.Entity.EnvioSMSIndvAA2Entity;
 import com.cdi.com.Agroapoya2CDI.Entity.EnvioSMSNuevaEntregaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.EstadosOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.INFOGENERALEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_AuditoriaManychatDetalleEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_AuditoriaManychatEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_EmbajadoresEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_Embajadores_clienteReferidosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_PedidosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_Pedidos_itemEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_UsuariosEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_ofertasEntity;
+import com.cdi.com.Agroapoya2CDI.Entity.Ikon_sp_InsertarEnvioCorreosEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.JornadasOfertaEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ListArchivosDriveEntity;
 import com.cdi.com.Agroapoya2CDI.Entity.ListasDatosBancoEntity;
@@ -698,6 +707,15 @@ import com.cdi.com.Agroapoya2CDI.Services.EnviosmsIndividualService;
 import com.cdi.com.Agroapoya2CDI.Services.EstadosOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.FirebaseNotificationService;
 import com.cdi.com.Agroapoya2CDI.Services.INFOGENERALService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_AuditoriaManychatDetalleService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_AuditoriaManychatService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_EmbajadoresService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_Embajadores_clienteReferidosService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_PedidosService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_Pedidos_itemService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_UsuariosServices;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_ofertasService;
+import com.cdi.com.Agroapoya2CDI.Services.Ikon_sp_InsertarEnvioCorreosService;
 import com.cdi.com.Agroapoya2CDI.Services.ImagesApiService;
 import com.cdi.com.Agroapoya2CDI.Services.JornadasOfertaService;
 import com.cdi.com.Agroapoya2CDI.Services.ListDocDriveService;
@@ -2327,6 +2345,33 @@ public class Controller {
     sp_embajador_redimirGananciaService servicesp_embajador_redimirGananciaService;
     
     @Autowired
+    Ikon_UsuariosServices serviceIkon_UsuariosService;
+    
+    @Autowired
+    Ikon_PedidosService serviceIkon_PedidosService;
+    
+    @Autowired
+    Ikon_Pedidos_itemService serviceIkon_Pedidos_itemService;
+    
+    @Autowired
+    Ikon_ofertasService serviceIkon_ofertasService;
+    
+    @Autowired
+    Ikon_EmbajadoresService serviceIkon_EmbajadoresService;
+    
+    @Autowired
+    Ikon_Embajadores_clienteReferidosService serviceIkon_Embajadores_clienteReferidosService;
+    
+    @Autowired
+    Ikon_AuditoriaManychatDetalleService serviceIkon_AuditoriaManychatDetalleService;
+    
+    @Autowired
+    Ikon_AuditoriaManychatService serviceIkon_AuditoriaManychatService;
+    
+    @Autowired
+    Ikon_sp_InsertarEnvioCorreosService serviceIkon_sp_InsertarEnvioCorreosService;
+
+    @Autowired
     sp_ListarVecinosEmbajadorService servicesp_ListarVecinosEmbajadorService;
     
     @Autowired
@@ -2337,6 +2382,7 @@ public class Controller {
     
     @Autowired
     Admin_listadoEmbajadoresService serviceAdmin_listadoEmbajadoresService;
+
     
     @GetMapping("/consultainfogeneral/{ID}/{subId}")
     public List<INFOGENERALEntity> ConsultaInfoGeneral(
@@ -4923,11 +4969,12 @@ public class Controller {
         return serviceadmillaDtlleOfertaCompraService.ConsultaDetalleOfertComprAdmin(Bandera, IdGrupo);
     }
 
-    @GetMapping("/consAdUserMapCalor/{Bandera}/{Parametro}")
+    @GetMapping("/consAdUserMapCalor/{Bandera}/{Parametro}/{Embajador}")
     public List<adUsuarioMapaCalorEntity> ConsultaAdminUsuarioMapCalor(
             @PathVariable Integer Bandera,
-            @PathVariable String Parametro) {
-        return serviceadUsuarioMapaCalorService.ConsultaAdminUsuarioMapCalor(Bandera, Parametro);
+            @PathVariable String Parametro,
+            @PathVariable Integer Embajador) {
+        return serviceadUsuarioMapaCalorService.ConsultaAdminUsuarioMapCalor(Bandera, Parametro, Embajador);
     }
 
     @GetMapping("/consClienteRegalo/{Bandera}/{IntIdOferta}/{Usucodig}")
@@ -5996,6 +6043,57 @@ public class Controller {
         return servicesp_embajador_redimirGananciaService.RedimeGanancia(Entidad, Bandera);
     }
 
+    
+    @GetMapping("/consultausuariosikon")
+    public List<Ikon_UsuariosEntity> ConsultaUsuarios() {
+        return serviceIkon_UsuariosService.ConsultaUsuariosIkon();
+    }
+    
+    @GetMapping("/consultapedidosikon/{Meses}")
+    public List<Ikon_PedidosEntity> ConsultaPedidosIkon(
+    @PathVariable Integer Meses) {
+        return serviceIkon_PedidosService.ConsultaPedidosIkon(Meses);
+    }
+    
+    @GetMapping("/consultaitemspedidosikon/{IdPedido}")
+    public List<Ikon_Pedidos_itemEntity> ConsultaItemsPedidosIkon(
+    @PathVariable Integer IdPedido) {
+        return serviceIkon_Pedidos_itemService.ConsultaItemsPedidosIkon(IdPedido);
+    }
+    
+    @GetMapping("/consultaofertasikon")
+    public List<Ikon_ofertasEntity> ConsultaOfertasIkon() {
+        return serviceIkon_ofertasService.ConsultaOfertasIkon();
+    }
+    
+    @GetMapping("/consultaembajadoresikon")
+    public List<Ikon_EmbajadoresEntity> ConsultaEmbajadoresIkon() {
+        return serviceIkon_EmbajadoresService.ConsultaEmbajadorIkon();
+    }
+    
+    @GetMapping("/consultaembajadoresrefikon/{IdUsuarioEmbajador}")
+    public List<Ikon_Embajadores_clienteReferidosEntity> ConsultaEmbajadoresReferidosIkon(
+    @PathVariable Integer IdUsuarioEmbajador) {
+        return serviceIkon_Embajadores_clienteReferidosService.ConsultaEmbajadoresReferidosIkon(IdUsuarioEmbajador);
+    }
+    
+    @GetMapping("/consultaauditoriadtlmany/{IdAuditoria}")
+    public List<Ikon_AuditoriaManychatDetalleEntity> ConsultaAuditoriaManyChat(
+    @PathVariable Integer IdAuditoria) {
+        return serviceIkon_AuditoriaManychatDetalleService.ConsultaAuditoriaManyChat(IdAuditoria);
+    }
+    
+    @GetMapping("/consultaauditoriamany")
+    public List<Ikon_AuditoriaManychatEntity> ConsultaAuditoriaManyChat() {
+        return serviceIkon_AuditoriaManychatService.ConsultaAuditoriaManyChat();
+    }
+    
+   @PostMapping("/enviocorreoindividualikon")
+    public String IkonEnvioCorreoIndividual(
+            @RequestBody Ikon_sp_InsertarEnvioCorreosEntity entidad) {
+        return serviceIkon_sp_InsertarEnvioCorreosService.IkonEnvioCorreoIndividual(entidad);
+
+
     @GetMapping("/listarvecinosembajador/{IdEmbajador}")
     public List<sp_ListarVecinosEmbajadorEntity> ListarVecinosEmbajador(
             @PathVariable Integer IdEmbajador) {
@@ -6023,5 +6121,6 @@ public class Controller {
     public List<Admin_listadoEmbajadoresEntity> ConsultaAdminListadoEmbajadores(
             @PathVariable Integer Bandera) {
         return serviceAdmin_listadoEmbajadoresService.ConsultaAdminListadoEmbajadores(Bandera);
+
     }
 }
