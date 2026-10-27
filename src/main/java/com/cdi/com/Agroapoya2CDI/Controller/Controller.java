@@ -6093,7 +6093,8 @@ public class Controller {
             @RequestBody Ikon_sp_InsertarEnvioCorreosEntity entidad) {
         return serviceIkon_sp_InsertarEnvioCorreosService.IkonEnvioCorreoIndividual(entidad);
 
-
+    }
+    
     @GetMapping("/listarvecinosembajador/{IdEmbajador}")
     public List<sp_ListarVecinosEmbajadorEntity> ListarVecinosEmbajador(
             @PathVariable Integer IdEmbajador) {
